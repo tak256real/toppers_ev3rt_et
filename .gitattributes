@@ -1,0 +1,5 @@
+*.ccsproject text eol=crlf
+*.cproject text eol=crlf
+*.project text eol=crlf
+
+*.srec binary
