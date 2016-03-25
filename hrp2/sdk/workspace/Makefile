@@ -6,7 +6,7 @@
 # Include configurations of EV3RT SDK
 #
 SDKDIR = ..
-WSPDIR = $(basename $(PWD))
+WSPDIR = $(basename $(CURDIR))
 include $(SDKDIR)/Makefile.sdk.conf
 
 # Configuration
@@ -21,10 +21,10 @@ get_relpath = $(shell perl -MFile::Spec -e "print File::Spec->abs2rel(q($1),q($2
 #
 # Paths
 #
-KERNELDIR    := $(PWD)/$(SDKDIR)/$(EV3RT_BASE_DIR)
-OBJDIR       := $(PWD)/$(SDKDIR)/$(EV3RT_PRJ_OBJ_DIR)
-LIBKERNELDIR := $(PWD)/$(SDKDIR)/$(EV3RT_LIBKERNEL_DIR)
-TARGETDIR    := $(PWD)/$(KERNELDIR)/target/ev3_gcc
+KERNELDIR    := $(CURDIR)/$(SDKDIR)/$(EV3RT_BASE_DIR)
+OBJDIR       := $(CURDIR)/$(SDKDIR)/$(EV3RT_PRJ_OBJ_DIR)
+LIBKERNELDIR := $(CURDIR)/$(SDKDIR)/$(EV3RT_LIBKERNEL_DIR)
+TARGETDIR    := $(CURDIR)/$(KERNELDIR)/target/ev3_gcc
 
 # Object files
 OBJFILENAME := $(KERNEL)
@@ -41,11 +41,11 @@ OBJBINARY := $(OBJDIR)/$(KERNEL).bin
 # $(MKFILE_DIR):      Absolute path of the folder holding Makefile
 #
 ifdef img
-APPLDIR := $(PWD)/$(img)
+APPLDIR := $(CURDIR)/$(img)
 MKFILENAME := Makefile.img
 endif
 ifdef app
-APPLDIR := $(PWD)/$(app)
+APPLDIR := $(CURDIR)/$(app)
 MKFILENAME := Makefile.app
 endif
 MKFILE_DIR := $(APPLDIR)
@@ -74,9 +74,9 @@ endif
 	    $(OBJFILENAME) $(call get_relpath,$(OBJBINARY),$(OBJDIR))
 	@mkimage -A arm -O linux -T kernel -C none -a 0xc0008000 -e 0xc0008000 \
         -n "TOPPERS/$(KERNEL) Kernel (EV3)" \
-		-d $(call get_relpath,$(OBJBINARY),$(PWD)) uImage
+		-d $(call get_relpath,$(OBJBINARY),$(CURDIR)) uImage
 	@chmod +x uImage
-	@cp $(OBJDIR)/$(OBJFILENAME) $(PWD)
+	@cp $(OBJDIR)/$(OBJFILENAME) $(CURDIR)
 
 $(LIBKERNELDIR)/libkernel.a: prepare-obj-folder
 	@cd $(OBJDIR) && \
@@ -97,7 +97,7 @@ app: $(APPLDIR) prepare-obj-folder
 	@cd $(OBJDIR) && \
 	make module_cfg.h && \
 	make -j8 && \
-	cp app $(PWD)/app # && cp app $(PWD)/app-$(subst /,,$(app))
+	cp app $(CURDIR)/app # && cp app $(CURDIR)/app-$(subst /,,$(app))
 
 endif
 
