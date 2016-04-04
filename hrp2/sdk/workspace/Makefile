@@ -123,8 +123,8 @@ prepare-obj-folder: clean
 	@mkdir -p $(OBJDIR)
 	cd $(OBJDIR) && \
 	$(KERNELDIR)/configure -T ev3_gcc -A app \
-		-a $(call get_relpath,$(APPLDIR),$(OBJDIR)) \
-		-t $(call get_relpath,$(APPLDIR),$(OBJDIR)) \
+		-a ../workspace/$(app) \
+		-t ../workspace/$(app) \
 		-D $(call get_relpath,$(KERNELDIR),$(OBJDIR)) \
 		-L $(call get_relpath,$(LIBKERNELDIR),$(OBJDIR)) \
 		-l $(SRCLANG) \
