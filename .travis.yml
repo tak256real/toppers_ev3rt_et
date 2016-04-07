@@ -39,7 +39,7 @@ install:
 
 before_script:
   # cfgをビルド appビルドに使用されるバイナリ
-  - cd hrp2/cfg
+  - cd src/cfg
   - make clean
   - make
   - chmod 777 cfg/cfg
