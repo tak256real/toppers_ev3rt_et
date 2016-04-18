@@ -17,3 +17,28 @@ SubsystemBridge::SubsystemBridge(){
 SubsystemBridge::~SubsystemBridge(){
 
 }
+
+
+void SubsystemBridge::doInitialize(){
+    actInitialize();
+}
+
+
+void SubsystemBridge::receiveMessage(uint16* rv_message){
+
+}
+
+
+void SubsystemBridge::sendMessage(void* rv_message, rv_size uint16){
+
+}
+
+
+void SubsystemBridge::actInitialize(){
+    // 初期化処理をサブクラスで記述する.
+}
+
+
+void SubsystemBridge::actReceiveMessage(uint16* rv_message){
+
+}
