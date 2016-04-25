@@ -15,8 +15,8 @@ typedef unsigned short uint16;  //!< unsigned 16bit
 typedef signed long    sint32;  //!<   signed 32bit
 typedef unsigned long  uint32;  //!< unsigned 32bit
 
-#ifndef __cplusplus             //!< boolean type for C
-typedef uint8 bool;
+#ifndef __cplusplus
+typedef uint8 bool;             //!< boolean type for C
 #define false 0
 #define true  1
 #endif  // __cplusplus
@@ -28,7 +28,7 @@ typedef uint8 bool;
 
 #define BIT(n) (1UL << (n))
 
-
+// ea が自動生成したが、クラスとしては使用しない.
 class std
 {
 

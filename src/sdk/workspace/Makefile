@@ -122,14 +122,14 @@ prepare-obj-folder: clean
 	@cp $(MKFILE_DIR)/$(MKFILENAME) $(APPLDIR)/$(temp_mkfilename)
 	@mkdir -p $(OBJDIR)
 	cd $(OBJDIR) && \
-	$(KERNELDIR)/configure -T ev3_gcc -A app \				# KERNELDIR    := $(CURDIR)/$(SDKDIR)/$(EV3RT_BASE_DIR)
-		-a ../workspace/$(app) \							# アプリケーションのディレクトリ名
-		-t ../workspace/$(app) \							# テンプレートディレクトリの指定（デフォルトはsample）
-		-D $(call get_relpath,$(KERNELDIR),$(OBJDIR)) \		# カーネル等のソースの置かれているディレクトリ
-		-L $(call get_relpath,$(LIBKERNELDIR),$(OBJDIR)) \	# カーネルライブラリ（libkernel.a）のディレクトリ名 （省略した場合，カーネルライブラリもmakeする）
-		-l $(SRCLANG) \										# プログラミング言語（現時点ではcとc++のみサポート）
-		-m $(temp_mkfilename) -o "$(configure_copts)" \		# テンプレートMakefile名の指定（デフォルトはMakefile）
-		-U "$(APPLOBJS)" && \								# 他のアプリケーションプログラムファイル
+	$(KERNELDIR)/configure -T ev3_gcc -A app \
+		-a ../workspace/$(app) \
+		-t ../workspace/$(app) \
+		-D $(call get_relpath,$(KERNELDIR),$(OBJDIR)) \
+		-L $(call get_relpath,$(LIBKERNELDIR),$(OBJDIR)) \
+		-l $(SRCLANG) \
+		-m $(temp_mkfilename) -o "$(configure_copts)" \
+		-U "$(APPLOBJS)" && \
 	rm $(APPLDIR)/$(temp_mkfilename) && \
 	mv $(temp_mkfilename) Makefile && \
 	make clean
