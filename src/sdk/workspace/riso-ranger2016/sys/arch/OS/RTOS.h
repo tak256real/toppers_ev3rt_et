@@ -32,6 +32,8 @@ public:
 	static void lockCpu();
 	static void unlockCpu();
 	static void waiTask(uint16 rv_timeout_cnt = 0);
+    static void startCyclicHandler(uint16 rv_cyc_id);
+	static void stopCyclicHandler(uint16 rv_cyc_id);
 
 };
 #endif // !defined(EA_A611960B_E06B_4372_91D0_B7AA38A53E49__INCLUDED_)

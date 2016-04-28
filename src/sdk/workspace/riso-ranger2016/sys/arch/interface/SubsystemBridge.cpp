@@ -1,17 +1,18 @@
 ///////////////////////////////////////////////////////////
 //  SubsystemBridge.cpp
 //  Implementation of the Class SubsystemBridge
-//  Created on:      2016/04/13 12:52:15
+//  Created on:      2016/04/19 20:14:30
 //  Original author: 037789
 ///////////////////////////////////////////////////////////
 
 #include "SubsystemBridge.h"
 
 
+
+
 SubsystemBridge::SubsystemBridge(){
 
 }
-
 
 
 SubsystemBridge::~SubsystemBridge(){
@@ -20,7 +21,7 @@ SubsystemBridge::~SubsystemBridge(){
 
 
 void SubsystemBridge::doInitialize(){
-    actInitialize();
+
 }
 
 
@@ -35,7 +36,7 @@ void SubsystemBridge::sendMessage(void* rv_message, rv_size uint16){
 
 
 void SubsystemBridge::actInitialize(){
-    // 初期化処理をサブクラスで記述する.
+
 }
 
 

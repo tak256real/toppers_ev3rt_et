@@ -124,3 +124,16 @@ void RTOS::unlockCpu(){
         unl_cpu();
     }
 }
+
+
+void RTOS::startCyclicHandler(uint16 rv_cyc_id){
+
+    ER at_err = ev3_sta_cyc(rv_cyc_id);
+
+}
+
+
+
+void RTOS::stopCyclicHandler(uint16 rv_cyc_id){
+    ER at_err = ev3_stp_cyc(rv_cyc_id);
+}
