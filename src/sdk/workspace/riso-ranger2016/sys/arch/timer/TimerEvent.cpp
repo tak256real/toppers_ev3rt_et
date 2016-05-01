@@ -21,9 +21,13 @@ TimerEvent::~TimerEvent(){
 
 void TimerEvent::ntfTimeOut(EmTimerId rv_id){
 
-    // ID 別のタイムアップ処理を記述する.
-    // 非タスクコンテキストなので注意.
+    // case には ID 別にタイムアップ処理を記述する.
+    // 非タスクコンテキストとなるため占有時間に注意.
+    //   短時間処理ならばそのままI/Fをコールして良いが、
     switch(rv_id) {
+        case kDummyTimerId:
+            
+            break;
         default:
             break;
     }

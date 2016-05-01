@@ -11,7 +11,7 @@
 
 Timer * Timer::instance = NULL;
 
-Timer::Timer() : the_event(NULL) {
+Timer::Timer() : the_event(NULL), is_inuse(false) {
     // 配列メンバの初期化.
     for(uint8 i = 0; i < kMaxTimerId; i++) {
         time_count[i] = 0;
@@ -47,6 +47,7 @@ void Timer::tick(){
             // デクリメント結果でカウント 0 となったらタイムアップ通知.
             if(--time_count[i]) {
                 the_event->ntfTimeOut(i);
+                stopTiemr(i);
             }
         }
         else {
@@ -58,17 +59,39 @@ void Timer::tick(){
 void startTimer(uint32 rv_time, EmTimerId rv_id) {
     // カウントを設定してタイマの起動を行なう.
     time_count[rv_id] = rv_time;
+
+    if(is_inuse == false) {
+        // 1つ目のタイマ開始ならタイマソーソを起動.
+        RTOS::stopCyclicHandler(ID_EV3CYC_1MS);
+        is_inuse = true;
+    }
 }
 
 
 void stopTiemr(EmTimerId rv_id) {
+
+    bool at_is_timer_inuse = false;
     // カウント 0 にしてタイムアウト通知をキャンセルする.
     time_count[rv_id] = 0;
+
+    for(uint8 i = 0; i < kMaxTimerId; i++ ) {
+        if (time_count[i] != 0) {
+            at_is_timer_inuse = true;
+            break;
+        }
+    }
+
+    if(at_is_timer_inuse == false) {
+        // 全てのタイマが停止されたらしたらタイマソースを OFF する.
+        RTOS::stopCyclicHandler(ID_EV3CYC_1MS);
+        is_inuse = false;
+    }
 }
 
 
 
 extern "C" void Cyc1msecInterval(intptr_t exinf) {
-    // 1000usec ID_EV3CYC_1MS サイクリックハンドラ.
+    // ID_EV3CYC_1MS サイクリックハンドラ.
+      // タイマ周期は OS コンフィグによる.
     Timer::getInstance()->tick();
 }

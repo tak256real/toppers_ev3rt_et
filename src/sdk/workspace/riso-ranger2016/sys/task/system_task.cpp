@@ -9,8 +9,14 @@
 #include "Main.h"
 
 extern "C" void TaskMain(){
-    Main* the_main_task = new Main();
-    the_main_task->start();
+    Main* at_main_task = new Main();
+    at_main_task->start();
+}
+
+
+extern "C" void TaskEngine(){
+    Engine at_main_task = new Engine();
+    at_engine_task->start();
 }
 
 

@@ -33,12 +33,15 @@ void Main::start(){
     at_the_timer->set_the_event(at_the_timer_event);
 
     // カーネルオブジェクト生成.
-    RTOS::startCyclicHandler(ID_EV3CYC_1MS); // Timer クラス用周期ハンドラを起動.
+
 
     // 生成したカーネルオブジェクトに稼動と初期化の指示.
 
     // システムスタート指示.
 
+
+    // Main タスク 定常処理開始
+    loop();
 }
 
 
@@ -48,14 +51,16 @@ void Main::create(){
 }
 
 
-void Main::roop(){
-
+void Main::loop(){
+    // 何やる？
+    // 以下案
+    // - HEARTBEAT 点滅
+    // - メモリリソースの監視
+    for(;;){
+        RTOS::waiTask(1000);         // 超暫定、こんなのやっちゃダメ!ってか、ってかOSの単位時間がわからない.
+    }
 }
 
-
-void Main::initialize(){
-
-}
 
 
 

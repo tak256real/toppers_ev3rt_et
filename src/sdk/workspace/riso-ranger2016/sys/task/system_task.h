@@ -23,10 +23,13 @@ class Main;
 // -----------------------------------------------------------------------------
 extern "C" void TaskMain();
 
+#if 0                           // 未使用.
 extern "C" void TaskInterruptProc();
+#endif
 
 extern "C" void TaskEngine();
 
+#if 0                           // 未実装.
 extern "C" void TaskCommunication();
 
 extern "C" void TaskLongTermOperation();
@@ -34,6 +37,7 @@ extern "C" void TaskLongTermOperation();
 extern "C" void TaskShortCycleOperation();
 
 extern "C" void TaskDebugMonitoring();
+#endif
 
 class system_task
 {

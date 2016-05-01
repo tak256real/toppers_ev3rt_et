@@ -33,6 +33,7 @@ private:
 	static Timer* instance;
 	TimerEvent *the_event;
 	uint32 time_count[kMaxTimerId];
+	bool is_inuse;
 
 };
 

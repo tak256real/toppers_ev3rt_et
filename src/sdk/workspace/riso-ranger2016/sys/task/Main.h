@@ -21,7 +21,7 @@ public:
 
 private:
 	void create();
-	virtual void roop();
+	virtual void loop();
 	virtual void initialize();
 
 };

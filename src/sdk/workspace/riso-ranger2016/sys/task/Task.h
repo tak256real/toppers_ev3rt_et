@@ -21,7 +21,7 @@ private:
 	sint32 task_id;
 	sint32 msg_box_id;
 
-	virtual void roop() = 0;
+	virtual void loop() = 0;
 	virtual void initialize() = 0;
 
 };
