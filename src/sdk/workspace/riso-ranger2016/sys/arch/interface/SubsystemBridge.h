@@ -8,21 +8,27 @@
 #if !defined(EA_6B6C30FD_F2FC_404a_9BEA_EF84C743FB75__INCLUDED_)
 #define EA_6B6C30FD_F2FC_404a_9BEA_EF84C743FB75__INCLUDED_
 
+#include "std.h"
+
 class SubsystemBridge
 {
 
 public:
-	SubsystemBridge();
+	SubsystemBridge(uint16 rv_subsys_id, uint32 rv_mbox_id);
 	virtual ~SubsystemBridge();
 	void doInitialize();
 	void receiveMessage(uint16* rv_message);
 
 
 protected:
-	void sendMessage(void* rv_message, rv_size uint16);
+    // sendMessage -> receiveMessage のシーケンスは自作自演方式.
+    // スレッドを切りたい場合は本クラスでこの対応を取る.
+	void sendMessage(uint16 rv_msg_code, void* rv_message, uint16 rv_size);
 
 private:
+    uint16 subsys_id;
+	uint32 mbox_id;
 	virtual void actInitialize();
-	virtual void actReceiveMessage(uint16* rv_message);
+	virtual void actReceiveMessage(uint16 rv_msg_code, uint16* rv_message) = 0;
 };
 #endif // !defined(EA_6B6C30FD_F2FC_404a_9BEA_EF84C743FB75__INCLUDED_)

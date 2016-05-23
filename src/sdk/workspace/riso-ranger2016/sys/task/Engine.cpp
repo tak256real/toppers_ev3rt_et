@@ -8,7 +8,9 @@
 #include "Engine.h"
 
 
-Engine::Engine(){
+Engine::Engine(sint32 rv_tsk_id, sint32 rv_mbox_id)
+    : Task(rv_tsk_id, rv_mbox_id)
+{
 
 }
 
@@ -23,6 +25,7 @@ Engine::~Engine(){
 
 
 void Engine::loop(){
+
 
 }
 

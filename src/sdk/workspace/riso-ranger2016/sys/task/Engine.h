@@ -14,7 +14,7 @@ class Engine : public Task
 {
 
 public:
-	Engine();
+	Engine(sint32 rv_tsk_id, sint32 rv_mbox_id);
 	virtual ~Engine();
 
 	virtual void start();

@@ -9,13 +9,13 @@
 #include "Main.h"
 
 extern "C" void TaskMain(){
-    Main* at_main_task = new Main();
+    Main* at_main_task = new Main(ID_TASK_MAIN, ID_MSG_BOX_MAIN);
     at_main_task->start();
 }
 
 
 extern "C" void TaskEngine(){
-    Engine at_main_task = new Engine();
+    Engine at_main_task = new Engine(ID_TASK_ENGINE, ID_MSG_BOX_ENGINE);
     at_engine_task->start();
 }
 
