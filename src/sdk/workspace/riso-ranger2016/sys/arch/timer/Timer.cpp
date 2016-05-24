@@ -88,13 +88,3 @@ void Timer::stopTimer(EmTimerId rv_id) {
         is_inuse = false;
     }
 }
-
-
-
-void Cyc1msecInterval(intptr_t exinf) {
-    // ID_EV3CYC_1MS サイクリックハンドラ.
-      // タイマ周期は OS コンフィグによる.
-    Timer* at_obj = Timer::getInstance();
-
-    at_obj->tick();
-}

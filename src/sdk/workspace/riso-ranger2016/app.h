@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////
-//  system_task.h
+//  app.h
 //  Implementation of the Class system_task
 //  Created on:      2016/04/28 11:21:26
 //  Original author: 037789
@@ -102,8 +102,10 @@ extern void TaskLongTermOperation();
 
 extern void TaskShortCycleOperation();
 
+
 #endif
 
+extern void Cyc1msecInterval(intptr_t exinf);
 
 #ifdef __cplusplus
 } // extern "C" {

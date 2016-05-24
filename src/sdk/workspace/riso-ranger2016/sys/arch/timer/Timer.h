@@ -53,6 +53,4 @@ inline void Timer::set_the_event(TimerEvent* rv_obj){
 
 #endif  // __cplusplus
 
-extern void Cyc1msecInterval(intptr_t exinf);
-
 #endif // !defined(EA_39F53CC2_6A6E_43b5_A02D_A34E96FAAC2F__INCLUDED_)
