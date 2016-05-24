@@ -8,9 +8,15 @@
 #if !defined(EA_B0DE3A01_003D_4139_ABC8_D1E1FF53B040__INCLUDED_)
 #define EA_B0DE3A01_003D_4139_ABC8_D1E1FF53B040__INCLUDED_
 
-class Main;
 
-// class DebugMonitoring;
+typedef enum _EmTaskId{
+    kTaskMain,
+    kTaskHighPriority,
+    kTaskEngine,
+    kTaskDebugConsole,
+
+    kMaxTaskId
+} EmTaskId;
 
 // -----------------------------------------------------------------------------
 //! @brief main タスク
@@ -23,11 +29,11 @@ class Main;
 // -----------------------------------------------------------------------------
 extern "C" void TaskMain();
 
-#if 0                           // 未使用.
-extern "C" void TaskInterruptProc();
-#endif
+extern "C" void TaskHighPriority();
 
 extern "C" void TaskEngine();
+
+extern "C" void TaskDebugConsole();
 
 #if 0                           // 未実装.
 extern "C" void TaskCommunication();
@@ -36,7 +42,6 @@ extern "C" void TaskLongTermOperation();
 
 extern "C" void TaskShortCycleOperation();
 
-extern "C" void TaskDebugMonitoring();
 #endif
 
 class system_task
