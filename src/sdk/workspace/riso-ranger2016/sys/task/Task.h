@@ -9,6 +9,7 @@
 #define EA_C47B409B_FB08_431b_B2E8_7EFDD1752A11__INCLUDED_
 
 #include "std.h"
+#include "SubsystemId.h"
 
 class SubsystemBridge;
 
@@ -21,15 +22,17 @@ public:
 
 	virtual void start() = 0;
 
+protected:
+    virtual void loop() = 0;
+
 private:
 	sint32 task_id;
-	sint32 msg_box_id;
+	sint32 mbox_id;
+    SubsystemBridge* the_subsystem_bridge[kMaxSubsystemId];
 
-	virtual void loop() = 0;
-	virtual void initialize() = 0;
-	virtual bool isOwnMessage();
+	virtual bool isOwnMessage(EmSubsystemId rv_subsys_id);
 
-    SubsystemBridge the_subsystem_bridge[kMaxSubSystemId];
+
 
 };
 #endif // !defined(EA_C47B409B_FB08_431b_B2E8_7EFDD1752A11__INCLUDED_)

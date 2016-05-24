@@ -18,6 +18,10 @@ typedef enum _EmTaskId{
     kMaxTaskId
 } EmTaskId;
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 // -----------------------------------------------------------------------------
 //! @brief main タスク
 //!
@@ -27,23 +31,30 @@ typedef enum _EmTaskId{
 //!   - ハートビート、ウォッチドッグなどの軽い定常処理.
 //! @exception none
 // -----------------------------------------------------------------------------
-extern "C" void TaskMain();
+extern void TaskMain();
 
-extern "C" void TaskHighPriority();
+extern void TaskHighPriority();
 
-extern "C" void TaskEngine();
+extern void TaskEngine();
 
-extern "C" void TaskDebugConsole();
+extern void TaskDebugConsole();
 
-#if 0                           // 未実装.
-extern "C" void TaskCommunication();
+#if 0                       // 未実装.
+extern void TaskCommunication();
 
-extern "C" void TaskLongTermOperation();
+extern void TaskLongTermOperation();
 
-extern "C" void TaskShortCycleOperation();
+extern void TaskShortCycleOperation();
 
 #endif
 
+
+#ifdef __cplusplus
+}
+#endif
+
+
+#ifdef __cplusplus
 class system_task
 {
 
@@ -52,4 +63,5 @@ public:
 	virtual ~system_task();
 
 };
+#endif //#ifdef __cplusplus
 #endif // !defined(EA_B0DE3A01_003D_4139_ABC8_D1E1FF53B040__INCLUDED_)

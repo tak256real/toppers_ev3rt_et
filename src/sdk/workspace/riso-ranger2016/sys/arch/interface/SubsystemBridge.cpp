@@ -12,7 +12,7 @@
 
 
 
-SubsystemBridge::SubsystemBridge(uint16 rv_subsys_id, uint32 rv_mbox_id)
+SubsystemBridge::SubsystemBridge(uint16 rv_subsys_id, sint32 rv_mbox_id)
     : subsys_id(rv_subsys_id),
       mbox_id(rv_mbox_id)
 {
@@ -46,7 +46,7 @@ void SubsystemBridge::sendMessage(uint16 rv_msg_code, void* rv_message, uint16 r
     at_msg[i++] = rv_msg_code;
 
     if(rv_size > 0) {
-        memcpy(static<void *>(at_msg + i), rv_message, rv_size);
+        memcpy(static_cast<void *>(at_msg + i), rv_message, rv_size);
     }
 
     RTOS::sndMessage(mbox_id, at_msg);

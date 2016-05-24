@@ -11,6 +11,11 @@
 #include "HighPriority.h"
 #include "Engine.h"
 
+/* LCDフォントサイズ コンパイル通し用暫定*/
+#define CALIB_FONT (EV3_FONT_SMALL)
+#define CALIB_FONT_WIDTH (6/*TODO: magic number*/)
+#define CALIB_FONT_HEIGHT (8/*TODO: magic number*/)
+
 extern "C" void TaskMain(){
     Main::getInstance()->start();
 }

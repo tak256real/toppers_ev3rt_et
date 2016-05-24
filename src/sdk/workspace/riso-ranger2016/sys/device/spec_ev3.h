@@ -22,7 +22,7 @@ typedef struct _T_SensorConfig {
 	sensor_type_t type;		//!< センサタイブ.
 } T_SensorConfig;
 
-extern const T_SensorConfig st_sensor_confit_tbl[];
+extern const T_SensorConfig st_sensor_config_tbl[];
 
 
 // -----------------------------------------------
@@ -36,7 +36,7 @@ typedef struct _T_MotorConfig {
 	motor_type_t type;		//!< センサタイブ.
 } T_MotorConfig;
 
-extern const T_MotorConfig st_motor_confit_tbl[];
+extern const T_MotorConfig st_motor_config_tbl[];
 
 class spec_ev3
 {

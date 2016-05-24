@@ -4,11 +4,15 @@
 //  Created on:      2016/04/28 11:49:13
 //  Original author: 037789
 ///////////////////////////////////////////////////////////
+
 #include "Timer.h"
 #include "TimerEvent.h"
 #include "RTOS.h"
 #include "init_ev3.h"
 #include "Task.h"
+#include "DebugConsole.h"
+#include "Engine.h"
+#include "HighPriority.h"
 #include "Main.h"
 
 
@@ -49,21 +53,21 @@ void Main::start(){
     init_ev3::initialize();
 
     /* Open Bluetooth file */
-    bt = ev3_serial_open_file(EV3_SERIAL_BT);
-    assert(bt != NULL);
+//    bt = ev3_serial_open_file(EV3_SERIAL_BT);
+//  assert(bt != NULL);
 
     // デバッグコンソールを真っ先に立ち上げる.
     the_task[kTaskDebugConsole] = new DebugConsole(ID_TASK_DEBUG_CONSOLE, ID_MSG_BOX_DEBUG_CONSOLE);
     RTOS::startTask(ID_TASK_DEBUG_CONSOLE);
 
     /* LCD画面表示 */
-    ev3_lcd_fill_rect(0, 0, EV3_LCD_WIDTH, EV3_LCD_HEIGHT, EV3_LCD_WHITE);
-    ev3_lcd_draw_string("EV3way-ET RisoRanger 2016 ver000.000.001", 0, CALIB_FONT_HEIGHT*1);
+//  ev3_lcd_fill_rect(0, 0, EV3_LCD_WIDTH, EV3_LCD_HEIGHT, EV3_LCD_WHITE);
+//  ev3_lcd_draw_string("EV3way-ET RisoRanger 2016 ver000.000.001", 0, CALIB_FONT_HEIGHT*1);
 
 
     // カーネルオブジェクト生成.
-    the_task[kTaskHighPriority] = new HighPriority(ID_TASK_MAIN, ID_MSG_BOX_MAIN);
-    the_task[kEngine] = new Engine(ID_TASK_ENGINE, ID_MSG_BOX_ENGINE);
+    the_task[kTaskHighPriority] = new HighPriority(ID_TASK_MAIN, ID_MSG_BOX_HIGH_PRIORITY);
+    the_task[kTaskEngine] = new Engine(ID_TASK_ENGINE, ID_MSG_BOX_ENGINE);
 
 
     RTOS::startTask(ID_TASK_HIGH_PRIORITY);
@@ -76,12 +80,6 @@ void Main::start(){
 
     // Main タスク 定常処理開始
     loop();
-}
-
-
-void Main::create(){
-
-	return 0;
 }
 
 

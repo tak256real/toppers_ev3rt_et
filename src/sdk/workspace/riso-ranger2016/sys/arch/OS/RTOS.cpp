@@ -6,6 +6,7 @@
 ///////////////////////////////////////////////////////////
 #include <kernel.h>
 
+#include "ev3api.h"
 #include "RTOS.h"
 
 
@@ -41,7 +42,7 @@ void RTOS::sndMessage(uint16 rv_mbx_id, void* rv_message){
     // 非同期メッセージ送信に使用する.
     //   OS のデータキューを利用.
 
-    ER at_err = psnd_dtq(rv_mbx_id, static_cast<intptr_t>(rv_message));
+    ER at_err = psnd_dtq(rv_mbx_id, reinterpret_cast<intptr_t>(rv_message));
 
     if(at_err != E_OK) {
         // 送信エラー発生時
@@ -57,7 +58,7 @@ void RTOS::intrSndMessage(uint16 rv_mbx_id, void* rv_message){
     // 非同期メッセージ送信に使用する.
     //   OS のデータキューを利用.
 
-    ER at_err = ipsnd_dtq(rv_mbx_id, static_cast<intptr_t>(rv_message));
+    ER at_err = ipsnd_dtq(rv_mbx_id, reinterpret_cast<intptr_t>(rv_message));
 
     if(at_err != E_OK) {
         // 送信エラー発生時
@@ -73,7 +74,7 @@ void RTOS::rcvMessage(void** rv_message, uint16 rv_mbx_id){
     // 非同期メッセージ受信.
     //   OS のデータキューを利用.
 
-    ER at_err = rcv_dtq(rv_mbx_id, static_cast<intptr_t *>rv_message);
+    ER at_err = rcv_dtq(rv_mbx_id, reinterpret_cast<intptr_t *>(rv_message));
 
     if(at_err != E_OK) {
         // 受信エラー発生時.
@@ -95,7 +96,7 @@ void RTOS::sigSemaphore(uint16 rv_sem_id){
 
 
 void RTOS::intrSetFlag(uint16 rv_flg_id, uint32 rv_flg_pattern){
-    iset_flg(rv_flgid, rv_flg_pattern);
+    iset_flg(rv_flg_id, rv_flg_pattern);
 }
 
 
@@ -103,7 +104,7 @@ uint32 RTOS::waiFlag(uint16 rv_flg_id){
 
     FLGPTN at_flg_pattern = 0;
 
-    wai_flg(rv_flgid, 0xFFFFFFFF, TWF_ORW, &at_flg_pattern);
+    wai_flg(rv_flg_id, 0xFFFFFFFF, TWF_ORW, &at_flg_pattern);
 
     return  static_cast<uint32>(at_flg_pattern);
 }
@@ -130,10 +131,22 @@ void RTOS::startCyclicHandler(uint16 rv_cyc_id){
 
     ER at_err = ev3_sta_cyc(rv_cyc_id);
 
+    if(at_err != E_OK) {
+
+    }
+    else {
+        // Don't care...
+    }
 }
 
 
 
 void RTOS::stopCyclicHandler(uint16 rv_cyc_id){
     ER at_err = ev3_stp_cyc(rv_cyc_id);
+
+    if(at_err != E_OK) {
+    }
+    else {
+        // Don't care...
+    }
 }

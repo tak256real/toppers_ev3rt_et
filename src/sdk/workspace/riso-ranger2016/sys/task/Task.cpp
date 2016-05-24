@@ -5,13 +5,14 @@
 //  Original author: 037789
 ///////////////////////////////////////////////////////////
 
+#include "RTOS.h"
 #include "SubsystemBridge.h"
 #include "Task.h"
 
 
 Task::Task(sint32 rv_tsk_id, sint32 rv_mbox_id)
     : task_id(rv_tsk_id),
-      msg_box_id(rv_mbox_id)
+      mbox_id(rv_mbox_id)
 {
 
 }
@@ -30,9 +31,9 @@ void Task::loop(){
     uint16* at_msg = NULL;
 
     for(;;) {
-        RTOS::rcvMessage(static_cast<void **>(&at_msg), msg_box_id);
+        RTOS::rcvMessage(reinterpret_cast<void **>(&at_msg), mbox_id);
 
-        uint16 at_subsys_id = *at_msg; // 先頭 2Byte は宛先 SubSystem.
+        EmSubsystemId at_subsys_id = static_cast<EmSubsystemId>(*at_msg); // 先頭 2Byte は宛先 SubSystem.
         uint16 * at_msg_data = at_msg + 1; // データ
 
         // SubSystem が配下に存在すればメッセージを投げる.
@@ -46,18 +47,13 @@ void Task::loop(){
 }
 
 
-void Task::initialize(){
-
-}
-
-
 void Task::start(){
 
 }
 
 
 
-bool Task::isOwnMessage(){
+bool Task::isOwnMessage(EmSubsystemId rv_subsys_id){
 
 	return false;
 }

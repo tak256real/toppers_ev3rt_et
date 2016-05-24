@@ -14,7 +14,7 @@ class SubsystemBridge
 {
 
 public:
-	SubsystemBridge(uint16 rv_subsys_id, uint32 rv_mbox_id);
+	SubsystemBridge(uint16 rv_subsys_id, sint32 rv_mbox_id);
 	virtual ~SubsystemBridge();
 	void doInitialize();
 	void receiveMessage(uint16* rv_message);
@@ -27,8 +27,8 @@ protected:
 
 private:
     uint16 subsys_id;
-	uint32 mbox_id;
+	sint32 mbox_id;
 	virtual void actInitialize();
-	virtual void actReceiveMessage(uint16 rv_msg_code, uint16* rv_message) = 0;
+	virtual void actReceiveMessage(uint16 rv_msg_code, uint16* rv_message);
 };
 #endif // !defined(EA_6B6C30FD_F2FC_404a_9BEA_EF84C743FB75__INCLUDED_)

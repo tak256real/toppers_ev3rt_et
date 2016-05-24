@@ -29,10 +29,10 @@ void DebugConsole::start(){
 }
 
 
-void DebugConsole::initialize(){
+void DebugConsole::loop(){
+
 
 }
-
 
 bool DebugConsole::isOwnMessage(){
 

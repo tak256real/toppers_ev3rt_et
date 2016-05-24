@@ -28,13 +28,4 @@ typedef uint8 bool;             //!< boolean type for C
 
 #define BIT(n) (1UL << (n))
 
-// ea が自動生成したが、クラスとしては使用しない.
-class std
-{
-
-public:
-	std();
-	virtual ~std();
-
-};
 #endif // !defined(EA_AA68E2BB_882A_42d8_A54C_F515E6C7718F__INCLUDED_)

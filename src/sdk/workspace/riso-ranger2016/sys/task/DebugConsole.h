@@ -8,7 +8,7 @@
 #if !defined(EA_AA1C2012_4042_4870_83CC_31C308E51B70__INCLUDED_)
 #define EA_AA1C2012_4042_4870_83CC_31C308E51B70__INCLUDED_
 
-#include "src\sdk\workspace\riso-ranger2016\sys\task\Task.h"
+#include "Task.h"
 
 class DebugConsole : public Task
 {
@@ -20,7 +20,7 @@ public:
 	virtual void start();
 
 private:
-	virtual void initialize();
+    virtual void loop();
 	virtual bool isOwnMessage();
 
 };

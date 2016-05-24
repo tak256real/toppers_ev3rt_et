@@ -5,11 +5,12 @@
 //  Original author: 037789
 ///////////////////////////////////////////////////////////
 
+#include "RTOS.h"
 #include "Timer.h"
 #include "TimerEvent.h"
 
 
-Timer * Timer::instance = NULL;
+Timer* Timer::instance = NULL;
 
 Timer::Timer() : the_event(NULL), is_inuse(false) {
     // 配列メンバの初期化.
@@ -46,8 +47,8 @@ void Timer::tick(){
         if(time_count[i] > 0) {
             // デクリメント結果でカウント 0 となったらタイムアップ通知.
             if(--time_count[i]) {
-                the_event->ntfTimeOut(i);
-                stopTiemr(i);
+                the_event->ntfTimeOut(static_cast<EmTimerId>(i));
+                stopTimer(static_cast<EmTimerId>(i));
             }
         }
         else {
@@ -56,7 +57,7 @@ void Timer::tick(){
     }
 }
 
-void startTimer(uint32 rv_time, EmTimerId rv_id) {
+void Timer::startTimer(uint32 rv_time, EmTimerId rv_id) {
     // カウントを設定してタイマの起動を行なう.
     time_count[rv_id] = rv_time;
 
@@ -68,7 +69,7 @@ void startTimer(uint32 rv_time, EmTimerId rv_id) {
 }
 
 
-void stopTiemr(EmTimerId rv_id) {
+void Timer::stopTimer(EmTimerId rv_id) {
 
     bool at_is_timer_inuse = false;
     // カウント 0 にしてタイムアウト通知をキャンセルする.
@@ -90,8 +91,10 @@ void stopTiemr(EmTimerId rv_id) {
 
 
 
-extern "C" void Cyc1msecInterval(intptr_t exinf) {
+void Cyc1msecInterval(intptr_t exinf) {
     // ID_EV3CYC_1MS サイクリックハンドラ.
       // タイマ周期は OS コンフィグによる.
-    Timer::getInstance()->tick();
+    Timer* at_obj = Timer::getInstance();
+
+    at_obj->tick();
 }

@@ -8,8 +8,11 @@
 #if !defined(EA_39F53CC2_6A6E_43b5_A02D_A34E96FAAC2F__INCLUDED_)
 #define EA_39F53CC2_6A6E_43b5_A02D_A34E96FAAC2F__INCLUDED_
 
+#include "ev3api.h"
 #include "TimerId.h"
 
+#ifdef __cplusplus
+#include "std.h"
 
 class TimerEvent;
 
@@ -19,12 +22,12 @@ class Timer
 public:
 	virtual ~Timer();
 
-	Timer* getInstance();
+	static Timer* getInstance();
 	inline TimerEvent* get_the_event();
 	inline void set_the_event(TimerEvent* rv_obj);
 	void tick();
     void startTimer(uint32 rv_time, EmTimerId rv_id);
-    void stopTiemr(EmTimerId rv_id);
+    void stopTimer(EmTimerId rv_id);
 
 
 private:
@@ -37,8 +40,6 @@ private:
 
 };
 
-extern "C" void Cyc1msecInterval(intptr_t exinf);
-
 inline TimerEvent* Timer::get_the_event(){
 
 	return the_event;
@@ -49,5 +50,9 @@ inline void Timer::set_the_event(TimerEvent* rv_obj){
 
 	the_event = rv_obj;
 }
+
+#endif  // __cplusplus
+
+extern void Cyc1msecInterval(intptr_t exinf);
 
 #endif // !defined(EA_39F53CC2_6A6E_43b5_A02D_A34E96FAAC2F__INCLUDED_)

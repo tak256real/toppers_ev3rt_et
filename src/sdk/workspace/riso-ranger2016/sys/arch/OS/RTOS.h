@@ -8,6 +8,8 @@
 #if !defined(EA_A611960B_E06B_4372_91D0_B7AA38A53E49__INCLUDED_)
 #define EA_A611960B_E06B_4372_91D0_B7AA38A53E49__INCLUDED_
 
+#include "std.h"
+
 class RTOS
 {
 private:

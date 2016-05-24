@@ -15,7 +15,7 @@ public:
 	init_ev3();
 	virtual ~init_ev3();
 
-	void initialize();
+	static void initialize();
 
 };
 #endif // !defined(EA_563FB1D1_4AFA_4df0_97D7_0800C0EB8F34__INCLUDED_)

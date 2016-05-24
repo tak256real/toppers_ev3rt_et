@@ -5,10 +5,13 @@
 //  Original author: 037789
 ///////////////////////////////////////////////////////////
 
+#include "Task.h"
 #include "HighPriority.h"
 
 
-HighPriority::HighPriority(){
+HighPriority::HighPriority(sint32 rv_tsk_id, sint32 rv_mbox_id)
+    : Task(rv_tsk_id, rv_mbox_id)
+{
 
 }
 

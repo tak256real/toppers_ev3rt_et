@@ -5,7 +5,9 @@
 //  Original author: 037789
 ///////////////////////////////////////////////////////////
 
+#include "ev3api.h"
 #include "std.h"
+#include "spec_ev3.h"
 #include "init_ev3.h"
 
 
@@ -28,12 +30,12 @@ void init_ev3::initialize(){
 
     // センサポート設定.
     for(uint8 i = 0; i < TNUM_SENSOR_PORT; i++) {
-        ev3_sensor_config(st_sensor_confit_tbl[i].port, st_sensor_confit_tbl[i].type);
+        ev3_sensor_config(st_sensor_config_tbl[i].port, st_sensor_config_tbl[i].type);
     }
 
     // モータポート設定.
     for(uint8 i = 0; i < TNUM_MOTOR_PORT; i++) {
-        ev3_motor_config(st_motor_confit_tbl[i].port, st_motor_confit_tbl[i].type);
+        ev3_motor_config(st_motor_config_tbl[i].port, st_motor_config_tbl[i].type);
     }
 
 

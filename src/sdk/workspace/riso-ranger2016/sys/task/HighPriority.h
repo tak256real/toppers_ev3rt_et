@@ -8,7 +8,8 @@
 #if !defined(EA_94B2C302_5605_4975_8286_36F9622C7EA3__INCLUDED_)
 #define EA_94B2C302_5605_4975_8286_36F9622C7EA3__INCLUDED_
 
-#include "src\sdk\workspace\riso-ranger2016\sys\task\Task.h"
+#include "std.h"
+#include "Task.h"
 
 class HighPriority : public Task
 {
