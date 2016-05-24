@@ -14,10 +14,6 @@ PROJECT_INCLUDE += \
     -I../workspace/riso-ranger2016 \
     -I./
 
-
-
-#APPL_COBJS += ../workspace/riso-ranger2016/app.o
-
 APPL_CXXOBJS += \
 	../workspace/riso-ranger2016/sys/arch/OS/RTOS.o \
 	../workspace/riso-ranger2016/sys/arch/interface/SubsystemBridge.o \
@@ -30,7 +26,7 @@ APPL_CXXOBJS += \
 	../workspace/riso-ranger2016/sys/task/DebugConsole.o \
 	../workspace/riso-ranger2016/sys/task/Engine.o \
 	../workspace/riso-ranger2016/sys/task/HighPriority.o \
-	../workspace/riso-ranger2016/sys/task/Main.o \
-	../workspace/riso-ranger2016/sys/task/system_task.o
+	../workspace/riso-ranger2016/sys/task/Main.o
+
 
 
