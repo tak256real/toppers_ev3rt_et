@@ -11,6 +11,7 @@ PROJECT_INCLUDE += \
     -I../workspace/riso-ranger2016/sys/arch/timer \
     -I../workspace/riso-ranger2016/sys/device \
     -I../workspace/riso-ranger2016/sys/task \
+    -I../workspace/riso-ranger2016/sys/command \
     -I../workspace/riso-ranger2016 \
     -I./
 
@@ -26,7 +27,10 @@ APPL_CXXOBJS += \
 	../workspace/riso-ranger2016/sys/task/DebugConsole.o \
 	../workspace/riso-ranger2016/sys/task/Engine.o \
 	../workspace/riso-ranger2016/sys/task/HighPriority.o \
-	../workspace/riso-ranger2016/sys/task/Main.o
+	../workspace/riso-ranger2016/sys/task/Main.o \
+    ../workspace/riso-ranger2016/sys/command/CmdReceiveBridge.o \
+    ../workspace/riso-ranger2016/sys/command/CmdReceiveIf.o
+    
 
 
 

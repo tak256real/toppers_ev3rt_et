@@ -33,7 +33,7 @@ void SubsystemBridge::doInitialize(){
 void SubsystemBridge::receiveMessage(uint16* rv_message){
     uint16 at_msg_code = *rv_message; // 先頭はメッセージコード.
 
-    actReceiveMessage(at_msg_code, rv_message + 1);
+    actReceiveMessage(at_msg_code, rv_message + 1); // + 1してメッセージコードを除く.
 }
 
 
