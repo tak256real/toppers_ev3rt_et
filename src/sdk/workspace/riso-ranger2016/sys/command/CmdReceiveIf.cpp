@@ -5,6 +5,7 @@
 //  Original author: 037789
 ///////////////////////////////////////////////////////////
 
+#include "SysDeviceBridge.h"
 #include "CmdReciveIf.h"
 
 CmdReceiveIf* CmdReceiveIf::instance = NULL;
@@ -40,4 +41,17 @@ CmdReceiveIf* CmdReceiveIf::getInstance(){
     }
 
     return instance;
+}
+
+
+
+void CmdReceiveIf::doInitialze(){
+    actInitialze();
+}
+
+
+void CmdReceiveIf::actInitialze(){
+    the_rcv_device = SysDeviceBridge::getInstance();
+
+    the_rcv_device->doStartRcvCommand();
 }

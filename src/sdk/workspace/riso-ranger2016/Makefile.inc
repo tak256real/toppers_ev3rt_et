@@ -10,6 +10,7 @@ PROJECT_INCLUDE += \
     -I../workspace/riso-ranger2016/sys/arch/OS \
     -I../workspace/riso-ranger2016/sys/arch/timer \
     -I../workspace/riso-ranger2016/sys/device \
+    -I../workspace/riso-ranger2016/sys/device/serial_port \
     -I../workspace/riso-ranger2016/sys/task \
     -I../workspace/riso-ranger2016/sys/command \
     -I../workspace/riso-ranger2016 \
@@ -30,6 +31,12 @@ APPL_CXXOBJS += \
 	../workspace/riso-ranger2016/sys/task/Main.o \
     ../workspace/riso-ranger2016/sys/command/CmdReceiveBridge.o \
     ../workspace/riso-ranger2016/sys/command/CmdReceiveIf.o
+    ../workspace/riso-ranger2016/sys/device/serial_port/TxBuffer.o \
+    ../workspace/riso-ranger2016/sys/device/serial_port/RxBuffer.o \
+    ../workspace/riso-ranger2016/sys/device/SysDeviceIf.o \
+    ../workspace/riso-ranger2016/sys/device/SysDeviceBridge.o \
+    ../workspace/riso-ranger2016/sys/device/serial_port\SerialCom.o \
+    ../workspace/riso-ranger2016/sys/device/serial_port\SerialComEV3BT_SPP.o
     
 
 

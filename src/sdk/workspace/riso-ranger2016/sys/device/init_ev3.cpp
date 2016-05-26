@@ -38,5 +38,9 @@ void init_ev3::initialize(){
         ev3_motor_config(st_motor_config_tbl[i].port, st_motor_config_tbl[i].type);
     }
 
+    // シリアルポート初期化
+    // FILE *bt = ev3_serial_open_file(EV3_SERIAL_BT);
+      // ファイルを対象に仮想シリアルをオープンするようだが、
+      // ここのスコープでファイルを設置するのはうまくない
 
 }

@@ -30,6 +30,7 @@ void CmdReceiveBridge::actInitialize(){
 
     // 関連取得.
     the_receiver = CmdReceiveIf::getInstance();
+    the_receiver->initialize();
 }
 
 
