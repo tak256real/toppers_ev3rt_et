@@ -6,7 +6,7 @@
 # Include configurations of EV3RT SDK
 #
 SDKDIR = ..
-WSPDIR = $(basename $(CURDIR))
+WSPDIR = $(basename $(CURDIR))	# カレントディレクトリの名前を取得(拡張子は除く)
 include $(SDKDIR)/Makefile.sdk.conf
 
 # Configuration

@@ -1,102 +1,128 @@
-/*
- *  TOPPERS/ASP Kernel
- *      Toyohashi Open Platform for Embedded Real-Time Systems/
- *      Advanced Standard Profile Kernel
- *
- *  Copyright (C) 2000-2003 by Embedded and Real-Time Systems Laboratory
- *                              Toyohashi Univ. of Technology, JAPAN
- *  Copyright (C) 2004-2010 by Embedded and Real-Time Systems Laboratory
- *              Graduate School of Information Science, Nagoya Univ., JAPAN
- *
- *  上記著作権者は，以下の(1)〜(4)の条件を満たす場合に限り，本ソフトウェ
- *  ア（本ソフトウェアを改変したものを含む．以下同じ）を使用・複製・改
- *  変・再配布（以下，利用と呼ぶ）することを無償で許諾する．
- *  (1) 本ソフトウェアをソースコードの形で利用する場合には，上記の著作
- *      権表示，この利用条件および下記の無保証規定が，そのままの形でソー
- *      スコード中に含まれていること．
- *  (2) 本ソフトウェアを，ライブラリ形式など，他のソフトウェア開発に使
- *      用できる形で再配布する場合には，再配布に伴うドキュメント（利用
- *      者マニュアルなど）に，上記の著作権表示，この利用条件および下記
- *      の無保証規定を掲載すること．
- *  (3) 本ソフトウェアを，機器に組み込むなど，他のソフトウェア開発に使
- *      用できない形で再配布する場合には，次のいずれかの条件を満たすこ
- *      と．
- *    (a) 再配布に伴うドキュメント（利用者マニュアルなど）に，上記の著
- *        作権表示，この利用条件および下記の無保証規定を掲載すること．
- *    (b) 再配布の形態を，別に定める方法によって，TOPPERSプロジェクトに
- *        報告すること．
- *  (4) 本ソフトウェアの利用により直接的または間接的に生じるいかなる損
- *      害からも，上記著作権者およびTOPPERSプロジェクトを免責すること．
- *      また，本ソフトウェアのユーザまたはエンドユーザからのいかなる理
- *      由に基づく請求からも，上記著作権者およびTOPPERSプロジェクトを
- *      免責すること．
- * 
- *  本ソフトウェアは，無保証で提供されているものである．上記著作権者お
- *  よびTOPPERSプロジェクトは，本ソフトウェアに関して，特定の使用目的
- *  に対する適合性も含めて，いかなる保証も行わない．また，本ソフトウェ
- *  アの利用により直接的または間接的に生じたいかなる損害に関しても，そ
- *  の責任を負わない．
- *
- *  $Id: sample1.h 2416 2012-09-07 08:06:20Z ertl-hiro $
- */
+///////////////////////////////////////////////////////////
+//  app.h
+//  Implementation of the Class system_task
+//  Created on:      2016/04/28 11:21:26
+//  Original author: 037789
+///////////////////////////////////////////////////////////
 
-/*
- *		サンプルプログラム(1)のヘッダファイル
- */
+#if !defined(EA_B0DE3A01_003D_4139_ABC8_D1E1FF53B040__INCLUDED_)
+#define EA_B0DE3A01_003D_4139_ABC8_D1E1FF53B040__INCLUDED_
 
-/*
- *  ターゲット依存の定義
- */
-#include "target_test.h"
+#include "target_test.h"        //ターゲット依存の定義.
 
-/*
- *  各タスクの優先度の定義
- */
 
-#define MAIN_PRIORITY	5		/* メインタスクの優先度 */
-								/* HIGH_PRIORITYより高くすること */
-
-#define HIGH_PRIORITY	9		/* 並行実行されるタスクの優先度 */
-#define MID_PRIORITY	10
-#define LOW_PRIORITY	11
-
-/*
- *  ターゲットに依存する可能性のある定数の定義
- */
+// -----------------------------------------------------------------------------
+//! @name タスク優先度定義
+//! タスクの優先度値の定義. OS のコンフィグ設定で使用する.
+// -----------------------------------------------------------------------------
+// @{
+#define MAXIMUM_PRIORITY_VAL     1     //! 最高優先度
+#define HIGH_PRIORITY_VAL        5     //!< 高優先度
+#define BASE_PRIORITY_VAL       10     //!< 基準優先度.
+#define LOW_PRIORITY_VAL        15     //!< 低優先度.
+#define MINIMUM_PRIORITY_VAL    20     //!< 最低優先度.
+// @}
 
 #ifndef STACK_SIZE
-#define	STACK_SIZE		4096		/* タスクのスタックサイズ */
+//! @brief スタックサイズ定義
+//! タスクのスタックサイズを定義する.
+#define STACK_SIZE      4096
 #endif /* STACK_SIZE */
 
-#ifndef LOOP_REF
-#define LOOP_REF		ULONG_C(1000000)	/* 速度計測用のループ回数 */
-#endif /* LOOP_REF */
-
-/*
- *  関数のプロトタイプ宣言
- */
 #ifndef TOPPERS_MACRO_ONLY
 
-extern void	task(intptr_t exinf);
-extern void	main_task(intptr_t exinf);
-extern void balance_task(intptr_t exinf);
-extern void idle_task(intptr_t exinf);
-//extern void	tex_routine(TEXPTN texptn, intptr_t exinf);
-//#ifdef CPUEXC1
-//extern void	cpuexc_handler(void *p_excinf);
-//#endif /* CPUEXC1 */
-//extern void	cyclic_handler(intptr_t exinf);
-//extern void	alarm_handler(intptr_t exinf);
-//
-//extern void	gpio_handler_initialize(intptr_t exinf);
-//extern void	gpio_handler(void);
-extern void	gpio_irq_dispatcher(intptr_t exinf);
-//
-//extern void	uart_sensor_monitor(intptr_t exinf);
-//
-//extern void	ev3_uart_cyclic_handler(intptr_t exinf);
-//extern void	ev3_uart_daemon(intptr_t exinf);
-//extern void	ev3_uart_port2_irq(void);
-//
-//extern void initialize_ev3(intptr_t exinf);
+// -----------------------------------------------
+//! @enum  EmTaskId
+//! @brief タスク ID 定義.
+//!
+//! タスク ID を定義する.
+//! 主に関連の識別子、多重度の為に定義しており、
+//! OS の設定値とは一致しない内部定義である.
+//! うまくOSの設定と一致させる方法があればそちらを採用したい.
+// -----------------------------------------------
+typedef enum _EmTaskId {
+    kTaskMain,                  //!< メインタスク.
+    kTaskHighPriority,          //!< 高優先度処理タスク.
+    kTaskEngine,                //!< エンジン(通常処理)タスク.
+    kTaskDebugConsole,          //!< デバッグコンソールタスク.
+
+    kMaxTaskId                  //!< 終端定義(システムタスク数).
+} EmTaskId;
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+// -----------------------------------------------------------------------------
+//! @brief main タスクエントリ関数.
+//!
+//! 電源 ON 時カーネルが自動的に起動をかけるタスク.
+//! 主な責務は以下.
+//!   - 他のタスクを起動する
+//!   - ハートビート、ウォッチドッグなど、軽い非機能定常処理.
+//! @exception none
+// -----------------------------------------------------------------------------
+extern void TaskMain();
+
+
+// -----------------------------------------------------------------------------
+//! @brief 高優先度処理タスクエントリ関数.
+//!
+//! 通常の処理より優先して処理したい場合、こちらのタスクを使う.
+//! 例えば下記のような遅延があるとリスクになるようなもの.
+//!   - ユーザーI/F からの要求受信処理
+//!   - 即時性を要するフィードバック制御.
+//! @exception none
+// -----------------------------------------------------------------------------
+extern void TaskHighPriority();
+
+
+// -----------------------------------------------------------------------------
+//! @brief エンジン(通常処理)タスクエントリ関数.
+//!
+//! 通常、特に理由が無い限り、このタスクで処理を実施する.
+//! @exception none
+// -----------------------------------------------------------------------------
+extern void TaskEngine();
+
+
+// -----------------------------------------------------------------------------
+//! @brief デバッグコンソールタスクエントリ関数.
+//!
+//! デバッグログ取得用のタスク.
+//! 非機能なので優先度は最低である.
+//! @exception none
+// -----------------------------------------------------------------------------
+extern void TaskDebugConsole();
+
+#if 0                       // 未実装.
+extern void TaskCommunication();
+
+extern void TaskLongTermOperation();
+
+extern void TaskShortCycleOperation();
+
+
+#endif
+
+extern void Cyc1msecInterval(intptr_t exinf);
+
+#ifdef __cplusplus
+} // extern "C" {
+#endif
+
 #endif /* TOPPERS_MACRO_ONLY */
+
+#ifdef __cplusplus
+// 無駄コード.
+//   ea が吐き出してしまうからして…
+class system_task
+{
+
+public:
+	system_task();
+	virtual ~system_task();
+
+};
+#endif // #ifdef __cplusplus
+#endif // !defined(EA_B0DE3A01_003D_4139_ABC8_D1E1FF53B040__INCLUDED_)
