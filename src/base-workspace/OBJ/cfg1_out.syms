@@ -6,8 +6,8 @@ c0008028 t start_1
 c0008038 t start_2
 c0008048 T sta_ker
 c000804c T _kernel_initialize_sections
-c0008050 R TOPPERS_cfg_valueof_acptn4_264
 c0008050 T _etext
+c0008050 R TOPPERS_cfg_valueof_acptn4_264
 c0008058 R TOPPERS_cfg_valueof_acptn3_264
 c0008060 R TOPPERS_cfg_valueof_acptn2_264
 c0008068 R TOPPERS_cfg_valueof_acptn1_264
@@ -1301,9 +1301,9 @@ c000abd8 R MAGIC_2
 c000abda R MAGIC_1
 c000abe0 B __idata_end
 c000abe0 B __idata_start
+c0108000 T __data_start
 c0108000 B _DOM1_bss_start
 c0108000 B _DOM2_bss_start
-c0108000 T __data_start
 c0108000 T _edata
 c0108000 B _kernel_bss_start
 c0108000 B _kernel_istkpt
