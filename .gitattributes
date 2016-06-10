@@ -3,3 +3,4 @@ hrp2/target/ev3_gcc/drivers/fatfs/starterware_c6748_mmcsd/*.cproject text eol=cr
 hrp2/target/ev3_gcc/drivers/fatfs/starterware_c6748_mmcsd/*.project text eol=crlf
 *.srec binary
 *.eap binary
+*.a binary
