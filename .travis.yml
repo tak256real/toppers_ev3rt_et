@@ -32,8 +32,7 @@ before_install:
 install:
   # ARMコンパイラ
   - sudo apt-cache madison gcc-arm-none-eabi
-  - sudo apt-get install gcc-arm-none-eabi
-  # =4.9.3.2015q3-1precise1
+  - sudo apt-get --force-yes install gcc-arm-none-eabi=4.9.3.2015q3-1precise1
   #  その他必要なツール
   - sudo apt-get install libboost-all-dev
   - sudo apt-get install u-boot-tools
