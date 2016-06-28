@@ -11,10 +11,11 @@ addons:
   apt:
     sources:
       - ubuntu-toolchain-r-test
-      - llvm-toolchain-precise-3.7
-      - llvm-toolchain-precise
+      # - llvm-toolchain-precise-3.7 # 2016/6時点でサーバ不調のため取得できない
+      # - llvm-toolchain-precise
     packages:
-      - clang-3.7
+      # - clang-3.7
+      - clang
       - g++-5
       - gcc-5
 
@@ -31,7 +32,7 @@ before_install:
 install:
   # ARMコンパイラ
   - sudo apt-cache madison gcc-arm-none-eabi
-  - sudo apt-get install gcc-arm-none-eabi=4.9.3.2015q3-1precise1
+  - sudo apt-get --force-yes install gcc-arm-none-eabi=4.9.3.2015q3-1precise1
   #  その他必要なツール
   - sudo apt-get install libboost-all-dev
   - sudo apt-get install u-boot-tools
