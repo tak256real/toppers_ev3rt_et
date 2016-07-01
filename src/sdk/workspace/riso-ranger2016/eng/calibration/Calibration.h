@@ -18,8 +18,8 @@ public:
 	int BandAdjustment();
 
 private:
-	int light_value_black;
-	int light_value_white;
+	uint8_t light_value_black;
+	uint8_t light_value_white;
 
 };
 #endif // !defined(EA_435C4C1D_B5C9_4c6d_8550_2CED725466F8__INCLUDED_)
