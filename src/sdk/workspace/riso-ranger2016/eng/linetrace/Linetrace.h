@@ -13,11 +13,13 @@
 
 class Linetrace
 {
+private:
+	PIDControl *the_pidcontrol;
+
 
 public:
 	virtual ~Linetrace();
 	WheelControl *m_WheelControl;
-	PIDControl *m_PIDControl;
 
 	void Linetrace();
 

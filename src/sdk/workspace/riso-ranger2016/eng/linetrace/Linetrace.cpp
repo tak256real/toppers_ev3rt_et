@@ -17,5 +17,7 @@ Linetrace::~Linetrace(){
 
 
 void Linetrace::Linetrace(){
+	
+
 
 }

@@ -25,3 +25,9 @@ PIDControl::~PIDControl(){
 void PIDControl::PIDCalculation(){
 
 }
+
+
+void PIDControl::SetP(float newVal){
+
+	P = newVal;
+}
