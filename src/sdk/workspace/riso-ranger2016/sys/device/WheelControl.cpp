@@ -11,21 +11,16 @@
 
 
 WheelControl::WheelControl(){
-
+	m_RefSpeed = 0;
+	m_RefTurn = 0;
+	m_WheelMotorL = NULL;
+	m_WheelMotorR = NULL;
+	m_TwoWheelMode = false;
 }
 
 
 WheelControl::~WheelControl(){
 
-}
-
-
-void WheelControl::Init(){
-	m_RefSpeed = 0;
-	m_RefTurn = 0;
-	m_WheelMotorR = NULL;
-	m_WheelMotorR = NULL;
-	m_TwoWheelMode = false;
 }
 
 

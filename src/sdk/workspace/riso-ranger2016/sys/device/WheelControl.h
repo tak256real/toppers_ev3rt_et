@@ -16,7 +16,6 @@ class WheelControl
 public:
 	WheelControl();
 	virtual ~WheelControl();
-	void Init();
 	void Control();
 	void SetRefValue(int speed, int turn);
 	void SetTwoWheelMode(bool onoff);
