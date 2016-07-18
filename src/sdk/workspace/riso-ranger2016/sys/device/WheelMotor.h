@@ -25,7 +25,7 @@ public:
 	void SetPWMValue(signed char PWMValue);
 
 private :
-	Motor* motor;
+	Motor* m_Motor;
 	int m_AngularVelocity;
 	int* m_WheelEncBuf;
 	unsigned short m_WheelEncBufNextIndex;

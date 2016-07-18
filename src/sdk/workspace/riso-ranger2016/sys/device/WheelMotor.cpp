@@ -16,9 +16,7 @@ WheelMotor::WheelMotor(motor_port_t PortNum){
 	for(int i=0; i<26; i++) this->m_WheelEncBuf[i] = 0;
 	m_WheelEncBufNextIndex = 0;
 
-	motor = new Motor(PortNum);
-
-	//TODO ポート設定
+	m_Motor = new Motor(PortNum);
 
 }
 
@@ -51,7 +49,8 @@ void WheelMotor::UpdateAngularVelocity(){
  */
 void WheelMotor::ResetEnc(){
 
-	//TODO エンコーダリセット
+	// エンコーダリセット
+	m_Motor->reset(); //TODO 内部でブレーキモードにされるかもしれない
 
 	// 角速度関連メンバを初期化
 	m_AngularVelocity = 0;
@@ -66,10 +65,7 @@ void WheelMotor::ResetEnc(){
  * エンコーダ値を取得
  */
 int WheelMotor::GetEnc(){
-
-	//TODO エンコーダ値を取得
-	return 0;
-
+	return m_Motor->getCount();
 }
 
 
@@ -91,6 +87,7 @@ void WheelMotor::SetPWMValue(signed char PWMValue){
 		PWMValue = 100;
 	}
 
-	//TODO PWM設定
+	// PWM設定
+	m_Motor->setPWM(PWMValue);
 
 }
