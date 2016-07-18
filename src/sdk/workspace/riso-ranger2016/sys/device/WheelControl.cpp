@@ -24,15 +24,48 @@ WheelControl::~WheelControl(){
 }
 
 
+void WheelControl::Init(){
+
+	// モータエンコーダをリセットする
+    m_WheelMotorL->ResetEnc();
+    m_WheelMotorR->ResetEnc();
+
+    // 倒立振子制御初期化
+	balance_init();
+}
+
+
 // 4ms周期実行 要リアルタイム性
 void WheelControl::Control(){
 
+	signed char pwm_L;
+	signed char pwm_R;
+
 	if(m_TwoWheelMode == true) {	// 倒立走行
+
+		//TODO Duty比算出
+        balance_control(
+            (float)m_RefSpeed,
+            (float)m_RefTurn,
+            (float)0,//gyro,
+            (float)0,//GYRO_OFFSET,
+			(float)m_WheelMotorL->GetEnc(),
+			(float)m_WheelMotorR->GetEnc(),
+            (float)0,//volt,
+            &pwm_L,
+            &pwm_R);
 
 	}
 	else {							// 尻尾走行
 
+		pwm_L = m_RefSpeed + m_RefTurn*1.0;
+		pwm_R = m_RefSpeed - m_RefTurn*1.0;
+
 	}
+
+	// Duty比設定
+	m_WheelMotorL->SetPWMValue(pwm_L);
+	m_WheelMotorR->SetPWMValue(pwm_R);
 
 }
 

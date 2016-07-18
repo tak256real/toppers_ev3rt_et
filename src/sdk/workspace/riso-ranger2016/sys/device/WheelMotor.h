@@ -14,14 +14,12 @@ class WheelMotor
 {
 
 public:
-	WheelMotor();
+	WheelMotor(motor_port_t PortNum);
 	virtual ~WheelMotor();
 
-	WheelMotor(motor_port_t PortNum);
-	void RenewPWMValue(float PWMValue);
-
-private:
-	motor_port_t m_Port;
+	void ResetEnc();
+	int GetEnc();
+	void SetPWMValue(signed char PWMValue);
 
 };
 #endif // !defined(EA_68ADC4F5_CD7A_4d03_94F4_3F235BA26AB5__INCLUDED_)

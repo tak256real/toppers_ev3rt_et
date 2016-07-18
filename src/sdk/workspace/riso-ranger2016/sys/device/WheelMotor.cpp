@@ -10,6 +10,8 @@
 
 WheelMotor::WheelMotor(motor_port_t PortNum){
 
+	//TODO ポート設定
+
 }
 
 
@@ -18,6 +20,33 @@ WheelMotor::~WheelMotor(){
 }
 
 
-void WheelMotor::RenewPWMValue(float PWMValue){
+void WheelMotor::ResetEnc(){
+
+	//TODO エンコーダリセット
+
+}
+
+
+/**
+ * エンコーダ値を取得
+ */
+int WheelMotor::GetEnc(){
+
+	//TODO
+
+}
+
+
+void WheelMotor::SetPWMValue(signed char PWMValue){
+
+	// 範囲チェック
+	if(PWMValue < -100) {
+		PWMValue = -100;
+	}
+	else if(100 < PWMValue) {
+		PWMValue = 100;
+	}
+
+	//TODO PWM設定
 
 }
