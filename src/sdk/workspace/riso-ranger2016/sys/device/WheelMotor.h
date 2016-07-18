@@ -9,6 +9,7 @@
 #define EA_68ADC4F5_CD7A_4d03_94F4_3F235BA26AB5__INCLUDED_
 
 #include "ev3api.h"
+#include "Motor.h"
 
 class WheelMotor
 {
@@ -24,6 +25,7 @@ public:
 	void SetPWMValue(signed char PWMValue);
 
 private :
+	Motor* motor;
 	int m_AngularVelocity;
 	int* m_WheelEncBuf;
 	unsigned short m_WheelEncBufNextIndex;
