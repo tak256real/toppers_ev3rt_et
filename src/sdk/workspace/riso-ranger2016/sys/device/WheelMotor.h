@@ -17,9 +17,16 @@ public:
 	WheelMotor(motor_port_t PortNum);
 	virtual ~WheelMotor();
 
+	void UpdateAngularVelocity();
 	void ResetEnc();
 	int GetEnc();
+	int GetAngularVelocity();
 	void SetPWMValue(signed char PWMValue);
+
+private :
+	int m_AngularVelocity;
+	int* m_WheelEncBuf;
+	unsigned short m_WheelEncBufNextIndex;
 
 };
 #endif // !defined(EA_68ADC4F5_CD7A_4d03_94F4_3F235BA26AB5__INCLUDED_)
