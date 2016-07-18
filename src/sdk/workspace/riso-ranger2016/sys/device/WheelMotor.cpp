@@ -33,6 +33,7 @@ void WheelMotor::ResetEnc(){
 int WheelMotor::GetEnc(){
 
 	//TODO
+	return 0;
 
 }
 
