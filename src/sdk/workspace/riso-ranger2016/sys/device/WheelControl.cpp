@@ -77,7 +77,17 @@ void WheelControl::SetRefValue(int speed, int turn){
 }
 
 
+/**
+ * 倒立走行と尻尾走行の切り替え
+ */
 void WheelControl::SetTwoWheelMode(bool onoff){
+
+	if(m_TwoWheelMode == false && onoff == true) {
+	    // 倒立振子制御初期化
+		balance_init();
+		//TODO エンコーダも初期化が必要かもしれない
+	}
+
 	m_TwoWheelMode = onoff;
 }
 
