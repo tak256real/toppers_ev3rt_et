@@ -27,8 +27,8 @@ WheelControl::~WheelControl(){
 void WheelControl::Init(){
 
 	// モータエンコーダをリセットする
-    m_WheelMotorL->ResetEnc();
-    m_WheelMotorR->ResetEnc();
+	m_WheelMotorL->ResetEnc();
+	m_WheelMotorR->ResetEnc();
 
     // 倒立振子制御初期化
 	balance_init();
@@ -44,16 +44,16 @@ void WheelControl::Control(){
 	if(m_TwoWheelMode == true) {	// 倒立走行
 
 		//TODO Duty比算出
-        balance_control(
-            (float)m_RefSpeed,
-            (float)m_RefTurn,
-            (float)0,//gyro,
-            (float)0,//GYRO_OFFSET,
+		balance_control(
+			(float)m_RefSpeed,
+			(float)m_RefTurn,
+			(float)0,//gyro,
+			(float)0,//GYRO_OFFSET,
 			(float)m_WheelMotorL->GetEnc(),
 			(float)m_WheelMotorR->GetEnc(),
-            (float)0,//volt,
-            &pwm_L,
-            &pwm_R);
+			(float)0,//volt,
+			&pwm_L,
+			&pwm_R);
 
 	}
 	else {							// 尻尾走行

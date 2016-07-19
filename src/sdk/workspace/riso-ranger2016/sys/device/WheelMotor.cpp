@@ -15,8 +15,13 @@ WheelMotor::WheelMotor(motor_port_t PortNum){
 	m_WheelEncBuf = new int[26];
 	for(int i=0; i<26; i++) this->m_WheelEncBuf[i] = 0;
 	m_WheelEncBufNextIndex = 0;
+	m_Port = PortNum;
 
-	m_Motor = new Motor(PortNum);
+	// モータタイプ設定
+	ev3_motor_config(m_Port, LARGE_MOTOR);
+
+	// ブレーキモード解除
+	ev3_motor_stop(m_Port, false);
 
 }
 
@@ -50,7 +55,7 @@ void WheelMotor::UpdateAngularVelocity(){
 void WheelMotor::ResetEnc(){
 
 	// エンコーダリセット
-	m_Motor->reset(); //TODO 内部でブレーキモードにされるかもしれない
+    ev3_motor_reset_counts(m_Port);
 
 	// 角速度関連メンバを初期化
 	m_AngularVelocity = 0;
@@ -65,7 +70,7 @@ void WheelMotor::ResetEnc(){
  * エンコーダ値を取得
  */
 int WheelMotor::GetEnc(){
-	return m_Motor->getCount();
+	return ev3_motor_get_counts(m_Port);
 }
 
 
@@ -88,6 +93,6 @@ void WheelMotor::SetPWMValue(signed char PWMValue){
 	}
 
 	// PWM設定
-	m_Motor->setPWM(PWMValue);
+	ev3_motor_set_power(m_Port, PWMValue);
 
 }
