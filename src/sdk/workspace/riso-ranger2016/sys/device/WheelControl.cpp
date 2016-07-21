@@ -10,12 +10,14 @@
 
 
 
-WheelControl::WheelControl(){
+WheelControl::WheelControl(WheelMotor* wheelMotorL, WheelMotor* wheelMotorR){
 	m_RefSpeed = 0;
 	m_RefTurn = 0;
 	m_WheelMotorL = NULL;
 	m_WheelMotorR = NULL;
 	m_TwoWheelMode = false;
+	m_WheelMotorL = wheelMotorL;
+	m_WheelMotorR = wheelMotorR;
 }
 
 
@@ -89,14 +91,4 @@ void WheelControl::SetTwoWheelMode(bool onoff){
 	}
 
 	m_TwoWheelMode = onoff;
-}
-
-
-void WheelControl::SetWheelMotorL(WheelMotor* wheelMotorL) {
-	m_WheelMotorL = wheelMotorL;
-}
-
-
-void WheelControl::SetWheelMotorR(WheelMotor* wheelMotorR) {
-	m_WheelMotorR = wheelMotorR;
 }

@@ -14,14 +14,12 @@ class WheelControl
 {
 
 public:
-	WheelControl();
+	WheelControl(WheelMotor* wheelMotorL, WheelMotor* wheelMotorR);
 	virtual ~WheelControl();
 	void Init();
 	void Control();
 	void SetRefValue(int speed, int turn);
 	void SetTwoWheelMode(bool onoff);
-	void SetWheelMotorL(WheelMotor* wheelMotorL);
-	void SetWheelMotorR(WheelMotor* wheelMotorR);
 
 private:
 	bool m_TwoWheelMode;		// 倒立制御オンオフ
