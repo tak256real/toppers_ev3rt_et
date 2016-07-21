@@ -8,7 +8,7 @@
 #include "WheelControl.h"
 #include "balancer.h"
 
-
+#include "Temp.h"
 
 WheelControl::WheelControl(WheelMotor* wheelMotorL, WheelMotor* wheelMotorR){
 	m_RefSpeed = 0;
@@ -49,11 +49,11 @@ void WheelControl::Control(){
 		balance_control(
 			(float)m_RefSpeed,
 			(float)m_RefTurn,
-			(float)0,//gyro,
-			(float)0,//GYRO_OFFSET,
+			(float)Temp::getGyro(),//gyro,TODO どこから取得するか
+			(float)Temp::gyroOffsetValue,//GYRO_OFFSET,TODO どこから取得するか
 			(float)m_WheelMotorL->GetEnc(),
 			(float)m_WheelMotorR->GetEnc(),
-			(float)0,//volt,
+			(float)Temp::getBattery(),//volt, TODO どこから取得するか
 			&pwm_L,
 			&pwm_R);
 
