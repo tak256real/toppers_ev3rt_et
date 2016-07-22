@@ -23,6 +23,7 @@ APPL_CXXOBJS += \
 	../workspace/riso-ranger2016/sys/device/init_ev3.o \
 	../workspace/riso-ranger2016/sys/device/spec_ev3.o \
 	../workspace/riso-ranger2016/sys/device/WheelControl.o \
+	../workspace/riso-ranger2016/sys/device/TailControl.o \
 	../workspace/riso-ranger2016/sys/device/WheelMotor.o \
 	../workspace/riso-ranger2016/sys/device/balancer_param.o \
 	../workspace/riso-ranger2016/sys/device/balancer.o \
@@ -30,7 +31,7 @@ APPL_CXXOBJS += \
 	../workspace/riso-ranger2016/sys/task/DebugConsole.o \
 	../workspace/riso-ranger2016/sys/task/Engine.o \
 	../workspace/riso-ranger2016/sys/task/HighPriority.o \
-	../workspace/riso-ranger2016/sys/task/Main.o
-
+	../workspace/riso-ranger2016/sys/task/Main.o \
+	../workspace/riso-ranger2016/Temp.o
 
 

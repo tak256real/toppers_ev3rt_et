@@ -50,7 +50,7 @@ void WheelControl::Control(){
 			(float)m_RefSpeed,
 			(float)m_RefTurn,
 			(float)Temp::getGyro(),//gyro,TODO どこから取得するか
-			(float)Temp::gyroOffsetValue,//GYRO_OFFSET,TODO どこから取得するか
+			(float)Temp::getGyroOffset(),//GYRO_OFFSET,TODO どこから取得するか
 			(float)m_WheelMotorL->GetEnc(),
 			(float)m_WheelMotorR->GetEnc(),
 			(float)Temp::getBattery(),//volt, TODO どこから取得するか
