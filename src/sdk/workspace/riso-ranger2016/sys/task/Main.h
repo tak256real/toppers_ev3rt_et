@@ -28,7 +28,6 @@ private:
 	Task *the_task[kMaxTaskId];
     static Main* instance;
     
-	virtual void loop();
 
 };
 

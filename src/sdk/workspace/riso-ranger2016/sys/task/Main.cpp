@@ -57,12 +57,11 @@ void Main::start(){
 //  assert(bt != NULL);
 
     // デバッグコンソールを真っ先に立ち上げる.
+//    the_task[kTaskComminucation] = new Communication(ID_TASK_COMMUNICATION, ID_MSG_BOX_COMMINUCATION);
+//    RTOS::startTask(ID_TASK_DEBUG_CONSOLE);
     the_task[kTaskDebugConsole] = new DebugConsole(ID_TASK_DEBUG_CONSOLE, ID_MSG_BOX_DEBUG_CONSOLE);
     RTOS::startTask(ID_TASK_DEBUG_CONSOLE);
 
-    /* LCD画面表示 */
-//  ev3_lcd_fill_rect(0, 0, EV3_LCD_WIDTH, EV3_LCD_HEIGHT, EV3_LCD_WHITE);
-//  ev3_lcd_draw_string("EV3way-ET RisoRanger 2016 ver000.000.001", 0, CALIB_FONT_HEIGHT*1);
 
 
     // カーネルオブジェクト生成.
@@ -83,12 +82,3 @@ void Main::start(){
 }
 
 
-void Main::loop(){
-    // 何やる？
-    // 以下案
-    // - HEARTBEAT 点滅
-    // - メモリリソースの監視
-    for(;;){
-        RTOS::waiTask(1000);         // 超暫定、こんなのやっちゃダメ!ってか、ってかOSの単位時間がわからない.
-    }
-}

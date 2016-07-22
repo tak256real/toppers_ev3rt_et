@@ -9,6 +9,8 @@
 #include "Main.h"
 #include "HighPriority.h"
 #include "Engine.h"
+#include "Communication.h"
+#include "DebugConsole.h"
 #include "Timer.h"
 #include "app.h"
 
@@ -45,8 +47,19 @@ void TaskEngine(){
     }
 }
 
+void TaskCommunication(){
+    Communication *at_task = static_cast<Communication *>(Main::getInstance()->get_the_task(kTaskComminucation));
+
+    if(at_task != NULL) {
+        at_task->start();
+    }
+    else {
+        ev3_lcd_draw_string("SYS::ERROR:: COMMUNICATION TASK OBJECT IS NOT EXSIST.", 0, CALIB_FONT_HEIGHT*1);
+    }
+}
+
 void TaskDebugConsole(){
-    Engine *at_task = static_cast<Engine *>(Main::getInstance()->get_the_task(kTaskDebugConsole));
+    DebugConsole *at_task = static_cast<Engine *>(Main::getInstance()->get_the_task(kTaskDebugConsole));
 
     if(at_task != NULL) {
         at_task->start();

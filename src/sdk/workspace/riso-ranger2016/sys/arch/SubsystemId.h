@@ -12,6 +12,7 @@ enum EmSubsystemId
 {
     kSubsysDummy,               // 00. 空けておく.
     kSubsysCommand,             // 01. 命令サブシステム.
+    kSubsysConsole,             // 02. コンソールサブシステム.
 
     kMaxSubsystemId             // 終端定義.
 };

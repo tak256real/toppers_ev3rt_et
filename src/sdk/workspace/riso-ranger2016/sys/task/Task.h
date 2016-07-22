@@ -23,7 +23,7 @@ public:
 	virtual void start() = 0;
 
 protected:
-    virtual void loop() = 0;
+    virtual void loop();
 
 private:
 	sint32 task_id;

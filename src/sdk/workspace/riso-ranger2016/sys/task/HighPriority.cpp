@@ -30,10 +30,6 @@ void HighPriority::start(){
 }
 
 
-void HighPriority::loop(){
-
-}
-
 
 bool HighPriority::isOwnMessage(){
 

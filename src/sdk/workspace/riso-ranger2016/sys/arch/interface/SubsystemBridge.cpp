@@ -26,7 +26,7 @@ SubsystemBridge::~SubsystemBridge(){
 
 
 void SubsystemBridge::doInitialize(){
-
+    actInitialize();
 }
 
 

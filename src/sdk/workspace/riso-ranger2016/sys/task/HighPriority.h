@@ -21,7 +21,6 @@ public:
 	virtual void start();
 
 private:
-	virtual void loop();
 	virtual bool isOwnMessage();
 
 };

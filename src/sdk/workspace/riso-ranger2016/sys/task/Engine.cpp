@@ -24,10 +24,6 @@ Engine::~Engine(){
 
 
 
-void Engine::loop(){
-
-
-}
 
 
 void Engine::start(){

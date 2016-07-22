@@ -20,7 +20,7 @@ public:
 	virtual void start();
 
 private:
-	virtual void loop();
+
 
 };
 #endif // !defined(EA_2D7BA025_7C6A_4b77_95D5_F437A38B9B98__INCLUDED_)
