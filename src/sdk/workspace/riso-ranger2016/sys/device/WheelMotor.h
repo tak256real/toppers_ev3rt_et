@@ -21,7 +21,7 @@ public:
 	void ResetEnc();
 	int GetEnc();
 	int GetAngularVelocity();
-	void SetPWMValue(signed char PWMValue);
+	void SetPWMValue(int PWMValue);
 
 private :
 	motor_port_t m_Port;						// ポート番号

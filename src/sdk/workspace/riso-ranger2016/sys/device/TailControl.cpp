@@ -27,7 +27,7 @@ TailControl::~TailControl(){
 
 void TailControl::Control(){
 
-	signed char pwm;
+	int pwm;
 
 	// Dity比算出
 	pwm = m_RefAngle - m_TailMotor->GetEnc();

@@ -82,7 +82,7 @@ int WheelMotor::GetAngularVelocity(){
 }
 
 
-void WheelMotor::SetPWMValue(signed char PWMValue){
+void WheelMotor::SetPWMValue(int PWMValue){
 
 	// 範囲チェック
 	if(PWMValue < -100) {
