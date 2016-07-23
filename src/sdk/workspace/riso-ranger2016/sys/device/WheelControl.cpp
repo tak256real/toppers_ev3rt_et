@@ -60,8 +60,27 @@ void WheelControl::Control(){
 	}
 	else {							// 尻尾走行
 
-		pwm_L = m_RefSpeed + m_RefTurn*1.0;
-		pwm_R = m_RefSpeed - m_RefTurn*1.0;
+		// 範囲チェック＆丸め込み
+		int pwm_L_temp = m_RefSpeed + m_RefTurn*1.0;
+		int pwm_R_temp = m_RefSpeed - m_RefTurn*1.0;
+		if(pwm_L_temp < -100) {
+			pwm_L = -100;
+		}
+		else if(100 < pwm_L_temp){
+			pwm_L = 100;
+		}
+		else {
+			pwm_L = pwm_L_temp;
+		}
+		if(pwm_R_temp < -100) {
+			pwm_R = -100;
+		}
+		else if(100 < pwm_R_temp) {
+			pwm_R = 100;
+		}
+		else {
+			pwm_R = pwm_R_temp;
+		}
 
 	}
 
