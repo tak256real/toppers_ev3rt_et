@@ -28,7 +28,7 @@ void Linetrace::exec(){
 	int turn = 0;
 	float currentVal = 0;
 
-	if(motorFlag == true){
+	if(motorFlag == true){  //TODO 走行開始時に実行
 		m_WheelControl->SetTwoWheelMode(motorFlag);
 		motorFlag = false;
 	}

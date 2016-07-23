@@ -8,7 +8,7 @@
 #if !defined(EA_9E4883BB_611B_4f88_B656_6A0271FED2F8__INCLUDED_)
 #define EA_9E4883BB_611B_4f88_B656_6A0271FED2F8__INCLUDED_
 
-class PIDParam
+class PIDParam //TODO クラス削除予定
 {
 
 public:

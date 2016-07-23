@@ -10,7 +10,7 @@
 
 #include "ev3api.h"
 
-class GetSensorValue
+class GetSensorValue //TODO 名前をColorSensorに変更してdeviceディレクトリに移動予定
 {
 
 public:
