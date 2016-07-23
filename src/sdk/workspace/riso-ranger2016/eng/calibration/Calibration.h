@@ -10,6 +10,7 @@
 
 #include "ev3api.h"
 #include "TouchSensorListener.h"
+#include "GetSensorValue.h"
 
 class Calibration : TouchSensorListener
 {
