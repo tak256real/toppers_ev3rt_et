@@ -19,7 +19,7 @@ TailControl* Temp::tailControl = new TailControl(tailMotor);
 GetSensorValue* Temp::getSensorValue = new GetSensorValue(Temp::colorSensorPort);
 Calibration* Temp::calibration = new Calibration(Temp::getSensorValue);
 
-Linetrace Temp::linetrace = new Linetrace(Temp::wheelControl, Temp::calibration);
+Linetrace* Temp::linetrace = new Linetrace(Temp::wheelControl, Temp::calibration);
 
 int Temp::gyroOffset = Temp::getGyroOffset();
 
