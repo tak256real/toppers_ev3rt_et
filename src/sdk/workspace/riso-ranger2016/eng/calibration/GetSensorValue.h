@@ -8,6 +8,8 @@
 #if !defined(EA_68700908_8405_4358_AA2A_F9964DF0A955__INCLUDED_)
 #define EA_68700908_8405_4358_AA2A_F9964DF0A955__INCLUDED_
 
+#include "ev3api.h"
+
 class GetSensorValue
 {
 
