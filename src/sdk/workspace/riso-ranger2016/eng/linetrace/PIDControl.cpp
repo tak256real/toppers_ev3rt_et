@@ -8,8 +8,6 @@
 #include "PIDControl.h"
 
 
-
-
 PIDControl::PIDControl(){
 	m_P=-10;
 	m_I=0;
@@ -24,7 +22,7 @@ PIDControl::~PIDControl(){
 }
 
 
-float PIDControl::PIDCalculation(float reference, float currentVal){
+int PIDControl::PIDCalculation(float reference, float currentVal){
 	int result=0;
 	float error=0;
 

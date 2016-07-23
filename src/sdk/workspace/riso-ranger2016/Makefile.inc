@@ -4,15 +4,18 @@ SRCLANG := c++
 #   面倒なので、ヘッダファイルが存在し得るパスは全てインクルードパスに含め、
 #   include 記述は ヘッダファイル名のみを記述するものとする.
 PROJECT_INCLUDE += \
-    -I../workspace/riso-ranger2016/common/c_include \
-    -I../workspace/riso-ranger2016/sys/arch/interface \
-    -I../workspace/riso-ranger2016/sys/arch \
-    -I../workspace/riso-ranger2016/sys/arch/OS \
-    -I../workspace/riso-ranger2016/sys/arch/timer \
-    -I../workspace/riso-ranger2016/sys/device \
-    -I../workspace/riso-ranger2016/sys/task \    -I../workspace/riso-ranger2016/eng/caribration \
-    -I../workspace/riso-ranger2016/event \    -I../workspace/riso-ranger2016/eng/linetrace \    -I../workspace/riso-ranger2016 \
-    -I./
+ 	-I../workspace/riso-ranger2016/common/c_include \
+ 	-I../workspace/riso-ranger2016/sys/arch/interface \
+ 	-I../workspace/riso-ranger2016/sys/arch \
+ 	-I../workspace/riso-ranger2016/sys/arch/OS \
+ 	-I../workspace/riso-ranger2016/sys/arch/timer \
+ 	-I../workspace/riso-ranger2016/sys/device \
+ 	-I../workspace/riso-ranger2016/sys/task \
+ 	-I../workspace/riso-ranger2016/event \
+ 	-I../workspace/riso-ranger2016/eng/linetrace \
+  	-I../workspace/riso-ranger2016/eng/calibration \
+ 	-I../workspace/riso-ranger2016 \
+ 	-I./
 
 APPL_CXXOBJS += \
 	../workspace/riso-ranger2016/sys/arch/OS/RTOS.o \
@@ -34,7 +37,8 @@ APPL_CXXOBJS += \
 	../workspace/riso-ranger2016/sys/task/Main.o \
 	../workspace/riso-ranger2016/eng/calibration/GetSensorValue.o \
 	../workspace/riso-ranger2016/eng/calibration/Calibration.o \
-	../workspace/riso-ranger2016/event/TouchSensorListener.o	../workspace/riso-ranger2016/eng/linetrace/Linetrace.o \
+	../workspace/riso-ranger2016/event/TouchSensorListener.o \
+	../workspace/riso-ranger2016/eng/linetrace/Linetrace.o \
 	../workspace/riso-ranger2016/eng/linetrace/PIDControl.o \
 	../workspace/riso-ranger2016/Temp.o 
 

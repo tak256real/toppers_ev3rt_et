@@ -16,7 +16,7 @@ class PIDControl
 public:
 	PIDControl();
 	virtual ~PIDControl();
-	float PIDCalculation(float reference, float currentVal);
+	int PIDCalculation(float reference, float currentVal);
 
 private:
 	float m_preerror;

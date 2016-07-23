@@ -13,7 +13,6 @@ Linetrace::Linetrace(WheelControl* wheelControl, Calibration* calibration){
 	m_PidControl = new PIDControl();
 	m_WheelControl = wheelControl;
 	m_Calibration = calibration;
-	m_motorFlag =true;
 	m_speed = 50;
 	m_referenceVal = 0.5;
 }
@@ -25,6 +24,7 @@ Linetrace::~Linetrace(){
 
 
 void Linetrace::exec(){
+	static bool motorFlag = true;
 	int turn = 0;
 	float currentVal = 0;
 
@@ -33,7 +33,7 @@ void Linetrace::exec(){
 		motorFlag = false;
 	}
 
-	currencVal = m_Calibration->GetNormalizedSensorValue();
-	turn = m_PidControl->PIDCalculation(referenceVal, currentVal);
-	m_WheelControl->SetTwoWheelMode(speed,turn);
+	currentVal = m_Calibration->GetNormalizedSensorValue();
+	turn = m_PidControl->PIDCalculation(m_referenceVal, currentVal);
+	m_WheelControl->SetRefValue(m_speed, turn);
 }
