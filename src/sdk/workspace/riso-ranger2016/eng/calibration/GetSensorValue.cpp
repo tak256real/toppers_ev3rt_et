@@ -23,5 +23,5 @@ GetSensorValue::~GetSensorValue(){
 
 
 int GetSensorValue::getSensorValue(){
-	return ev3_color_sensor_get_reflect(m_Port); //カラーセンサから明度を取得;EV3_PORT_2
+	return ev3_color_sensor_get_reflect(m_Port); //カラーセンサから明度を取得;
 }

@@ -22,11 +22,9 @@ public:
 	virtual ~Linetrace();
 	void exec();
 private:
-	int colorValue;
 	PIDControl* m_PidControl;
 	Calibration* m_Calibration;
 	int m_speed;
 	float m_referenceVal;
-	float m_currentVal;
 };
 #endif // !defined(EA_AB462F12_6406_44a4_BFEB_52BCBBFE4724__INCLUDED_)

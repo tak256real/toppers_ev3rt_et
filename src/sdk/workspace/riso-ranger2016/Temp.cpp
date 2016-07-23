@@ -16,6 +16,11 @@ WheelMotor* Temp::tailMotor = new WheelMotor(tailPort);
 WheelControl* Temp::wheelControl = new WheelControl(Temp::wheelMotorL, Temp::wheelMotorR);
 TailControl* Temp::tailControl = new TailControl(tailMotor);
 
+GetSensorValue* Temp::getSensorValue = new GetSensorValue(Temp::colorSensorPort);
+Calibration* Temp::calibration = new Calibration(Temp::getSensorValue);
+
+Linetrace Temp::linetrace = new Linetrace(Temp::wheelControl, Temp::calibration);
+
 int Temp::gyroOffset = Temp::getGyroOffset();
 
 Temp::Temp(){
@@ -35,6 +40,8 @@ void Temp::init(){
 
 
 void Temp::cycle(){
+
+	linetrace->exec();
 
 	wheelMotorL->UpdateAngularVelocity();
 	wheelMotorR->UpdateAngularVelocity();

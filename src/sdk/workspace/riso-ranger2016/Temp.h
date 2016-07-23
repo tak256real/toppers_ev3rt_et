@@ -12,6 +12,8 @@
 #include "WheelMotor.h"
 #include "WheelControl.h"
 #include "TailControl.h"
+#include "Linetrace.h"
+#include "GetSensorValue.h"
 
 class Temp
 {
@@ -26,6 +28,7 @@ public:
 	static int getGyro();
 	static int getGyroOffset();
 
+	static const sensor_port_t colorSensorPort = EV3_PORT_2;
 	static const sensor_port_t gyroPort = EV3_PORT_4; // 間違ってたら直す
 	static const motor_port_t wheelLPort = EV3_PORT_C;
 	static const motor_port_t wheelRPort = EV3_PORT_B;
@@ -39,6 +42,10 @@ public:
 
 	static WheelControl* wheelControl;
 	static TailControl* tailControl;
+
+	static Linetrace* linetrace;
+	static Calibration* calibration;
+	static GetSensorValue* getSensorValue;
 
 private:
 
