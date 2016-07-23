@@ -19,9 +19,11 @@ public:
 	float PIDCalculation(float reference, float currentVal);
 
 private:
-	float preerror;
-	float sumerror;
-	PIDParam *current;
+	float m_preerror;
+	float m_sumerror;
+	float m_P;
+	float m_I;
+	float m_D;
 
 };
 #endif // !defined(EA_30AB8F19_198A_4fdd_BA57_17285CA74024__INCLUDED_)

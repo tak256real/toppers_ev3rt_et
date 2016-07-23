@@ -9,9 +9,13 @@
 
 
 
-
-void Linetrace::Linetrace(){
-
+Linetrace::Linetrace(WheelControl* wheelControl, Calibration* calibration){
+	m_PidControl = new PIDControl();
+	m_WheelControl = wheelControl;
+	m_Calibration = calibration;
+	m_motorFlag =true;
+	m_speed = 50;
+	m_referenceVal = 0.5;
 }
 
 
@@ -20,6 +24,16 @@ Linetrace::~Linetrace(){
 }
 
 
-void Linetrace::setCalibrationValue(float CalibrationVaue){
+void Linetrace::exec(){
+	int turn = 0;
+	float currentVal = 0;
 
+	if(motorFlag == true){
+		m_WheelControl->SetTwoWheelMode(motorFlag);
+		motorFlag = false;
+	}
+
+	currencVal = m_Calibration->GetNormalizedSensorValue();
+	turn = m_PidControl->PIDCalculation(referenceVal, currentVal);
+	m_WheelControl->SetTwoWheelMode(speed,turn);
 }
