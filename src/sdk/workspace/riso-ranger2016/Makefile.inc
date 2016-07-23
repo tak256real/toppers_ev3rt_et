@@ -11,6 +11,7 @@ PROJECT_INCLUDE += \
     -I../workspace/riso-ranger2016/sys/arch/timer \
     -I../workspace/riso-ranger2016/sys/device \
     -I../workspace/riso-ranger2016/sys/task \
+    -I../workspace/riso-ranger2016/eng/linetrace \
     -I../workspace/riso-ranger2016 \
     -I./
 
@@ -32,6 +33,9 @@ APPL_CXXOBJS += \
 	../workspace/riso-ranger2016/sys/task/Engine.o \
 	../workspace/riso-ranger2016/sys/task/HighPriority.o \
 	../workspace/riso-ranger2016/sys/task/Main.o \
-	../workspace/riso-ranger2016/Temp.o
+	../workspace/riso-ranger2016/eng/linetrace/Linetrace.o \
+	../workspace/riso-ranger2016/eng/linetrace/PIDControl.o \
+	../workspace/riso-ranger2016/Temp.o 
+
 
 

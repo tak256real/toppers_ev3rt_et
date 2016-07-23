@@ -8,7 +8,7 @@
 #if !defined(EA_30AB8F19_198A_4fdd_BA57_17285CA74024__INCLUDED_)
 #define EA_30AB8F19_198A_4fdd_BA57_17285CA74024__INCLUDED_
 
-#include "src\sdk\workspace\riso-ranger2016\eng\linetrace\PIDParam.h"
+//#include "src\sdk\workspace\riso-ranger2016\eng\linetrace\PIDParam.h"
 
 class PIDControl
 {
