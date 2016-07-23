@@ -12,6 +12,7 @@ PROJECT_INCLUDE += \
     -I../workspace/riso-ranger2016/sys/device \
     -I../workspace/riso-ranger2016/sys/task \
     -I../workspace/riso-ranger2016/eng/caribration \
+    -I../workspace/riso-ranger2016/event \
     -I../workspace/riso-ranger2016 \
     -I./
 
@@ -29,7 +30,8 @@ APPL_CXXOBJS += \
 	../workspace/riso-ranger2016/sys/task/HighPriority.o \
 	../workspace/riso-ranger2016/sys/task/Main.o \
 	../workspace/riso-ranger2016/eng/calibration/GetSensorValue.o \
-	../workspace/riso-ranger2016/eng/calibration/Calibration.o 
+	../workspace/riso-ranger2016/eng/calibration/Calibration.o \
+	../workspace/riso-ranger2016/event/TouchSensorListener.o
 
 
 

@@ -8,23 +8,30 @@
 #if !defined(EA_C665904E_761B_426a_B0DB_BE0B2866A22C__INCLUDED_)
 #define EA_C665904E_761B_426a_B0DB_BE0B2866A22C__INCLUDED_
 
-#include <kernel.h>
 #include "ev3api.h"
+#include "TouchSensorListener.h"
 
-class Calibration
+class Calibration : TouchSensorListener
 {
 
 public:
-	Calibration();
+	Calibration(GetSensorValue* getSensorValue);
 	virtual ~Calibration();
 
-	int lightValueMax;
-	int lightValueMin;
-
-	uint8_t GetLightValue();
-	uint8_t SendLightValue(uint8_t max, uint8_t min);
+	void onPressed();	//override
+	void onReleased();	//override
+	float GetNormalizedSensorValue();
 
 private:
+	GetSensorValue* m_GetSensorValue;
+
+	int m_LightValueMax;
+	int m_LightValueMin;
+
+	int m_CalibrationIndex;
+
+	void ConfigureWhiteValue();
+	void ConfigureLineValue();
 
 };
 #endif // !defined(EA_C665904E_761B_426a_B0DB_BE0B2866A22C__INCLUDED_)

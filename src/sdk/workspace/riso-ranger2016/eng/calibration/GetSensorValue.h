@@ -14,14 +14,13 @@ class GetSensorValue
 {
 
 public:
+	GetSensorValue(sensor_port_t port);
 	virtual ~GetSensorValue();
-	Calibration *m_Calibration;
 
-	GetSensorValue();
-	int SendSensorValue();
+	int getSensorValue();
 
 private:
-	int typeSensor;
+	sensor_port_t m_Port;
 
 };
 #endif // !defined(EA_68700908_8405_4358_AA2A_F9964DF0A955__INCLUDED_)

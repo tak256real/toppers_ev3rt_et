@@ -8,20 +8,20 @@
 #include "GetSensorValue.h"
 
 
+GetSensorValue::GetSensorValue(sensor_port_t port){
+	// メンバ初期化
+	m_Port = port;
+
+	//カラーセンサを初期化
+	ev3_sensor_config(m_Port, COLOR_SENSOR);
+}
+
+
 GetSensorValue::~GetSensorValue(){
 
 }
 
 
-
-
-
-GetSensorValue::GetSensorValue(){
-
-}
-
-
-int GetSensorValue::SendSensorValue(){
-
-	return 0;
+int GetSensorValue::getSensorValue(){
+	return ev3_color_sensor_get_reflect(m_Port); //カラーセンサから明度を取得;EV3_PORT_2
 }
