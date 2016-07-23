@@ -10,9 +10,8 @@ PROJECT_INCLUDE += \
     -I../workspace/riso-ranger2016/sys/arch/OS \
     -I../workspace/riso-ranger2016/sys/arch/timer \
     -I../workspace/riso-ranger2016/sys/device \
-    -I../workspace/riso-ranger2016/sys/task \
-    -I../workspace/riso-ranger2016/eng/linetrace \
-    -I../workspace/riso-ranger2016 \
+    -I../workspace/riso-ranger2016/sys/task \    -I../workspace/riso-ranger2016/eng/caribration \
+    -I../workspace/riso-ranger2016/event \    -I../workspace/riso-ranger2016/eng/linetrace \    -I../workspace/riso-ranger2016 \
     -I./
 
 APPL_CXXOBJS += \
@@ -33,9 +32,10 @@ APPL_CXXOBJS += \
 	../workspace/riso-ranger2016/sys/task/Engine.o \
 	../workspace/riso-ranger2016/sys/task/HighPriority.o \
 	../workspace/riso-ranger2016/sys/task/Main.o \
-	../workspace/riso-ranger2016/eng/linetrace/Linetrace.o \
+	../workspace/riso-ranger2016/eng/calibration/GetSensorValue.o \
+	../workspace/riso-ranger2016/eng/calibration/Calibration.o \
+	../workspace/riso-ranger2016/event/TouchSensorListener.o	../workspace/riso-ranger2016/eng/linetrace/Linetrace.o \
 	../workspace/riso-ranger2016/eng/linetrace/PIDControl.o \
 	../workspace/riso-ranger2016/Temp.o 
-
 
 
