@@ -18,6 +18,7 @@
 enum EmTimerId
 {
 	kDummyTimerId,
+	kTempTimer,
 
 	kMaxTimerId                 //!< 終端定義.
 };

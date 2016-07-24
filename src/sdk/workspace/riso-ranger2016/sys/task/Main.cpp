@@ -15,6 +15,7 @@
 #include "HighPriority.h"
 #include "Main.h"
 
+#include "Temp.h" //TODO 試走会暫定
 
 Main* Main::instance = NULL;
 
@@ -76,6 +77,10 @@ void Main::start(){
     // 生成したカーネルオブジェクトに稼動と初期化の指示.
 
     // システムスタート指示.
+
+    //TODO 試走会暫定
+    Temp::init();
+    Timer::getInstance()->startTimer(4, kTempTimer);
 
 
     // Main タスク 定常処理開始
