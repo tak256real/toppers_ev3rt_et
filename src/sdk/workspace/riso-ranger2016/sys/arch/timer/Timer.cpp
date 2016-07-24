@@ -46,7 +46,7 @@ void Timer::tick(){
 
         if(time_count[i] > 0) {
             // デクリメント結果でカウント 0 となったらタイムアップ通知.
-            if(--time_count[i]) {
+            if(--time_count[i] == 0) {
                 the_event->ntfTimeOut(static_cast<EmTimerId>(i));
                 stopTimer(static_cast<EmTimerId>(i));
             }
