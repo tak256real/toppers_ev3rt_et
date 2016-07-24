@@ -6,6 +6,7 @@
 ///////////////////////////////////////////////////////////
 
 #include "Temp.h"
+#include "Timer.h"
 
 int gyroOffset;
 
@@ -40,6 +41,8 @@ void Temp::init(){
 
 
 void Temp::cycle(){
+
+	Timer::getInstance()->startTimer(4, kTempTimer);
 
 	linetrace->exec();
 
