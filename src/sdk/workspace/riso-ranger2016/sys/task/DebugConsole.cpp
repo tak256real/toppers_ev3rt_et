@@ -6,6 +6,7 @@
 ///////////////////////////////////////////////////////////
 
 #include "DebugConsole.h"
+#include "SysConsoleBridge.h"
 #include "SysDeviceBridge.h"
 
 DebugConsole::DebugConsole(sint32 rv_tsk_id, sint32 rv_mbox_id)
@@ -25,6 +26,8 @@ DebugConsole::~DebugConsole(){
 
 
 void DebugConsole::start(){
+    SysConsoleBridge::getInstance()->doInitialize();
+    
     loop();
 }
 

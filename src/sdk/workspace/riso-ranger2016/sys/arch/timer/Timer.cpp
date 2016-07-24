@@ -46,7 +46,7 @@ void Timer::tick(){
 
         if(time_count[i] > 0) {
             // デクリメント結果でカウント 0 となったらタイムアップ通知.
-            if(--time_count[i]) {
+            if((--time_count[i]) == 0) {
                 the_event->ntfTimeOut(static_cast<EmTimerId>(i));
                 stopTimer(static_cast<EmTimerId>(i));
             }
@@ -74,6 +74,10 @@ void Timer::stopTimer(EmTimerId rv_id) {
     bool at_is_timer_inuse = false;
     // カウント 0 にしてタイムアウト通知をキャンセルする.
     time_count[rv_id] = 0;
+
+    if(rv_id == kTempTimer) {
+        time_count = 4;
+    }
 
     for(uint8 i = 0; i < kMaxTimerId; i++ ) {
         if (time_count[i] != 0) {

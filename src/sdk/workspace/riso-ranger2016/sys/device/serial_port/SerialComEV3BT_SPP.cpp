@@ -5,6 +5,8 @@
 //  Original author: 037789
 ///////////////////////////////////////////////////////////
 
+#include <stdio.h>
+
 #include "ev3api.h"
 #include "Timer.h"
 #include "SerialComEV3BT_SPP.h"
@@ -49,6 +51,24 @@ void SerialComEV3BT_SPP::actTimeOut(EmTimerId rv_timer_id){
         return;
     }
 
-    uint8 at_char = fgetc(tty);
+    if(tty->cnt) {
+        uint8 *at_buff = new uint8[tty->cnt]; // 受信バッファ領域の作成.
+
+        the_rx_buffer = new RxBuffer(at_buff, tty->cnt);
+
+        // ファイル中の文字を全て刈り取る.
+        while(1) {
+            at_char = fgetc(tty);
+
+            if(at_char != EOF) {
+                the_rx_buffer->doWrite(at_char);
+            }
+            else {
+                break;
+            }
+        }
+
+        SysConsoleBridge::getInstance()->
+    }
 
 }
