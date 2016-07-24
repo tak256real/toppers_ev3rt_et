@@ -69,5 +69,5 @@ void Calibration::ConfigureWhiteValue(){
 
 
 void Calibration::ConfigureLineValue(){
-	m_LightValueMin = m_GetSensorValue->getSensorValue();
+	m_LightValueMax = m_GetSensorValue->getSensorValue();
 }
