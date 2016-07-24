@@ -13,6 +13,9 @@ PROJECT_INCLUDE += \
     -I../workspace/riso-ranger2016/sys/device/serial_port \
     -I../workspace/riso-ranger2016/sys/task \
     -I../workspace/riso-ranger2016/sys/command \
+ 	-I../workspace/riso-ranger2016/event \
+ 	-I../workspace/riso-ranger2016/eng/linetrace \
+  	-I../workspace/riso-ranger2016/eng/calibration \
     -I../workspace/riso-ranger2016 \
     -I./
 
@@ -24,12 +27,17 @@ APPL_CXXOBJS += \
 	../workspace/riso-ranger2016/sys/arch/timer/TimerEvent.o \
 	../workspace/riso-ranger2016/sys/device/init_ev3.o \
 	../workspace/riso-ranger2016/sys/device/spec_ev3.o \
+	../workspace/riso-ranger2016/sys/device/WheelControl.o \
+	../workspace/riso-ranger2016/sys/device/TailControl.o \
+	../workspace/riso-ranger2016/sys/device/WheelMotor.o \
+	../workspace/riso-ranger2016/sys/device/balancer_param.o \
+	../workspace/riso-ranger2016/sys/device/balancer.o \
 	../workspace/riso-ranger2016/sys/task/Task.o \
 	../workspace/riso-ranger2016/sys/task/DebugConsole.o \
 	../workspace/riso-ranger2016/sys/task/Engine.o \
 	../workspace/riso-ranger2016/sys/task/HighPriority.o \
 	../workspace/riso-ranger2016/sys/task/Main.o \
-    ../workspace/riso-ranger2016/sys/command/CmdReceiveBridge.o \
+	../workspace/riso-ranger2016/sys/command/CmdReceiveBridge.o \
     ../workspace/riso-ranger2016/sys/command/CmdReceiveIf.o
     ../workspace/riso-ranger2016/sys/device/serial_port/TxBuffer.o \
     ../workspace/riso-ranger2016/sys/device/serial_port/RxBuffer.o \
@@ -37,7 +45,11 @@ APPL_CXXOBJS += \
     ../workspace/riso-ranger2016/sys/device/SysDeviceBridge.o \
     ../workspace/riso-ranger2016/sys/device/serial_port\SerialCom.o \
     ../workspace/riso-ranger2016/sys/device/serial_port\SerialComEV3BT_SPP.o
-    
-
+	../workspace/riso-ranger2016/eng/calibration/GetSensorValue.o \
+	../workspace/riso-ranger2016/eng/calibration/Calibration.o \
+	../workspace/riso-ranger2016/event/TouchSensorListener.o \
+	../workspace/riso-ranger2016/eng/linetrace/Linetrace.o \
+	../workspace/riso-ranger2016/eng/linetrace/PIDControl.o \
+	../workspace/riso-ranger2016/Temp.o 
 
 
