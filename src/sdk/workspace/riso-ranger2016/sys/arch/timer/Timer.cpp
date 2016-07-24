@@ -62,7 +62,7 @@ void Timer::startTimer(uint32 rv_time, EmTimerId rv_id) {
     time_count[rv_id] = rv_time;
 
     if(is_inuse == false) {
-        // 1つ目のタイマ開始ならタイマソーソを起動.
+        // 1つ目のタイマ開始ならタイマソースを起動.
         RTOS::stopCyclicHandler(ID_EV3CYC_1MS);
         is_inuse = true;
     }

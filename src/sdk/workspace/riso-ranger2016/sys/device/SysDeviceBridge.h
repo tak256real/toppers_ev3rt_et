@@ -19,10 +19,12 @@ public:
 
 	void doStartRcvCommand();
 	static SysDeviceBridge* geInstance();
+	void intrNtfTimeOut(EmTimerId rv_timer_id);
 
 private:
 	static SysDeviceBridge* instance;
 	SysDeviceIf *the_device;
+	SysDeviceIf* the_dev_if;
 
 	SysDeviceBridge(uint16 rv_subsys_id, sint32 rv_mbox_id);
 	virtual void actInitialize();

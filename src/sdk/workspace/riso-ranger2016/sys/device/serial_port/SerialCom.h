@@ -23,6 +23,7 @@ protected:
 private:
 
     virtual void actInitialze();
+    virtual void actTimeOut(EmTiemrId rv_timer_id);
 
 public:
 	SerialCom();
@@ -30,6 +31,7 @@ public:
 
 	void doInitialze();
 	void doStartRcvCommand();
+	void ntfTimeOut(EmTiemrId rv_timer_id);
 
 };
 #endif // !defined(EA_18F17BD4_3195_48db_9994_10A631C11B9B__INCLUDED_)

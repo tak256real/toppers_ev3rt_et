@@ -5,11 +5,16 @@
 //  Original author: 037789
 ///////////////////////////////////////////////////////////
 
+#include "SysDeviceFactory.h"
 #include "SysDeviceIf.h"
+
 
 SysDeviceIf* SysDeviceIf::instance = NULL;
 
-SysDeviceIf::SysDeviceIf(){
+SysDeviceIf::SysDeviceIf()
+    : SubsystemIf(),
+      the_serial_com(NULL);
+{
 
 }
 
@@ -20,6 +25,16 @@ SysDeviceIf::~SysDeviceIf(){
 }
 
 
+
+void SysDeviceIf::initialize(){
+    // SS 内常駐インスタンスの生成.
+    SysDeviceFactory::create();
+
+    // 初期化.
+    if(the_serial_com != NULL) {
+        the_serial_com->doInitialize();
+    }
+}
 
 
 
@@ -38,4 +53,18 @@ SysDeviceIf* SysDeviceIf::getInstance(){
     }
 
 	return instance;
+}
+
+
+
+
+void SysDeviceIf::ntfTimeOut(EmTimerId rv_timer_id){
+
+    switch(rv_timer_id) {
+        case kTimerSCI:
+            the_serial_com->ntfTimeOut(EmTimerId rv_timer_id);
+            break;
+        default:
+            break;
+    }
 }

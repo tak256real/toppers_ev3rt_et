@@ -10,6 +10,8 @@
 
 #include "SerialCom.h"
 
+class Timer;
+
 class SerialComEV3BT_SPP : public SerialCom
 {
 
@@ -17,8 +19,12 @@ public:
 	SerialComEV3BT_SPP();
 	virtual ~SerialComEV3BT_SPP();
 
-private:	FILE tty;
+private:
+    const uint32 cTtyCtrlCycle = 100;
+    FILE tty;
+	Timer* the_timer;
 	virtual void actInitialze();
+    virtual void actTimeOut(EmTiemrId rv_timer_id);
 
 };
 #endif // !defined(EA_570CE649_6706_4399_B221_46C6ECA2A112__INCLUDED_)

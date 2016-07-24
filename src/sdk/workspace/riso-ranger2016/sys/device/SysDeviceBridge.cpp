@@ -45,9 +45,27 @@ SysDeviceBridge* SysDeviceBridge::geInstance(){
 
 void SysDeviceBridge::actInitialize(){
     the_device = SysDeviceIf::getInstance();
+    the_device = initialize();
 }
 
 
 void SysDeviceBridge::actReceiveMessage(uint16 rv_msg_code, uint16* rv_message){
+
+}
+
+
+
+void SysDeviceBridge::intrNtfTimeOut(EmTimerId rv_timer_id){
+
+    // 非タスクコンテキストにおけるメッセージングを考慮.
+    // TimerId の種類によってスレッドの切り替えを判定する.
+    switch(rv_timer_id) {
+        case kTimerSCI:
+            // ここでは非タスクコンテキストのまま If をコールする.
+            the_device->ntfTimeOut(rv_timer_id);
+            break;
+        default:
+            break;
+    }
 
 }

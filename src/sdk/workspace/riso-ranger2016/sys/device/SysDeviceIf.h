@@ -14,14 +14,24 @@ class SysDeviceIf : public SubsystemIf
 {
 private:
 	static SysDeviceIf* instance;
+	SerialCom *the_serial_com;
 
 	SysDeviceIf();
 
 public:
 	virtual ~SysDeviceIf();
 
+    void initialize();
 	void doStartRcvCommand();
 	virtual SysDeviceIf* getInstance();
+	inline void set_the_serial_com(SerialCom* rv_obj);
+	void ntfTimeOut(EmTimerId rv_timer_id);
 
 };
+
+inline void SysDeviceIf::set_the_serial_com(SerialCom* rv_obj){
+
+    the_serial_com = newVal;
+}
+
 #endif // !defined(EA_6C10D480_02C4_4b08_BDAB_A5037FE6C9D1__INCLUDED_)
