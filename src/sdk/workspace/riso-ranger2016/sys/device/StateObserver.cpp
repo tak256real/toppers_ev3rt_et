@@ -7,12 +7,37 @@
 
 #include "StateObserver.h"
 
-StateObserver::StateObserver() {
-	// TODO Auto-generated constructor stub
-
+StateObserver::StateObserver(WheelMotor* wheelMotorL, WheelMotor* wheelMotorR, WheelMotor* tailMotor) {
+	// メンバ初期化
+	m_WheelMotorL = wheelMotorL;
+	m_WheelMotorR = wheelMotorR;
+	m_TailMotor = tailMotor;
+	m_direction = 0;
 }
 
 StateObserver::~StateObserver() {
-	// TODO Auto-generated destructor stub
+
 }
 
+
+void StateObserver::Calc() {
+	// 方位[deg]
+	m_direction += (m_WheelMotorL->GetAngularVelocity() - m_WheelMotorR->GetAngularVelocity())*c_DirCalcCoefficient;
+}
+
+
+int StateObserver::GetDirection() {
+}
+
+
+float StateObserver::GetLinePosition() {
+}
+
+
+int StateObserver::GetTailAngularVelocity() {
+
+}
+
+
+int StateObserver::GetRunningDistance() {
+}
