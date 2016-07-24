@@ -31,7 +31,6 @@ void TimerEvent::ntfTimeOut(EmTimerId rv_id){
             
             break;
         case kTempTimer: //TODO 試走会暫定
-        	Timer::getInstance()->startTimer(4, kTempTimer);
         	Temp::cycle();
         	break;
         default:
