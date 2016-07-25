@@ -7,12 +7,14 @@
 
 #include "StateObserver.h"
 
-StateObserver::StateObserver(WheelMotor* wheelMotorL, WheelMotor* wheelMotorR, WheelMotor* tailMotor) {
+StateObserver::StateObserver(WheelMotor* wheelMotorL, WheelMotor* wheelMotorR, WheelMotor* tailMotor, Calibration* calibration) {
 	// メンバ初期化
 	m_WheelMotorL = wheelMotorL;
 	m_WheelMotorR = wheelMotorR;
 	m_TailMotor = tailMotor;
-	m_direction = 0;
+	m_Calibration = calibration;
+	m_Direction = 0;
+	m_RunningDistance = 0;
 }
 
 StateObserver::~StateObserver() {
@@ -22,22 +24,28 @@ StateObserver::~StateObserver() {
 
 void StateObserver::Calc() {
 	// 方位[deg]
-	m_direction += (m_WheelMotorL->GetAngularVelocity() - m_WheelMotorR->GetAngularVelocity())*c_DirCalcCoefficient;
-}
+	m_Direction += (m_WheelMotorL->GetAngularVelocity() - m_WheelMotorR->GetAngularVelocity())*c_DirCalcCoefficient;
 
-
-int StateObserver::GetDirection() {
+	// 走行距離[mm]
+	m_RunningDistance += (m_WheelMotorL->GetAngularVelocity() + m_WheelMotorR->GetAngularVelocity())*c_RunDisCalcCoefficient;
 }
 
 
 float StateObserver::GetLinePosition() {
+	return m_Calibration->GetNormalizedSensorValue();
 }
 
 
 int StateObserver::GetTailAngularVelocity() {
-
+	return m_TailMotor->GetAngularVelocity();
 }
 
 
 int StateObserver::GetRunningDistance() {
+	return m_RunningDistance;
+}
+
+
+int StateObserver::GetDirection() {
+	return m_Direction;
 }

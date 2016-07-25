@@ -14,6 +14,7 @@
 #include "TailControl.h"
 #include "Linetrace.h"
 #include "GetSensorValue.h"
+#include "StateObserver.h"
 
 class Temp
 {
@@ -46,6 +47,8 @@ public:
 	static Linetrace* linetrace;
 	static Calibration* calibration;
 	static GetSensorValue* getSensorValue;
+
+	static StateObserver* stateObserver;
 
 private:
 
