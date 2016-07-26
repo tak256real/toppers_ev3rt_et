@@ -17,11 +17,12 @@
 #define CALIB_FONT_WIDTH (6/*TODO: magic number*/)
 #define CALIB_FONT_HEIGHT (8/*TODO: magic number*/)
 
-void TaskMain(){
+void TaskMain(intptr_t unused){
+	ev3_led_set_color(LED_ORANGE);
     Main::getInstance()->start();
 }
 
-void TaskHighPriority(){
+void TaskHighPriority(intptr_t unused){
 //  HighPriority *at_high_priority_task = new HighPriority(ID_TASK_HIGH_PRIORITY, ID_MSG_BOX_HIGH_PRIORITY);
     HighPriority* at_task = static_cast<HighPriority *>(Main::getInstance()->get_the_task(kTaskHighPriority));
 
@@ -34,7 +35,7 @@ void TaskHighPriority(){
 }
 
 
-void TaskEngine(){
+void TaskEngine(intptr_t unused){
     Engine *at_task = static_cast<Engine *>(Main::getInstance()->get_the_task(kTaskEngine));
 
     if(at_task != NULL) {
@@ -45,7 +46,7 @@ void TaskEngine(){
     }
 }
 
-void TaskDebugConsole(){
+void TaskDebugConsole(intptr_t unused){
     Engine *at_task = static_cast<Engine *>(Main::getInstance()->get_the_task(kTaskDebugConsole));
 
     if(at_task != NULL) {

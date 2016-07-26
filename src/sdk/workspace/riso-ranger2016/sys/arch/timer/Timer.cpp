@@ -71,20 +71,25 @@ void Timer::startTimer(uint32 rv_time, EmTimerId rv_id) {
 
 void Timer::stopTimer(EmTimerId rv_id) {
 
-    bool at_is_timer_inuse = false;
-    // カウント 0 にしてタイムアウト通知をキャンセルする.
-    time_count[rv_id] = 0;
+   bool at_is_timer_inuse = false;
+   // カウント 0 にしてタイムアウト通知をキャンセルする.
+   time_count[rv_id] = 0;
 
-    for(uint8 i = 0; i < kMaxTimerId; i++ ) {
-        if (time_count[i] != 0) {
-            at_is_timer_inuse = true;
-            break;
-        }
-    }
+   if(rv_id == kTempTimer) {
+       time_count[kTempTimer] = 4;
+   }
 
-    if(at_is_timer_inuse == false) {
-        // 全てのタイマが停止されたらしたらタイマソースを OFF する.
-        RTOS::stopCyclicHandler(ID_EV3CYC_1MS);
-        is_inuse = false;
-    }
+   for(uint8 i = 0; i < kMaxTimerId; i++ ) {
+       if (time_count[i] != 0) {
+           at_is_timer_inuse = true;
+           break;
+       }
+   }
+
+   if(at_is_timer_inuse == false) {
+       // 全てのタイマが停止されたらしたらタイマソースを OFF する.
+       RTOS::stopCyclicHandler(ID_EV3CYC_1MS);
+       is_inuse = false;
+   }
 }
+

@@ -7,6 +7,8 @@
 
 #include "TimerEvent.h"
 
+#include "Temp.h" //TODO 試走会暫定
+
 
 TimerEvent::TimerEvent(){
 
@@ -28,6 +30,9 @@ void TimerEvent::ntfTimeOut(EmTimerId rv_id){
         case kDummyTimerId:
             
             break;
+        case kTempTimer: //TODO 試走会暫定
+        	Temp::cycle();
+        	break;
         default:
             break;
     }

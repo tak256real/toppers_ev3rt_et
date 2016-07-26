@@ -62,7 +62,7 @@ extern "C" {
 //!   - ハートビート、ウォッチドッグなど、軽い非機能定常処理.
 //! @exception none
 // -----------------------------------------------------------------------------
-extern void TaskMain();
+extern void TaskMain(intptr_t unused);
 
 
 // -----------------------------------------------------------------------------
@@ -74,7 +74,7 @@ extern void TaskMain();
 //!   - 即時性を要するフィードバック制御.
 //! @exception none
 // -----------------------------------------------------------------------------
-extern void TaskHighPriority();
+extern void TaskHighPriority(intptr_t unused);
 
 
 // -----------------------------------------------------------------------------
@@ -83,7 +83,7 @@ extern void TaskHighPriority();
 //! 通常、特に理由が無い限り、このタスクで処理を実施する.
 //! @exception none
 // -----------------------------------------------------------------------------
-extern void TaskEngine();
+extern void TaskEngine(intptr_t unused);
 
 
 // -----------------------------------------------------------------------------
@@ -93,7 +93,7 @@ extern void TaskEngine();
 //! 非機能なので優先度は最低である.
 //! @exception none
 // -----------------------------------------------------------------------------
-extern void TaskDebugConsole();
+extern void TaskDebugConsole(intptr_t unused);
 
 #if 0                       // 未実装.
 extern void TaskCommunication();
