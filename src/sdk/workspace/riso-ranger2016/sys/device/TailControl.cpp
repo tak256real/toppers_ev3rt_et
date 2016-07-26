@@ -8,7 +8,7 @@
 #include "TailControl.h"
 
 
-TailControl::TailControl(WheelMotor* tailMotor){
+TailControl::TailControl(Motor* tailMotor){
 
 	m_TailMotor = tailMotor;
 	m_RefAngle = 0;

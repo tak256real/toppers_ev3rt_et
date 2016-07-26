@@ -7,7 +7,7 @@
 
 #include "StateObserver.h"
 
-StateObserver::StateObserver(WheelMotor* wheelMotorL, WheelMotor* wheelMotorR, WheelMotor* tailMotor, Calibration* calibration) {
+StateObserver::StateObserver(Motor* wheelMotorL, Motor* wheelMotorR, Motor* tailMotor, Calibration* calibration) {
 	// メンバ初期化
 	m_WheelMotorL = wheelMotorL;
 	m_WheelMotorR = wheelMotorR;

@@ -27,7 +27,7 @@ APPL_CXXOBJS += \
 	../workspace/riso-ranger2016/sys/device/spec_ev3.o \
 	../workspace/riso-ranger2016/sys/device/WheelControl.o \
 	../workspace/riso-ranger2016/sys/device/TailControl.o \
-	../workspace/riso-ranger2016/sys/device/WheelMotor.o \
+	../workspace/riso-ranger2016/sys/device/Motor.o \
 	../workspace/riso-ranger2016/sys/device/balancer_param.o \
 	../workspace/riso-ranger2016/sys/device/balancer.o \
 	../workspace/riso-ranger2016/sys/device/StateObserver.o \

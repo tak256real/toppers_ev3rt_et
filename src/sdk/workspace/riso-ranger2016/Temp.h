@@ -9,7 +9,7 @@
 #define EA_329EB60B_1959_4205_80F0_3B93161E230D__INCLUDED_
 
 #include "ev3api.h"
-#include "WheelMotor.h"
+#include "Motor.h"
 #include "WheelControl.h"
 #include "TailControl.h"
 #include "Linetrace.h"
@@ -37,9 +37,9 @@ public:
 
 	static int gyroOffset;
 
-	static WheelMotor* wheelMotorL;
-	static WheelMotor* wheelMotorR;
-	static WheelMotor* tailMotor;
+	static Motor* wheelMotorL;
+	static Motor* wheelMotorR;
+	static Motor* tailMotor;
 
 	static WheelControl* wheelControl;
 	static TailControl* tailControl;

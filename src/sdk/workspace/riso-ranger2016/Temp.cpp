@@ -10,9 +10,9 @@
 
 int gyroOffset;
 
-WheelMotor* Temp::wheelMotorL = new WheelMotor(Temp::wheelLPort);
-WheelMotor* Temp::wheelMotorR = new WheelMotor(Temp::wheelRPort);
-WheelMotor* Temp::tailMotor = new WheelMotor(tailPort);
+Motor* Temp::wheelMotorL = new Motor(Temp::wheelLPort);
+Motor* Temp::wheelMotorR = new Motor(Temp::wheelRPort);
+Motor* Temp::tailMotor = new Motor(tailPort);
 
 WheelControl* Temp::wheelControl = new WheelControl(Temp::wheelMotorL, Temp::wheelMotorR);
 TailControl* Temp::tailControl = new TailControl(tailMotor);

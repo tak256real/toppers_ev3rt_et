@@ -8,20 +8,20 @@
 #if !defined(EA_AF7A7D4C_EA3F_49d8_B0CD_3F5D4A6A7B1C__INCLUDED_)
 #define EA_AF7A7D4C_EA3F_49d8_B0CD_3F5D4A6A7B1C__INCLUDED_
 
-#include "WheelMotor.h"
+#include "Motor.h"
 
 class TailControl
 {
 
 public:
-	TailControl(WheelMotor* tailMotor);
+	TailControl(Motor* tailMotor);
 	virtual ~TailControl();
 
 	void Control();
 	void SetRefValue(int angle);
 
 private:
-	WheelMotor* m_TailMotor;
+	Motor* m_TailMotor;
 	int m_RefAngle;
 
 };

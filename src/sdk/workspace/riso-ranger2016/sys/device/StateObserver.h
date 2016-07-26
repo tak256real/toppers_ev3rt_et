@@ -8,12 +8,12 @@
 #ifndef WORKSPACE_RISO_RANGER2016_SYS_DEVICE_STATEOBSERVER_H_
 #define WORKSPACE_RISO_RANGER2016_SYS_DEVICE_STATEOBSERVER_H_
 
-#include "WheelMotor.h"
+#include "Motor.h"
 #include "Calibration.h"
 
 class StateObserver {
 public:
-	StateObserver(WheelMotor* wheelMotorL, WheelMotor* wheelMotorR, WheelMotor* tailMotor, Calibration* calibration);
+	StateObserver(Motor* wheelMotorL, Motor* wheelMotorR, Motor* tailMotor, Calibration* calibration);
 	virtual ~StateObserver();
 
 	void Calc();					// 周期計算
@@ -23,9 +23,9 @@ public:
 	int GetRunningDistance();		// 走行距離[mm]取得
 
 private:
-	WheelMotor* m_WheelMotorL;	// 左モータ
-	WheelMotor* m_WheelMotorR;	// 右モータ
-	WheelMotor* m_TailMotor;	// 尻尾モータ
+	Motor* m_WheelMotorL;	// 左モータ
+	Motor* m_WheelMotorR;	// 右モータ
+	Motor* m_TailMotor;	// 尻尾モータ
 	Calibration* m_Calibration;	// キャリブレーション
 
 	float m_Direction;							// 方位[deg]
