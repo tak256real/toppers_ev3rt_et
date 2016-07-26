@@ -38,9 +38,8 @@ void SysDeviceIf::initialize(){
 
 
 
-void SysDeviceIf::doStartRcvCommand(){
-
-	return 0;
+void SysDeviceIf::doStartConsoleDev(){
+    the_serial_com->doComOpen();
 }
 
 

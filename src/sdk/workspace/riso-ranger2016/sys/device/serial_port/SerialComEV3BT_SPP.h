@@ -24,6 +24,7 @@ private:
     FILE tty;
 	Timer* the_timer;
 	virtual void actInitialze();
+    virtual void actComOpen();
     virtual void actTimeOut(EmTiemrId rv_timer_id);
 
 };

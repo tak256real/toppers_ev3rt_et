@@ -29,7 +29,7 @@ void SerialCom::doInitialze(){
 }
 
 
-void SerialCom::doStartRcvCommand(){
+void SerialCom::doComOpen(){
 
 }
 

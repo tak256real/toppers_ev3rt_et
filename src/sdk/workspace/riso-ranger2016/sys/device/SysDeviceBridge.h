@@ -17,7 +17,7 @@ class SysDeviceBridge : public SubsystemBridge
 public:
 	virtual ~SysDeviceBridge();
 
-	void doStartRcvCommand();
+	void doStartConsoleDev();
 	static SysDeviceBridge* geInstance();
 	void intrNtfTimeOut(EmTimerId rv_timer_id);
 

@@ -22,7 +22,7 @@ public:
 	virtual ~SysDeviceIf();
 
     void initialize();
-	void doStartRcvCommand();
+	void doStartConsoleDev();
 	virtual SysDeviceIf* getInstance();
 	inline void set_the_serial_com(SerialCom* rv_obj);
 	void ntfTimeOut(EmTimerId rv_timer_id);

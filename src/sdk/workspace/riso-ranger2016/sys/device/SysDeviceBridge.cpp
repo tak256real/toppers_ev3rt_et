@@ -25,7 +25,7 @@ SysDeviceBridge::~SysDeviceBridge(){
 
 
 
-void SysDeviceBridge::doStartRcvCommand(){
+void SysDeviceBridge::doStartConsoleDev(){
     the_device->doStartRcvCommand();
 }
 

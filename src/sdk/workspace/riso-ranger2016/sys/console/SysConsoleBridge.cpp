@@ -47,6 +47,6 @@ void SysConsoleBridge::actReceiveMessage(uint16 rv_msg_code, uint16* rv_message)
 void SysConsoleBridge::actInitialize(){
     the_if = SysConsoleIf::getInstance();
 
-    the_if = doInitialize();
+    the_if->initialze();
 
 }

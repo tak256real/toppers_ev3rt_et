@@ -22,10 +22,12 @@ public:
 	TxBuffer(uint8* rv_buff, uint16 rv_size);
 	virtual ~TxBuffer();
 
+    virtual void doStartRead();
+    
 	void doStartWrite();
 	bool doWrite(uint8 rv_data);
 	void updateWriteItr();
-	void doStartRead();
+
 	uint8 doRead();
 	void updateReadItr();
 

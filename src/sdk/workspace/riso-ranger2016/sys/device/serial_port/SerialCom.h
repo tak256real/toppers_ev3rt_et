@@ -16,13 +16,14 @@ class TxBuffer;
 class SerialCom
 {
 protected:
-	RxBuffer* the_rx_buff;
-	TxBuffer* the_tx_buff;
+	SciBuffer* the_rx_buff;
+	SciBuffer* the_tx_buff;
 	bool is_connect;
 
 private:
 
     virtual void actInitialze();
+    virtual void actComOpen();
     virtual void actTimeOut(EmTiemrId rv_timer_id);
 
 public:
@@ -30,7 +31,7 @@ public:
 	virtual ~SerialCom();
 
 	void doInitialze();
-	void doStartRcvCommand();
+	void doComOpen();
 	void ntfTimeOut(EmTiemrId rv_timer_id);
 
 };

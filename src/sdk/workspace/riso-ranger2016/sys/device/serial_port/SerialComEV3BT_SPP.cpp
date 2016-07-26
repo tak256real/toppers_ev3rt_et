@@ -35,12 +35,17 @@ SerialComEV3BT_SPP::~SerialComEV3BT_SPP(){
 void SerialComEV3BT_SPP::actInitialze(){
     /* Open Bluetooth file */
     the_timer = Timer::getInstance();
+}
+
+
+void SerialComEV3BT_SPP::actComOpen(){
     tty = ev3_serial_open_file(EV3_SERIAL_BT);
     assert(tty != NULL);
 
+    // 通常のシリアル通信であれば、受信 or 送信の割り込みを受ける事になるのが一般的であるが、
+    // EV3 の場合はベースシステムが存在するため、ポーリングを実施する.
     the_timer->startTimer(cTtyCtrlCycle, kTimerSCI);
 }
-
 
 
 void SerialComEV3BT_SPP::actTimeOut(EmTimerId rv_timer_id){
@@ -51,6 +56,7 @@ void SerialComEV3BT_SPP::actTimeOut(EmTimerId rv_timer_id){
         return;
     }
 
+    // 受信処理.
     if(tty->cnt) {
         uint8 *at_buff = new uint8[tty->cnt]; // 受信バッファ領域の作成.
 
