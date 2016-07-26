@@ -31,12 +31,12 @@ APPL_CXXOBJS += \
 	../workspace/riso-ranger2016/sys/device/balancer_param.o \
 	../workspace/riso-ranger2016/sys/device/balancer.o \
 	../workspace/riso-ranger2016/sys/device/StateObserver.o \
+	../workspace/riso-ranger2016/sys/device/ColorSensor.o \
 	../workspace/riso-ranger2016/sys/task/Task.o \
 	../workspace/riso-ranger2016/sys/task/DebugConsole.o \
 	../workspace/riso-ranger2016/sys/task/Engine.o \
 	../workspace/riso-ranger2016/sys/task/HighPriority.o \
 	../workspace/riso-ranger2016/sys/task/Main.o \
-	../workspace/riso-ranger2016/eng/calibration/GetSensorValue.o \
 	../workspace/riso-ranger2016/eng/calibration/Calibration.o \
 	../workspace/riso-ranger2016/event/TouchSensorListener.o \
 	../workspace/riso-ranger2016/eng/linetrace/Linetrace.o \

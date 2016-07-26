@@ -17,7 +17,7 @@ Motor* Temp::tailMotor = new Motor(tailPort);
 WheelControl* Temp::wheelControl = new WheelControl(Temp::wheelMotorL, Temp::wheelMotorR);
 TailControl* Temp::tailControl = new TailControl(tailMotor);
 
-GetSensorValue* Temp::getSensorValue = new GetSensorValue(Temp::colorSensorPort);
+ColorSensor* Temp::getSensorValue = new ColorSensor(Temp::colorSensorPort);
 Calibration* Temp::calibration = new Calibration(Temp::getSensorValue);
 
 Linetrace* Temp::linetrace = new Linetrace(Temp::wheelControl, Temp::calibration);
