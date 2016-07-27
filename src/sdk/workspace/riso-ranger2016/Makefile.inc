@@ -5,6 +5,7 @@ SRCLANG := c++
 #   include 記述は ヘッダファイル名のみを記述するものとする.
 PROJECT_INCLUDE += \
  	-I../workspace/riso-ranger2016/common/c_include \
+  	-I../workspace/riso-ranger2016/sys/action \
  	-I../workspace/riso-ranger2016/sys/arch/interface \
  	-I../workspace/riso-ranger2016/sys/arch \
  	-I../workspace/riso-ranger2016/sys/arch/OS \
@@ -18,6 +19,10 @@ PROJECT_INCLUDE += \
  	-I./
 
 APPL_CXXOBJS += \
+	../workspace/riso-ranger2016/sys/action/Action.o \
+	../workspace/riso-ranger2016/sys/action/LineTraceAction.o \
+	../workspace/riso-ranger2016/sys/action/EmergencyStopAction.o \
+	../workspace/riso-ranger2016/sys/action/RecliningAction.o \
 	../workspace/riso-ranger2016/sys/arch/OS/RTOS.o \
 	../workspace/riso-ranger2016/sys/arch/interface/SubsystemBridge.o \
 	../workspace/riso-ranger2016/sys/arch/interface/SubsystemIf.o \
