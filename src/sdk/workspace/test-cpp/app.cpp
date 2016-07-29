@@ -37,18 +37,45 @@ private:
     int member;
 };
 
-auto obj2 = new TestClass();
+Motor* wheelMotorL = new Motor(Temp::wheelLPort);
+Motor* wheelMotorR = new Motor(Temp::wheelRPort);
+Motor* tailMotor = new Motor(Temp::tailPort);
+
+WheelControl* wheelControl = new WheelControl(wheelMotorL, wheelMotorR);
+TailControl* tailControl = new TailControl(tailMotor);
+
+ColorSensor* getSensorValue = new ColorSensor(Temp::colorSensorPort);
+Calibration* calibration = new Calibration(getSensorValue);
+
+Linetrace* linetrace = new Linetrace(wheelControl, calibration);
+
+StateObserver* stateObserver = new StateObserver( wheelMotorL,  wheelMotorR,  tailMotor,  calibration);
 
 void main_task(intptr_t unused) {
-    // Test global constructor
-    obj2->testMethod();
 
-    // Test function in static library
-    libcpp_test_c_echo_function(777);
+	int heartBeatCount = 0;
 
-    // Test class in static library
-    LibSampleClass a;
-    a.draw();
+	tailControl->SetRefValue(45);
+	wheelControl->Init();
 
-    //auto obj = new TestClass();
+	while(1) {
+
+		tailControl->Control();
+		wheelControl->Control();
+
+		if(heartBeatCount%250 == 0) {
+			ev3_led_set_color(LED_ORANGE);
+		}
+		else if((heartBeatCount+125)%250 == 0) {
+			ev3_led_set_color(LED_GREEN);
+		}
+		heartBeatCount++;
+
+		if(heartBeatCount == 1250) {
+			wheelControl->SetTwoWheelMode(true);
+		}
+
+		tslp_tsk(4);
+	}
+
 }
