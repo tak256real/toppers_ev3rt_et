@@ -62,7 +62,7 @@ StateObserver* stateObserver = new StateObserver( wheelMotorL,  wheelMotorR,  ta
 void main_task(intptr_t unused) {
 
 	int heartBeatCount = 0;
-
+	Temp::init();
 	tailControl->SetRefValue(45);
 	wheelControl->Init();
 
@@ -73,6 +73,7 @@ void main_task(intptr_t unused) {
 
 		if(heartBeatCount%250 == 0) {
 			ev3_led_set_color(LED_ORANGE);
+			printf("%d\n",ev3_gyro_sensor_get_rate(Temp::gyroPort));
 		}
 		else if((heartBeatCount+125)%250 == 0) {
 			ev3_led_set_color(LED_GREEN);
@@ -80,6 +81,7 @@ void main_task(intptr_t unused) {
 		heartBeatCount++;
 
 		if(heartBeatCount == 1250) {
+			ev3_led_set_color(LED_RED);
 			wheelControl->SetTwoWheelMode(true);
 		}
 
