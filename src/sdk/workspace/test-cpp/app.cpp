@@ -59,7 +59,19 @@ Linetrace* linetrace = new Linetrace(wheelControl, calibration);
 
 StateObserver* stateObserver = new StateObserver( wheelMotorL,  wheelMotorR,  tailMotor,  calibration);
 
+static FILE* bt = NULL;
+
+void idle_task(intptr_t unused) {
+    while(1) {
+    	fprintf(bt, "Press 'h' for usage instructions.\n");
+    	tslp_tsk(1000);
+    }
+}
+
+
 void main_task(intptr_t unused) {
+
+    bt = ev3_serial_open_file(EV3_SERIAL_BT);
 
 	int heartBeatCount = 0;
 	Temp::init();
