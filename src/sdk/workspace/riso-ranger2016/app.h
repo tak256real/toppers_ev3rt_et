@@ -20,7 +20,7 @@
 #define HIGH_PRIORITY_VAL        5     //!< 高優先度
 #define BASE_PRIORITY_VAL       10     //!< 基準優先度.
 #define LOW_PRIORITY_VAL        15     //!< 低優先度.
-#define MINIMUM_PRIORITY_VAL    20     //!< 最低優先度.
+#define MINIMUM_PRIORITY_VAL    16     //!< 最低優先度.
 // @}
 
 #ifndef STACK_SIZE
