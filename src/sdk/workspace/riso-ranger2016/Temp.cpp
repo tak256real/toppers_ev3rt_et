@@ -39,6 +39,17 @@ Temp::~Temp(){
 void Temp::init(){
 
 	wheelControl->Init();
+
+    /* センサー入力ポートの設定 */
+ //   ev3_sensor_config(, ULTRASONIC_SENSOR);
+    ev3_sensor_config(Temp::colorSensorPort, COLOR_SENSOR);
+    ev3_color_sensor_get_reflect(color_sensor); /* 反射率モード */
+ //   ev3_sensor_config(touch_sensor, TOUCH_SENSOR);
+    ev3_sensor_config(Temp::gyroPort, GYRO_SENSOR);
+    /* モーター出力ポートの設定 */
+    ev3_motor_config(Temp::wheelMotorL, LARGE_MOTOR);
+    ev3_motor_config(Temp::wheelMotorR, LARGE_MOTOR);
+    ev3_motor_config(Temp::tailPort, LARGE_MOTOR);
 }
 
 
