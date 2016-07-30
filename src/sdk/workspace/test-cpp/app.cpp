@@ -17,6 +17,7 @@
 #include "Linetrace.h"
 #include "ColorSensor.h"
 #include "StateObserver.h"
+#include "Temp.h"
 
 #define DEBUG
 

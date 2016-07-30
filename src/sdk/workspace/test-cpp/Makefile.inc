@@ -25,7 +25,8 @@ APPL_CXXOBJS += \
 ../workspace/riso-ranger2016/eng/calibration/Calibration.o \
 ../workspace/riso-ranger2016/event/TouchSensorListener.o \
 ../workspace/riso-ranger2016/eng/linetrace/Linetrace.o \
-../workspace/riso-ranger2016/eng/linetrace/PIDControl.o
+../workspace/riso-ranger2016/eng/linetrace/PIDControl.o \
+../workspace/riso-ranger2016/Temp.o
 
 SRCLANG := c++
 
