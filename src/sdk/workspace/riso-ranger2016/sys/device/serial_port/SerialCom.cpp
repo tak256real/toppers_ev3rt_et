@@ -6,6 +6,7 @@
 ///////////////////////////////////////////////////////////
 
 #include "SerialCom.h"
+#include "SciBuffer.h"
 
 SerialCom::SerialCom()
     : the_tx_buff(NULL),

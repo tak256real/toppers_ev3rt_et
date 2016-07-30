@@ -10,6 +10,8 @@
 
 #include "SubsystemBridge.h"
 
+class CmdReceiveIf;
+
 class CmdReceiveBridge : public SubsystemBridge
 {
 
@@ -18,7 +20,7 @@ public:
 	static CmdReceiveBridge* getInstance();
 
 private:
-	CmdReceiveif *the_receiver;
+	CmdReceiveIf *the_receiver;
 	static CmdReceiveBridge* instance;
 
 	CmdReceiveBridge(uint16 rv_subsys_id, sint32 rv_mbox_id);

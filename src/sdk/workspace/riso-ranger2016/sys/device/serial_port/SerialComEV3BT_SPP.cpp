@@ -9,6 +9,8 @@
 
 #include "ev3api.h"
 #include "Timer.h"
+#include "TxBuffer.h"
+#include "RxBuffer.h"
 #include "SerialComEV3BT_SPP.h"
 
 

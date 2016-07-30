@@ -1,22 +1,22 @@
 ///////////////////////////////////////////////////////////
-//  CmdReciveIf.cpp
-//  Implementation of the Class CmdReciveIf
+//  CmdReceiveIf.cpp
+//  Implementation of the Class CmdReceiveIf
 //  Created on:      2016/05/25 14:35:22
 //  Original author: 037789
 ///////////////////////////////////////////////////////////
 
 #include "SysDeviceBridge.h"
-#include "CmdReciveIf.h"
+#include "CmdReceiveIf.h"
 
 CmdReceiveIf* CmdReceiveIf::instance = NULL;
 
-CmdReceiveIf::CmdReciveIf(){
+CmdReceiveIf::CmdReceiveIf(){
 
 }
 
 
 
-CmdReceiveIf::~CmdReciveIf(){
+CmdReceiveIf::~CmdReceiveIf(){
 
 }
 

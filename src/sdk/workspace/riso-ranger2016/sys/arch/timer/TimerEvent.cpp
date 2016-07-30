@@ -5,6 +5,7 @@
 //  Original author: 037789
 ///////////////////////////////////////////////////////////
 
+#include "SysDeviceBridge.h"
 #include "TimerEvent.h"
 
 #include "Temp.h" //TODO 試走会暫定

@@ -8,7 +8,7 @@
 #if !defined(EA_42EC3F18_9FD7_4c80_976A_C48157E528D4__INCLUDED_)
 #define EA_42EC3F18_9FD7_4c80_976A_C48157E528D4__INCLUDED_
 
-#include "src\sdk\workspace\riso-ranger2016\sys\arch\interface\SubsystemBridge.h"
+#include "SubsystemBridge.h"
 #include "SysDeviceIf.h"
 
 class SysDeviceBridge : public SubsystemBridge
@@ -18,7 +18,7 @@ public:
 	virtual ~SysDeviceBridge();
 
 	void doStartConsoleDev();
-	static SysDeviceBridge* geInstance();
+	static SysDeviceBridge* getInstance();
 	void intrNtfTimeOut(EmTimerId rv_timer_id);
 
 private:

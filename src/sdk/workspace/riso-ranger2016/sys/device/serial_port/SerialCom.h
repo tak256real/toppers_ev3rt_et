@@ -9,9 +9,9 @@
 #define EA_18F17BD4_3195_48db_9994_10A631C11B9B__INCLUDED_
 
 #include "std.h"
+#include "TimerId.h"
 
-class RxBuffer;
-class TxBuffer;
+class SciBuffer;
 
 class SerialCom
 {
@@ -24,7 +24,7 @@ private:
 
     virtual void actInitialze();
     virtual void actComOpen();
-    virtual void actTimeOut(EmTiemrId rv_timer_id);
+    virtual void actTimeOut(EmTimerId rv_timer_id);
 
 public:
 	SerialCom();
@@ -32,7 +32,7 @@ public:
 
 	void doInitialze();
 	void doComOpen();
-	void ntfTimeOut(EmTiemrId rv_timer_id);
+	void ntfTimeOut(EmTimerId rv_timer_id);
 
 };
 #endif // !defined(EA_18F17BD4_3195_48db_9994_10A631C11B9B__INCLUDED_)

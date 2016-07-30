@@ -26,7 +26,7 @@ DebugConsole::~DebugConsole(){
 
 
 void DebugConsole::start(){
-    SysConsoleBridge::getInstance()->doInitialize();
+//    SysConsoleBridge::getInstance()->doInitialize();
     
     loop();
 }

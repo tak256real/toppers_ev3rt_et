@@ -8,7 +8,10 @@
 #if !defined(EA_6C10D480_02C4_4b08_BDAB_A5037FE6C9D1__INCLUDED_)
 #define EA_6C10D480_02C4_4b08_BDAB_A5037FE6C9D1__INCLUDED_
 
+#include "SerialCom.h"
 #include "SubsystemIf.h"
+
+class SerialCom;
 
 class SysDeviceIf : public SubsystemIf
 {
@@ -31,7 +34,7 @@ public:
 
 inline void SysDeviceIf::set_the_serial_com(SerialCom* rv_obj){
 
-    the_serial_com = newVal;
+    the_serial_com = rv_obj;
 }
 
 #endif // !defined(EA_6C10D480_02C4_4b08_BDAB_A5037FE6C9D1__INCLUDED_)

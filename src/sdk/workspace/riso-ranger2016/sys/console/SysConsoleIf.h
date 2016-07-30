@@ -8,7 +8,7 @@
 #if !defined(EA_9BDFF4D2_F2FD_44c5_8ECE_2B5861EEC501__INCLUDED_)
 #define EA_9BDFF4D2_F2FD_44c5_8ECE_2B5861EEC501__INCLUDED_
 
-#include "src\sdk\workspace\riso-ranger2016\sys\arch\interface\SubsystemIf.h"
+#include "SubsystemIf.h"
 
 class SysConsoleIf : public SubsystemIf
 {

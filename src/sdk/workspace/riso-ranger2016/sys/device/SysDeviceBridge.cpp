@@ -30,7 +30,7 @@ void SysDeviceBridge::doStartConsoleDev(){
 }
 
 
-SysDeviceBridge* SysDeviceBridge::geInstance(){
+SysDeviceBridge* SysDeviceBridge::getInstance(){
 
     if(instance == NULL) {
         instance = new CmdReceiveIf();

@@ -18,7 +18,7 @@ class CmdReceiveIf : public SubsystemIf
 public:
 	virtual ~CmdReceiveIf();
 	static CmdReceiveIf* getInstance();
-	void doInitialze();
+	void donitialze();
 
 private:
 	static CmdReceiveIf* instance;
