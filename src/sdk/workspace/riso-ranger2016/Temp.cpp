@@ -6,20 +6,24 @@
 ///////////////////////////////////////////////////////////
 
 #include "Temp.h"
+#include "Timer.h"
 
 int gyroOffset;
 
-WheelMotor* Temp::wheelMotorL = new WheelMotor(Temp::wheelLPort);
-WheelMotor* Temp::wheelMotorR = new WheelMotor(Temp::wheelRPort);
-WheelMotor* Temp::tailMotor = new WheelMotor(tailPort);
+Motor* Temp::wheelMotorL = new Motor(Temp::wheelLPort);
+Motor* Temp::wheelMotorR = new Motor(Temp::wheelRPort);
+Motor* Temp::tailMotor = new Motor(tailPort);
 
 WheelControl* Temp::wheelControl = new WheelControl(Temp::wheelMotorL, Temp::wheelMotorR);
 TailControl* Temp::tailControl = new TailControl(tailMotor);
 
-GetSensorValue* Temp::getSensorValue = new GetSensorValue(Temp::colorSensorPort);
+ColorSensor* Temp::getSensorValue = new ColorSensor(Temp::colorSensorPort);
 Calibration* Temp::calibration = new Calibration(Temp::getSensorValue);
 
 Linetrace* Temp::linetrace = new Linetrace(Temp::wheelControl, Temp::calibration);
+
+StateObserver* Temp::stateObserver = new StateObserver( Temp::wheelMotorL,  Temp::wheelMotorR,  Temp::tailMotor,  Temp::calibration);
+
 
 int Temp::gyroOffset = Temp::getGyroOffset();
 
@@ -41,10 +45,14 @@ void Temp::init(){
 
 void Temp::cycle(){
 
+	Timer::getInstance()->startTimer(4, kTempTimer);
+
 	linetrace->exec();
 
 	wheelMotorL->UpdateAngularVelocity();
 	wheelMotorR->UpdateAngularVelocity();
+
+	stateObserver->Calc();
 
 	wheelControl->Control();
 	tailControl->Control();

@@ -10,13 +10,13 @@
 
 #include "ev3api.h"
 #include "TouchSensorListener.h"
-#include "GetSensorValue.h"
+#include "ColorSensor.h"
 
 class Calibration : TouchSensorListener
 {
 
 public:
-	Calibration(GetSensorValue* getSensorValue);
+	Calibration(ColorSensor* colorSensor);
 	virtual ~Calibration();
 
 	void onPressed();	//override
@@ -24,7 +24,7 @@ public:
 	float GetNormalizedSensorValue();
 
 private:
-	GetSensorValue* m_GetSensorValue;
+	ColorSensor* m_ColorSensor;
 
 	int m_LightValueMax;
 	int m_LightValueMin;

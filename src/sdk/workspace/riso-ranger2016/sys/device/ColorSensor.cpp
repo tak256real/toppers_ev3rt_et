@@ -1,14 +1,14 @@
 ///////////////////////////////////////////////////////////
-//  GetSensorValue.cpp
-//  Implementation of the Class GetSensorValue
-//  Created on:      2016/07/05 11:43:06
-//  Original author: 039918
+//  ColorSensor.cpp
+//  Implementation of the Class ColorSensor
+//  Created on:      2016/07/26 21:04:52
+//  Original author: 039389
 ///////////////////////////////////////////////////////////
 
-#include "GetSensorValue.h"
+#include "ColorSensor.h"
 
 
-GetSensorValue::GetSensorValue(sensor_port_t port){
+ColorSensor::ColorSensor(sensor_port_t port){
 	// メンバ初期化
 	m_Port = port;
 
@@ -17,11 +17,11 @@ GetSensorValue::GetSensorValue(sensor_port_t port){
 }
 
 
-GetSensorValue::~GetSensorValue(){
+ColorSensor::~ColorSensor(){
 
 }
 
 
-int GetSensorValue::getSensorValue(){
+int ColorSensor::getSensorValue(){
 	return ev3_color_sensor_get_reflect(m_Port); //カラーセンサから明度を取得;
 }

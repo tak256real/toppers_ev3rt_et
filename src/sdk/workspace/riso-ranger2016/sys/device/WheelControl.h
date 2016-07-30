@@ -8,13 +8,13 @@
 #if !defined(EA_AD0BBBF1_1A41_451b_9449_09D1A5901DD9__INCLUDED_)
 #define EA_AD0BBBF1_1A41_451b_9449_09D1A5901DD9__INCLUDED_
 
-#include "WheelMotor.h"
+#include "Motor.h"
 
 class WheelControl
 {
 
 public:
-	WheelControl(WheelMotor* wheelMotorL, WheelMotor* wheelMotorR);
+	WheelControl(Motor* wheelMotorL, Motor* wheelMotorR);
 	virtual ~WheelControl();
 	void Init();
 	void Control();
@@ -23,8 +23,8 @@ public:
 
 private:
 	bool m_TwoWheelMode;		// 倒立制御オンオフ
-	WheelMotor* m_WheelMotorL;	// 左モータ
-	WheelMotor* m_WheelMotorR;	// 右モータ
+	Motor* m_WheelMotorL;	// 左モータ
+	Motor* m_WheelMotorR;	// 右モータ
 	int m_RefSpeed;				// 目標速度
 	int m_RefTurn;				// 目標旋回速度
 

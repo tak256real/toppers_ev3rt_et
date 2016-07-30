@@ -8,9 +8,9 @@
 #include "Calibration.h"
 
 
-Calibration::Calibration(GetSensorValue* getSensorValue){
+Calibration::Calibration(ColorSensor* colorSensor){
 	// メンバ初期化
-	m_GetSensorValue = getSensorValue;
+	m_ColorSensor = colorSensor;
 	m_LightValueMax = 100;
 	m_LightValueMin = 0;
 	m_CalibrationIndex = 0;
@@ -42,11 +42,11 @@ void Calibration::onReleased(){
 
 
 float Calibration::GetNormalizedSensorValue(){
-	
+
 	//bool_t isPressed = ev3_touch_sensor_is_pressed(EV3_PORT_1); //タッチセンサの状態検出
 
 	// 光センサ値を正規化
-	float normalizedSensorValue = (m_GetSensorValue->getSensorValue() - m_LightValueMin) / m_LightValueMax;
+	float normalizedSensorValue = (m_ColorSensor->getSensorValue() - m_LightValueMin) / m_LightValueMax;
 
 	// 範囲チェック＆丸め込み
 	if(normalizedSensorValue < 0.0) {
@@ -64,10 +64,10 @@ float Calibration::GetNormalizedSensorValue(){
 // private method
 
 void Calibration::ConfigureWhiteValue(){
-	m_LightValueMin = m_GetSensorValue->getSensorValue();
+	m_LightValueMin = m_ColorSensor->getSensorValue();
 }
 
 
 void Calibration::ConfigureLineValue(){
-	m_LightValueMin = m_GetSensorValue->getSensorValue();
+	m_LightValueMax = m_ColorSensor->getSensorValue();
 }

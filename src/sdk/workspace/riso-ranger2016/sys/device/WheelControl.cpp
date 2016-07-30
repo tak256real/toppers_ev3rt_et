@@ -10,7 +10,7 @@
 
 #include "Temp.h"
 
-WheelControl::WheelControl(WheelMotor* wheelMotorL, WheelMotor* wheelMotorR){
+WheelControl::WheelControl(Motor* wheelMotorL, Motor* wheelMotorR){
 	m_RefSpeed = 0;
 	m_RefTurn = 0;
 	m_WheelMotorL = NULL;

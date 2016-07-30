@@ -20,7 +20,7 @@
 #define HIGH_PRIORITY_VAL        5     //!< 高優先度
 #define BASE_PRIORITY_VAL       10     //!< 基準優先度.
 #define LOW_PRIORITY_VAL        15     //!< 低優先度.
-#define MINIMUM_PRIORITY_VAL    20     //!< 最低優先度.
+#define MINIMUM_PRIORITY_VAL    16     //!< 最低優先度.
 // @}
 
 #ifndef STACK_SIZE
@@ -63,7 +63,7 @@ extern "C" {
 //!   - ハートビート、ウォッチドッグなど、軽い非機能定常処理.
 //! @exception none
 // -----------------------------------------------------------------------------
-extern void TaskMain();
+extern void TaskMain(intptr_t unused);
 
 
 // -----------------------------------------------------------------------------
@@ -75,7 +75,7 @@ extern void TaskMain();
 //!   - 即時性を要するフィードバック制御.
 //! @exception none
 // -----------------------------------------------------------------------------
-extern void TaskHighPriority();
+extern void TaskHighPriority(intptr_t unused);
 
 
 // -----------------------------------------------------------------------------
@@ -84,7 +84,7 @@ extern void TaskHighPriority();
 //! 通常、特に理由が無い限り、このタスクで処理を実施する.
 //! @exception none
 // -----------------------------------------------------------------------------
-extern void TaskEngine();
+extern void TaskEngine(intptr_t unused);
 
 
 // -----------------------------------------------------------------------------
@@ -102,7 +102,7 @@ extern void TaskCommunication();
 //! 非機能なので優先度は最低である.
 //! @exception none
 // -----------------------------------------------------------------------------
-extern void TaskDebugConsole();
+extern void TaskDebugConsole(intptr_t unused);
 
 #if 0                       // 未実装.
 extern void TaskCommunication();

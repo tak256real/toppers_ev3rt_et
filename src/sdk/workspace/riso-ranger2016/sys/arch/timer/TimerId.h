@@ -17,7 +17,9 @@
 // -----------------------------------------------
 enum EmTimerId
 {
-	kTimerSCI,                  // SCI用タイマ.
+	kDummyTimerId,
+	kTempTimer,
+    kTimerSCI,                  // SCI用タイマ.	kMaxTimerId                 //!< 終端定義.
 
 	kMaxTimerId                 //!< 終端定義.
 };
