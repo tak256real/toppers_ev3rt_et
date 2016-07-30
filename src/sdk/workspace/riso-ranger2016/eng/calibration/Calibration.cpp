@@ -11,8 +11,8 @@
 Calibration::Calibration(ColorSensor* colorSensor){
 	// メンバ初期化
 	m_ColorSensor = colorSensor;
-	m_LightValueMax = 100;
-	m_LightValueMin = 0;
+	m_LightValueMax = 49;
+	m_LightValueMin = 2;
 	m_CalibrationIndex = 0;
 }
 

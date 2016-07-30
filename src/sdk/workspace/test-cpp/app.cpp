@@ -55,25 +55,27 @@ TailControl* tailControl = new TailControl(tailMotor);
 ColorSensor* getSensorValue = new ColorSensor(Temp::colorSensorPort);
 Calibration* calibration = new Calibration(getSensorValue);
 
-Linetrace* linetrace = new Linetrace(wheelControl, calibration);
-
 StateObserver* stateObserver = new StateObserver( wheelMotorL,  wheelMotorR,  tailMotor,  calibration);
 
 void main_task(intptr_t unused) {
 
 	int heartBeatCount = 0;
+	Linetrace* linetrace;
+
 	Temp::init();
-	tailControl->SetRefValue(45);
+	tailControl->SetRefValue(90);
 	wheelControl->Init();
 
 	while(1) {
 
+		if(1250 < heartBeatCount) {
+			linetrace->exec();
+		}
 		tailControl->Control();
 		wheelControl->Control();
 
 		if(heartBeatCount%250 == 0) {
 			ev3_led_set_color(LED_ORANGE);
-			printf("%d\n",ev3_gyro_sensor_get_rate(Temp::gyroPort));
 		}
 		else if((heartBeatCount+125)%250 == 0) {
 			ev3_led_set_color(LED_GREEN);
@@ -81,8 +83,8 @@ void main_task(intptr_t unused) {
 		heartBeatCount++;
 
 		if(heartBeatCount == 1250) {
-			ev3_led_set_color(LED_RED);
-			wheelControl->SetTwoWheelMode(true);
+			tailControl->SetRefValue(0);
+			linetrace = new Linetrace(wheelControl, calibration);
 		}
 
 		tslp_tsk(4);
