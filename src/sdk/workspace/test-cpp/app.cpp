@@ -11,6 +11,13 @@
 
 #include "libcpp-test.h"
 
+#include "Motor.h"
+#include "WheelControl.h"
+#include "TailControl.h"
+#include "Linetrace.h"
+#include "ColorSensor.h"
+#include "StateObserver.h"
+
 #define DEBUG
 
 #ifdef DEBUG
