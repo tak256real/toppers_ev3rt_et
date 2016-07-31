@@ -11,7 +11,7 @@
 Calibration::Calibration(ColorSensor* colorSensor){
 	// メンバ初期化
 	m_ColorSensor = colorSensor;
-	m_LightValueMax = 49;
+	m_LightValueMax = 60;
 	m_LightValueMin = 2;
 	m_CalibrationIndex = 0;
 }
@@ -46,8 +46,8 @@ float Calibration::GetNormalizedSensorValue(){
 	//bool_t isPressed = ev3_touch_sensor_is_pressed(EV3_PORT_1); //タッチセンサの状態検出
 
 	// 光センサ値を正規化
-	float normalizedSensorValue = (m_ColorSensor->getSensorValue() - m_LightValueMin) / m_LightValueMax;
-
+	float normalizedSensorValue = ((float)m_ColorSensor->getSensorValue() - (float)m_LightValueMin) /( (float)m_LightValueMax- (float)m_LightValueMin);
+//	printf("normalizedSensor=%f colorsensor= %d \n",normalizedSensorValue,m_ColorSensor->getSensorValue());
 	// 範囲チェック＆丸め込み
 	if(normalizedSensorValue < 0.0) {
 		normalizedSensorValue = 0;
@@ -55,6 +55,7 @@ float Calibration::GetNormalizedSensorValue(){
 	else if(1.0 < normalizedSensorValue) {
 		normalizedSensorValue = 1.0;
 	}
+
 
 	return normalizedSensorValue;
 

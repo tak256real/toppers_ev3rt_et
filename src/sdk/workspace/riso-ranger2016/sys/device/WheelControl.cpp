@@ -44,7 +44,7 @@ void WheelControl::Control(){
 	signed char pwm_R;
 
 	if(m_TwoWheelMode == true) {	// 倒立走行
-
+		//printf("refturn=%d\n",m_RefTurn);
 		//TODO Duty比算出
 		balance_control(
 			(float)m_RefSpeed,

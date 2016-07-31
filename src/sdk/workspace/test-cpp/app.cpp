@@ -58,7 +58,7 @@ Calibration* calibration = new Calibration(getSensorValue);
 StateObserver* stateObserver = new StateObserver( wheelMotorL,  wheelMotorR,  tailMotor,  calibration);
 
 void main_task(intptr_t unused) {
-
+	//printf("\n");
 	int heartBeatCount = 0;
 	Linetrace* linetrace;
 
@@ -85,6 +85,7 @@ void main_task(intptr_t unused) {
 		if(heartBeatCount == 1250) {
 			tailControl->SetRefValue(0);
 			linetrace = new Linetrace(wheelControl, calibration);
+
 		}
 
 		tslp_tsk(4);
