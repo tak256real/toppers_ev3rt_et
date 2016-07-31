@@ -9,6 +9,7 @@
 #define EA_40F80250_C89E_4088_959C_43DF38A0AF05__INCLUDED_
 
 #include "Action.h"
+#include "PIDControl.h"
 
 class LineTraceAction : public Action
 {
