@@ -13,8 +13,11 @@ Linetrace::Linetrace(WheelControl* wheelControl, Calibration* calibration){
 	m_PidControl = new PIDControl();
 	m_WheelControl = wheelControl;
 	m_Calibration = calibration;
-	m_speed = 50;
+	m_speed = 100;
 	m_referenceVal = 0.5;
+
+	// 倒立モードに切り替え
+	m_WheelControl->SetTwoWheelMode(true);
 }
 
 
@@ -24,16 +27,12 @@ Linetrace::~Linetrace(){
 
 
 void Linetrace::exec(){
-	static bool motorFlag = true;
+
 	int turn = 0;
 	float currentVal = 0;
 
-	if(motorFlag == true){  //TODO 走行開始時に実行
-		m_WheelControl->SetTwoWheelMode(motorFlag);
-		motorFlag = false;
-	}
-
 	currentVal = m_Calibration->GetNormalizedSensorValue();
 	turn = m_PidControl->PIDCalculation(m_referenceVal, currentVal);
+	//printf("currenval=%f,trun=%d\n",currentVal,turn);
 	m_WheelControl->SetRefValue(m_speed, turn);
 }

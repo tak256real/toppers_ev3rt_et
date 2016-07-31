@@ -44,7 +44,7 @@ void WheelControl::Control(){
 	signed char pwm_R;
 
 	if(m_TwoWheelMode == true) {	// 倒立走行
-
+		//printf("refturn=%d\n",m_RefTurn);
 		//TODO Duty比算出
 		balance_control(
 			(float)m_RefSpeed,
@@ -105,6 +105,9 @@ void WheelControl::SetTwoWheelMode(bool onoff){
 
 	if(m_TwoWheelMode == false && onoff == true) {
 	    // 倒立振子制御初期化
+	    ev3_gyro_sensor_reset(Temp::gyroPort);
+	    m_WheelMotorL->ResetEnc();
+		m_WheelMotorR->ResetEnc();
 		balance_init();
 		//TODO エンコーダも初期化が必要かもしれない
 	}

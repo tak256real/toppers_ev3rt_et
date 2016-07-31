@@ -93,6 +93,6 @@ void Motor::SetPWMValue(int PWMValue){
 	}
 
 	// PWM設定
-	ev3_motor_set_power(m_Port, PWMValue);
+	ev3_motor_set_power(m_Port, (int)PWMValue);
 
 }

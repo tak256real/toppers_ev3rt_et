@@ -6,7 +6,6 @@
 ///////////////////////////////////////////////////////////
 
 #include "Temp.h"
-#include "Timer.h"
 
 int gyroOffset;
 
@@ -40,12 +39,21 @@ Temp::~Temp(){
 void Temp::init(){
 
 	wheelControl->Init();
+
+    /* センサー入力ポートの設定 */
+ //   ev3_sensor_config(, ULTRASONIC_SENSOR);
+    ev3_sensor_config(Temp::colorSensorPort, COLOR_SENSOR);
+    ev3_color_sensor_get_reflect(Temp::colorSensorPort); /* 反射率モード */
+ //   ev3_sensor_config(touch_sensor, TOUCH_SENSOR);
+    ev3_sensor_config(Temp::gyroPort, GYRO_SENSOR);
+    /* モーター出力ポートの設定 */
+    ev3_motor_config(Temp::wheelLPort, LARGE_MOTOR);
+    ev3_motor_config(Temp::wheelRPort, LARGE_MOTOR);
+    ev3_motor_config(Temp::tailPort, LARGE_MOTOR);
 }
 
 
 void Temp::cycle(){
-
-	Timer::getInstance()->startTimer(4, kTempTimer);
 
 	linetrace->exec();
 

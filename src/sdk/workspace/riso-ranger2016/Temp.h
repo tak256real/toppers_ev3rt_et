@@ -29,7 +29,7 @@ public:
 	static int getGyro();
 	static int getGyroOffset();
 
-	static const sensor_port_t colorSensorPort = EV3_PORT_2;
+	static const sensor_port_t colorSensorPort = EV3_PORT_3;
 	static const sensor_port_t gyroPort = EV3_PORT_4; // 間違ってたら直す
 	static const motor_port_t wheelLPort = EV3_PORT_C;
 	static const motor_port_t wheelRPort = EV3_PORT_B;
