@@ -20,13 +20,11 @@ public:
 	virtual ~Action();
 
 	virtual void cycle()=0;
+	virtual void init(StateObserver* stateObserver, TailControl* tailControl, WheelControl* wheelControl) final;	// オーバーライド禁止
 	void EmergencyStop();
 
-	void setStateObserver(StateObserver* stateObserver);
 	StateObserver* getStateObserver();
-	void setTailControl(TailControl* tailControl);
 	TailControl* getTailControl();
-	void setWheelControl(WheelControl* wheelControl);
 	WheelControl* getWheelControl();
 
 protected:

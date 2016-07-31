@@ -52,8 +52,8 @@ Motor* tailMotor = new Motor(Temp::tailPort);
 WheelControl* wheelControl = new WheelControl(wheelMotorL, wheelMotorR);
 TailControl* tailControl = new TailControl(tailMotor);
 
-ColorSensor* getSensorValue = new ColorSensor(Temp::colorSensorPort);
-Calibration* calibration = new Calibration(getSensorValue);
+ColorSensor* colorSensor = new ColorSensor(Temp::colorSensorPort);
+Calibration* calibration = new Calibration(colorSensor);
 
 StateObserver* stateObserver = new StateObserver( wheelMotorL,  wheelMotorR,  tailMotor,  calibration);
 

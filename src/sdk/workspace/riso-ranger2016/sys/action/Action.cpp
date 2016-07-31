@@ -19,13 +19,16 @@ Action::~Action(){
 
 }
 
-void Action::EmergencyStop(){
+
+void Action::init(StateObserver* stateObserver, TailControl* tailControl, WheelControl* wheelControl){
+	m_StateObserver = stateObserver;
+	m_TailControl = tailControl;
+	m_WheelControl = wheelControl;
 
 }
 
+void Action::EmergencyStop(){
 
-void Action::setStateObserver(StateObserver* stateObserver){
-	m_StateObserver = stateObserver;
 }
 
 
@@ -34,18 +37,8 @@ StateObserver* Action::getStateObserver(){
 }
 
 
-void Action::setTailControl(TailControl* tailControl){
-	m_TailControl = tailControl;
-}
-
-
 TailControl* Action::getTailControl(){
 	return m_TailControl;
-}
-
-
-void Action::setWheelControl(WheelControl* wheelControl){
-	m_WheelControl = wheelControl;
 }
 
 

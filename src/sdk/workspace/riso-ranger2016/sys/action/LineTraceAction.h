@@ -18,5 +18,10 @@ public:
 	virtual ~LineTraceAction();
 	virtual void cycle();
 
+private:
+	PIDControl* m_PidControl;
+	int m_speed;
+	float m_referenceVal;
+
 };
 #endif // !defined(EA_40F80250_C89E_4088_959C_43DF38A0AF05__INCLUDED_)
