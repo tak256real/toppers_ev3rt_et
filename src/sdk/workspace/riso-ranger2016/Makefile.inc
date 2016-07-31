@@ -32,6 +32,7 @@ APPL_CXXOBJS += \
 	../workspace/riso-ranger2016/sys/device/balancer.o \
 	../workspace/riso-ranger2016/sys/device/StateObserver.o \
 	../workspace/riso-ranger2016/sys/device/ColorSensor.o \
+	../workspace/riso-ranger2016/sys/device/UltrasonicControl.o \
 	../workspace/riso-ranger2016/sys/task/Task.o \
 	../workspace/riso-ranger2016/sys/task/DebugConsole.o \
 	../workspace/riso-ranger2016/sys/task/Engine.o \
