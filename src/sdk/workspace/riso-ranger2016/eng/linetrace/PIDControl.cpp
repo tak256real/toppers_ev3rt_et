@@ -9,9 +9,9 @@
 
 
 PIDControl::PIDControl(){
-	m_P=-10;
+	m_P=80;
 	m_I=0;
-	m_D=0;
+	m_D=80;
 	m_preerror=0;
 	m_sumerror=0;
 }

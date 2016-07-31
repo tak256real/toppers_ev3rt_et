@@ -97,6 +97,7 @@ void main_task(intptr_t unused) {
 		if(heartBeatCount == 1250) {
 			tailControl->SetRefValue(0);
 			linetrace = new Linetrace(wheelControl, calibration);
+
 		}
 
 		tslp_tsk(4);
