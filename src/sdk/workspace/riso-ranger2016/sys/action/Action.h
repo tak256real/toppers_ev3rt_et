@@ -21,7 +21,6 @@ public:
 
 	virtual void cycle()=0;
 	virtual void init(StateObserver* stateObserver, TailControl* tailControl, WheelControl* wheelControl) final;	// オーバーライド禁止
-	void EmergencyStop();
 
 	StateObserver* getStateObserver();
 	TailControl* getTailControl();
@@ -31,6 +30,9 @@ protected:
 	StateObserver* m_StateObserver;
 	TailControl* m_TailControl;
 	WheelControl* m_WheelControl;
+
+private:
+	void EmergencyStop();
 
 };
 #endif // !defined(EA_328EF76F_92B6_4a4a_BB28_306BB0AD8654__INCLUDED_)
