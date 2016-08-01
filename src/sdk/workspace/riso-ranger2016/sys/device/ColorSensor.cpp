@@ -9,11 +9,13 @@
 
 
 ColorSensor::ColorSensor(sensor_port_t port){
+
 	// メンバ初期化
 	m_Port = port;
 
-	//カラーセンサを初期化
+	// ポート設定
 	ev3_sensor_config(m_Port, COLOR_SENSOR);
+	ev3_color_sensor_get_reflect(Temp::colorSensorPort); /* 反射率モード */
 }
 
 

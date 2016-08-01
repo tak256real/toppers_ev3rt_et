@@ -12,7 +12,7 @@
 #include "Motor.h"
 #include "WheelControl.h"
 #include "TailControl.h"
-#include "Linetrace.h"
+//#include "Linetrace.h"
 #include "ColorSensor.h"
 #include "StateObserver.h"
 
@@ -44,7 +44,7 @@ public:
 	static WheelControl* wheelControl;
 	static TailControl* tailControl;
 
-	static Linetrace* linetrace;
+//	static Linetrace* linetrace;
 	static Calibration* calibration;
 	static ColorSensor* getSensorValue;
 

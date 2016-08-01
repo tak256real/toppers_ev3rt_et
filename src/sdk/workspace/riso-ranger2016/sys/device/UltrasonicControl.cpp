@@ -9,7 +9,12 @@
 
 
 UltrasonicControl::UltrasonicControl(sensor_port_t PortNum){
+
+	// メンバ初期化
 	m_Port = PortNum;
+
+	// ポート設定
+	ev3_sensor_config(m_Port, ULTRASONIC_SENSOR);
 }
 
 
@@ -17,8 +22,6 @@ UltrasonicControl::~UltrasonicControl(){
 
 }
 int16_t UltrasonicControl::getUltrasonicValue(){
-	int16_t ultrasonicValue=0;
-	ultrasonicValue = ev3_ultrasonic_sensor_get_distance(m_Port);
-	return ultrasonicValue;
+	return ev3_ultrasonic_sensor_get_distance(m_Port);
 }
 

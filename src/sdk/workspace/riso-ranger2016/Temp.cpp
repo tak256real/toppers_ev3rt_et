@@ -19,7 +19,7 @@ TailControl* Temp::tailControl = new TailControl(tailMotor);
 ColorSensor* Temp::getSensorValue = new ColorSensor(Temp::colorSensorPort);
 Calibration* Temp::calibration = new Calibration(Temp::getSensorValue);
 
-Linetrace* Temp::linetrace = new Linetrace(Temp::wheelControl, Temp::calibration);
+//Linetrace* Temp::linetrace = new Linetrace(Temp::wheelControl, Temp::calibration);
 
 StateObserver* Temp::stateObserver = new StateObserver( Temp::wheelMotorL,  Temp::wheelMotorR,  Temp::tailMotor,  Temp::calibration);
 
@@ -41,21 +41,13 @@ void Temp::init(){
 	wheelControl->Init();
 
     /* センサー入力ポートの設定 */
- //   ev3_sensor_config(, ULTRASONIC_SENSOR);
-    ev3_sensor_config(Temp::colorSensorPort, COLOR_SENSOR);
-    ev3_color_sensor_get_reflect(Temp::colorSensorPort); /* 反射率モード */
- //   ev3_sensor_config(touch_sensor, TOUCH_SENSOR);
     ev3_sensor_config(Temp::gyroPort, GYRO_SENSOR);
-    /* モーター出力ポートの設定 */
-    ev3_motor_config(Temp::wheelLPort, LARGE_MOTOR);
-    ev3_motor_config(Temp::wheelRPort, LARGE_MOTOR);
-    ev3_motor_config(Temp::tailPort, LARGE_MOTOR);
 }
 
 
 void Temp::cycle(){
 
-	linetrace->exec();
+//	linetrace->exec();
 
 	wheelMotorL->UpdateAngularVelocity();
 	wheelMotorR->UpdateAngularVelocity();
