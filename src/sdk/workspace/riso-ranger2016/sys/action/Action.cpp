@@ -29,6 +29,11 @@ void Action::init(StateObserver* stateObserver, TailControl* tailControl, WheelC
 
 void Action::EmergencyStop(){
 
+	// 尻尾、左右車輪を停止
+	m_TailControl->SetRefValue(90);
+	m_WheelControl->SetTwoWheelMode(false);
+	m_WheelControl->SetRefValue(0, 0);
+
 }
 
 

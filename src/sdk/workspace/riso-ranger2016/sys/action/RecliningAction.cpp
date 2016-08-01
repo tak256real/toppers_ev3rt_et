@@ -19,6 +19,17 @@ RecliningAction::~RecliningAction(){
 }
 
 
-void RecliningAction::cycle(){
+
+void RecliningAction::onStart(){
+
+}
+
+
+void RecliningAction::onCycle(){
+
+}
+
+
+void RecliningAction::onStop(){
 
 }

@@ -21,7 +21,22 @@ SitWaitAction::~SitWaitAction(){
 
 
 
+void SitWaitAction::onStart(){
 
-void SitWaitAction::cycle(){
+	// 前進量,旋回量を設定
+	m_WheelControl->SetRefValue(0, 0);
+
+	// 尻尾角度を設定
+	m_TailControl->SetRefValue(90);
+
+}
+
+
+void SitWaitAction::onCycle(){
+
+}
+
+
+void SitWaitAction::onStop(){
 
 }

@@ -12,6 +12,10 @@
 #include "TailControl.h"
 #include "WheelControl.h"
 
+/**
+ * 単動作クラス
+ * 本クラスの子クラス内でインスタンス生成した場合は自分でdeleteすること
+ */
 class Action
 {
 
@@ -19,20 +23,21 @@ public:
 	Action();
 	virtual ~Action();
 
-	virtual void cycle()=0;
 	virtual void init(StateObserver* stateObserver, TailControl* tailControl, WheelControl* wheelControl) final;	// オーバーライド禁止
+	virtual void EmergencyStop() final;					// オーバーライド禁止
 
-	StateObserver* getStateObserver();
-	TailControl* getTailControl();
-	WheelControl* getWheelControl();
+	virtual StateObserver* getStateObserver() final;	// オーバーライド禁止
+	virtual TailControl* getTailControl() final;		// オーバーライド禁止
+	virtual WheelControl* getWheelControl() final;		// オーバーライド禁止
+
+	virtual void onStart() =0;							// onCycle()周期実行の開始直前に1回実行される
+	virtual void onCycle() =0;							// APIのbalance_control()実行周期4msの倍数で実行する
+	virtual void onStop() =0;							// onCycle()周期実行の終了直後に1回実行される
 
 protected:
 	StateObserver* m_StateObserver;
 	TailControl* m_TailControl;
 	WheelControl* m_WheelControl;
-
-private:
-	void EmergencyStop();
 
 };
 #endif // !defined(EA_328EF76F_92B6_4a4a_BB28_306BB0AD8654__INCLUDED_)

@@ -8,12 +8,15 @@
 #include "PIDControl.h"
 
 
-PIDControl::PIDControl(){
-	m_P=80;
-	m_I=0;
-	m_D=80;
-	m_preerror=0;
-	m_sumerror=0;
+PIDControl::PIDControl(int p, int i, int d){
+
+	// メンバ初期化
+	m_P = p;
+	m_I = i;
+	m_D = d;
+	m_preerror = 0;
+	m_sumerror = 0;
+
 }
 
 
@@ -23,14 +26,21 @@ PIDControl::~PIDControl(){
 
 
 int PIDControl::PIDCalculation(float reference, float currentVal){
-	int result=0;
-	float error=0;
 
+	int result = 0;
+	float error = 0;
+
+	// 偏差
 	error = reference - currentVal;
-	m_sumerror += error;//積分計算
 
+	// 積分計算
+	m_sumerror += error;
+
+	// 操作量計算
 	result = (m_P*error) + (m_I*m_sumerror) + m_D*(error - m_preerror);
+
+	// 微分計算用誤差
 	m_preerror = error;
-	
+
 	return result;
 }

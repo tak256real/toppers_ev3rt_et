@@ -14,7 +14,7 @@ class PIDControl
 {
 
 public:
-	PIDControl();
+	PIDControl(int p, int i, int d);
 	virtual ~PIDControl();
 	int PIDCalculation(float reference, float currentVal);
 

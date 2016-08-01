@@ -20,8 +20,16 @@ EmergencyStopAction::~EmergencyStopAction(){
 
 
 
+void EmergencyStopAction::onStart(){
+
+}
 
 
-void EmergencyStopAction::cycle(){
+void EmergencyStopAction::onCycle(){
+
+}
+
+
+void EmergencyStopAction::onStop(){
 
 }

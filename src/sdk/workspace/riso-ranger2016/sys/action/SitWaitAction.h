@@ -17,7 +17,11 @@ public:
 	SitWaitAction();
 	virtual ~SitWaitAction();
 
-	virtual void cycle();
+	virtual void onStart();
+	virtual void onCycle();
+	virtual void onStop();
+
+private:
 
 };
 #endif // !defined(EA_843E98B2_DB1A_40fb_B0D5_0FEA5F22A921__INCLUDED_)

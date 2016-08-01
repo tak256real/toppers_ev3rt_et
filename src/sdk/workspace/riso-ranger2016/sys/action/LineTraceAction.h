@@ -17,12 +17,16 @@ class LineTraceAction : public Action
 public:
 	LineTraceAction();
 	virtual ~LineTraceAction();
-	virtual void cycle();
+
+	virtual void onStart();
+	virtual void onCycle();
+	virtual void onStop();
 
 private:
 	PIDControl* m_PidControl;
-	int m_speed;
-	float m_referenceVal;
+	int m_Speed;				// 走行速度[0～100]
+	float m_ReferenceLinePosition;		// ライン位置目標値[正規化カラーセンサ値]
+	int m_TailAngle;			// 尻尾角度目標値[deg]
 
 };
 #endif // !defined(EA_40F80250_C89E_4088_959C_43DF38A0AF05__INCLUDED_)
