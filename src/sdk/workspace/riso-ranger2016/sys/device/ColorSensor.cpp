@@ -15,7 +15,7 @@ ColorSensor::ColorSensor(sensor_port_t port){
 
 	// ポート設定
 	ev3_sensor_config(m_Port, COLOR_SENSOR);
-	ev3_color_sensor_get_reflect(Temp::colorSensorPort); /* 反射率モード */
+	ev3_color_sensor_get_reflect(m_Port); /* 反射率モード */
 }
 
 
