@@ -8,7 +8,7 @@
 #if !defined(EA_FCCC6601_27E9_4f76_A2BC_B46D8060E9D3__INCLUDED_)
 #define EA_FCCC6601_27E9_4f76_A2BC_B46D8060E9D3__INCLUDED_
 
-#include "Action.h"
+#include "Sequence.h"
 
 class Unit
 {
@@ -17,10 +17,13 @@ public:
 	Unit();
 	virtual ~Unit();
 
-
+	void startSequence(Sequence* sequence);
+	void cycle();
 
 private:
-	Action *currentAction;
+	Sequence* m_CurrentSequence;
+
+	void renewSsequence();
 
 };
 #endif // !defined(EA_FCCC6601_27E9_4f76_A2BC_B46D8060E9D3__INCLUDED_)
