@@ -1,28 +1,37 @@
 ///////////////////////////////////////////////////////////
-//  Unit.cpp
-//  Implementation of the Class Unit
-//  Created on:      2016/08/01 21:29:45
+//  Sequencer.cpp
+//  Implementation of the Class Sequencer
+//  Created on:      2016/08/03 12:01:55
 //  Original author: 039389
 ///////////////////////////////////////////////////////////
 
-#include "Unit.h"
+#include "Sequencer.h"
+#include "Action.h"
+#include "Sequence.h"
 
 
-Unit::Unit(Sequence* sequence){
+
+Sequencer::Sequencer(){
 
 	// メンバ初期化
+	m_CurrentSequence = new DefaultSequence();  //TODO 初期シーケンス
+
+}
+
+
+Sequencer::~Sequencer(){
+
+}
+
+
+void Sequencer::startSequence(Sequence* sequence){
+
 	m_CurrentSequence = sequence;
 
 }
 
 
-
-Unit::~Unit(){
-
-}
-
-
-void Unit::cycle(){
+void Sequencer::cycle(){
 
 	// 現在のActionの周期処理実行
 	m_CurrentSequence->getAction()->onCycle();
@@ -54,3 +63,4 @@ void Unit::cycle(){
 	}
 
 }
+
