@@ -12,7 +12,7 @@ class Sequencer
 {
 
 public:
-	Sequencer();
+	Sequencer(Sequence* sequence);
 	virtual ~Sequencer();
 	void startSequence(Sequence* sequence);
 	void cycle();
