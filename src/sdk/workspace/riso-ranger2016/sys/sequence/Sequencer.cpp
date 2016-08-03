@@ -14,7 +14,10 @@
 Sequencer::Sequencer(){
 
 	// メンバ初期化
-	m_CurrentSequence = new DefaultSequence();  //TODO 初期シーケンス
+	m_CurrentSequence = new Sequence(new SitWaitAction(), new EndlessCondition(), NULL);  //TODO 初期シーケンス
+
+	// 初期シーケンス開始処理
+	m_CurrentSequence->getAction()->onStart();
 
 }
 
@@ -26,7 +29,18 @@ Sequencer::~Sequencer(){
 
 void Sequencer::startSequence(Sequence* sequence){
 
+	// シーケンス終了処理
+	m_CurrentSequence->getAction()->onStop();
+
+	// シーケンスdelete
+	m_CurrentSequence->deleteAllFollowingSequences();
+	delete m_CurrentSequence;
+
+	// シーケンス更新
 	m_CurrentSequence = sequence;
+
+	// シーケンス初期処理
+	m_CurrentSequence->getAction()->onStart();
 
 }
 
@@ -39,11 +53,11 @@ void Sequencer::cycle(){
 	// 現在のConditionの判定処理実行
 	if(m_CurrentSequence->getCondition()->check()) {
 
-		// 旧Action終了処理実行
-		m_CurrentSequence->getAction()->onStop();
-
 		// 現在のActionインスタンス取り出し
 		Action* action = m_CurrentSequence->getAction();
+
+		// Action終了処理実行
+		action->onStop();
 
 		// 次のシーケンス取得
 		Sequence* sequence = m_CurrentSequence->getNextSequence();
@@ -52,7 +66,7 @@ void Sequencer::cycle(){
 		sequence->getAction()->init(action->getStateObserver(), action->getTailControl(), action->getWheelControl());
 
 		// 旧シーケンスdelete
-		delete m_CurrentSequence;//TODO Sequence内でaction conditionをdelete
+		delete m_CurrentSequence;
 
 		// 現在のSequenceを更新
 		m_CurrentSequence = sequence;

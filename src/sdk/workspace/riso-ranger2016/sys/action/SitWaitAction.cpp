@@ -23,6 +23,9 @@ SitWaitAction::~SitWaitAction(){
 
 void SitWaitAction::onStart(){
 
+	// 倒立制御オフ
+	m_WheelControl->SetTwoWheelMode(false);
+
 	// 前進量,旋回量を設定
 	m_WheelControl->SetRefValue(0, 0);
 

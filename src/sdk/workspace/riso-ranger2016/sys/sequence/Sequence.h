@@ -15,14 +15,18 @@ class Sequence
 {
 
 public:
-	Sequence();
+	Sequence(Action* action, Condition* condition, Sequence* sequence);
 	virtual ~Sequence();
-	Action* m_CurrentAction;
-	Condition* condition;
 
 	Action* getAction();
 	Condition* getCondition();
 	Sequence* getNextSequence();
+	void deleteAllFollowingSequences();
+
+private:
+	Action* m_CurrentAction;
+	Condition* m_CurrentCondition;
+	Sequence* m_NextSequence;
 
 };
 #endif // !defined(EA_8BF75F76_FF10_44f5_BC0A_DCCAAAE0560E__INCLUDED_)
