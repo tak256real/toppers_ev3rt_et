@@ -57,11 +57,8 @@ void Sequencer::cycle(){
 	// 現在のConditionの判定処理実行
 	if(m_CurrentSequence->getCondition()->check()) {
 
-		// 現在のActionインスタンス取り出し
-		Action* action = m_CurrentSequence->getAction();
-
 		// Action終了処理実行
-		action->onStop();
+		Action* action = m_CurrentSequence->getAction()->onStop();;
 
 		// 次のシーケンス取得
 		Sequence* sequence = m_CurrentSequence->getNextSequence();
