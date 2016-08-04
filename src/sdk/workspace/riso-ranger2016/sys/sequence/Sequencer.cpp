@@ -18,6 +18,7 @@ Sequencer::Sequencer(Sequence* sequence){
 
 	// 初期シーケンス開始処理
 	m_CurrentSequence->getAction()->onStart();
+	m_CurrentSequence->getCondition()->onStart();
 
 }
 
@@ -43,8 +44,9 @@ void Sequencer::startSequence(Sequence* sequence){
 	// シーケンス更新
 	m_CurrentSequence = sequence;
 
-	// シーケンス初期処理
+	// 新シーケンス初期処理
 	m_CurrentSequence->getAction()->onStart();
+	m_CurrentSequence->getCondition()->onStart();
 
 }
 
@@ -80,8 +82,9 @@ void Sequencer::cycle(){
 		// 現在のシーケンスを更新
 		m_CurrentSequence = sequence;
 
-		// 新Action開始処理
+		// 新シーケンス初期処理
 		m_CurrentSequence->getAction()->onStart();
+		m_CurrentSequence->getCondition()->onStart();
 
 	}
 

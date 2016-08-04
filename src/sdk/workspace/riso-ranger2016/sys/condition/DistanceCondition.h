@@ -11,16 +11,23 @@
 #include "Condition.h"
 
 /**
- * シーケンスが遷移してからの相対的な距離を指定
+ * シーケンスが遷移してからの距離変分を指定
  */
 class DistanceCondition : public Condition
 {
 
 public:
-	DistanceCondition();
+	DistanceCondition(int distance);
 	virtual ~DistanceCondition();
 
-	virtual bool check();
+	void onStart();
+	bool check();
+
+
+
+private:
+	int m_StartDistance;		// 基準距離
+	int m_DistanceDifference;	// 指定の距離変分
 
 };
 #endif // !defined(EA_34E09B17_35C3_4016_801D_2788BFA732ED__INCLUDED_)

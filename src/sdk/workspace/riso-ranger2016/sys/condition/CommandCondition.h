@@ -17,6 +17,7 @@ public:
 	CommandCondition();
 	virtual ~CommandCondition();
 
+	virtual void onStart();
 	virtual bool check();
 
 };

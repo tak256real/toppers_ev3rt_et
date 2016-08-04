@@ -20,6 +20,9 @@ RotationCondition::~RotationCondition(){
 
 
 
+void RotationCondition::onStart(){
+
+}
 
 
 bool RotationCondition::check(){

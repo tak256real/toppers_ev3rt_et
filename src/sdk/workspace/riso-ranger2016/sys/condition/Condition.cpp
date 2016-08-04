@@ -17,3 +17,8 @@ Condition::Condition(){
 Condition::~Condition(){
 
 }
+
+
+void Condition::init(StateObserver *stateObserver){
+	m_StateObserver = stateObserver;
+}

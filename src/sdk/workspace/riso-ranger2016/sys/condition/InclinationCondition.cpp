@@ -20,6 +20,9 @@ InclinationCondition::~InclinationCondition(){
 
 
 
+void InclinationCondition::onStart(){
+
+}
 
 
 bool InclinationCondition::check(){

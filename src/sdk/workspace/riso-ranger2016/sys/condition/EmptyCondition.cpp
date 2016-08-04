@@ -20,6 +20,9 @@ EmptyCondition::~EmptyCondition(){
 
 
 
+void EmptyCondition::onStart(){
+
+}
 
 
 bool EmptyCondition::check(){

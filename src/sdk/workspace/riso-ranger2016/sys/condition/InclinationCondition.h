@@ -20,6 +20,7 @@ public:
 	InclinationCondition();
 	virtual ~InclinationCondition();
 
+	virtual void onStart();
 	virtual bool check();
 
 };

@@ -20,6 +20,7 @@ public:
 	LineCondition();
 	virtual ~LineCondition();
 
+	virtual void onStart();
 	virtual bool check();
 
 };

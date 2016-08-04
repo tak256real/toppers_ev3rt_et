@@ -19,7 +19,9 @@ CollisionCondition::~CollisionCondition(){
 }
 
 
+void CollisionCondition::onStart(){
 
+}
 
 
 bool CollisionCondition::check(){

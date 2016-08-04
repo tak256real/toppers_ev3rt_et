@@ -20,6 +20,7 @@ public:
 	RotationCondition();
 	virtual ~RotationCondition();
 
+	virtual void onStart();
 	virtual bool check();
 
 };

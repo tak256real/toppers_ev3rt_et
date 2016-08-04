@@ -20,6 +20,9 @@ LineCondition::~LineCondition(){
 
 
 
+void LineCondition::onStart(){
+
+}
 
 
 bool LineCondition::check(){

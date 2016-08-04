@@ -20,6 +20,7 @@ public:
 	CollisionCondition();
 	virtual ~CollisionCondition();
 
+	virtual void onStart();
 	virtual bool check();
 
 };

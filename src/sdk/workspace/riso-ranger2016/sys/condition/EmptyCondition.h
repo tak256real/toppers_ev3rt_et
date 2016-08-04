@@ -20,6 +20,7 @@ public:
 	EmptyCondition();
 	virtual ~EmptyCondition();
 
+	virtual void onStart();
 	virtual bool check();
 
 };

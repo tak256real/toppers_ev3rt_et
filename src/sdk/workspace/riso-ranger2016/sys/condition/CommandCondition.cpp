@@ -20,6 +20,9 @@ CommandCondition::~CommandCondition(){
 
 
 
+void CommandCondition::onStart(){
+
+}
 
 
 bool CommandCondition::check(){
