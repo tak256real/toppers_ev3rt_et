@@ -33,10 +33,6 @@ void Sequencer::startSequence(Sequence* sequence){
 	// シーケンス終了処理
 	m_CurrentSequence->getAction()->onStop();
 
-	// Actionインスタンスの関連引き継ぎ
-	Action* action = m_CurrentSequence->getAction();
-	sequence->getAction()->init(action->getStateObserver(), action->getTailControl(), action->getWheelControl());
-
 	// シーケンスdelete
 	m_CurrentSequence->deleteAllFollowingSequences();
 	delete m_CurrentSequence;
@@ -53,7 +49,7 @@ void Sequencer::startSequence(Sequence* sequence){
 
 void Sequencer::cycle(){
 
-	// 現在のActionの周期処理実行
+	// 現在の単動作の周期処理実行
 	m_CurrentSequence->getAction()->onCycle();
 
 	// 現在のConditionの判定処理実行
@@ -68,13 +64,10 @@ void Sequencer::cycle(){
 		// 次のシーケンス取得
 		Sequence* sequence = m_CurrentSequence->getNextSequence();
 
-		// 次のシーケンスがNULLの場合はデフォルト設定のシーケンスをセット
+		// 次のシーケンスが無い場合はデフォルト設定のシーケンスをセット
 		if(sequence == NULL) {
 			sequence = new Sequence(new SitWaitAction(), new EmptyCondition());
 		}
-
-		// Actionインスタンスの関連引き継ぎ
-		sequence->getAction()->init(action->getStateObserver(), action->getTailControl(), action->getWheelControl());
 
 		// 旧シーケンスdelete
 		delete m_CurrentSequence;

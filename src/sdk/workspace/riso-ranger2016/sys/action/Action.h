@@ -23,7 +23,7 @@ public:
 	Action();
 	virtual ~Action();
 
-	virtual void init(StateObserver* stateObserver, TailControl* tailControl, WheelControl* wheelControl) final;	// オーバーライド禁止
+	static void init(StateObserver* stateObserver, TailControl* tailControl, WheelControl* wheelControl) final;
 	virtual void EmergencyStop() final;					// オーバーライド禁止
 
 	virtual StateObserver* getStateObserver() final;	// オーバーライド禁止
@@ -35,9 +35,9 @@ public:
 	virtual void onStop() =0;							// onCycle()周期実行の終了直後に1回実行される
 
 protected:
-	StateObserver* m_StateObserver;
-	TailControl* m_TailControl;
-	WheelControl* m_WheelControl;
+	static StateObserver* m_StateObserver;
+	static TailControl* m_TailControl;
+	static WheelControl* m_WheelControl;
 
 };
 #endif // !defined(EA_328EF76F_92B6_4a4a_BB28_306BB0AD8654__INCLUDED_)

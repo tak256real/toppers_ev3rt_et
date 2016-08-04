@@ -18,13 +18,13 @@ public:
 	Sequence(Action* action, Condition* condition);
 	virtual ~Sequence();
 
-	Action* getAction();
-	Condition* getCondition();
-	Sequence* getNextSequence();
+	Action* Sequence::getAction();
+	Condition* Sequence::getCondition();
+	Sequence* Sequence::getNextSequence();
 	void deleteAllFollowingSequences();
 	void setNextSequence(Sequence* nextSequence);
 
-private:
+protected:
 	Action* m_CurrentAction;
 	Condition* m_CurrentCondition;
 	Sequence* m_NextSequence;
