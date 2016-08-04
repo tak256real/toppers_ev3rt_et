@@ -17,7 +17,7 @@ public:
 	Condition();
 	virtual ~Condition();
 
-	void init(StateObserver *stateObserver);
+	static void init(StateObserver *stateObserver);
 	virtual void onStart()=0;
 	virtual bool check() =0;
 
