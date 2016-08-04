@@ -58,7 +58,7 @@ void Sequencer::cycle(){
 	if(m_CurrentSequence->getCondition()->check()) {
 
 		// Action終了処理実行
-		Action* action = m_CurrentSequence->getAction()->onStop();;
+		Action* action = m_CurrentSequence->getAction()->onStop();
 
 		// 次のシーケンス取得
 		Sequence* sequence = m_CurrentSequence->getNextSequence();
