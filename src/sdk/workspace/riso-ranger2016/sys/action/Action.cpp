@@ -8,7 +8,9 @@
 #include "Action.h"
 
 
-
+StateObserver* Action::m_StateObserver;
+TailControl* Action::m_TailControl;
+WheelControl* Action::m_WheelControl;
 
 Action::Action(){
 
@@ -21,32 +23,17 @@ Action::~Action(){
 
 
 void Action::init(StateObserver* stateObserver, TailControl* tailControl, WheelControl* wheelControl){
-	m_StateObserver = stateObserver;
-	m_TailControl = tailControl;
-	m_WheelControl = wheelControl;
+	Action::m_StateObserver = stateObserver;
+	Action::m_TailControl = tailControl;
+	Action::m_WheelControl = wheelControl;
 
 }
 
 void Action::EmergencyStop(){
 
 	// 尻尾、左右車輪を停止
-	m_TailControl->SetRefValue(90);
-	m_WheelControl->SetTwoWheelMode(false);
-	m_WheelControl->SetRefValue(0, 0);
+	Action::m_TailControl->SetRefValue(90);
+	Action::m_WheelControl->SetTwoWheelMode(false);
+	Action::m_WheelControl->SetRefValue(0, 0);
 
-}
-
-
-StateObserver* Action::getStateObserver(){
-	return m_StateObserver;
-}
-
-
-TailControl* Action::getTailControl(){
-	return m_TailControl;
-}
-
-
-WheelControl* Action::getWheelControl(){
-	return m_WheelControl;
 }

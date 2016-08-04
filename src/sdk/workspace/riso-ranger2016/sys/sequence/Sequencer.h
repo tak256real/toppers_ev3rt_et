@@ -8,6 +8,8 @@
 #if !defined(EA_F418CAF2_0897_4136_8D10_CE7B01E2D986__INCLUDED_)
 #define EA_F418CAF2_0897_4136_8D10_CE7B01E2D986__INCLUDED_
 
+#include "Sequence.h"
+
 class Sequencer
 {
 

@@ -10,12 +10,12 @@
 
 #include "Scenario.h"
 
-class RightCourseSenario : public Scenario
+class RightCourseScenario : public Scenario
 {
 
 public:
-	RightCourseSenario();
-	virtual ~RightCourseSenario();
+	RightCourseScenario();
+	virtual ~RightCourseScenario();
 	virtual void start();
 
 };

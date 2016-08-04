@@ -23,12 +23,8 @@ public:
 	Action();
 	virtual ~Action();
 
-	static void init(StateObserver* stateObserver, TailControl* tailControl, WheelControl* wheelControl) final;
-	virtual void EmergencyStop() final;					// オーバーライド禁止
-
-	virtual StateObserver* getStateObserver() final;	// オーバーライド禁止
-	virtual TailControl* getTailControl() final;		// オーバーライド禁止
-	virtual WheelControl* getWheelControl() final;		// オーバーライド禁止
+	static void init(StateObserver* stateObserver, TailControl* tailControl, WheelControl* wheelControl);
+	static void EmergencyStop();
 
 	virtual void onStart() =0;							// onCycle()周期実行の開始直前に1回実行される
 	virtual void onCycle() =0;							// APIのbalance_control()実行周期4msの倍数で実行する

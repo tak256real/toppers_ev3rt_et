@@ -5,20 +5,20 @@
 //  Original author: 039389
 ///////////////////////////////////////////////////////////
 
-#include "RightCourseSenario.h"
+#include "RightCourseScenario.h"
 
 
-RightCourseSenario::RightCourseSenario(){
-
-}
-
-
-
-RightCourseSenario::~RightCourseSenario(){
+RightCourseScenario::RightCourseScenario(){
 
 }
 
 
-void RightCourseSenario::start(){
+
+RightCourseScenario::~RightCourseScenario(){
+
+}
+
+
+void RightCourseScenario::start(){
 
 }

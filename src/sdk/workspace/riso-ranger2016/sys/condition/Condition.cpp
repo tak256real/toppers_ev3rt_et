@@ -8,6 +8,8 @@
 #include "Condition.h"
 
 
+StateObserver* Condition::m_StateObserver;
+
 Condition::Condition(){
 
 }
@@ -20,5 +22,5 @@ Condition::~Condition(){
 
 
 void Condition::init(StateObserver *stateObserver){
-	m_StateObserver = stateObserver;
+	Condition::m_StateObserver = stateObserver;
 }

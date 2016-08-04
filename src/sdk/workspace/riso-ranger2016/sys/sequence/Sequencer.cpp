@@ -7,6 +7,8 @@
 
 #include "Sequencer.h"
 #include "Action.h"
+#include "SitWaitAction.h"
+#include "EmptyCondition.h"
 #include "Sequence.h"
 
 

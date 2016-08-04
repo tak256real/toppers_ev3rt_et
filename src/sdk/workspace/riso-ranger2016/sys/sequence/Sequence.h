@@ -18,9 +18,9 @@ public:
 	Sequence(Action* action, Condition* condition);
 	virtual ~Sequence();
 
-	Action* Sequence::getAction();
-	Condition* Sequence::getCondition();
-	Sequence* Sequence::getNextSequence();
+	Action* getAction();
+	Condition* getCondition();
+	Sequence* getNextSequence();
 	void deleteAllFollowingSequences();
 	void setNextSequence(Sequence* nextSequence);
 
