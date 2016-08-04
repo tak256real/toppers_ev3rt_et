@@ -10,6 +10,9 @@
 
 #include "Condition.h"
 
+/**
+ * シーケンスが遷移してからの相対的な距離を指定
+ */
 class DistanceCondition : public Condition
 {
 

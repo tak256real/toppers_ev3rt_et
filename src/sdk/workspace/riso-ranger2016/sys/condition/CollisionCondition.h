@@ -10,6 +10,9 @@
 
 #include "Condition.h"
 
+/**
+ * 指定なし。衝突の瞬間のみ真となる。
+ */
 class CollisionCondition : public Condition
 {
 

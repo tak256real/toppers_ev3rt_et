@@ -10,6 +10,9 @@
 
 #include "Condition.h"
 
+/**
+ * 垂直時を0度、後方への傾斜方向を正としたロボットの傾斜角を指定
+ */
 class InclinationCondition : public Condition
 {
 

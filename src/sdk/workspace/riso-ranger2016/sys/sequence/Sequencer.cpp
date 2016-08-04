@@ -68,7 +68,7 @@ void Sequencer::cycle(){
 
 		// 次のシーケンスがNULLの場合はデフォルト設定のシーケンスをセット
 		if(sequence == NULL) {
-			sequence = new Sequence(new SitWaitAction(), new EndlessCondition(), NULL);
+			sequence = new Sequence(new SitWaitAction(), new EmptyCondition());
 		}
 
 		// Actionインスタンスの関連引き継ぎ

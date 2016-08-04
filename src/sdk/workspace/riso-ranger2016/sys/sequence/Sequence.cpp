@@ -8,12 +8,12 @@
 #include "Sequence.h"
 
 
-Sequence::Sequence(Action* action, Condition* condition, Sequence* sequence){
+Sequence::Sequence(Action* action, Condition* condition){
 
 	// メンバ初期化
 	m_CurrentAction = action;
 	m_CurrentCondition = condition;
-	m_NextSequence = sequence;
+	m_NextSequence = NULL;
 
 }
 
@@ -47,4 +47,10 @@ void Sequence::deleteAllFollowingSequences(){
 		m_NextSequence->deleteAllFollowingSequences();
 	}
 	delete m_NextSequence;	// TODO NULLポインタをdeleteしても安全かどうか確認
+}
+
+
+
+void Sequence::setNextSequence(Sequence* nextSequence){
+	m_NextSequence = nextSequence;
 }

@@ -15,13 +15,14 @@ class Sequence
 {
 
 public:
-	Sequence(Action* action, Condition* condition, Sequence* sequence);
+	Sequence(Action* action, Condition* condition);
 	virtual ~Sequence();
 
 	Action* getAction();
 	Condition* getCondition();
 	Sequence* getNextSequence();
 	void deleteAllFollowingSequences();
+	void setNextSequence(Sequence* nextSequence);
 
 private:
 	Action* m_CurrentAction;

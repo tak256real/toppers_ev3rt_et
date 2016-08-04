@@ -10,6 +10,9 @@
 
 #include "Condition.h"
 
+/**
+ * 検出するライン種別を指定
+ */
 class LineCondition : public Condition
 {
 

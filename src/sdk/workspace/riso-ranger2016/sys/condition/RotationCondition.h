@@ -10,6 +10,9 @@
 
 #include "Condition.h"
 
+/**
+ * シーケンスが遷移してからの相対的な回転角を指定
+ */
 class RotationCondition : public Condition
 {
 
