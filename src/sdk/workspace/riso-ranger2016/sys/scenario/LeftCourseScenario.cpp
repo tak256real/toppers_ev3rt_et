@@ -7,7 +7,10 @@
 
 #include "LeftCourseScenario.h"
 #include "Scenario.h"
-
+#include "SitWaitAction.h"
+#include "TimeCondition.h"
+#include "LineTraceAction.h"
+#include "DistanceCondition.h"
 
 LeftCourseScenario::LeftCourseScenario(){
 
