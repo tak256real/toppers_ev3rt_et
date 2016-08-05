@@ -8,6 +8,8 @@
 #ifndef WORKSPACE_RISO_RANGER2016_SYS_DEVICE_GYROSENSOR_H_
 #define WORKSPACE_RISO_RANGER2016_SYS_DEVICE_GYROSENSOR_H_
 
+#include "ev3api.h"
+
 class GyroSensor {
 public:
 	GyroSensor(sensor_port_t portNum);

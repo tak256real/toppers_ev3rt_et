@@ -8,6 +8,8 @@
 #ifndef WORKSPACE_RISO_RANGER2016_SYS_DEVICE_BATTERY_H_
 #define WORKSPACE_RISO_RANGER2016_SYS_DEVICE_BATTERY_H_
 
+#include "ev3api.h"
+
 class Battery {
 public:
 	Battery();
