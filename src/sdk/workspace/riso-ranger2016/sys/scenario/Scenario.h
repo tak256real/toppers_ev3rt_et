@@ -17,7 +17,7 @@ public:
 	Scenario();
 	virtual ~Scenario();
 
-	void init(Sequencer *sequencer);
+	static void init(Sequencer *sequencer);
 	virtual void start() =0;
 
 protected:

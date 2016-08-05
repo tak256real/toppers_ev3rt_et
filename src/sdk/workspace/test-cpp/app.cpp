@@ -14,10 +14,18 @@
 #include "Motor.h"
 #include "WheelControl.h"
 #include "TailControl.h"
-#include "Linetrace.h"
 #include "ColorSensor.h"
 #include "StateObserver.h"
-#include "Temp.h"
+#include "Sequencer.h"
+#include "Scenario.h"
+#include "LeftCourseScenario.h"
+#include "Sequence.h"
+#include "SitWaitAction.h"
+#include "EmptyCondition.h"
+#include "Battery.h"
+#include "GyroSensor.h"
+#include "Action.h"
+#include "Condition.h"
 
 #define DEBUG
 
@@ -45,18 +53,6 @@ private:
     int member;
 };
 
-Motor* wheelMotorL = new Motor(Temp::wheelLPort);
-Motor* wheelMotorR = new Motor(Temp::wheelRPort);
-Motor* tailMotor = new Motor(Temp::tailPort);
-
-WheelControl* wheelControl = new WheelControl(wheelMotorL, wheelMotorR);
-TailControl* tailControl = new TailControl(tailMotor);
-
-ColorSensor* colorSensor = new ColorSensor(Temp::colorSensorPort);
-Calibration* calibration = new Calibration(colorSensor);
-
-StateObserver* stateObserver = new StateObserver( wheelMotorL,  wheelMotorR,  tailMotor,  calibration);
-
 static FILE* bt = NULL;
 
 void idle_task(intptr_t unused) {
@@ -72,19 +68,39 @@ void main_task(intptr_t unused) {
     bt = ev3_serial_open_file(EV3_SERIAL_BT);
 
 	int heartBeatCount = 0;
-	Linetrace* linetrace;
 
-	Temp::init();
-	tailControl->SetRefValue(90);
+	// インスタンス生成、関連構築、初期化
+	Sequencer* sequencer = new Sequencer(new Sequence(new SitWaitAction(90), new EmptyCondition()));
+	Scenario* scenario = new LeftCourseScenario();
+
+	Motor* leftMotor = new Motor(EV3_PORT_C);
+	Motor* rightMotor = new Motor(EV3_PORT_B);
+	Motor* tailMotor = new Motor(EV3_PORT_A);
+	Battery* battery = new Battery();
+	GyroSensor* gyroSensor = new GyroSensor(EV3_PORT_4);
+	ColorSensor* colorSensor = new ColorSensor(EV3_PORT_3);
+
+	StateObserver* stateObserver = new StateObserver(leftMotor, rightMotor, tailMotor, colorSensor);
+	WheelControl* wheelControl = new WheelControl(leftMotor, rightMotor, battery, gyroSensor);
+	TailControl* tailControl = new TailControl(tailMotor);
+
+	Scenario::init(sequencer);
+	Action::init(stateObserver, tailControl, wheelControl);
+	Condition::init(stateObserver);
 	wheelControl->Init();
+
+	// シナリオ生成
+	scenario->start();
 
 	while(1) {
 
-		if(1250 < heartBeatCount) {
-			linetrace->exec();
-		}
-		tailControl->Control();
-		wheelControl->Control();
+		leftMotor->UpdateAngularVelocity();		// 中
+		rightMotor->UpdateAngularVelocity();	// 中
+		tailMotor->UpdateAngularVelocity();		// 中
+		stateObserver->Calc();					// 中
+		tailControl->Control();					// 高
+		wheelControl->Control();				// 高
+		sequencer->cycle();						// 低
 
 		if(heartBeatCount%250 == 0) {
 			ev3_led_set_color(LED_ORANGE);
@@ -93,12 +109,6 @@ void main_task(intptr_t unused) {
 			ev3_led_set_color(LED_GREEN);
 		}
 		heartBeatCount++;
-
-		if(heartBeatCount == 1250) {
-			tailControl->SetRefValue(0);
-			linetrace = new Linetrace(wheelControl, calibration);
-
-		}
 
 		tslp_tsk(4);
 	}

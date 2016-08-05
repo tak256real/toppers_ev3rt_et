@@ -40,9 +40,11 @@ APPL_CXXOBJS += \
 	../workspace/riso-ranger2016/sys/condition/InclinationCondition.o \
 	../workspace/riso-ranger2016/sys/condition/LineCondition.o \
 	../workspace/riso-ranger2016/sys/condition/RotationCondition.o \
+	../workspace/riso-ranger2016/sys/condition/TimeCondition.o \
 	../workspace/riso-ranger2016/sys/device/balancer.o \
 	../workspace/riso-ranger2016/sys/device/balancer_param.o \
 	../workspace/riso-ranger2016/sys/device/ColorSensor.o \
+	../workspace/riso-ranger2016/sys/device/GyroSensor.o \
 	../workspace/riso-ranger2016/sys/device/init_ev3.o \
 	../workspace/riso-ranger2016/sys/device/Motor.o \
 	../workspace/riso-ranger2016/sys/device/spec_ev3.o \
