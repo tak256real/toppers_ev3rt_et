@@ -24,11 +24,8 @@ APPL_CXXOBJS += \
 ../workspace/riso-ranger2016/sys/action/LineTraceAction.o \
 ../workspace/riso-ranger2016/sys/action/RecliningAction.o \
 ../workspace/riso-ranger2016/sys/action/SitWaitAction.o \
-../workspace/riso-ranger2016/sys/arch/OS/RTOS.o \
 ../workspace/riso-ranger2016/sys/arch/interface/SubsystemBridge.o \
 ../workspace/riso-ranger2016/sys/arch/interface/SubsystemIf.o \
-../workspace/riso-ranger2016/sys/arch/timer/Timer.o \
-../workspace/riso-ranger2016/sys/arch/timer/TimerEvent.o \
 ../workspace/riso-ranger2016/sys/condition/CollisionCondition.o \
 ../workspace/riso-ranger2016/sys/condition/CommandCondition.o \
 ../workspace/riso-ranger2016/sys/condition/Condition.o \
