@@ -50,7 +50,10 @@ void Sequence::deleteAllFollowingSequences(){
 }
 
 
-
-void Sequence::setNextSequence(Sequence* nextSequence){
+/**
+ * @return セットされたシーケンスインスタンス
+ */
+Sequence* Sequence::setNextSequence(Sequence* nextSequence){
 	m_NextSequence = nextSequence;
+	return m_NextSequence;
 }
