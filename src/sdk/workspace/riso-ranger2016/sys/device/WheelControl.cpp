@@ -8,7 +8,6 @@
 #include "WheelControl.h"
 #include "balancer.h"
 
-#include "Temp.h"
 
 WheelControl::WheelControl(Motor* wheelMotorL, Motor* wheelMotorR, Battery* battery, GyroSensor* gyroSensor){
 	m_WheelMotorL = wheelMotorL;
