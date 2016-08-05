@@ -28,6 +28,7 @@ public:
 	void tick();
     void startTimer(uint32 rv_time, EmTimerId rv_id);
     void stopTimer(EmTimerId rv_id);
+    unsigned int getAbsoluteTime();
 
 
 private:
@@ -37,6 +38,7 @@ private:
 	TimerEvent *the_event;
 	uint32 time_count[kMaxTimerId];
 	bool is_inuse;
+	unsigned int absoluteTime;
 
 };
 

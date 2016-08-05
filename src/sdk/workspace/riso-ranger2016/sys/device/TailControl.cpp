@@ -29,7 +29,7 @@ void TailControl::Control(){
 
 	int pwm;
 
-	// Dity比算出
+	// Duty比算出
 	pwm = m_RefAngle - m_TailMotor->GetEnc(); //TODO PIDクラスを使用予定
 
 	// Duty比設定
