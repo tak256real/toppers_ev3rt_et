@@ -15,7 +15,7 @@ class LineTraceAction : public Action
 {
 
 public:
-	LineTraceAction();
+	LineTraceAction(int speed, int tailAngle);	// 走行速度 -100~100[%],尻尾角度 0～[度]
 	virtual ~LineTraceAction();
 
 	virtual void onStart();
@@ -24,9 +24,9 @@ public:
 
 private:
 	PIDControl* m_PidControl;
-	int m_Speed;				// 走行速度[0～100]
+	int m_Speed;						// 走行速度[0～100]
 	float m_ReferenceLinePosition;		// ライン位置目標値[正規化カラーセンサ値]
-	int m_TailAngle;			// 尻尾角度目標値[deg]
+	int m_TailAngle;					// 尻尾角度目標値[deg]
 
 };
 #endif // !defined(EA_40F80250_C89E_4088_959C_43DF38A0AF05__INCLUDED_)
