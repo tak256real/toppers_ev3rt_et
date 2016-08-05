@@ -84,7 +84,7 @@ void main_task(intptr_t unused) {
 	WheelControl* wheelControl = new WheelControl(leftMotor, rightMotor, battery, gyroSensor);
 	TailControl* tailControl = new TailControl(tailMotor);
 
-	Scenario::init(sequencer);
+	scenario->init(sequencer);
 	Action::init(stateObserver, tailControl, wheelControl);
 	Condition::init(stateObserver);
 	wheelControl->Init();

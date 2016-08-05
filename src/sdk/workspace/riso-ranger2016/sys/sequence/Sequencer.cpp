@@ -64,7 +64,7 @@ void Sequencer::cycle(){
 
 		// 次のシーケンスが無い場合はデフォルト設定のシーケンスをセット
 		if(sequence == NULL) {
-			sequence = new Sequence(new SitWaitAction(), new EmptyCondition());
+			sequence = new Sequence(new SitWaitAction(90), new EmptyCondition());
 		}
 
 		// 旧シーケンスdelete
