@@ -13,6 +13,7 @@
 
 class StateObserver {
 public:
+	ColorSensor *m_ColorSensor;
 	StateObserver(Motor* wheelMotorL, Motor* wheelMotorR, Motor* tailMotor, Calibration* calibration);
 	virtual ~StateObserver();
 
@@ -20,7 +21,8 @@ public:
 	float GetLinePosition();		// ライン位置(カラーセンサ値)取得
 	int GetTailAngularVelocity();	// 尻尾角速度[deg/sec]取得
 	int GetDirection();				// 初期状態からの相対方位[deg]取得
-	int GetRunningDistance();		// 走行距離[mm]取得
+	int GetRunningDistance();
+	int getTilt();		// 走行距離[mm]取得
 
 private:
 	Motor* m_WheelMotorL;	// 左モータ

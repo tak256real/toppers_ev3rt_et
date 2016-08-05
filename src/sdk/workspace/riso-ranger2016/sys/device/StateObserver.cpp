@@ -49,3 +49,10 @@ int StateObserver::GetRunningDistance() {
 int StateObserver::GetDirection() {
 	return m_Direction;
 }
+
+
+
+int StateObserver::getTilt(){
+
+	return 0;
+}

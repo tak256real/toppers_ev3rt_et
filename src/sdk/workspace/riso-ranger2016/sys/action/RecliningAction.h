@@ -14,12 +14,15 @@ class RecliningAction : public Action
 {
 
 public:
-	RecliningAction();
+	RecliningAction(int angularVelocity);	// 尻尾角速度 [deg/sec]
 	virtual ~RecliningAction();
 
 	virtual void onStart();
 	virtual void onCycle();
 	virtual void onStop();
+
+private:
+	int m_AngularVelocity;	// 尻尾角速度 [deg/sec]
 
 };
 #endif // !defined(EA_3A51595F_764E_4c5a_A951_CE06C5F6745F__INCLUDED_)

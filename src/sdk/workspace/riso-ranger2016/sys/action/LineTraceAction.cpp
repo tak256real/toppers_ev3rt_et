@@ -14,7 +14,7 @@ LineTraceAction::LineTraceAction(int speed, int tailAngle){
 	m_Speed = speed;							// 走行速度設定
 	m_TailAngle = tailAngle;					// 尻尾角度設定
 	m_PidControl = new PIDControl(80, 0, 80);	// PIDパタメータ設定
-	m_ReferenceLinePosition = 0.5;				// トレース境界位置設定
+	m_ReferenceLinePosition = 0.5;				// トレース位置設定
 }
 
 

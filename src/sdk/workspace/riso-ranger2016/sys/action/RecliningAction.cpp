@@ -8,7 +8,10 @@
 #include "RecliningAction.h"
 
 
-RecliningAction::RecliningAction(){
+RecliningAction::RecliningAction(int angularVelocity){
+
+	// メンバ初期化
+	m_AngularVelocity = angularVelocity;
 
 }
 
