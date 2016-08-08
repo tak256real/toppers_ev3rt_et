@@ -18,6 +18,7 @@ public:
 
 	void Calc();					// 周期計算
 	float GetLinePosition();		// ライン位置(正規化カラーセンサ値)取得
+	int getTailAngle();				// 尻尾角度取得[deg]
 	int GetTailAngularVelocity();	// 尻尾角速度[deg/sec]取得
 	int GetDirection();				// 初期状態からの相対方位[deg]取得
 	int GetRunningDistance();		// 走行距離[mm]取得
