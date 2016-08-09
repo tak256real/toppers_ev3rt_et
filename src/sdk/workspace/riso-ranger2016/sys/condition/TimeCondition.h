@@ -20,6 +20,8 @@ public:
 	virtual void onStart();
 	virtual bool check();
 
+	static unsigned int s_AbsoluteTime;		// TODO Timerクラスのものを使う
+
 private:
 	unsigned long m_StartMilliSecond;	// 開始時刻[ms]
 	unsigned long m_MilliSecondLength;	// 設定時間長[ms]

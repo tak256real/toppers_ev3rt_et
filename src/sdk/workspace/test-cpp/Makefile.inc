@@ -24,8 +24,6 @@ APPL_CXXOBJS += \
 ../workspace/riso-ranger2016/sys/action/LineTraceAction.o \
 ../workspace/riso-ranger2016/sys/action/RecliningAction.o \
 ../workspace/riso-ranger2016/sys/action/SitWaitAction.o \
-../workspace/riso-ranger2016/sys/arch/interface/SubsystemBridge.o \
-../workspace/riso-ranger2016/sys/arch/interface/SubsystemIf.o \
 ../workspace/riso-ranger2016/sys/condition/CollisionCondition.o \
 ../workspace/riso-ranger2016/sys/condition/CommandCondition.o \
 ../workspace/riso-ranger2016/sys/condition/Condition.o \
@@ -37,6 +35,7 @@ APPL_CXXOBJS += \
 ../workspace/riso-ranger2016/sys/condition/TimeCondition.o \
 ../workspace/riso-ranger2016/sys/device/balancer.o \
 ../workspace/riso-ranger2016/sys/device/balancer_param.o \
+../workspace/riso-ranger2016/sys/device/Battery.o \
 ../workspace/riso-ranger2016/sys/device/ColorSensor.o \
 ../workspace/riso-ranger2016/sys/device/GyroSensor.o \
 ../workspace/riso-ranger2016/sys/device/init_ev3.o \
@@ -52,11 +51,6 @@ APPL_CXXOBJS += \
 ../workspace/riso-ranger2016/sys/scenario/Scenario.o \
 ../workspace/riso-ranger2016/sys/sequence/Sequence.o \
 ../workspace/riso-ranger2016/sys/sequence/Sequencer.o \
-../workspace/riso-ranger2016/sys/task/Task.o \
-../workspace/riso-ranger2016/sys/task/DebugConsole.o \
-../workspace/riso-ranger2016/sys/task/Engine.o \
-../workspace/riso-ranger2016/sys/task/HighPriority.o \
-../workspace/riso-ranger2016/sys/task/Main.o \
 ../workspace/riso-ranger2016/eng/calibration/Calibration.o \
 ../workspace/riso-ranger2016/event/TouchSensorListener.o \
 ../workspace/riso-ranger2016/eng/linetrace/PIDControl.o

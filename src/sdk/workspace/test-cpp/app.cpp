@@ -26,6 +26,7 @@
 #include "GyroSensor.h"
 #include "Action.h"
 #include "Condition.h"
+#include "TimeCondition.h"
 
 #define DEBUG
 
@@ -34,7 +35,7 @@
 #else
 #define _debug(x)
 #endif
-
+/*
 class TestClass {
 public:
     TestClass() {
@@ -53,64 +54,70 @@ private:
     int member;
 };
 
-static FILE* bt = NULL;
-
 void idle_task(intptr_t unused) {
     while(1) {
     	fprintf(bt, "Press 'h' for usage instructions.\n");
     	tslp_tsk(1000);
     }
 }
+*/
 
+// グローバル変数宣言
+static FILE* bt = NULL;
+static int heartBeatCount = 0;
+
+// インスタンス生成、関連構築、初期化
+static Sequencer* sequencer = new Sequencer(new Sequence(new SitWaitAction(90), new EmptyCondition()));
+static Scenario* scenario = new LeftCourseScenario();
+
+static Motor* leftMotor = new Motor(EV3_PORT_C);
+static Motor* rightMotor = new Motor(EV3_PORT_B);
+static Motor* tailMotor = new Motor(EV3_PORT_A);
+static Battery* battery = new Battery();
+static GyroSensor* gyroSensor = new GyroSensor(EV3_PORT_4);
+static ColorSensor* colorSensor = new ColorSensor(EV3_PORT_3);
+
+static StateObserver* stateObserver = new StateObserver(leftMotor, rightMotor, tailMotor, colorSensor);
+static WheelControl* wheelControl = new WheelControl(leftMotor, rightMotor, battery, gyroSensor);
+static TailControl* tailControl = new TailControl(tailMotor);
 
 void main_task(intptr_t unused) {
 
     bt = ev3_serial_open_file(EV3_SERIAL_BT);
 
-	int heartBeatCount = 0;
-
-	// インスタンス生成、関連構築、初期化
-	Sequencer* sequencer = new Sequencer(new Sequence(new SitWaitAction(90), new EmptyCondition()));
-	Scenario* scenario = new LeftCourseScenario();
-
-	Motor* leftMotor = new Motor(EV3_PORT_C);
-	Motor* rightMotor = new Motor(EV3_PORT_B);
-	Motor* tailMotor = new Motor(EV3_PORT_A);
-	Battery* battery = new Battery();
-	GyroSensor* gyroSensor = new GyroSensor(EV3_PORT_4);
-	ColorSensor* colorSensor = new ColorSensor(EV3_PORT_3);
-
-	StateObserver* stateObserver = new StateObserver(leftMotor, rightMotor, tailMotor, colorSensor);
-	WheelControl* wheelControl = new WheelControl(leftMotor, rightMotor, battery, gyroSensor);
-	TailControl* tailControl = new TailControl(tailMotor);
-
 	scenario->init(sequencer);
 	Action::init(stateObserver, tailControl, wheelControl);
 	Condition::init(stateObserver);
 	wheelControl->Init();
+	TimeCondition::s_AbsoluteTime = 0;	// TODO Timer置き換え
 
 	// シナリオ生成
 	scenario->start();
 
-	while(1) {
+	// 4ms周期タスク起動
+	ev3_sta_cyc(ID_EV3CYC_4MS);
 
-		leftMotor->UpdateAngularVelocity();		// 中
-		rightMotor->UpdateAngularVelocity();	// 中
-		tailMotor->UpdateAngularVelocity();		// 中
-		stateObserver->Calc();					// 中
-		tailControl->Control();					// 高
-		wheelControl->Control();				// 高
-		sequencer->cycle();						// 低
+}
 
-		if(heartBeatCount%250 == 0) {
-			ev3_led_set_color(LED_ORANGE);
-		}
-		else if((heartBeatCount+125)%250 == 0) {
-			ev3_led_set_color(LED_GREEN);
-		}
-		heartBeatCount++;
+void Cyc4msecInterval(intptr_t unused) {
 
-		tslp_tsk(4);
+	leftMotor->UpdateAngularVelocity();		// 中
+	rightMotor->UpdateAngularVelocity();	// 中
+	tailMotor->UpdateAngularVelocity();		// 中
+	stateObserver->Calc();					// 中
+	tailControl->Control();					// 高
+	wheelControl->Control();				// 高
+	sequencer->cycle();						// 低
+
+	// ハートビート
+	if(heartBeatCount%250 == 0) {
+		ev3_led_set_color(LED_ORANGE);
 	}
+	else if((heartBeatCount+125)%250 == 0) {
+		ev3_led_set_color(LED_GREEN);
+	}
+	heartBeatCount++;
+
+	TimeCondition::s_AbsoluteTime++;	// TODO Timer置き換え
 
 }

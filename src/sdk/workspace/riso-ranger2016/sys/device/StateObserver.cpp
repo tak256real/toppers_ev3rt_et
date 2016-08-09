@@ -50,6 +50,11 @@ float StateObserver::GetLinePosition() {
 }
 
 
+int StateObserver::getTailAngle(){
+	return m_TailMotor->GetEnc();
+}
+
+
 int StateObserver::GetTailAngularVelocity() {
 	return m_TailMotor->GetAngularVelocity();
 }

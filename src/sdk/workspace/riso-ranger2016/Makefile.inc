@@ -43,6 +43,7 @@ APPL_CXXOBJS += \
 	../workspace/riso-ranger2016/sys/condition/TimeCondition.o \
 	../workspace/riso-ranger2016/sys/device/balancer.o \
 	../workspace/riso-ranger2016/sys/device/balancer_param.o \
+	../workspace/riso-ranger2016/sys/device/Battery.o \
 	../workspace/riso-ranger2016/sys/device/ColorSensor.o \
 	../workspace/riso-ranger2016/sys/device/GyroSensor.o \
 	../workspace/riso-ranger2016/sys/device/init_ev3.o \

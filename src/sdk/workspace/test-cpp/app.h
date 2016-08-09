@@ -30,7 +30,7 @@
  *      また，本ソフトウェアのユーザまたはエンドユーザからのいかなる理
  *      由に基づく請求からも，上記著作権者およびTOPPERSプロジェクトを
  *      免責すること．
- * 
+ *
  *  本ソフトウェアは，無保証で提供されているものである．上記著作権者お
  *  よびTOPPERSプロジェクトは，本ソフトウェアに関して，特定の使用目的
  *  に対する適合性も含めて，いかなる保証も行わない．また，本ソフトウェ
@@ -81,10 +81,11 @@ extern "C" {
  */
 #ifndef TOPPERS_MACRO_ONLY
 
-extern void	task(intptr_t exinf);
+//extern void	task(intptr_t exinf);
 extern void	main_task(intptr_t exinf);
-extern void balance_task(intptr_t exinf);
-extern void idle_task(intptr_t exinf);
+extern void Cyc4msecInterval(intptr_t unused);
+//extern void balance_task(intptr_t exinf);
+//extern void idle_task(intptr_t exinf);
 //extern void	tex_routine(TEXPTN texptn, intptr_t exinf);
 //#ifdef CPUEXC1
 //extern void	cpuexc_handler(void *p_excinf);
@@ -94,7 +95,7 @@ extern void idle_task(intptr_t exinf);
 //
 //extern void	gpio_handler_initialize(intptr_t exinf);
 //extern void	gpio_handler(void);
-extern void	gpio_irq_dispatcher(intptr_t exinf);
+//extern void	gpio_irq_dispatcher(intptr_t exinf);
 //
 //extern void	uart_sensor_monitor(intptr_t exinf);
 //

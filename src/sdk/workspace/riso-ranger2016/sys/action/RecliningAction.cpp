@@ -7,7 +7,6 @@
 
 #include "RecliningAction.h"
 
-
 RecliningAction::RecliningAction(int angularVelocity){
 
 	// メンバ初期化

@@ -6,7 +6,9 @@
  */
 
 #include "TimeCondition.h"
-#include "Timer.h"
+//#include "Timer.h"
+
+unsigned int TimeCondition::s_AbsoluteTime;
 
 TimeCondition::TimeCondition(unsigned int milliSecondLength) {
 
@@ -24,7 +26,7 @@ TimeCondition::~TimeCondition() {
 void TimeCondition::onStart(){
 
 	// 開始時刻を取得
-	m_StartMilliSecond = Timer::getInstance()->getAbsoluteTime();
+	m_StartMilliSecond = s_AbsoluteTime;//Timer::getInstance()->getAbsoluteTime();
 }
 
 
@@ -32,7 +34,7 @@ bool TimeCondition::check(){
 
 	bool ret = false;
 
-	if(m_StartMilliSecond + m_MilliSecondLength < Timer::getInstance()->getAbsoluteTime()) {
+	if(m_StartMilliSecond + m_MilliSecondLength < s_AbsoluteTime) {//Timer::getInstance()->getAbsoluteTime()) {
 		ret = true;
 	}
 
