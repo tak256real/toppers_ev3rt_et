@@ -118,6 +118,6 @@ void Cyc4msecInterval(intptr_t unused) {
 	}
 	heartBeatCount++;
 
-	TimeCondition::s_AbsoluteTime++;	// TODO Timer置き換え
+	TimeCondition::s_AbsoluteTime+=4;	// TODO Timer置き換え
 
 }
