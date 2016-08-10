@@ -26,7 +26,7 @@ public:
 	
 private:
 	int m_StartRotation;		// 基準角度
-	int m_RotationDifference;	// 指定の距離変分
+	int m_RotationDifference;	// 指定の角度変分
 
 
 };
