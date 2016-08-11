@@ -9,7 +9,7 @@
 #include "ev3api.h"
 #include "app.h"
 
-#include "libcpp-test.h"
+//#include "libcpp-test.h"
 
 #include "Motor.h"
 #include "WheelControl.h"
@@ -83,11 +83,12 @@ static TailControl* tailControl = new TailControl(tailMotor);
 
 void main_task(intptr_t unused) {
 
-    bt = ev3_serial_open_file(EV3_SERIAL_BT);
+    //bt = ev3_serial_open_file(EV3_SERIAL_BT);
 
 	scenario->init(sequencer);
 	Action::init(stateObserver, tailControl, wheelControl);
 	Condition::init(stateObserver);
+
 	wheelControl->Init();
 	TimeCondition::s_AbsoluteTime = 0;	// TODO Timer置き換え.
 
@@ -95,11 +96,13 @@ void main_task(intptr_t unused) {
 	scenario->start();
 
 	// 4ms周期タスク起動
+
 	ev3_sta_cyc(ID_EV3CYC_4MS);
 
 }
 
 void Cyc4msecInterval(intptr_t unused) {
+//ev3_led_set_color(LED_ORANGE);
 
 	leftMotor->UpdateAngularVelocity();		// 中
 	rightMotor->UpdateAngularVelocity();	// 中
@@ -111,6 +114,7 @@ void Cyc4msecInterval(intptr_t unused) {
 
 	// ハートビート
 	if(heartBeatCount%250 == 0) {
+	ev3_led_set_color(LED_ORANGE);
 		ev3_led_set_color(LED_ORANGE);
 	}
 	else if((heartBeatCount+125)%250 == 0) {

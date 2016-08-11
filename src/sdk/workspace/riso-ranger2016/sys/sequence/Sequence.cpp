@@ -21,7 +21,6 @@ Sequence::Sequence(Action* action, Condition* condition){
 Sequence::~Sequence(){
 	delete m_CurrentAction;
 	delete m_CurrentCondition;
-	delete m_NextSequence;
 }
 
 
@@ -45,8 +44,9 @@ void Sequence::deleteAllFollowingSequences(){
 	// 再起的に後続シーケンスをdelete
 	if(m_NextSequence != NULL){
 		m_NextSequence->deleteAllFollowingSequences();
+		delete m_NextSequence;	// TODO NULLポインタをdeleteしても安全かどうか確認
+
 	}
-	delete m_NextSequence;	// TODO NULLポインタをdeleteしても安全かどうか確認
 }
 
 
