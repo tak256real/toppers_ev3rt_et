@@ -40,7 +40,7 @@ private:
 	const int c_WheelWidth = 165;				// 車輪幅[mm]
 	const int c_WheelDiameter = 60;				// 車輪直径[mm]
 	const float c_CalcInterval = 0.004;			// 計算周期[sec]
-	const float c_DirCalcAdjustParam = 1;		// 方位計算誤差調整値
+	const float c_DirCalcAdjustParam = 1000;		// 方位計算誤差調整値
 	const float c_RunDisCalcAdjustParam = 1;	// 走行距離計算誤差調整値
 
 	// 方位計算短縮用係数

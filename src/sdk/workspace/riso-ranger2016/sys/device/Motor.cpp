@@ -6,7 +6,7 @@
 ///////////////////////////////////////////////////////////
 
 #include "Motor.h"
-
+#include "Bluetooth.h"
 
 Motor::Motor(motor_port_t PortNum){
 

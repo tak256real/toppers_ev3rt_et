@@ -105,10 +105,10 @@ void main_task(intptr_t unused) {
 		char c = fgetc(btlog);
 		switch(c) {
 		case 'w':
-			fprintf(btlog, "hello world\n");
+			fprintf(btlog, "hello world\r\n");
 			break;
 		default:
-			fprintf(btlog, "Unknown key '%c' pressed.\n", c);
+			fprintf(btlog, "Unknown key '%c' pressed.\r\n", c);
 		}
 	}
 

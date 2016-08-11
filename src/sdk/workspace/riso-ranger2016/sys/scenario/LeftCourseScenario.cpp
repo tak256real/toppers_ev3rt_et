@@ -11,6 +11,7 @@
 #include "TimeCondition.h"
 #include "LineTraceAction.h"
 #include "DistanceCondition.h"
+#include "TailRunAction.h"
 
 LeftCourseScenario::LeftCourseScenario(){
 
@@ -28,11 +29,11 @@ void LeftCourseScenario::start(){
 	// シーケンス順設定
 	Sequence* sequence;
 	Sequence* firstSequence;
-	firstSequence = 							new Sequence(new SitWaitAction(90),			new TimeCondition(5000)		);
-	sequence = firstSequence->setNextSequence(	new Sequence(new LineTraceAction(30, 60),	new DistanceCondition(720))		);
-	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(10, 30),	new DistanceCondition(360))		);
-	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(30, 60),	new DistanceCondition(720))		);
-	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(10, 80),	new DistanceCondition(360))		);
+	firstSequence = 							new Sequence(new SitWaitAction(85),			new TimeCondition(5000)		);
+	sequence = firstSequence->setNextSequence(	new Sequence(new TailRunAction(0, 20),	new TimeCondition(10000))		);
+	//sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(10, 30),	new DistanceCondition(360))		);
+	//sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(30, 60),	new DistanceCondition(720))		);
+	//sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(10, 80),	new DistanceCondition(360))		);
 
 	// シーケンス開始
 	m_Sequencer->startSequence(firstSequence);

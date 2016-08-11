@@ -7,12 +7,12 @@
 
 #ifndef WORKSPACE_RISO_RANGER2016_SYS_DEVICE_BLUETOOTH_H_
 #define WORKSPACE_RISO_RANGER2016_SYS_DEVICE_BLUETOOTH_H_
-
+#include <stdio.h>
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-FILE *btlog = NULL;
+extern FILE *btlog;
 
 #ifdef __cplusplus
 }

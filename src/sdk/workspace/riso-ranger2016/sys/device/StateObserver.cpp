@@ -6,6 +6,7 @@
  */
 
 #include "StateObserver.h"
+#include "Bluetooth.h"
 
 StateObserver::StateObserver(Motor* wheelMotorL, Motor* wheelMotorR, Motor* tailMotor, ColorSensor* colorSensor) {
 	// メンバ初期化
@@ -26,10 +27,15 @@ StateObserver::~StateObserver() {
 
 void StateObserver::Calc() {
 	// 方位[deg]
-	m_Direction += (m_WheelMotorL->GetAngularVelocity() - m_WheelMotorR->GetAngularVelocity())*c_DirCalcCoefficient;
-
+	m_Direction += (m_WheelMotorL->GetAngularVelocity() - m_WheelMotorR->GetAngularVelocity())*0.0009968051;//*c_DirCalcCoefficient;
 	// 走行距離[mm]
 	m_RunningDistance += (m_WheelMotorL->GetAngularVelocity() + m_WheelMotorR->GetAngularVelocity())*c_RunDisCalcCoefficient;
+	static int index;
+	if(index%25==0){
+	fprintf(btlog,"m_Direction = %10f, m_RunningDistance = %10f\r\n",m_Direction,m_RunningDistance);
+	}
+	index++;
+
 }
 
 
