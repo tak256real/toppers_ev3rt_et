@@ -17,11 +17,17 @@ class RotationCondition : public Condition
 {
 
 public:
-	RotationCondition();
+	RotationCondition(int rotation);
 	virtual ~RotationCondition();
 
 	virtual void onStart();
 	virtual bool check();
+	
+	
+private:
+	int m_StartRotation;		// 基準角度
+	int m_RotationDifference;	// 指定の角度変分
+
 
 };
 #endif // !defined(EA_5941CF1E_CC63_4dc3_A5CD_9E8AC88D8E4C__INCLUDED_)

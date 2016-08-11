@@ -8,8 +8,8 @@
 #include "RotationCondition.h"
 
 
-RotationCondition::RotationCondition(){
-
+RotationCondition::RotationCondition(int rotationDifference){
+	m_RotationDifference = rotationDifference;
 }
 
 
@@ -22,10 +22,21 @@ RotationCondition::~RotationCondition(){
 
 void RotationCondition::onStart(){
 
+	
+	m_RotationDifference = m_StateObserver->GetDirection();
 }
 
 
 bool RotationCondition::check(){
 
-	return false;
+	bool ret = false;
+	
+	if(m_RotationDifference < 0 &&  m_StateObserver->GetDirection() <= m_StartRotation + m_RotationDifference){
+		ret = true;	
+	}
+	else if(0 <= m_RotationDifference &&  m_StartRotation + m_RotationDifference <= m_StateObserver->GetDirection() ){
+		ret = true;	
+	}
+	
+	return ret;
 }
