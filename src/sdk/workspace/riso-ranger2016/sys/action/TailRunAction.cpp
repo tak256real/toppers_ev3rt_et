@@ -7,8 +7,11 @@
 
 #include "TailRunAction.h"
 
-TailRunAction::TailRunAction() {
+TailRunAction::TailRunAction(int speed, int turn) {
 
+	// メンバ初期化
+	m_Speed = speed;
+	m_Turn = turn;
 
 }
 
@@ -19,6 +22,11 @@ TailRunAction::~TailRunAction() {
 
 
 void TailRunAction::onStart(){
+
+	// 走行速度と旋回速度を設定
+	m_WheelControl->SetRefValue(m_Speed, m_Turn);
+
+	// 尻尾角度は現状維持
 
 }
 
