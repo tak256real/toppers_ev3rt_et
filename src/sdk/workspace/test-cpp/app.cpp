@@ -89,7 +89,7 @@ void main_task(intptr_t unused) {
 	Action::init(stateObserver, tailControl, wheelControl);
 	Condition::init(stateObserver);
 	wheelControl->Init();
-	TimeCondition::s_AbsoluteTime = 0;	// TODO Timer置き換え
+	TimeCondition::s_AbsoluteTime = 0;	// TODO Timer置き換え.
 
 	// シナリオ生成
 	scenario->start();
