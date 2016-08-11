@@ -46,4 +46,7 @@ void TailBrakeAction::onCycle(){
 
 void TailBrakeAction::onStop(){
 
+	// 停止状態にする
+	m_WheelControl->SetRefValue(0, 0);
+
 }
