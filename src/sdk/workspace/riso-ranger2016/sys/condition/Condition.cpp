@@ -21,6 +21,9 @@ Condition::~Condition(){
 }
 
 
-void Condition::init(StateObserver *stateObserver){
+void Condition::init(StateObserver *stateObserver, UltrasonicControl *ultrasonicControl){
 	Condition::m_StateObserver = stateObserver;
+	Condition::m_ultrasonicControl = ultrasonicControl;
 }
+
+

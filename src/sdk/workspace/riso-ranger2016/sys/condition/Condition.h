@@ -9,6 +9,7 @@
 #define EA_0D1E4528_C300_4dc4_B29F_13C52339C607__INCLUDED_
 
 #include "StateObserver.h"
+#include "UltrasonicControl.h"
 
 class Condition
 {
@@ -17,12 +18,16 @@ public:
 	Condition();
 	virtual ~Condition();
 
-	static void init(StateObserver *stateObserver);
+	static void init(StateObserver *stateObserver, UltrasonicControl *ultrasonicControl);
 	virtual void onStart()=0;
-	virtual bool check() =0;
+	virtual bool check()=0;
+	
+	UltrasonicControl* m_UltrasonicDistance;
+	int getUltrasonicDistance();
 
 protected:
 	static StateObserver *m_StateObserver;
+	static UltrasonicControl *m_ultrasonicControl;
 
 };
 #endif // !defined(EA_0D1E4528_C300_4dc4_B29F_13C52339C607__INCLUDED_)
