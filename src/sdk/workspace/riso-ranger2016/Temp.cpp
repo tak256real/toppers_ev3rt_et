@@ -40,8 +40,6 @@ void Temp::init(){
 
 	wheelControl->Init();
 
-    /* センサー入力ポートの設定 */
-    ev3_sensor_config(Temp::gyroPort, GYRO_SENSOR);
 }
 
 
