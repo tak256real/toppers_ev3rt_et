@@ -19,10 +19,13 @@ public:
 
 	void Control();
 	void SetRefValue(int angle);
+	bool earthingDetection();		// 尻尾接地検出
 
 private:
 	Motor* m_TailMotor;
 	int m_RefAngle;
+
+	static const int c_EarthingThreshold = 3;	// 接地検出の閾値[deg]
 
 };
 #endif // !defined(EA_AF7A7D4C_EA3F_49d8_B0CD_3F5D4A6A7B1C__INCLUDED_)
