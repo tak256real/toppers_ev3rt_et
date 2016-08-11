@@ -28,6 +28,8 @@
 #include "Condition.h"
 #include "TimeCondition.h"
 
+#include "Bluetooth.h"
+
 #define DEBUG
 
 #ifdef DEBUG
@@ -63,7 +65,6 @@ void idle_task(intptr_t unused) {
 */
 
 // グローバル変数宣言
-static FILE* bt = NULL;
 static int heartBeatCount = 0;
 
 // インスタンス生成、関連構築、初期化
@@ -83,7 +84,7 @@ static TailControl* tailControl = new TailControl(tailMotor);
 
 void main_task(intptr_t unused) {
 
-    //bt = ev3_serial_open_file(EV3_SERIAL_BT);
+    btlog = ev3_serial_open_file(EV3_SERIAL_BT);
 
 	scenario->init(sequencer);
 	Action::init(stateObserver, tailControl, wheelControl);
@@ -98,6 +99,18 @@ void main_task(intptr_t unused) {
 	// 4ms周期タスク起動
 
 	ev3_sta_cyc(ID_EV3CYC_4MS);
+
+	while(1) {
+		while (!ev3_bluetooth_is_connected()) tslp_tsk(100);
+		char c = fgetc(btlog);
+		switch(c) {
+		case 'w':
+			fprintf(btlog, "hello world\n");
+			break;
+		default:
+			fprintf(btlog, "Unknown key '%c' pressed.\n", c);
+		}
+	}
 
 }
 
