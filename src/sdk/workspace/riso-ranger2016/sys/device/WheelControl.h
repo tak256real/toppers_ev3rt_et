@@ -9,12 +9,14 @@
 #define EA_AD0BBBF1_1A41_451b_9449_09D1A5901DD9__INCLUDED_
 
 #include "Motor.h"
+#include "Battery.h"
+#include "GyroSensor.h"
 
 class WheelControl
 {
 
 public:
-	WheelControl(Motor* wheelMotorL, Motor* wheelMotorR);
+	WheelControl(Motor* wheelMotorL, Motor* wheelMotorR, Battery* battery, GyroSensor* gyroSensor);
 	virtual ~WheelControl();
 	void Init();
 	void Control();
@@ -22,9 +24,12 @@ public:
 	void SetTwoWheelMode(bool onoff);
 
 private:
+	Motor* m_WheelMotorL;		// 左モータ
+	Motor* m_WheelMotorR;		// 右モータ
+	Battery* m_Battery;			// バッテリー
+	GyroSensor* m_GyroSensor;	// ジャイロセンサ
+
 	bool m_TwoWheelMode;		// 倒立制御オンオフ
-	Motor* m_WheelMotorL;	// 左モータ
-	Motor* m_WheelMotorR;	// 右モータ
 	int m_RefSpeed;				// 目標速度
 	int m_RefTurn;				// 目標旋回速度
 

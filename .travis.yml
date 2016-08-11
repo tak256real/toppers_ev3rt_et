@@ -51,4 +51,6 @@ before_script:
 script:
 #  - make app=gyroboy
 #  - make app=helloev3
-  - make app=riso-ranger2016
+#  - make app=riso-ranger2016
+  - make app=test-cpp
+

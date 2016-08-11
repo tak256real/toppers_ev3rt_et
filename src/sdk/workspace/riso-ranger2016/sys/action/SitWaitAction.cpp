@@ -8,7 +8,10 @@
 #include "SitWaitAction.h"
 
 
-SitWaitAction::SitWaitAction(){
+SitWaitAction::SitWaitAction(int tailAngle){
+
+	// メンバ初期化
+	m_TailAngle = tailAngle;	// 尻尾角度[deg]
 
 }
 
@@ -30,7 +33,7 @@ void SitWaitAction::onStart(){
 	m_WheelControl->SetRefValue(0, 0);
 
 	// 尻尾角度を設定
-	m_TailControl->SetRefValue(90);
+	m_TailControl->SetRefValue(m_TailAngle);
 
 }
 

@@ -29,11 +29,24 @@ void TailControl::Control(){
 
 	int pwm;
 
-	// Dity比算出
-	pwm = m_RefAngle - m_TailMotor->GetEnc(); //TODO PIDクラスを使用予定
+	// Duty比算出
+	pwm = m_RefAngle - m_TailMotor->GetEnc(); // 比例制御
 
 	// Duty比設定
 	m_TailMotor->SetPWMValue(pwm);
+
+}
+
+
+bool TailControl::earthingDetection(){
+
+	// 比例制御で一定以上の誤差があるとき接地していると判断
+	if(m_RefAngle - m_TailMotor->GetEnc() < TailControl::c_EarthingThreshold) {
+		return false;
+	}
+	else {
+		return true;
+	}
 
 }
 

@@ -8,24 +8,26 @@
 #include "LineTraceAction.h"
 
 
-LineTraceAction::LineTraceAction(){
+LineTraceAction::LineTraceAction(int speed, int tailAngle){
 
+	// メンバ初期化
+	m_Speed = speed;							// 走行速度設定
+	m_TailAngle = tailAngle;					// 尻尾角度設定
+	m_PidControl = new PIDControl(80, 0, 80);	// PIDパタメータ設定
+	m_ReferenceLinePosition = 0.5;				// トレース位置設定
 }
 
 
 LineTraceAction::~LineTraceAction(){
+
+	// PIDインスタンス削除
+	delete m_PidControl;
 
 }
 
 
 
 void LineTraceAction::onStart(){
-
-	// メンバ初期化
-	m_PidControl = new PIDControl(80, 0, 80);
-	m_Speed = 100;
-	m_ReferenceLinePosition = 0.5;
-	m_TailAngle = 0;
 
 	// 倒立モードに切り替え
 	m_WheelControl->SetTwoWheelMode(true);
@@ -54,8 +56,5 @@ void LineTraceAction::onCycle(){
 
 
 void LineTraceAction::onStop(){
-
-	// PIDインスタンス削除
-	delete m_PidControl;
 
 }
