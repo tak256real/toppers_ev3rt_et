@@ -14,7 +14,7 @@ class SitWaitAction : public Action
 {
 
 public:
-	SitWaitAction();
+	SitWaitAction(int tailAngle);	// 尻尾角度[deg]
 	virtual ~SitWaitAction();
 
 	virtual void onStart();
@@ -22,6 +22,7 @@ public:
 	virtual void onStop();
 
 private:
+	int m_TailAngle;	// 尻尾角度[deg]
 
 };
 #endif // !defined(EA_843E98B2_DB1A_40fb_B0D5_0FEA5F22A921__INCLUDED_)

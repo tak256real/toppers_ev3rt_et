@@ -17,6 +17,8 @@ Timer::Timer() : the_event(NULL), is_inuse(false) {
     for(uint8 i = 0; i < kMaxTimerId; i++) {
         time_count[i] = 0;
     }
+
+    absoluteTime = 0;
 }
 
 
@@ -55,6 +57,8 @@ void Timer::tick(){
             // Don't care.
         }
     }
+
+    absoluteTime++;
 }
 
 void Timer::startTimer(uint32 rv_time, EmTimerId rv_id) {
