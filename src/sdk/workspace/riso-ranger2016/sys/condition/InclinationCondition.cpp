@@ -7,9 +7,11 @@
 
 #include "InclinationCondition.h"
 
-
-InclinationCondition::InclinationCondition(){
-
+/**
+ * –Ú•WŒXÎw’è
+ */
+InclinationCondition::InclinationCondition(int inclinationTarget){
+	m_InclinationTarget = inclinationTarget;
 }
 
 
@@ -22,10 +24,19 @@ InclinationCondition::~InclinationCondition(){
 
 void InclinationCondition::onStart(){
 
+	// Šî€ŒXÎæ“¾
+	m_StartInclination = m_StateObserver->GetInclination();
+
 }
 
 
 bool InclinationCondition::check(){
 
-	return false;
+	bool ret = false;
+
+	// ğŒ”»’è
+	
+
+	return ret;
+
 }
