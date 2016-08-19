@@ -27,6 +27,7 @@
 #include "Action.h"
 #include "Condition.h"
 #include "TimeCondition.h"
+#include "UltrasonicControl.h"
 
 #define DEBUG
 
@@ -76,6 +77,8 @@ static Motor* tailMotor = new Motor(EV3_PORT_A);
 static Battery* battery = new Battery();
 static GyroSensor* gyroSensor = new GyroSensor(EV3_PORT_4);
 static ColorSensor* colorSensor = new ColorSensor(EV3_PORT_3);
+static UltrasonicControl* ultrasonicControl = new UltrasonicControl(EV3_PORT_2);
+
 
 static StateObserver* stateObserver = new StateObserver(leftMotor, rightMotor, tailMotor, colorSensor);
 static WheelControl* wheelControl = new WheelControl(leftMotor, rightMotor, battery, gyroSensor);
@@ -87,7 +90,7 @@ void main_task(intptr_t unused) {
 
 	scenario->init(sequencer);
 	Action::init(stateObserver, tailControl, wheelControl);
-	Condition::init(stateObserver);
+	Condition::init(stateObserver, ultrasonicControl);
 	wheelControl->Init();
 	TimeCondition::s_AbsoluteTime = 0;	// TODO Timer置き換え.
 

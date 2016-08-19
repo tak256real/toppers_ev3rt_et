@@ -38,6 +38,7 @@ APPL_CXXOBJS += \
 	../workspace/riso-ranger2016/sys/condition/CommandCondition.o \
 	../workspace/riso-ranger2016/sys/condition/Condition.o \
 	../workspace/riso-ranger2016/sys/condition/DistanceCondition.o \
+	../workspace/riso-ranger2016/sys/condition/DistanceToObjectCondition.o \
 	../workspace/riso-ranger2016/sys/condition/EmptyCondition.o \
 	../workspace/riso-ranger2016/sys/condition/InclinationCondition.o \
 	../workspace/riso-ranger2016/sys/condition/LineCondition.o \
@@ -68,7 +69,6 @@ APPL_CXXOBJS += \
 	../workspace/riso-ranger2016/sys/task/Main.o \
 	../workspace/riso-ranger2016/eng/calibration/Calibration.o \
 	../workspace/riso-ranger2016/event/TouchSensorListener.o \
-	../workspace/riso-ranger2016/eng/linetrace/PIDControl.o \
-	../workspace/riso-ranger2016/sys/condition/DistanceToObjectCondition.o
+	../workspace/riso-ranger2016/eng/linetrace/PIDControl.o 
 
 

@@ -24,8 +24,6 @@ InclinationCondition::~InclinationCondition(){
 
 void InclinationCondition::onStart(){
 
-	// Šî€ŒXÎæ“¾
-	m_StartInclination = m_StateObserver->getTailAngle();
 
 }
 
@@ -34,8 +32,11 @@ bool InclinationCondition::check(){
 
 	bool ret = false;
 
-	// ğŒ”»’è
+	// ğŒ”»’è StateObserver::getTailAngle()
 	
+	if(m_InclinationTarget - c_error < m_StateObserver->getTailAngle() && m_StateObserver->getTailAngle() < m_InclinationTarget + c_error){
+		ret =true;
+	}
 
 	return ret;
 

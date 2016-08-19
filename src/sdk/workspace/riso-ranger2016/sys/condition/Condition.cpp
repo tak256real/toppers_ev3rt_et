@@ -9,6 +9,7 @@
 
 
 StateObserver* Condition::m_StateObserver;
+UltrasonicControl* Condition::m_ultrasonicControl;
 
 Condition::Condition(){
 

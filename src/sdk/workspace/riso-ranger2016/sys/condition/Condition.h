@@ -22,8 +22,8 @@ public:
 	virtual void onStart()=0;
 	virtual bool check()=0;
 	
-	UltrasonicControl* m_UltrasonicDistance;
-	int getUltrasonicDistance();
+	//UltrasonicControl* m_UltrasonicDistance;
+	//int getUltrasonicDistance();
 
 protected:
 	static StateObserver *m_StateObserver;
