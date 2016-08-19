@@ -26,7 +26,7 @@ DistanceToObjectCondition::~DistanceToObjectCondition(){
 void DistanceToObjectCondition::onStart(){
 
 	// Šî€‹——£æ“¾
-	m_StartDistance = m_StateObserver->GetObjectDistance();
+	m_StartDistance = m_UltrasonicControl->getUltrasonicValue();
 }
 
 
@@ -35,10 +35,10 @@ bool DistanceToObjectCondition::check(){
 	bool ret = false;
 
 	// ğŒ”»’è
-	if(m_DistanceDifference < 0 &&  m_StateObserver->GetObjectDistance() <= m_StartDistance + m_DistanceDifference) {			// Œ¸­•ûŒü
+	if(m_DistanceDifference < 0 &&  m_UltrasonicControl->getUltrasonicValue() <= m_StartDistance + m_DistanceDifference) {			// Œ¸­•ûŒü
 		ret = true;
 	}
-	else if(0 <= m_DistanceDifference &&  m_StartDistance + m_DistanceDifference <= m_StateObserver->GetObjectDistance()) {	// ‘‰Á•ûŒü
+	else if(0 <= m_DistanceDifference &&  m_StartDistance + m_DistanceDifference <= m_UltrasonicControl->getUltrasonicValue()) {	// ‘‰Á•ûŒü
 		ret = true;
 	}
 
