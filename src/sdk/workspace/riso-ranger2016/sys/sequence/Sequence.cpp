@@ -21,7 +21,7 @@ Sequence::Sequence(Action* action, Condition* condition){
 Sequence::~Sequence(){
 	delete m_CurrentAction;
 	delete m_CurrentCondition;
-	delete m_NextSequence;
+//	delete m_NextSequence;
 }
 
 

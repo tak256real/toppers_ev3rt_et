@@ -86,8 +86,8 @@ static TailControl* tailControl = new TailControl(tailMotor);
 
 void main_task(intptr_t unused) {
 
-    bt = ev3_serial_open_file(EV3_SERIAL_BT);
-
+//	bt = ev3_serl_open_file(EV3_SERIAL_BT);
+	
 	scenario->init(sequencer);
 	Action::init(stateObserver, tailControl, wheelControl);
 	Condition::init(stateObserver, ultrasonicControl);
@@ -104,6 +104,8 @@ void main_task(intptr_t unused) {
 
 void Cyc4msecInterval(intptr_t unused) {
 
+	ev3_led_set_color(LED_ORANGE);
+	
 	leftMotor->UpdateAngularVelocity();		// 中
 	rightMotor->UpdateAngularVelocity();	// 中
 	tailMotor->UpdateAngularVelocity();		// 中

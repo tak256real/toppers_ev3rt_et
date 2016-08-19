@@ -18,8 +18,8 @@ Sequencer::Sequencer(Sequence* sequence){
 	m_CurrentSequence = sequence;
 
 	// 初期シーケンス開始処理
-	m_CurrentSequence->getAction()->onStart();
-	m_CurrentSequence->getCondition()->onStart();
+//	m_CurrentSequence->getAction()->onStart();
+//	m_CurrentSequence->getCondition()->onStart();
 
 }
 
