@@ -17,7 +17,7 @@ class InclinationCondition : public Condition
 {
 
 public:
-	InclinationCondition();
+	InclinationCondition(int inclinationTarget);
 	virtual ~InclinationCondition();
 
 	virtual void onStart();

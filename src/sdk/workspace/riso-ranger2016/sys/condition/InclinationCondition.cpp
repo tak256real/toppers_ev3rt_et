@@ -25,7 +25,7 @@ InclinationCondition::~InclinationCondition(){
 void InclinationCondition::onStart(){
 
 	// Šî€ŒXŽÎŽæ“¾
-	m_StartInclination = m_StateObserver->GetInclination();
+	m_StartInclination = m_StateObserver->getTailAngle();
 
 }
 
