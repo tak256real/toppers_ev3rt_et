@@ -39,6 +39,7 @@ APPL_CXXOBJS += \
 ../workspace/riso-ranger2016/sys/device/balancer.o \
 ../workspace/riso-ranger2016/sys/device/balancer_param.o \
 ../workspace/riso-ranger2016/sys/device/Battery.o \
+../workspace/riso-ranger2016/sys/device/Bluetooth.o \
 ../workspace/riso-ranger2016/sys/device/ColorSensor.o \
 ../workspace/riso-ranger2016/sys/device/GyroSensor.o \
 ../workspace/riso-ranger2016/sys/device/init_ev3.o \
@@ -64,7 +65,7 @@ SRCLANG := c++
 ifdef CONFIG_EV3RT_APPLICATION
 
 # Include libraries
-include $(EV3RT_SDK_LIB_DIR)/libcpp-test/Makefile
-include $(EV3RT_SDK_LIB_DIR)/lib2/Makefile
+#include $(EV3RT_SDK_LIB_DIR)/libcpp-test/Makefile
+#include $(EV3RT_SDK_LIB_DIR)/lib2/Makefile
 
 endif

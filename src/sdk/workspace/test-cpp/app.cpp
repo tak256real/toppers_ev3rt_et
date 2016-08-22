@@ -9,7 +9,7 @@
 #include "ev3api.h"
 #include "app.h"
 
-#include "libcpp-test.h"
+//#include "libcpp-test.h"
 
 #include "Motor.h"
 #include "WheelControl.h"
@@ -28,6 +28,8 @@
 #include "Condition.h"
 #include "TimeCondition.h"
 #include "UltrasonicControl.h"
+
+#include "Bluetooth.h"
 
 #define DEBUG
 
@@ -64,7 +66,6 @@ void idle_task(intptr_t unused) {
 */
 
 // グローバル変数宣言
-static FILE* bt = NULL;
 static int heartBeatCount = 0;
 
 // インスタンス生成、関連構築、初期化
@@ -86,11 +87,10 @@ static TailControl* tailControl = new TailControl(tailMotor);
 
 void main_task(intptr_t unused) {
 
-//	bt = ev3_serl_open_file(EV3_SERIAL_BT);
-	
-	scenario->init(sequencer);
+    btlog = ev3_serial_open_file(EV3_SERIAL_BT);	scenario->init(sequencer);
 	Action::init(stateObserver, tailControl, wheelControl);
 	Condition::init(stateObserver, ultrasonicControl);
+
 	wheelControl->Init();
 	TimeCondition::s_AbsoluteTime = 0;	// TODO Timer置き換え.
 
@@ -98,14 +98,27 @@ void main_task(intptr_t unused) {
 	scenario->start();
 
 	// 4ms周期タスク起動
+
 	ev3_sta_cyc(ID_EV3CYC_4MS);
+
+	while(1) {
+		while (!ev3_bluetooth_is_connected()) tslp_tsk(100);
+		char c = fgetc(btlog);
+		switch(c) {
+		case 'w':
+			fprintf(btlog, "hello world\r\n");
+			break;
+		default:
+			fprintf(btlog, "Unknown key '%c' pressed.\r\n", c);
+		}
+	}
 
 }
 
 void Cyc4msecInterval(intptr_t unused) {
+//ev3_led_set_color(LED_ORANGE);
 
-	ev3_led_set_color(LED_ORANGE);
-	
+
 	leftMotor->UpdateAngularVelocity();		// 中
 	rightMotor->UpdateAngularVelocity();	// 中
 	tailMotor->UpdateAngularVelocity();		// 中
@@ -116,6 +129,7 @@ void Cyc4msecInterval(intptr_t unused) {
 
 	// ハートビート
 	if(heartBeatCount%250 == 0) {
+	ev3_led_set_color(LED_ORANGE);
 		ev3_led_set_color(LED_ORANGE);
 	}
 	else if((heartBeatCount+125)%250 == 0) {
