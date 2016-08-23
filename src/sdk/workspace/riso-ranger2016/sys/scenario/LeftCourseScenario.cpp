@@ -16,6 +16,7 @@
 #include "DistanceToObjectCondition.h"
 #include "InclinationCondition.h"
 #include "DistanceCondition.h"
+#include "TailRunAction.h"
 
 LeftCourseScenario::LeftCourseScenario(){
 
@@ -33,6 +34,7 @@ void LeftCourseScenario::start(){
 	// シーケンス順設定
 	Sequence* sequence;
 	Sequence* firstSequence;
+
 	firstSequence = 							new Sequence(new SitWaitAction(92),			new TimeCondition(5000)		);
 	sequence = firstSequence->setNextSequence(	new Sequence(new LineTraceAction(10, 60),	new DistanceCondition(200))		);
 //	sequence = sequence->setNextSequence(		new Sequence(new TailBrakeAction(),			new TimeCondition(1000))		);
