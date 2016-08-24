@@ -9,7 +9,7 @@
 
 
 CollisionCondition::CollisionCondition(){
-
+	
 }
 
 
@@ -26,5 +26,21 @@ void CollisionCondition::onStart(){
 
 bool CollisionCondition::check(){
 
-	return false;
+	m_Velocity = m_StateObserver->getVelocity();
+	m_VelocityPrev = m_Velocity;
+	
+	m_Aacceleration = m_Velocity - m_VelocityPrev;
+	m_AaccelerationPrev = m_Aacceleration;
+	
+	m_AaccelerationDifference = m_Aacceleration - m_AaccelerationPrev;
+	
+	
+	bool ret = false;
+
+	// ğŒ”»’è
+	if(m_AaccelerationDifference < c_dif) {
+		ret = true;
+	}
+
+	return ret;
 }
