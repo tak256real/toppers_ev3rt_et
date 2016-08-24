@@ -28,6 +28,9 @@ void RecliningAction::onStart(){
 	// 現在の尻尾角度を目標値として初期化
 	m_CurrentReferenceAngle = m_StateObserver->getTailAngle();
 
+	// 倒立制御をオフ
+	m_WheelControl->SetTwoWheelMode(false);
+
 }
 
 
