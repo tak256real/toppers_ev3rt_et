@@ -84,8 +84,8 @@ void WheelControl::Control(){
 	}
 
 	// Duty比設定
-	m_WheelMotorL->SetPWMValue(pwm_L);
-	m_WheelMotorR->SetPWMValue(pwm_R);
+	m_WheelMotorL->SetPWMValue((int)pwm_L);
+	m_WheelMotorR->SetPWMValue((int)pwm_R);
 
 }
 
@@ -104,7 +104,7 @@ void WheelControl::SetTwoWheelMode(bool onoff){
 
 	if(m_TwoWheelMode == false && onoff == true) {
 	    // 倒立振子制御初期化
-		m_GyroSensor->reset();
+	//	m_GyroSensor->reset();
 	    //m_WheelMotorL->ResetEnc();  //TODO 不要の可能性がある 倒立移行時に失敗するならここを実行
 		//m_WheelMotorR->ResetEnc();
 		balance_init();
