@@ -8,7 +8,7 @@
 #ifndef WORKSPACE_RISO_RANGER2016_SYS_CONDITION_TOUCHSENSORCONDITION_H_
 #define WORKSPACE_RISO_RANGER2016_SYS_CONDITION_TOUCHSENSORCONDITION_H_
 
-#include "TouchSensorCondition.h"
+#include "Condition.h"
 
 class TouchSensorCondition : public Condition
 {
