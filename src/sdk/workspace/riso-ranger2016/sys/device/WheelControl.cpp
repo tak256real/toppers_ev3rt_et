@@ -8,16 +8,15 @@
 #include "WheelControl.h"
 #include "balancer.h"
 
-#include "Temp.h"
 
-WheelControl::WheelControl(Motor* wheelMotorL, Motor* wheelMotorR){
-	m_RefSpeed = 0;
-	m_RefTurn = 0;
-	m_WheelMotorL = NULL;
-	m_WheelMotorR = NULL;
-	m_TwoWheelMode = false;
+WheelControl::WheelControl(Motor* wheelMotorL, Motor* wheelMotorR, Battery* battery, GyroSensor* gyroSensor){
 	m_WheelMotorL = wheelMotorL;
 	m_WheelMotorR = wheelMotorR;
+	m_Battery = battery;
+	m_GyroSensor = gyroSensor;
+	m_RefSpeed = 0;
+	m_RefTurn = 0;
+	m_TwoWheelMode = false;
 }
 
 
@@ -45,15 +44,15 @@ void WheelControl::Control(){
 
 	if(m_TwoWheelMode == true) {	// 倒立走行
 		//printf("refturn=%d\n",m_RefTurn);
-		//TODO Duty比算出
+		// Duty比算出
 		balance_control(
 			(float)m_RefSpeed,
 			(float)m_RefTurn,
-			(float)Temp::getGyro(),//gyro,TODO どこから取得するか
-			(float)Temp::getGyroOffset(),//GYRO_OFFSET,TODO どこから取得するか
+			(float)m_GyroSensor->getSensorValue(),
+			(float)m_GyroSensor->getGyroOffset(),
 			(float)m_WheelMotorL->GetEnc(),
 			(float)m_WheelMotorR->GetEnc(),
-			(float)Temp::getBattery(),//volt, TODO どこから取得するか
+			(float)m_Battery->getValue(),
 			&pwm_L,
 			&pwm_R);
 
@@ -85,13 +84,13 @@ void WheelControl::Control(){
 	}
 
 	// Duty比設定
-	m_WheelMotorL->SetPWMValue(pwm_L);
-	m_WheelMotorR->SetPWMValue(pwm_R);
+	m_WheelMotorL->SetPWMValue((int)pwm_L);
+	m_WheelMotorR->SetPWMValue((int)pwm_R);
 
 }
 
 
-// 同時変更必要
+//TODO 同時変更必要 現状では非スレッドセーフ
 void WheelControl::SetRefValue(int speed, int turn){
 	m_RefSpeed = speed;
 	m_RefTurn = turn;
@@ -105,11 +104,10 @@ void WheelControl::SetTwoWheelMode(bool onoff){
 
 	if(m_TwoWheelMode == false && onoff == true) {
 	    // 倒立振子制御初期化
-	    ev3_gyro_sensor_reset(Temp::gyroPort);
-	    m_WheelMotorL->ResetEnc();
-		m_WheelMotorR->ResetEnc();
+	//	m_GyroSensor->reset();
+	    //m_WheelMotorL->ResetEnc();  //TODO 不要の可能性がある 倒立移行時に失敗するならここを実行
+		//m_WheelMotorR->ResetEnc();
 		balance_init();
-		//TODO エンコーダも初期化が必要かもしれない
 	}
 
 	m_TwoWheelMode = onoff;

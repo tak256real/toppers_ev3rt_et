@@ -9,6 +9,7 @@
 
 
 StateObserver* Condition::m_StateObserver;
+UltrasonicControl* Condition::m_ultrasonicControl;
 
 Condition::Condition(){
 
@@ -21,6 +22,9 @@ Condition::~Condition(){
 }
 
 
-void Condition::init(StateObserver *stateObserver){
+void Condition::init(StateObserver *stateObserver, UltrasonicControl *ultrasonicControl){
 	Condition::m_StateObserver = stateObserver;
+	Condition::m_ultrasonicControl = ultrasonicControl;
 }
+
+

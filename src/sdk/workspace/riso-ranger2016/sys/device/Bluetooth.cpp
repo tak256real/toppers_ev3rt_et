@@ -1,0 +1,9 @@
+///////////////////////////////////////////////////////////
+//  Motor.cpp
+//  Implementation of the Class Motor
+//  Created on:      2016/07/26 18:58:12
+//  Original author: 039389
+///////////////////////////////////////////////////////////
+
+#include "Bluetooth.h"
+FILE *btlog = NULL;

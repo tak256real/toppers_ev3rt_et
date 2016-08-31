@@ -22,9 +22,9 @@ public:
 	Condition* getCondition();
 	Sequence* getNextSequence();
 	void deleteAllFollowingSequences();
-	void setNextSequence(Sequence* nextSequence);
+	Sequence* setNextSequence(Sequence* nextSequence);
 
-protected:
+private:
 	Action* m_CurrentAction;
 	Condition* m_CurrentCondition;
 	Sequence* m_NextSequence;

@@ -9,15 +9,27 @@
 #include "ev3api.h"
 #include "app.h"
 
-#include "libcpp-test.h"
+//#include "libcpp-test.h"
 
 #include "Motor.h"
 #include "WheelControl.h"
 #include "TailControl.h"
-#include "Linetrace.h"
 #include "ColorSensor.h"
 #include "StateObserver.h"
-#include "Temp.h"
+#include "Sequencer.h"
+#include "Scenario.h"
+#include "LeftCourseScenario.h"
+#include "Sequence.h"
+#include "SitWaitAction.h"
+#include "EmptyCondition.h"
+#include "Battery.h"
+#include "GyroSensor.h"
+#include "Action.h"
+#include "Condition.h"
+#include "TimeCondition.h"
+#include "UltrasonicControl.h"
+
+#include "Bluetooth.h"
 
 #define DEBUG
 
@@ -26,7 +38,7 @@
 #else
 #define _debug(x)
 #endif
-
+/*
 class TestClass {
 public:
     TestClass() {
@@ -45,62 +57,88 @@ private:
     int member;
 };
 
-Motor* wheelMotorL = new Motor(Temp::wheelLPort);
-Motor* wheelMotorR = new Motor(Temp::wheelRPort);
-Motor* tailMotor = new Motor(Temp::tailPort);
-
-WheelControl* wheelControl = new WheelControl(wheelMotorL, wheelMotorR);
-TailControl* tailControl = new TailControl(tailMotor);
-
-ColorSensor* colorSensor = new ColorSensor(Temp::colorSensorPort);
-Calibration* calibration = new Calibration(colorSensor);
-
-StateObserver* stateObserver = new StateObserver( wheelMotorL,  wheelMotorR,  tailMotor,  calibration);
-
-static FILE* bt = NULL;
-
 void idle_task(intptr_t unused) {
     while(1) {
     	fprintf(bt, "Press 'h' for usage instructions.\n");
     	tslp_tsk(1000);
     }
 }
+*/
 
+// グローバル変数宣言
+static int heartBeatCount = 0;
+
+// インスタンス生成、関連構築、初期化
+static Sequencer* sequencer = new Sequencer(new Sequence(new SitWaitAction(90), new EmptyCondition()));
+static Scenario* scenario = new LeftCourseScenario();
+
+static Motor* leftMotor = new Motor(EV3_PORT_C);
+static Motor* rightMotor = new Motor(EV3_PORT_B);
+static Motor* tailMotor = new Motor(EV3_PORT_A);
+static Battery* battery = new Battery();
+static GyroSensor* gyroSensor = new GyroSensor(EV3_PORT_4);
+static ColorSensor* colorSensor = new ColorSensor(EV3_PORT_3);
+static UltrasonicControl* ultrasonicControl = new UltrasonicControl(EV3_PORT_2);
+
+
+static StateObserver* stateObserver = new StateObserver(leftMotor, rightMotor, tailMotor, colorSensor);
+static WheelControl* wheelControl = new WheelControl(leftMotor, rightMotor, battery, gyroSensor);
+static TailControl* tailControl = new TailControl(tailMotor);
 
 void main_task(intptr_t unused) {
 
-    bt = ev3_serial_open_file(EV3_SERIAL_BT);
+    btlog = ev3_serial_open_file(EV3_SERIAL_BT);
 
-	int heartBeatCount = 0;
-	Linetrace* linetrace;
+	scenario->init(sequencer);
+	Action::init(stateObserver, tailControl, wheelControl);
+	Condition::init(stateObserver, ultrasonicControl);
 
-	Temp::init();
-	tailControl->SetRefValue(90);
 	wheelControl->Init();
+	TimeCondition::s_AbsoluteTime = 0;	// TODO Timer置き換え.
+
+	gyroSensor->reset();
+	
+	// シナリオ生成
+	scenario->start();
+
+	// 4ms周期タスク起動
+
+	ev3_sta_cyc(ID_EV3CYC_4MS);
 
 	while(1) {
-
-		if(1250 < heartBeatCount) {
-			linetrace->exec();
+		while (!ev3_bluetooth_is_connected()) tslp_tsk(100);
+		char c = fgetc(btlog);
+		switch(c) {
+		case 'w':
+			fprintf(btlog, "hello world\r\n");
+			break;
+		default:
+			fprintf(btlog, "Unknown key '%c' pressed.\r\n", c);
 		}
-		tailControl->Control();
-		wheelControl->Control();
-
-		if(heartBeatCount%250 == 0) {
-			ev3_led_set_color(LED_ORANGE);
-		}
-		else if((heartBeatCount+125)%250 == 0) {
-			ev3_led_set_color(LED_GREEN);
-		}
-		heartBeatCount++;
-
-		if(heartBeatCount == 1250) {
-			tailControl->SetRefValue(0);
-			linetrace = new Linetrace(wheelControl, calibration);
-
-		}
-
-		tslp_tsk(4);
 	}
+
+}
+
+void Cyc4msecInterval(intptr_t unused) {
+
+	leftMotor->UpdateAngularVelocity();		// 中
+	rightMotor->UpdateAngularVelocity();	// 中
+	tailMotor->UpdateAngularVelocity();		// 中
+	stateObserver->Calc();					// 中
+	tailControl->Control();					// 高
+	wheelControl->Control();				// 高
+	sequencer->cycle();						// 低
+
+	// ハートビート
+	if(heartBeatCount%250 == 0) {
+	ev3_led_set_color(LED_ORANGE);
+		ev3_led_set_color(LED_ORANGE);
+	}
+	else if((heartBeatCount+125)%250 == 0) {
+		ev3_led_set_color(LED_GREEN);
+	}
+	heartBeatCount++;
+
+	TimeCondition::s_AbsoluteTime+=4;	// TODO Timer置き換え
 
 }

@@ -6,7 +6,7 @@
 ///////////////////////////////////////////////////////////
 
 #include "Motor.h"
-
+#include "Bluetooth.h"
 
 Motor::Motor(motor_port_t PortNum){
 
@@ -39,7 +39,7 @@ void Motor::UpdateAngularVelocity(){
 
 	// 角速度[deg/sec]を更新（0.1sec間の角度degの差から角速度[deg/sec]を計算）
 	m_MotorEncBuf[m_MotorEncBufNextIndex] = GetEnc();
-	m_AngularVelocity = (m_MotorEncBuf[m_MotorEncBufNextIndex] - m_MotorEncBuf[(m_MotorEncBufNextIndex+1)%26]) * 10;
+	m_AngularVelocity = (m_MotorEncBuf[m_MotorEncBufNextIndex] - m_MotorEncBuf[(m_MotorEncBufNextIndex+1)%26]) * 10;	//TODO 呼び出し周期により計算調整が必要
 	m_MotorEncBufNextIndex++;
 	if(26 <= m_MotorEncBufNextIndex) {
 		m_MotorEncBufNextIndex = 0;

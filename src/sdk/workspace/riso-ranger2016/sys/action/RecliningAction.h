@@ -14,12 +14,16 @@ class RecliningAction : public Action
 {
 
 public:
-	RecliningAction();
+	RecliningAction(int angularVelocity);	// 尻尾角速度 [deg/sec]
 	virtual ~RecliningAction();
 
 	virtual void onStart();
 	virtual void onCycle();
 	virtual void onStop();
+
+private:
+	int m_AngularVelocity;			// 尻尾角速度 [deg/sec]
+	float m_CurrentReferenceAngle;	// 現在の尻尾角度目標値 [deg] (これを指定加速度で変化させて追従制御)
 
 };
 #endif // !defined(EA_3A51595F_764E_4c5a_A951_CE06C5F6745F__INCLUDED_)
