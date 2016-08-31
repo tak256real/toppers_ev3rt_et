@@ -20,7 +20,6 @@ Sequencer::Sequencer(Sequence* sequence){
 	// 初期シーケンス開始処理
 	//m_CurrentSequence->getAction()->onStart();
 	//m_CurrentSequence->getCondition()->onStart();
-
 }
 
 

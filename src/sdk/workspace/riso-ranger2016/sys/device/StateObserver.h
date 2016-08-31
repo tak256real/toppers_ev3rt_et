@@ -22,7 +22,7 @@ public:
 	int GetTailAngularVelocity();	// 尻尾角速度[deg/sec]取得
 	int GetDirection();				// 初期状態からの相対方位[deg]取得
 	int GetRunningDistance();		// 走行距離[mm]取得
-	int getTilt();
+	int getVelocity();				// 走行速度[mm/sec]
 
 private:
 	ColorSensor *m_ColorSensor;	// カラーセンサ
@@ -35,6 +35,8 @@ private:
 
 	float m_Direction;							// 方位[deg]
 	float m_RunningDistance;					// 走行距離[mm]
+	float m_RunningDistancePrev;				// 単位時間前の走行距離[mm]
+	int m_Velocity;								// 走行速度[mm/sec]
 
 	//TODO 実機を測定して反映
 	const int c_WheelWidth = 165;				// 車輪幅[mm]
