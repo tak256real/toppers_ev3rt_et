@@ -36,6 +36,7 @@ APPL_CXXOBJS += \
 ../workspace/riso-ranger2016/sys/condition/LineCondition.o \
 ../workspace/riso-ranger2016/sys/condition/RotationCondition.o \
 ../workspace/riso-ranger2016/sys/condition/TimeCondition.o \
+../workspace/riso-ranger2016/sys/condition/TouchSensorCondition.o \
 ../workspace/riso-ranger2016/sys/device/balancer.o \
 ../workspace/riso-ranger2016/sys/device/balancer_param.o \
 ../workspace/riso-ranger2016/sys/device/Battery.o \
