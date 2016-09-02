@@ -21,10 +21,10 @@ public:
 	virtual bool check();
 
 private:
-	float m_ColorValue;			// カラーセンサ値
-	float m_ColorValuePrev;		// 単位時間前のカラーセンサ値
-	float m_ColorValueDif;		// 単位時間前と現在のカラーセンサ値の差
-	const int c_dif = -20;		// 閾値
+	float m_ColorValue;			// 繧ｫ繝ｩ繝ｼ繧ｻ繝ｳ繧ｵ蛟､
+	float m_ColorValuePrev;		// 蜊倅ｽ肴凾髢灘燕縺ｮ繧ｫ繝ｩ繝ｼ繧ｻ繝ｳ繧ｵ蛟､
+	float m_ColorValueDif;		// 蜊倅ｽ肴凾髢灘燕縺ｨ迴ｾ蝨ｨ縺ｮ繧ｫ繝ｩ繝ｼ繧ｻ繝ｳ繧ｵ蛟､縺ｮ蟾ｮ
+	const int c_dif = -20;		// 髢ｾ蛟､
 
 };
 #endif /* WORKSPACE_RISO_RANGER2016_SYS_CONDITION_GLAYLINECONDITION_H_ */

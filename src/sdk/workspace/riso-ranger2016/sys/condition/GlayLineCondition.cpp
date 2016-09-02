@@ -9,7 +9,7 @@
 
 
 /**
- * Žw’è‚È‚µBƒOƒŒ[ƒ‰ƒCƒ“‚ðŒŸ’m‚µ‚½uŠÔ‚Ì‚Ý^‚Æ‚È‚éB
+ * æŒ‡å®šãªã—ã€‚ã‚°ãƒ¬ãƒ¼ãƒ©ã‚¤ãƒ³ã‚’æ¤œçŸ¥ã—ãŸçž¬é–“ã®ã¿çœŸã¨ãªã‚‹ã€‚
  */
 GlayLineCondition::GlayLineCondition(){
 	m_ColorValue = 0;
@@ -38,7 +38,7 @@ bool GlayLineCondition::check(){
 	m_ColorValueDif = m_ColorValue - m_ColorValuePrev;
 	m_ColorValuePrev = m_ColorValue;
 	
-	// ðŒ”»’è
+	// æ¡ä»¶åˆ¤å®š
 	if(m_ColorValue < c_dif){
 		ret = true;
 	}
