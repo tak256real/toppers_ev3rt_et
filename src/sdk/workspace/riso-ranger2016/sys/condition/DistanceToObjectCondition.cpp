@@ -35,6 +35,12 @@ bool DistanceToObjectCondition::check(){
 	bool ret = false;
 
 	// ðŒ”»’è
+	if(m_ultrasonicControl->getUltrasonicValue() <= m_DistanceDifference){
+		printf("distance %d\n\n\n\n\n\n",m_ultrasonicControl->getUltrasonicValue());
+		ret = true;
+	}
+	
+/*	
 	if(m_DistanceDifference < 0 &&  m_ultrasonicControl->getUltrasonicValue() <= m_StartDistance + m_DistanceDifference) {			// Œ¸­•ûŒü
 		ret = true;
 		printf("test %d\n\n\n\n\n\n",m_ultrasonicControl->getUltrasonicValue());
@@ -48,6 +54,7 @@ bool DistanceToObjectCondition::check(){
 	
 
 	}
-
+*/
+	
 	return ret;
 }
