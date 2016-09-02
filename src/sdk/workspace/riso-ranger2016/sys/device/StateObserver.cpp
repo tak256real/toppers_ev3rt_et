@@ -37,7 +37,7 @@ void StateObserver::Calc() {
 	//TODO 走行距離算出の係数調整後削除
 	static int index;
 	if(index%25==0){
-	fprintf(btlog,"m_Direction = %10f, m_RunningDistance = %10f\r\n",m_Direction,m_RunningDistance);
+	//fprintf(btlog,"m_Direction = %10f, m_RunningDistance = %10f\r\n",m_Direction,m_RunningDistance);
 	}
 	index++;
 

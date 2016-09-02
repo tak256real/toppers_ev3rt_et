@@ -7,6 +7,7 @@
 
 #include "WheelControl.h"
 #include "balancer.h"
+#include "Bluetooth.h"
 
 
 WheelControl::WheelControl(Motor* wheelMotorL, Motor* wheelMotorR, Battery* battery, GyroSensor* gyroSensor){
@@ -43,7 +44,6 @@ void WheelControl::Control(){
 	signed char pwm_R;
 
 	if(m_TwoWheelMode == true) {	// 倒立走行
-		//printf("refturn=%d\n",m_RefTurn);
 		// Duty比算出
 		balance_control(
 			(float)m_RefSpeed,
@@ -84,6 +84,7 @@ void WheelControl::Control(){
 	}
 
 	// Duty比設定
+	//fprintf(btlog,"currentLinePosition = %10f\r\n",(int)pwm_L, (int)pwm_R);
 	m_WheelMotorL->SetPWMValue((int)pwm_L);
 	m_WheelMotorR->SetPWMValue((int)pwm_R);
 

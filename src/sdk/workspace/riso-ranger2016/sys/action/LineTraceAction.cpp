@@ -6,6 +6,7 @@
 ///////////////////////////////////////////////////////////
 
 #include "LineTraceAction.h"
+#include "Bluetooth.h"
 
 
 LineTraceAction::LineTraceAction(int speed, int tailAngle){
@@ -13,7 +14,7 @@ LineTraceAction::LineTraceAction(int speed, int tailAngle){
 	// メンバ初期化
 	m_Speed = speed;							// 走行速度設定
 	m_TailAngle = tailAngle;					// 尻尾角度設定
-	m_PidControl = new PIDControl(80, 0, 1000);	// PIDパタメータ設定
+	m_PidControl = new PIDControl(80, 0, 3000);	// PIDパタメータ設定
 	m_ReferenceLinePosition = 0.5;				// トレース位置設定
 }
 
