@@ -32,6 +32,7 @@ APPL_CXXOBJS += \
 ../workspace/riso-ranger2016/sys/condition/DistanceCondition.o \
 ../workspace/riso-ranger2016/sys/condition/DistanceToObjectCondition.o \
 ../workspace/riso-ranger2016/sys/condition/EmptyCondition.o \
+../workspace/riso-ranger2016/sys/condition/GlayLineCondition.o \
 ../workspace/riso-ranger2016/sys/condition/InclinationCondition.o \
 ../workspace/riso-ranger2016/sys/condition/LineCondition.o \
 ../workspace/riso-ranger2016/sys/condition/RotationCondition.o \
