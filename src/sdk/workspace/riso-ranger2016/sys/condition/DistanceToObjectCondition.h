@@ -14,15 +14,15 @@ class DistanceToObjectCondition : public Condition
 {
 
 public:
-	DistanceToObjectCondition(int distanceDifference);
+	DistanceToObjectCondition(int distance);
 	virtual ~DistanceToObjectCondition();
 
 	virtual void onStart();
 	virtual bool check();
 
 private:
-	int m_StartDistance;		// Šî€‹——£
-	int m_DistanceDifference;	// w’è‚Ì‹——£•Ï•ª
+	//int m_StartDistance;		// Šî€‹——£
+	int m_Distance;	// áŠQ•¨‚Ü‚Å‚Ì‹——£[cm]
 
 };
 #endif /* WORKSPACE_RISO_RANGER2016_SYS_CONDITION_DISTANCETOOBJECTCONDITION_H_ */

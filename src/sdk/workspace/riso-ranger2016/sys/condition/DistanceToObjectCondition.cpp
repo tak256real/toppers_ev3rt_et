@@ -9,10 +9,10 @@
 
 
 /**
- * ˆÊ’u•Ï•ªŽw’è
+ * áŠQ•¨‚Ü‚Å‚Ì‹——£[cm]‚ðŽw’è
  */
-DistanceToObjectCondition::DistanceToObjectCondition(int distanceDifference){
-	m_DistanceDifference = distanceDifference;
+DistanceToObjectCondition::DistanceToObjectCondition(int distance){
+	m_Distance = distance;
 }
 
 
@@ -25,8 +25,6 @@ DistanceToObjectCondition::~DistanceToObjectCondition(){
 
 void DistanceToObjectCondition::onStart(){
 
-	// Šî€‹——£Žæ“¾
-	m_StartDistance = m_ultrasonicControl->getUltrasonicValue();
 }
 
 
@@ -35,8 +33,7 @@ bool DistanceToObjectCondition::check(){
 	bool ret = false;
 
 	// ðŒ”»’è
-	if(m_ultrasonicControl->getUltrasonicValue() <= m_DistanceDifference){
-		printf("distance %d\n\n\n\n\n\n",m_ultrasonicControl->getUltrasonicValue());
+	if(m_ultrasonicControl->getUltrasonicValue() <= m_Distance){
 		ret = true;
 	}
 	
