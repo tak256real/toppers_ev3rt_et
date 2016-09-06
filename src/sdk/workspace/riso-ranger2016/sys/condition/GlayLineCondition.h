@@ -27,8 +27,8 @@ private:
 	const int c_dif = -20;		// 閾値 ToDo:測定して変更
 	
 	int m_Count;
-	const int c_arrayNum = 9;		// 配列の個数 ToDo:測定して変更の必要ありかも
-	float ColorValueArray[9];
+	static const int c_arrayNum = 10;		// 配列の個数 ToDo:測定して変更の必要ありかも
+	float ColorValueArray[c_arrayNum];
 
 
 };

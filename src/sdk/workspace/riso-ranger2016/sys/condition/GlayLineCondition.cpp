@@ -16,9 +16,9 @@ GlayLineCondition::GlayLineCondition(){
 	m_ColorValuePrev = 0;
 	m_Count = 0;
 	
-	ColorValueArray[9] = {0};
-	//float ColorValueArray[9] = {0};
-
+	//float ColorValueArray[c_arrayNum];
+	ColorValueArray[c_arrayNum] = {0};
+	//ColorValueArray[9] = {0};
 }
 
 
@@ -47,7 +47,7 @@ bool GlayLineCondition::check(){
 	
 	m_Count++;
 	
-	if (m_Count == c_arrayNum + 1){
+	if (m_Count > c_arrayNum){
 		m_Count = 0;
 	}
 
