@@ -55,8 +55,11 @@ bool GlayLineCondition::check(){
 	
 	m_ColorValueDif  = m_ColorValue - m_ColorValuePrev;
 	
+	printf("ColorValue=%f\n\n\n", ColorValueArray[m_Count]);
+	printf("ColorValueDif=%f\n\n\n", m_ColorValueDif);
+	
 	// 条件判定
-	if(m_ColorValue < c_dif){
+	if(m_ColorValueDif < c_dif){
 		ret = true;
 	}
 	
