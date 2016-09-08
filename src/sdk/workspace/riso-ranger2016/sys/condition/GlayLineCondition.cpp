@@ -6,6 +6,7 @@
  */
 
 #include "GlayLineCondition.h"
+#include "Bluetooth.h"
 
 
 /**
@@ -55,8 +56,15 @@ bool GlayLineCondition::check(){
 	
 	m_ColorValueDif  = m_ColorValue - m_ColorValuePrev;
 	
-	printf("ColorValue=%f\n\n\n", ColorValueArray[m_Count]);
-	printf("ColorValueDif=%f\n\n\n", m_ColorValueDif);
+	fprintf(btlog,"m_ColorValue = %f\r\n", m_ColorValue);
+//	fprintf(btlog,"ColorValue = %f\r\n, ColorValueDif = %f\r\n",  ColorValueArray[m_Count],m_ColorValueDif);
+//	fprintf(btlog,"m_Direction = %f, m_RunningDistance = %10f\r\n",m_Direction,m_RunningDistance);
+
+	
+//	printf("ColorValue=%f\n\n\n", ColorValueArray[m_Count]);
+//	printf("ColorValueDif=%f\n\n\n", m_ColorValueDif);
+
+	printf("m_ColorValue = %f\r\n", m_ColorValue);
 	
 	// 条件判定
 	if(m_ColorValueDif < c_dif){
