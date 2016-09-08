@@ -89,7 +89,7 @@ void main_task(intptr_t unused) {
 
     btlog = ev3_serial_open_file(EV3_SERIAL_BT);
 
-	fprintf(btlog,"Application Start!"\n\r);
+	fprintf(btlog,"Application Start!\n\r");
 	
 	scenario->init(sequencer);
 	Action::init(stateObserver, tailControl, wheelControl);
