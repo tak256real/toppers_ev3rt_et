@@ -18,8 +18,13 @@ GlayLineCondition::GlayLineCondition(){
 	m_Count = 0;
 	
 	//float ColorValueArray[c_arrayNum];
-	ColorValueArray[c_arrayNum] = {0};
+	//ColorValueArray[c_arrayNum] = {0};
 	//ColorValueArray[9] = {0};
+	
+	int i;
+	for( i = 0; i < c_arrayNum ; i++ ){
+		ColorValueArray[c_arrayNum] = 0.517;
+	}
 }
 
 
@@ -57,7 +62,8 @@ bool GlayLineCondition::check(){
 	
 	m_ColorValueDif  = m_ColorValue - m_ColorValuePrev;
 	
-	fprintf(btlog,"m_ColorValue = %f\r\n", m_ColorValue);
+	fprintf(btlog,"m_ColorValueDif = %f\r\n", m_ColorValueDif);
+//	fprintf(btlog,"m_ColorValue = %f\r\n", m_ColorValue);
 //	fprintf(btlog,"ColorValue = %f\r\n, ColorValueDif = %f\r\n",  ColorValueArray[m_Count],m_ColorValueDif);
 	
 //	printf("ColorValue=%f\n\n\n", ColorValueArray[m_Count]);

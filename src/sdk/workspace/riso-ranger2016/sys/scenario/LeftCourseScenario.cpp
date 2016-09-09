@@ -44,14 +44,14 @@ void LeftCourseScenario::start(){
 //	sequence = firstSequence->setNextSequence(	new Sequence(new LineTraceAction(50, 10),	new DistanceCondition(3800))	);
 
 // グレーライン検知部
-	sequence = firstSequence->setNextSequence(		new Sequence(new LineTraceAction(10, 10),	new GlayLineCondition())		);
+	sequence = firstSequence->setNextSequence(		new Sequence(new LineTraceAction(30, 10),	new GlayLineCondition())		);
 	sequence = sequence->setNextSequence(		new Sequence(new TailBrakeAction(),			new TimeCondition(1000))		);
 	sequence = sequence->setNextSequence(		new Sequence(new RecliningAction(-4),		new InclinationCondition(68))	);
 
 	
 	
 	
-// ルックアップゲート部	
+// ルックアップゲート部	5
 /*	sequence = firstSequence->setNextSequence(		new Sequence(new LineTraceAction(100, 10),	new DistanceToObjectCondition(20))		);
 	sequence = sequence->setNextSequence(		new Sequence(new TailBrakeAction(),			new TimeCondition(1000))		);
 	sequence = sequence->setNextSequence(		new Sequence(new RecliningAction(-4),		new InclinationCondition(68))	);
