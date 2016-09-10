@@ -62,6 +62,9 @@ void WheelControl::Control(){
 		// 範囲チェック＆丸め込み
 		int pwm_L_temp = m_RefSpeed + m_RefTurn*1.0;
 		int pwm_R_temp = m_RefSpeed - m_RefTurn*1.0;
+//		int pwm_L_temp = 0;
+//		int pwm_R_temp = 0;
+
 		if(pwm_L_temp < -100) {
 			pwm_L = -100;
 		}

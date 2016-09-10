@@ -44,6 +44,7 @@ void LeftCourseScenario::start(){
 //	sequence = firstSequence->setNextSequence(	new Sequence(new LineTraceAction(50, 10),	new DistanceCondition(3800))	);
 
 // グレーライン検知部
+
 	sequence = firstSequence->setNextSequence(		new Sequence(new LineTraceAction(30, 10),	new GlayLineCondition())		);
 	sequence = sequence->setNextSequence(		new Sequence(new TailBrakeAction(),			new TimeCondition(1000))		);
 	sequence = sequence->setNextSequence(		new Sequence(new RecliningAction(-4),		new InclinationCondition(68))	);
@@ -51,14 +52,16 @@ void LeftCourseScenario::start(){
 	
 	
 	
-// ルックアップゲート部	5
-/*	sequence = firstSequence->setNextSequence(		new Sequence(new LineTraceAction(100, 10),	new DistanceToObjectCondition(20))		);
-	sequence = sequence->setNextSequence(		new Sequence(new TailBrakeAction(),			new TimeCondition(1000))		);
-	sequence = sequence->setNextSequence(		new Sequence(new RecliningAction(-4),		new InclinationCondition(68))	);
-	sequence = sequence->setNextSequence(		new Sequence(new TailRunAction(20, 0),		new DistanceCondition(200))		);
-	sequence = sequence->setNextSequence(		new Sequence(new TailRunAction(10, 0),		new DistanceCondition(100))		);
+// ルックアップゲート部
+	/*
+	sequence = firstSequence->setNextSequence(		new Sequence(new LineTraceAction(80, 10),	new DistanceToObjectCondition(40))		);
+	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(30, 80),	new DistanceToObjectCondition(20))		);
 //	sequence = sequence->setNextSequence(		new Sequence(new TailBrakeAction(),			new TimeCondition(1000))		);
-	sequence = sequence->setNextSequence(		new Sequence(new TailRunAction(-10, 0),		new DistanceCondition(-200))	);
+	// !!! リクライニングの前に、尻尾の角度を80度にする !!！
+	sequence = sequence->setNextSequence(		new Sequence(new RecliningAction(-30),		new InclinationCondition(54))	);
+	sequence = sequence->setNextSequence(		new Sequence(new TailRunAction(10, 0),		new DistanceCondition(250))		);
+//	sequence = sequence->setNextSequence(		new Sequence(new TailBrakeAction(),			new TimeCondition(1000))		);
+	sequence = sequence->setNextSequence(		new Sequence(new TailRunAction(-5, 0),		new DistanceCondition(-300))	);
 	sequence = sequence->setNextSequence(		new Sequence(new TailRunAction(10, 0),		new DistanceCondition(200))		);
 //	sequence = sequence->setNextSequence(		new Sequence(new TailRunAction(-10, 0),		new DistanceCondition(-300))	);
 //	sequence = sequence->setNextSequence(		new Sequence(new TailRunAction(10, 0),		new DistanceCondition(300))		);
@@ -67,10 +70,10 @@ void LeftCourseScenario::start(){
 	sequence = sequence->setNextSequence(		new Sequence(new TailBrakeAction(),			new TimeCondition(1000))		);
 //	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(10, 60),	new DisntanceCondition(100))	);
 	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(80, 60),	new CollisionCondition())		);
-
+*/
 
 //	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(30, 60),	new DistanceCondition(20))		);
-*/
+
 
 	// シーケンス開始
 	m_Sequencer->startSequence(firstSequence);

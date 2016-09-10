@@ -23,7 +23,10 @@ GlayLineCondition::GlayLineCondition(){
 	
 	int i;
 	for( i = 0; i < c_arrayNum ; i++ ){
-		ColorValueArray[c_arrayNum] = 0.517;
+		ColorValueArray[i] = 0.5;
+		//ColorValueArray[i] = m_StateObserver->GetLinePosition();
+		printf("INITColorValue%d=%f\n\n\n",i, ColorValueArray[m_Count]);
+
 	}
 }
 
@@ -53,7 +56,7 @@ bool GlayLineCondition::check(){
 	
 	m_Count++;
 	
-	if (m_Count > c_arrayNum){
+	if (m_Count >= c_arrayNum){
 		m_Count = 0;
 //		printf("m_ColorValue = %f\n", m_ColorValue);
 	}
@@ -66,9 +69,9 @@ bool GlayLineCondition::check(){
 //	fprintf(btlog,"m_ColorValue = %f\r\n", m_ColorValue);
 //	fprintf(btlog,"ColorValue = %f\r\n, ColorValueDif = %f\r\n",  ColorValueArray[m_Count],m_ColorValueDif);
 	
-//	printf("ColorValue=%f\n\n\n", ColorValueArray[m_Count]);
+//	printf("ColorValue%d=%f\n\n\n", m_Count, ColorValueArray[m_Count]);
 //	printf("ColorValueDif=%f\n\n\n", m_ColorValueDif);
-
+	printf("ColorValue = %f\n ColorValuePrev = %f\n", m_ColorValue, m_ColorValuePrev);
 	
 	// 条件判定
 	if(m_ColorValueDif < c_dif){

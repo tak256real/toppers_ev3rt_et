@@ -36,6 +36,7 @@ bool InclinationCondition::check(){
 	
 	if(m_InclinationTarget - c_error < m_StateObserver->getTailAngle() && m_StateObserver->getTailAngle() < m_InclinationTarget + c_error){
 		ret =true;
+		printf("\r\nAngle = %d\r\n\r\n", m_StateObserver->getTailAngle());
 	}
 
 	return ret;
