@@ -9,7 +9,7 @@
 
 
 /**
- * áŠQ•¨‚Ü‚Å‚Ì‹——£[cm]‚ğw’è
+ * éšœå®³ç‰©ã¾ã§ã®è·é›¢[cm]ã‚’æŒ‡å®š
  */
 DistanceToObjectCondition::DistanceToObjectCondition(int distance){
 	m_Distance = distance;
@@ -32,7 +32,7 @@ bool DistanceToObjectCondition::check(){
 
 	bool ret = false;
 
-	// ğŒ”»’è
+	// æ¡ä»¶åˆ¤å®š
 	if(m_ultrasonicControl->getUltrasonicValue() <= m_Distance){
 		ret = true;
 		
@@ -41,12 +41,12 @@ bool DistanceToObjectCondition::check(){
 	}
 	
 /*	
-	if(m_DistanceDifference < 0 &&  m_ultrasonicControl->getUltrasonicValue() <= m_StartDistance + m_DistanceDifference) {			// Œ¸­•ûŒü
+	if(m_DistanceDifference < 0 &&  m_ultrasonicControl->getUltrasonicValue() <= m_StartDistance + m_DistanceDifference) {			// æ¸›å°‘æ–¹å‘
 		ret = true;
 		printf("test %d\n\n\n\n\n\n",m_ultrasonicControl->getUltrasonicValue());
 
 	}
-	else if(0 <= m_DistanceDifference &&  m_StartDistance + m_DistanceDifference <= m_ultrasonicControl->getUltrasonicValue()) {	// ‘‰Á•ûŒü
+	else if(0 <= m_DistanceDifference &&  m_StartDistance + m_DistanceDifference <= m_ultrasonicControl->getUltrasonicValue()) {	// å¢—åŠ æ–¹å‘
 
 		
 		ret = true;
