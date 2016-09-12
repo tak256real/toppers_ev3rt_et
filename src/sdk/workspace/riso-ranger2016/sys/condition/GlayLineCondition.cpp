@@ -68,10 +68,11 @@ bool GlayLineCondition::check(){
 	m_ColorValuePrev = ColorValueArray[m_Count];
 	
 	m_ColorValueDif  = m_ColorValue - m_ColorValuePrev;
-	
+
+	fprintf(btlog, "ColorValue = %f \n\r", m_StateObserver->GetLinePosition());
 //	fprintf(btlog,"m_ColorValueDif = %f\r\n", m_ColorValueDif);
 //	fprintf(btlog,"m_ColorValue = %f b_Array[%d] = %d \r\n", ColorValueArray[m_Count], m_Count, bool_Array[m_Count]);
-	fprintf(btlog,"ColorValue = %f\r\n,ColorValueDif = %f\r\n", ColorValueArray[m_Count],m_ColorValueDif);
+//	fprintf(btlog,"ColorValue = %f\r\n,ColorValueDif = %f\r\n", ColorValueArray[m_Count],m_ColorValueDif);
 //	fprintf(btlog,"b_Array[%d] = %d", m_Count, b_Array[m_Count]);
 	
 	printf("ColorValue%d=%f\n\n\n", m_Count, ColorValueArray[m_Count]);
