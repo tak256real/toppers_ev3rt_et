@@ -88,3 +88,4 @@ int StateObserver::GetDirection() {
 int StateObserver::getVelocity() {
 	return m_Velocity;
 }
+

@@ -14,6 +14,7 @@
 #include "RecliningAction.h"
 #include "TailRunAction.h"
 #include "TailRunAction.h"
+#include "TailCalibrationAction.h"
 
 #include "TimeCondition.h"
 #include "CollisionCondition.h"
@@ -21,6 +22,7 @@
 #include "InclinationCondition.h"
 #include "DistanceCondition.h"
 #include "TailStopCondition.h"
+#include "EmptyCondition.h"
 
 
 LeftCourseScenario::LeftCourseScenario(){
@@ -40,8 +42,12 @@ void LeftCourseScenario::start(){
 	Sequence* sequence;
 	Sequence* firstSequence;
 
-	firstSequence = 							new Sequence(new SitWaitAction(92),			new TimeCondition(1000)			);
-	sequence = firstSequence->setNextSequence(	new Sequence(new RecliningAction(-40),		new TailStopCondition(1000))		);
+	// 尻尾キャリブレーション部
+	firstSequence = 							new Sequence(new TailCalibrationAction(),	new TailStopCondition(1000)		);
+
+	// スタート待機部
+	sequence = firstSequence->setNextSequence(	new Sequence(new SitWaitAction(97),			new EmptyCondition())			);
+
 ////	sequence = firstSequence->setNextSequence(	new Sequence(new LineTraceAction(20, 10),	new DistanceCondition(100))		);
 ////	sequence = firstSequence->setNextSequence(	new Sequence(new TailBrakeAction(),			new TimeCondition(1000))		);
 ////	sequence = firstSequence->setNextSequence(	new Sequence(new LineTraceAction(50, 10),	new DistanceCondition(3800))	);

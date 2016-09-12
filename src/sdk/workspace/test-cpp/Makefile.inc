@@ -25,6 +25,7 @@ APPL_CXXOBJS += \
 ../workspace/riso-ranger2016/sys/action/RecliningAction.o \
 ../workspace/riso-ranger2016/sys/action/SitWaitAction.o \
 ../workspace/riso-ranger2016/sys/action/TailBrakeAction.o \
+../workspace/riso-ranger2016/sys/action/TailCalibrationAction.o \
 ../workspace/riso-ranger2016/sys/action/TailRunAction.o \
 ../workspace/riso-ranger2016/sys/condition/CollisionCondition.o \
 ../workspace/riso-ranger2016/sys/condition/CommandCondition.o \
