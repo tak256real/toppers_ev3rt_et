@@ -38,8 +38,8 @@ void LeftCourseScenario::start(){
 	Sequence* sequence;
 	Sequence* firstSequence;
 
-	firstSequence = 							new Sequence(new SitWaitAction(92),			new TimeCondition(4000)			);
-//	sequence = firstSequence->setNextSequence(	new Sequence(new LineTraceAction(20, 10),	new DistanceCondition(100))		);
+	firstSequence = 							new Sequence(new SitWaitAction(93),			new TimeCondition(4000)			);
+	sequence = firstSequence->setNextSequence(	new Sequence(new LineTraceAction(80, 2),	new DistanceCondition(5000))		);
 //	sequence = firstSequence->setNextSequence(	new Sequence(new TailBrakeAction(),			new TimeCondition(1000))		);
 //	sequence = firstSequence->setNextSequence(	new Sequence(new LineTraceAction(50, 10),	new DistanceCondition(3800))	);
 
