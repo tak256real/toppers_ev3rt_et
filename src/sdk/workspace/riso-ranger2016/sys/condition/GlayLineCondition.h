@@ -29,7 +29,7 @@ private:
 	int m_Count;
 	static const int c_arrayNum = 125;		// 配列の個数 ToDo:測定して変更の必要ありかも
 	float ColorValueArray[c_arrayNum];
-	int bool_Array[c_arrayNum];
+//	int bool_Array[c_arrayNum];
 
 
 };
