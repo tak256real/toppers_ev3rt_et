@@ -8,7 +8,7 @@
 #include "PIDControl.h"
 
 
-PIDControl::PIDControl(int p, int i, int d){
+PIDControl::PIDControl(float p, float i, float d){
 
 	// メンバ初期化
 	m_P = p;
