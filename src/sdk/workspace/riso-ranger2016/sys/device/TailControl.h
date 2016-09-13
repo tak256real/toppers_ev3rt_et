@@ -17,8 +17,9 @@ public:
 	TailControl(Motor* tailMotor);
 	virtual ~TailControl();
 
-	void Control();
-	void SetRefValue(int angle);
+	void init();		// エンコーダ初期化
+	void Control();					// 周期制御
+	void SetRefValue(int angle);	// 目標値セット
 	bool earthingDetection();		// 尻尾接地検出
 
 private:
