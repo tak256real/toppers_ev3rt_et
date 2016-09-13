@@ -8,9 +8,10 @@
 #include "TailControl.h"
 
 
-TailControl::TailControl(Motor* tailMotor){
+TailControl::TailControl(Motor* tailMotor, PIDControl* pidControl){
 
 	m_TailMotor = tailMotor;
+        m_PIDControl = pidControl;
 	m_RefAngle = 0;
 
 }
