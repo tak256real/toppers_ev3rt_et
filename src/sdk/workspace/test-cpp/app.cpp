@@ -116,12 +116,12 @@ void main_task(intptr_t unused) {
 		case 'w':
                         pparam += 0.1;
                         fprintf(btlog, "tail p=%f\r\n", pparam);
-                        pidControl.setPID(pparam, 0, 0);
+                        pidControl->setPID(pparam, 0, 0);
                         break;
                 case 's':
                         pparam -= 0.1;
                         fprintf(btlog, "tail p=%f\r\n", pparam);
-                        pidControl.setPID(pparam, 0, 0);
+                        pidControl->setPID(pparam, 0, 0);
                         break;
 		default:
 			fprintf(btlog, "Unknown key '%c' pressed.\r\n", c);
