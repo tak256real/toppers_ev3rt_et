@@ -44,8 +44,8 @@ void LeftCourseScenario::start(){
 
   // 尻尾キャリブレーション部
 	firstSequence = 							new Sequence(new TailCalibrationAction(),	new TailStopCondition(1000)		);
-	sequence = firstSequence->setNextSequence(new Sequence(new SitWaitAction(93),			new TimeCondition(4000))			);
-	sequence = sequence->setNextSequence(	new Sequence(new LineTraceAction(80, 2),	new DistanceCondition(5000))		);
+	sequence = firstSequence->setNextSequence(new Sequence(new SitWaitAction(93),			new EmptyCondition())			);
+//	sequence = sequence->setNextSequence(	new Sequence(new LineTraceAction(80, 2),	new DistanceCondition(5000))		);
 //	sequence = firstSequence->setNextSequence(	new Sequence(new TailBrakeAction(),			new TimeCondition(1000))		);
 //	sequence = firstSequence->setNextSequence(	new Sequence(new LineTraceAction(50, 10),	new DistanceCondition(3800))	);
 //	sequence = firstSequence->setNextSequence(		new Sequence(new LineTraceAction(100, 10),	new DistanceToObjectCondition(200))		);
