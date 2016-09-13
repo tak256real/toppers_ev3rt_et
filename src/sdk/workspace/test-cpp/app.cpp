@@ -28,6 +28,7 @@
 #include "Condition.h"
 #include "TimeCondition.h"
 #include "UltrasonicControl.h"
+#include "PIDControl.h"
 
 #include "Bluetooth.h"
 
