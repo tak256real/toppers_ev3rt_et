@@ -13,12 +13,17 @@
 #include "TailBrakeAction.h"
 #include "RecliningAction.h"
 #include "TailRunAction.h"
+#include "TailRunAction.h"
+#include "TailCalibrationAction.h"
+
 #include "TimeCondition.h"
 #include "CollisionCondition.h"
 #include "DistanceToObjectCondition.h"
 #include "InclinationCondition.h"
 #include "DistanceCondition.h"
-#include "TailRunAction.h"
+#include "TailStopCondition.h"
+#include "EmptyCondition.h"
+
 
 LeftCourseScenario::LeftCourseScenario(){
 
@@ -37,20 +42,10 @@ void LeftCourseScenario::start(){
 	Sequence* sequence;
 	Sequence* firstSequence;
 
-	firstSequence = 							new Sequence(new SitWaitAction(93),			new TimeCondition(10000)			);
-	sequence = firstSequence->setNextSequence(	new Sequence(new LineTraceAction(40, 60),	new DistanceCondition(130))	);
-	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(20, 80),	new DistanceCondition(100))	);
-//	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(0, 80),	new DistanceCondition(40))	);
-	sequence = sequence->setNextSequence(		new Sequence(new TailBrakeAction(),			new TimeCondition(500))		);
-//	sequence = sequence->setNextSequence(		new Sequence(new TailRunAction(0, 0),		new DistanceCondition(5))	);
-	//sequence = sequence->setNextSequence(		new Sequence(new RecliningAction(-10),		new InclinationCondition(70))	);
-//	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(15, 80),	new DistanceCondition(10))	);
-//	sequence = sequence->setNextSequence(		new Sequence(new TailRunAction(10, 0),		new DistanceCondition(5))	);
-
-//	sequence = sequence->setNextSequence(		new Sequence(new RecliningAction(30),		new InclinationCondition(83))	);
-//	sequence = sequence->setNextSequence(		new Sequence(new SitWaitAction(83),			new DistanceCondition(10))		);
-//	sequence = sequence->setNextSequence(		new Sequence(new TailRunAction(0, 0),		new DistanceCondition(1000))	);
-	
+  // 尻尾キャリブレーション部
+	firstSequence = 							new Sequence(new TailCalibrationAction(),	new TailStopCondition(1000)		);
+	sequence = firstSequence->setNextSequence(new Sequence(new SitWaitAction(93),			new TimeCondition(4000))			);
+	sequence = sequence->setNextSequence(	new Sequence(new LineTraceAction(80, 2),	new DistanceCondition(5000))		);
 //	sequence = firstSequence->setNextSequence(	new Sequence(new TailBrakeAction(),			new TimeCondition(1000))		);
 //	sequence = firstSequence->setNextSequence(	new Sequence(new LineTraceAction(50, 10),	new DistanceCondition(3800))	);
 //	sequence = firstSequence->setNextSequence(		new Sequence(new LineTraceAction(100, 10),	new DistanceToObjectCondition(200))		);
@@ -58,9 +53,8 @@ void LeftCourseScenario::start(){
 	sequence = sequence->setNextSequence(		new Sequence(new RecliningAction(-4),		new InclinationCondition(68))	);
 	sequence = sequence->setNextSequence(		new Sequence(new TailRunAction(20, 0),		new DistanceCondition(200))		);
 	sequence = sequence->setNextSequence(		new Sequence(new TailRunAction(10, 0),		new DistanceCondition(100))		);
-//	sequence = sequence->setNextSequence(		new Sequence(new TailBrakeAction(),			new TimeCondition(1000))		);
-	sequence = sequence->setNextSequence(		new Sequence(new TailRunAction(-10, 0),		new DistanceCondition(-200))	);
-	sequence = sequence->setNextSequence(		new Sequence(new TailRunAction(10, 0),		new DistanceCondition(200))		);
+//	sequence = aasdf
+sequence = sequence->setNextSequence(		new Sequence(new TailRunAction(10, 0),		new DistanceCondition(200))		);
 	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(20, 60),	new CollisionCondition())		);
 	sequence = sequence->setNextSequence(		new Sequence(new TailBrakeAction(),			new TimeCondition(1000))		);
 //	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(10, 60),	new DisntanceCondition(100))	);

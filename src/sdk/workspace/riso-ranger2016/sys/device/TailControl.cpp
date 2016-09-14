@@ -24,7 +24,10 @@ TailControl::~TailControl(){
 
 
 
-
+void TailControl::init() {
+	// エンコーダ初期化
+	m_TailMotor->ResetEnc();
+}
 
 void TailControl::Control(){
 
