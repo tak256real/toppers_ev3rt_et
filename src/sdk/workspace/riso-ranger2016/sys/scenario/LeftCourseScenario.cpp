@@ -46,13 +46,13 @@ void LeftCourseScenario::start(){
   // 尻尾キャリブレーション部
 	firstSequence = 							new Sequence(new TailCalibrationAction(),	new TailStopCondition(1000)		);
 	sequence = firstSequence->setNextSequence(new Sequence(new SitWaitAction(93),			new TimeCondition(4000))			);
-	sequence = sequence->setNextSequence(	new Sequence(new LineTraceAction(80, 2),	new DistanceCondition(5000))		);
+//	sequence = sequence->setNextSequence(	new Sequence(new LineTraceAction(80, 2),	new DistanceCondition(5000))		);
 //	sequence = firstSequence->setNextSequence(	new Sequence(new TailBrakeAction(),			new TimeCondition(1000))		);
 //	sequence = firstSequence->setNextSequence(	new Sequence(new LineTraceAction(50, 10),	new DistanceCondition(3800))	);
 
 // グレーライン検知部
 
-	sequence = firstSequence->setNextSequence(		new Sequence(new LineTraceAction(10, 10),	new TimeCondition(5000))	);
+	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(10, 10),	new TimeCondition(5000))	);
 	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(10, 10),	new GlayLineCondition())	);
 //	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(0, 80),	new TimeCondition(1000))		);
 	sequence = sequence->setNextSequence(		new Sequence(new TailBrakeAction(),			new TimeCondition(1000))		);
