@@ -25,6 +25,7 @@ APPL_CXXOBJS += \
 ../workspace/riso-ranger2016/sys/action/RecliningAction.o \
 ../workspace/riso-ranger2016/sys/action/SitWaitAction.o \
 ../workspace/riso-ranger2016/sys/action/TailBrakeAction.o \
+../workspace/riso-ranger2016/sys/action/TailCalibrationAction.o \
 ../workspace/riso-ranger2016/sys/action/TailRunAction.o \
 ../workspace/riso-ranger2016/sys/condition/CollisionCondition.o \
 ../workspace/riso-ranger2016/sys/condition/CommandCondition.o \
@@ -36,6 +37,7 @@ APPL_CXXOBJS += \
 ../workspace/riso-ranger2016/sys/condition/InclinationCondition.o \
 ../workspace/riso-ranger2016/sys/condition/LineCondition.o \
 ../workspace/riso-ranger2016/sys/condition/RotationCondition.o \
+../workspace/riso-ranger2016/sys/condition/TailStopCondition.o \
 ../workspace/riso-ranger2016/sys/condition/TimeCondition.o \
 ../workspace/riso-ranger2016/sys/condition/TouchSensorCondition.o \
 ../workspace/riso-ranger2016/sys/device/balancer.o \

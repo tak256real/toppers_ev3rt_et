@@ -13,13 +13,18 @@
 #include "TailBrakeAction.h"
 #include "RecliningAction.h"
 #include "TailRunAction.h"
+#include "TailRunAction.h"
+#include "TailCalibrationAction.h"
+
 #include "TimeCondition.h"
 #include "CollisionCondition.h"
 #include "DistanceToObjectCondition.h"
 #include "GlayLineCondition.h"
 #include "InclinationCondition.h"
 #include "DistanceCondition.h"
-#include "TailRunAction.h"
+#include "TailStopCondition.h"
+#include "EmptyCondition.h"
+
 
 LeftCourseScenario::LeftCourseScenario(){
 
@@ -38,8 +43,10 @@ void LeftCourseScenario::start(){
 	Sequence* sequence;
 	Sequence* firstSequence;
 
-	firstSequence = 							new Sequence(new SitWaitAction(93),			new TimeCondition(4000)			);
-	sequence = firstSequence->setNextSequence(	new Sequence(new LineTraceAction(80, 2),	new DistanceCondition(5000))		);
+  // 尻尾キャリブレーション部
+	firstSequence = 							new Sequence(new TailCalibrationAction(),	new TailStopCondition(1000)		);
+	sequence = firstSequence->setNextSequence(new Sequence(new SitWaitAction(93),			new TimeCondition(4000))			);
+	sequence = sequence->setNextSequence(	new Sequence(new LineTraceAction(80, 2),	new DistanceCondition(5000))		);
 //	sequence = firstSequence->setNextSequence(	new Sequence(new TailBrakeAction(),			new TimeCondition(1000))		);
 //	sequence = firstSequence->setNextSequence(	new Sequence(new LineTraceAction(50, 10),	new DistanceCondition(3800))	);
 
