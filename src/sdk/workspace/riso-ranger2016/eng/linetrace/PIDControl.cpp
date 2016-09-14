@@ -44,3 +44,9 @@ int PIDControl::PIDCalculation(float reference, float currentVal){
 
 	return result;
 }
+
+void PIDControl::setPID(float p, float i, float d) {
+	m_P = p;
+	m_I = i;
+	m_D = d;
+}

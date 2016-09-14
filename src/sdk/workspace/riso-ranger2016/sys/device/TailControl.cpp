@@ -6,12 +6,12 @@
 ///////////////////////////////////////////////////////////
 
 #include "TailControl.h"
-#include "Bluetooth.h"
 
 
-TailControl::TailControl(Motor* tailMotor){
+TailControl::TailControl(Motor* tailMotor, PIDControl* pidControl){
 
 	m_TailMotor = tailMotor;
+        m_PIDControl = pidControl;
 	m_RefAngle = 0;
 
 }
@@ -32,13 +32,12 @@ void TailControl::init() {
 void TailControl::Control(){
 
 	int pwm;
-	
+
 	// Duty比算出
-	pwm = (m_RefAngle - m_TailMotor->GetEnc())*0.6; // 比例制御
-	fprintf(btlog,"TailControl Duty = %d \n\r",pwm);
+	pwm = m_RefAngle - m_TailMotor->GetEnc(); // 比例制御
+
 	// Duty比設定
 	m_TailMotor->SetPWMValue(pwm);
-	fprintf(btlog,"TailControl m_RefAngle = %d \n\r",m_RefAngle);
 
 }
 

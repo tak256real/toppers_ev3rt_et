@@ -28,6 +28,7 @@
 #include "Condition.h"
 #include "TimeCondition.h"
 #include "UltrasonicControl.h"
+#include "PIDControl.h"
 
 #include "Bluetooth.h"
 
@@ -83,7 +84,8 @@ static UltrasonicControl* ultrasonicControl = new UltrasonicControl(EV3_PORT_2);
 
 static StateObserver* stateObserver = new StateObserver(leftMotor, rightMotor, tailMotor, colorSensor);
 static WheelControl* wheelControl = new WheelControl(leftMotor, rightMotor, battery, gyroSensor);
-static TailControl* tailControl = new TailControl(tailMotor);
+static PIDControl* pidControl = new PIDControl(1, 0, 0);
+static TailControl* tailControl = new TailControl(tailMotor, pidControl);
 
 void main_task(intptr_t unused) {
 
@@ -96,7 +98,7 @@ void main_task(intptr_t unused) {
 	wheelControl->Init();
 	TimeCondition::s_AbsoluteTime = 0;	// TODO Timer置き換え.
 
-	//gyroSensor->reset();
+	gyroSensor->reset();
 	
 	// シナリオ生成
 	scenario->start();
@@ -105,13 +107,22 @@ void main_task(intptr_t unused) {
 
 	ev3_sta_cyc(ID_EV3CYC_4MS);
 
+
+        float pparam = 1;
 	while(1) {
 		while (!ev3_bluetooth_is_connected()) tslp_tsk(100);
 		char c = fgetc(btlog);
 		switch(c) {
 		case 'w':
-			fprintf(btlog, "hello world\r\n");
-			break;
+                        pparam += 0.1;
+                        fprintf(btlog, "tail p=%f\r\n", pparam);
+                        pidControl->setPID(pparam, 0, 0);
+                        break;
+                case 's':
+                        pparam -= 0.1;
+                        fprintf(btlog, "tail p=%f\r\n", pparam);
+                        pidControl->setPID(pparam, 0, 0);
+                        break;
 		default:
 			fprintf(btlog, "Unknown key '%c' pressed.\r\n", c);
 		}
