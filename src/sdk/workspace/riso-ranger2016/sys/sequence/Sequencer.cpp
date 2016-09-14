@@ -63,7 +63,7 @@ void Sequencer::cycle(){
 		syslog(LOG_EMERG, "Scquencer 4\n");
 		// 次のシーケンスが無い場合はデフォルト設定のシーケンスをセット
 		if(sequence == NULL) {
-			sequence = new Sequence(new SitWaitAction(65), new EmptyCondition());
+			sequence = new Sequence(new SitWaitAction(90), new EmptyCondition());
 			syslog(LOG_EMERG, "Scquencer 5\n");
 		}
 		syslog(LOG_EMERG, "Scquencer 6\n");

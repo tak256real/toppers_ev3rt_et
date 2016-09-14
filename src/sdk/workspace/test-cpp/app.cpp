@@ -96,7 +96,7 @@ void main_task(intptr_t unused) {
 	wheelControl->Init();
 	TimeCondition::s_AbsoluteTime = 0;	// TODO Timer置き換え.
 
-	gyroSensor->reset();
+	//gyroSensor->reset();
 	
 	// シナリオ生成
 	scenario->start();
