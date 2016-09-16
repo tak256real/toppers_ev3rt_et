@@ -42,6 +42,7 @@ void WheelControl::Control(){
 
 	signed char pwm_L;
 	signed char pwm_R;
+	//fprintf(btlog,"GyroSensorValue = %10f \r\n",(float)m_GyroSensor->getSensorValue());
 
 	if(m_TwoWheelMode == true) {	// 倒立走行
 		// Duty比算出
@@ -55,7 +56,7 @@ void WheelControl::Control(){
 			(float)m_Battery->getValue(),
 			&pwm_L,
 			&pwm_R);
-
+		//	fprintf(btlog,"GyroSensorValue = %10f \r\n",(float)m_GyroSensor->getSensorValue());
 	}
 	else {							// 尻尾走行
 
@@ -105,9 +106,9 @@ void WheelControl::SetTwoWheelMode(bool onoff){
 
 	if(m_TwoWheelMode == false && onoff == true) {
 	    // 倒立振子制御初期化
-	//	m_GyroSensor->reset();
-	    //m_WheelMotorL->ResetEnc();  //TODO 不要の可能性がある 倒立移行時に失敗するならここを実行
-		//m_WheelMotorR->ResetEnc();
+		m_GyroSensor->reset();
+	    m_WheelMotorL->ResetEnc();  //TODO 不要の可能性がある 倒立移行時に失敗するならここを実行
+		m_WheelMotorR->ResetEnc();
 		balance_init();
 	}
 

@@ -19,6 +19,7 @@
 #include "Sequencer.h"
 #include "Scenario.h"
 #include "LeftCourseScenario.h"
+#include "RightCourseScenario.h"
 #include "Sequence.h"
 #include "SitWaitAction.h"
 #include "EmptyCondition.h"
@@ -71,7 +72,8 @@ static int heartBeatCount = 0;
 
 // インスタンス生成、関連構築、初期化
 static Sequencer* sequencer = new Sequencer(new Sequence(new SitWaitAction(90), new EmptyCondition()));
-static Scenario* scenario = new LeftCourseScenario();
+//static Scenario* scenario = new LeftCourseScenario();
+static Scenario* scenario = new RightCourseScenario();
 
 static Motor* leftMotor = new Motor(EV3_PORT_C);
 static Motor* rightMotor = new Motor(EV3_PORT_B);
@@ -97,8 +99,6 @@ void main_task(intptr_t unused) {
 
 	wheelControl->Init();
 	TimeCondition::s_AbsoluteTime = 0;	// TODO Timer置き換え.
-
-	gyroSensor->reset();
 	
 	// シナリオ生成
 	scenario->start();

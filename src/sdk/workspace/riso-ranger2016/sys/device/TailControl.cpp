@@ -34,8 +34,8 @@ void TailControl::Control(){
 	int pwm;
 
 	// Duty比算出
-	pwm = m_RefAngle - m_TailMotor->GetEnc(); // 比例制御
-
+	//pwm = (m_RefAngle - m_TailMotor->GetEnc())*2.5; // 比例制御
+	pwm = (m_RefAngle - m_TailMotor->GetEnc())*1.0; // 比例制御
 	// Duty比設定
 	m_TailMotor->SetPWMValue(pwm);
 
