@@ -58,7 +58,7 @@ private:
 	// 走行距離変分[mm] = (左車輪周速度[mm/sec] + 右車輪周速度[mm/sec)/2 * 計算周期[sec]
 	// 上記より定数部を抜き出すと
 	// c_RunDisCalcCoefficient = 車輪直径[mm] * π * 計算周期[sec] / (2*360[deg])
-	const float c_RunDisCalcCoefficient = c_WheelDiameter*3.141592*c_CalcInterval/720;
+	const float c_RunDisCalcCoefficient = (c_WheelDiameter*3.141592*c_CalcInterval/720)*1.825473495;
 
 };
 #endif /* WORKSPACE_RISO_RANGER2016_SYS_DEVICE_STATEOBSERVER_H_ */
