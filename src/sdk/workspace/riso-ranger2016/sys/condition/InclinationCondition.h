@@ -26,7 +26,7 @@ public:
 private:
 	int m_StartInclination;		// 基準傾斜角
 	int m_InclinationTarget;	// 指定の傾斜目標値
-	const int c_error = 3;
+	const int c_error = 5;
 
 };
 #endif // !defined(EA_45A62898_0FEF_45bd_A5D6_861DDF40B9BD__INCLUDED_)
