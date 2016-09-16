@@ -4,6 +4,7 @@
 //  Created on:      2016/08/03 12:55:29
 //  Original author: 039389
 ///////////////////////////////////////////////////////////
+#include "app.h"
 
 #include "CommandCondition.h"
 
@@ -27,5 +28,5 @@ void CommandCondition::onStart(){
 
 bool CommandCondition::check(){
 
-	return false;
+	return IsStartSignal();
 }
