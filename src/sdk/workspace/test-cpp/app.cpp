@@ -143,11 +143,11 @@ void main_task(intptr_t unused) {
 			fprintf(btlog, "K_F[3]=%f\r\n", K_F[3]);
 			break;
 		case 't':
-			K_I += 0.1;
+			K_I += 0.01;
 			fprintf(btlog, "K_I=%f\r\n", K_I);
 			break;
 		case 'g':
-			K_I -= 0.1;
+			K_I -= 0.01;
 			fprintf(btlog, "K_I=%f\r\n", K_I);
 			break;
 		case 'y':
