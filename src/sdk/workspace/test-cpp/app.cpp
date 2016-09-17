@@ -31,6 +31,7 @@
 #include "UltrasonicControl.h"
 #include "balancer_private.h"
 #include "Bluetooth.h"
+ #include "PIDControl.h"
 
 #define DEBUG
 
@@ -85,7 +86,8 @@ static UltrasonicControl* ultrasonicControl = new UltrasonicControl(EV3_PORT_2);
 
 static StateObserver* stateObserver = new StateObserver(leftMotor, rightMotor, tailMotor, colorSensor);
 static WheelControl* wheelControl = new WheelControl(leftMotor, rightMotor, battery, gyroSensor);
-static TailControl* tailControl = new TailControl(tailMotor);
+static PIDControl* pidControl = new PIDControl(1, 0, 0);
+static TailControl* tailControl = new TailControl(tailMotor, pidControl);
 void main_task(intptr_t unused) {
 
     btlog = ev3_serial_open_file(EV3_SERIAL_BT);
