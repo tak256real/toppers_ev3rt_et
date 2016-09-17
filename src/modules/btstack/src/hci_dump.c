@@ -269,7 +269,7 @@ void hci_dump_log_P(int log_level, PGM_P format, ...){
     va_list argptr;
     va_start(argptr, format);
     printf_P(PSTR("LOG -- "));
-    vfprintf_P(stdout, format, argptr);
+    v//fpritf_P(stdout, format, argptr);
     printf_P(PSTR("\n"));
     va_end(argptr);
 }

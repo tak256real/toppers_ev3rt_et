@@ -2269,7 +2269,7 @@ int zmodem_recv_file_frame(zmodem_t* zm, FILE* fp)
 	do {
 		type = zmodem_recv_data(zm,zm->rx_data_subpacket,sizeof(zm->rx_data_subpacket),&n,TRUE);
 
-/*		fprintf(stderr,"packet len %d type %d\n",n,type);
+/*		//fpritf(stderr,"packet len %d type %d\n",n,type);
 */
 		if (type == ENDOFFRAME || type == FRAMEOK) {
 			if(fwrite(zm->rx_data_subpacket,1,n,fp)!=n) {

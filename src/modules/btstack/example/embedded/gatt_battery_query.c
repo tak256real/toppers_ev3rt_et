@@ -262,8 +262,8 @@ static void handle_hci_event(void * connection, uint8_t packet_type, uint16_t ch
 }
 
 static void usage(const char *name){
-	fprintf(stderr, "\nUsage: %s [-a|--address aa:bb:cc:dd:ee:ff]\n", name);
-	fprintf(stderr, "If no argument is provided, GATT browser will start scanning and connect to the first found device.\nTo connect to a specific device use argument [-a].\n\n");
+	//fpritf(stderr, "\nUsage: %s [-a|--address aa:bb:cc:dd:ee:ff]\n", name);
+	//fpritf(stderr, "If no argument is provided, GATT browser will start scanning and connect to the first found device.\nTo connect to a specific device use argument [-a].\n\n");
 }
 
 int btstack_main(int argc, const char * argv[]);
