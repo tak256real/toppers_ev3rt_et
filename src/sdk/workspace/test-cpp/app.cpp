@@ -19,6 +19,7 @@
 #include "Sequencer.h"
 #include "Scenario.h"
 #include "LeftCourseScenario.h"
+#include "RightCourseScenario.h"
 #include "Sequence.h"
 #include "SitWaitAction.h"
 #include "EmptyCondition.h"
