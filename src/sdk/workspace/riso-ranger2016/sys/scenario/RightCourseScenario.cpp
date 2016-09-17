@@ -56,10 +56,12 @@ void RightCourseScenario::start(){
 	sequence = sequence->setNextSequence(	new Sequence(new DirectionRunAction(80, 80, -1),								new CollisionCondition())		);	// スタート直後はゆっくり走行
 	sequence = sequence->setNextSequence(	new Sequence(new DirectionRunAction(80, 80, 0),								new DistanceCondition(30))		);	// 方位固定で階段突入
 	sequence = sequence->setNextSequence(	new Sequence(new DirectionRunAction(10, 80, 0),								new DistanceCondition(120))		);	// 減速
-	sequence = sequence->setNextSequence(	new Sequence(new DistanceFeedbackAction(0),								new TimeCondition(10000))		);	// 真ん中に移動
-	sequence = sequence->setNextSequence(	new Sequence(new RotateAction(30),											new RotationCondition(360))		);	// １段目回転
+	sequence = sequence->setNextSequence(	new Sequence(new DistanceFeedbackAction(0),									new TimeCondition(10000))		);	// 真ん中に移動
+	sequence = sequence->setNextSequence(	new Sequence(new TailBrakeAction(),											new TimeCondition(3000))		);	// 真ん中に移動
+	sequence = sequence->setNextSequence(	new Sequence(new TailRunAction(0, 15),										new RotationCondition(360))		);	// １段目回転
+	sequence = sequence->setNextSequence(	new Sequence(new TailRunAction(100, 0),										new DistanceCondition(1000))		);	// １段目回転
 
-	sequence = sequence->setNextSequence(	new Sequence(new DirectionRunAction(0, 80, 0),								new EmptyCondition())		);		// 停止
+//	sequence = sequence->setNextSequence(	new Sequence(new DirectionRunAction(0, 80, 0),								new EmptyCondition())		);		// 停止
 
 //	sequence = sequence->setNextSequence(	new Sequence(new TailBrakeAction(),											new TimeCondition(1000))		);	// スタート直後はゆっくり走行
 
