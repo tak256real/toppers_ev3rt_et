@@ -47,6 +47,9 @@ void LeftCourseScenario::start(){
   // 尻尾キャリブレーション部
 	firstSequence = 							new Sequence(new TailCalibrationAction(),	new TailStopCondition(1000)	);
 	sequence = firstSequence->setNextSequence(	new Sequence(new SitWaitAction(97),			new TimeCondition(5000))	);
+	// スタート部
+	sequence = sequence->setNextSequence(	new Sequence(new LineTraceAction(20, 45, new PIDControl(40, 0, 0)),	new DistanceCondition(300))		);	// スタート直後はゆっくり走行
+//	sequence = sequence->setNextSequence(	new Sequence(new LineTraceAction(80, 45, new PIDControl(80, 0, 3000)),	new EmptyCondition())		);	// 直線終わりまで
 	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(10, 2),	new TimeCondition(1000))	);
 	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(80, 2),	new DistanceCondition(2300)));
 	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(60, 2),	new DistanceCondition(720)));
@@ -59,8 +62,6 @@ void LeftCourseScenario::start(){
 //ルックアップ
 //////////////////////////////////////
 //	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(50, 2),	new DistanceCondition(720)));
-
-
 //////////////////////////////////////
 //ルックアップ終わり
 //////////////////////////////////////
@@ -74,10 +75,7 @@ void LeftCourseScenario::start(){
 //	sequence = sequence->setNextSequence(		new Sequence(new TailBrakeAction(),			new TimeCondition(700))		);
 ///////////////////////////////////////
 //ガレージシナリオ終わり
-///////////////////////////////////////
-	
-//	sequence = sequence->setNextSequence(	new Sequence(new LineTraceAction(80, 2),	new DistanceCondition(5000))		);
-//	sequence = firstSequence->setNextSequence(	new Sequence(new TailBrakeAction(),			new TimeCondition(1000))		);
+/////////////////////////////////////////	sequence = firstSequence->setNextSequence(	new Sequence(new TailBrakeAction(),			new TimeCondition(1000))		);
 //	sequence = firstSequence->setNextSequence(	new Sequence(new LineTraceAction(50, 10),	new DistanceCondition(3800))	);
 //	sequence = firstSequence->setNextSequence(		new Sequence(new LineTraceAction(100, 10),	new DistanceToObjectCondition(200))		);
 /*	sequence = sequence->setNextSequence(		new Sequence(new TailBrakeAction(),			new TimeCondition(1000))		);

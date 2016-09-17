@@ -29,8 +29,7 @@
 #include "Condition.h"
 #include "TimeCondition.h"
 #include "UltrasonicControl.h"
-#include "PIDControl.h"
-
+#include "balancer_private.h"
 #include "Bluetooth.h"
 
 #define DEBUG
@@ -86,9 +85,7 @@ static UltrasonicControl* ultrasonicControl = new UltrasonicControl(EV3_PORT_2);
 
 static StateObserver* stateObserver = new StateObserver(leftMotor, rightMotor, tailMotor, colorSensor);
 static WheelControl* wheelControl = new WheelControl(leftMotor, rightMotor, battery, gyroSensor);
-static PIDControl* pidControl = new PIDControl(1, 0, 0);
-static TailControl* tailControl = new TailControl(tailMotor, pidControl);
-
+static TailControl* tailControl = new TailControl(tailMotor);
 void main_task(intptr_t unused) {
 
     btlog = ev3_serial_open_file(EV3_SERIAL_BT);
@@ -99,7 +96,7 @@ void main_task(intptr_t unused) {
 
 	wheelControl->Init();
 	TimeCondition::s_AbsoluteTime = 0;	// TODO Timer置き換え.
-	
+
 	// シナリオ生成
 	scenario->start();
 
@@ -108,21 +105,65 @@ void main_task(intptr_t unused) {
 	ev3_sta_cyc(ID_EV3CYC_4MS);
 
 
-        float pparam = 1;
 	while(1) {
 		while (!ev3_bluetooth_is_connected()) tslp_tsk(100);
 		char c = fgetc(btlog);
 		switch(c) {
+		case 'q':
+			K_F[0] += 0.1;
+			fprintf(btlog, "K_F[0]=%f\r\n", K_F[0]);
+			break;
+		case 'a':
+			K_F[0] -= 0.1;
+			fprintf(btlog, "K_F[0]=%f\r\n", K_F[0]);
+			break;
 		case 'w':
-                        pparam += 0.1;
-                        fprintf(btlog, "tail p=%f\r\n", pparam);
-                        pidControl->setPID(pparam, 0, 0);
-                        break;
-                case 's':
-                        pparam -= 0.1;
-                        fprintf(btlog, "tail p=%f\r\n", pparam);
-                        pidControl->setPID(pparam, 0, 0);
-                        break;
+			K_F[1] += 0.1;
+			fprintf(btlog, "K_F[1]=%f\r\n", K_F[1]);
+			break;		case 's':
+			K_F[1] -= 0.1;
+			fprintf(btlog, "K_F[1]=%f\r\n", K_F[1]);
+			break;
+		case 'e':
+			K_F[2] += 0.1;
+			fprintf(btlog, "K_F[2]=%f\r\n", K_F[2]);
+			break;
+		case 'd':
+			K_F[2] -= 0.1;
+			fprintf(btlog, "K_F[2]=%f\r\n", K_F[2]);
+			break;
+		case 'r':
+			K_F[3] += 0.1;
+			fprintf(btlog, "K_F[3]=%f\r\n", K_F[3]);
+			break;
+		case 'f':
+			K_F[3] -= 0.1;
+			fprintf(btlog, "K_F[3]=%f\r\n", K_F[3]);
+			break;
+		case 't':
+			K_I += 0.01;
+			fprintf(btlog, "K_I=%f\r\n", K_I);
+			break;
+		case 'g':
+			K_I -= 0.01;
+			fprintf(btlog, "K_I=%f\r\n", K_I);
+			break;
+		case 'y':
+			K_PHIDOT += 0.1;
+			fprintf(btlog, "K_PHIDOT=%f\r\n", K_PHIDOT);
+			break;
+		case 'h':
+			K_PHIDOT -= 0.1;
+			fprintf(btlog, "K_PHIDOT=%f\r\n", K_PHIDOT);
+			break;
+		case 'u':
+			K_THETADOT += 0.1;
+			fprintf(btlog, "K_THETADOT=%f\r\n", K_THETADOT);
+			break;
+		case 'j':
+			K_THETADOT -= 0.1;
+			fprintf(btlog, "K_THETADOT=%f\r\n", K_THETADOT);
+			break;
 		default:
 			fprintf(btlog, "Unknown key '%c' pressed.\r\n", c);
 		}
