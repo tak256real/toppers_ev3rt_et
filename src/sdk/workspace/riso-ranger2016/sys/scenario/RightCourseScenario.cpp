@@ -7,6 +7,20 @@
 
 #include "RightCourseScenario.h"
 
+#include "SitWaitAction.h"
+#include "LineTraceAction.h"
+#include "TailBrakeAction.h"
+#include "RecliningAction.h"
+#include "TailRunAction.h"
+#include "TailCalibrationAction.h"
+
+#include "TimeCondition.h"
+#include "CollisionCondition.h"
+#include "DistanceToObjectCondition.h"
+#include "InclinationCondition.h"
+#include "DistanceCondition.h"
+#include "TailStopCondition.h"
+#include "EmptyCondition.h"
 
 RightCourseScenario::RightCourseScenario(){
 
