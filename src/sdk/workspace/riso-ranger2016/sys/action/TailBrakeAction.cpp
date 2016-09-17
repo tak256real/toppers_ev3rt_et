@@ -38,7 +38,7 @@ void TailBrakeAction::onCycle(){
 		m_WheelControl->SetRefValue(0, 0);
 	}
 	else{
-		m_WheelControl->SetRefValue(100, 0);
+		m_WheelControl->SetRefValue(55, 0);
 	}
 
 }

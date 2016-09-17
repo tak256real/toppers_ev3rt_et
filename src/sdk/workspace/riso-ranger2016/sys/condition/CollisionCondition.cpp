@@ -28,16 +28,10 @@ void CollisionCondition::onStart(){
 
 bool CollisionCondition::check(){
 
-	m_Velocity = m_StateObserver->getVelocity();
-	
-	int acceleration = m_Velocity - m_VelocityPrev;
-	m_VelocityPrev  = m_Velocity;
-	
 	bool ret = false;
 
 	// 条件判定
-	fprintf(btlog, "acc=%d\r\n", acceleration);
-	if(acceleration < c_dif) {
+	if(m_StateObserver->getVelocity() < c_dif) {
 		ret = true;
 	}
 

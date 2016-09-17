@@ -15,7 +15,7 @@ DirectionRunAction::DirectionRunAction(int speed, int tailAngle, int direction){
 	m_Speed = speed;									// 走行速度設定
 	m_TailAngle = tailAngle;							// 尻尾角度設定
 	m_ReferenceDirection = direction;					// 方位設定
-	m_PidControl = new PIDControl(5, 0, 0);
+	m_PidControl = new PIDControl(2, 0, 0);
 }
 
 
