@@ -102,6 +102,10 @@ void main_task(intptr_t unused) {
 
 	ev3_sta_cyc(ID_EV3CYC_4MS);
 
+    while(1) {
+        tslp_tsk(100);
+    }
+
 }
 
 void Cyc4msecInterval(intptr_t unused) {
