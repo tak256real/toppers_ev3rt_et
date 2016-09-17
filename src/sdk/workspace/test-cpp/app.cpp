@@ -31,7 +31,8 @@
 #include "UltrasonicControl.h"
 #include "balancer_private.h"
 #include "Bluetooth.h"
- #include "PIDControl.h"#define DEBUG
+#include "PIDControl.h"
+#define DEBUG
 
 #ifdef DEBUG
 #define _debug(x) (x)
