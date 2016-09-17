@@ -15,7 +15,7 @@
 #include "TailRunAction.h"
 #include "TailRunAction.h"
 #include "TailCalibrationAction.h"
-
+#include "CommandCondition.h"
 #include "TimeCondition.h"
 #include "CollisionCondition.h"
 #include "DistanceToObjectCondition.h"
@@ -44,7 +44,7 @@ void LeftCourseScenario::start(){
 
 	// 尻尾キャリブレーション部
 	firstSequence = 							new Sequence(new TailCalibrationAction(),	new TailStopCondition(1000)		);						// 尻尾キャリブレーション
-	sequence = firstSequence->setNextSequence(new Sequence(new SitWaitAction(98),			new TimeCondition(4000))			);					// 座って待機
+	sequence = firstSequence->setNextSequence(new Sequence(new SitWaitAction(98),			new CommandCondition())			);					// 座って待機
 
 	// スタート部
 	sequence = sequence->setNextSequence(	new Sequence(new LineTraceAction(20, 45, new PIDControl(40, 0, 0)),	new DistanceCondition(300))		);	// スタート直後はゆっくり走行
