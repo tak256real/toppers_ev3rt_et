@@ -72,8 +72,8 @@ static int heartBeatCount = 0;
 // インスタンス生成、関連構築、初期化
 static Sequencer* sequencer = new Sequencer(new Sequence(new SitWaitAction(90), new EmptyCondition()));
 
-static Scenario* scenario = new LeftCourseScenario();
-//static Scenario* scenario = new RightCourseScenario();
+//static Scenario* scenario = new LeftCourseScenario();
+static Scenario* scenario = new RightCourseScenario();
 
 static Motor* leftMotor = new Motor(EV3_PORT_C);
 static Motor* rightMotor = new Motor(EV3_PORT_B);
