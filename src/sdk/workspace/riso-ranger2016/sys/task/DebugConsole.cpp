@@ -38,3 +38,4 @@ bool DebugConsole::isOwnMessage(){
 
 	return false;
 }
+

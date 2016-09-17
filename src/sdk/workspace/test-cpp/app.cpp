@@ -31,9 +31,7 @@
 #include "UltrasonicControl.h"
 #include "balancer_private.h"
 #include "Bluetooth.h"
- #include "PIDControl.h"
-
-#define DEBUG
+ #include "PIDControl.h"#define DEBUG
 
 #ifdef DEBUG
 #define _debug(x) (x)
@@ -72,6 +70,7 @@ static int heartBeatCount = 0;
 
 // インスタンス生成、関連構築、初期化
 static Sequencer* sequencer = new Sequencer(new Sequence(new SitWaitAction(90), new EmptyCondition()));
+
 //static Scenario* scenario = new LeftCourseScenario();
 static Scenario* scenario = new RightCourseScenario();
 
@@ -86,11 +85,10 @@ static UltrasonicControl* ultrasonicControl = new UltrasonicControl(EV3_PORT_2);
 
 static StateObserver* stateObserver = new StateObserver(leftMotor, rightMotor, tailMotor, colorSensor);
 static WheelControl* wheelControl = new WheelControl(leftMotor, rightMotor, battery, gyroSensor);
+
 static PIDControl* pidControl = new PIDControl(1, 0, 0);
 static TailControl* tailControl = new TailControl(tailMotor, pidControl);
 void main_task(intptr_t unused) {
-
-    btlog = ev3_serial_open_file(EV3_SERIAL_BT);
 
 	scenario->init(sequencer);
 	Action::init(stateObserver, tailControl, wheelControl);
@@ -105,7 +103,6 @@ void main_task(intptr_t unused) {
 	// 4ms周期タスク起動
 
 	ev3_sta_cyc(ID_EV3CYC_4MS);
-
 
 	while(1) {
 		while (!ev3_bluetooth_is_connected()) tslp_tsk(100);
@@ -169,9 +166,7 @@ void main_task(intptr_t unused) {
 		default:
 			fprintf(btlog, "Unknown key '%c' pressed.\r\n", c);
 		}
-	}
-
-}
+	}}
 
 void Cyc4msecInterval(intptr_t unused) {
 
