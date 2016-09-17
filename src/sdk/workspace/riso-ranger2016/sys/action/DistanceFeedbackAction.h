@@ -24,6 +24,7 @@ public:
 
 private:
 	int m_ReferenceDistance;			// 目標距離 [mm]
+	PIDControl *m_PIDContol;
 
 };
 #endif // !defined(EA_40F80250_C89E_4088_959D_43DF38B0AF05__INCLUDED_)
