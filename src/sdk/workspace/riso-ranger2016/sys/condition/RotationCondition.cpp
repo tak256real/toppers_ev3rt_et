@@ -23,7 +23,7 @@ RotationCondition::~RotationCondition(){
 void RotationCondition::onStart(){
 
 	
-	m_StartRotation += m_StateObserver->GetDirection();
+	m_StartRotation = m_StateObserver->GetDirection();
 }
 
 
