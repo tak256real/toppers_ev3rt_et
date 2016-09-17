@@ -47,7 +47,7 @@ void LeftCourseScenario::start(){
 	sequence = firstSequence->setNextSequence(new Sequence(new SitWaitAction(98),			new CommandCondition())			);					// 座って待機
 
 	// スタート部
-	sequence = sequence->setNextSequence(	new Sequence(new LineTraceAction(20, 45, new PIDControl(40, 0, 0)),	new DistanceCondition(300))		);	// スタート直後はゆっくり走行
+	sequence = sequence->setNextSequence(	new Sequence(new LineTraceAction(20, 45, 0.5, new PIDControl(40, 0, 0)),	new DistanceCondition(300))		);	// スタート直後はゆっくり走行
 //	sequence = sequence->setNextSequence(	new Sequence(new LineTraceAction(80, 45, new PIDControl(80, 0, 3000)),	new EmptyCondition())		);	// 直線終わりまで
 
 
