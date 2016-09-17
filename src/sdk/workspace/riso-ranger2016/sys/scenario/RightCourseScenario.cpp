@@ -14,6 +14,8 @@
 #include "TailRunAction.h"
 #include "TailCalibrationAction.h"
 #include "DirectionRunAction.h"
+#include "DistanceFeedbackAction.h"
+#include "RotateAction.h"
 
 #include "TimeCondition.h"
 #include "CollisionCondition.h"
@@ -22,6 +24,7 @@
 #include "DistanceCondition.h"
 #include "TailStopCondition.h"
 #include "EmptyCondition.h"
+#include "RotationCondition.h"
 
 RightCourseScenario::RightCourseScenario(){
 
