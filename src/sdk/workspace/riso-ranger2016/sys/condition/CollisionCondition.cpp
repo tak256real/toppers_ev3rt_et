@@ -36,7 +36,7 @@ bool CollisionCondition::check(){
 	bool ret = false;
 
 	// 条件判定
-	fprintf(btlog, "acc=%d¥r¥n", acceleration);
+	fprintf(btlog, "acc=%d\r\n", acceleration);
 	if(acceleration < c_dif) {
 		ret = true;
 	}
