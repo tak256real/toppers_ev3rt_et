@@ -37,42 +37,44 @@ RightCourseScenario::~RightCourseScenario(){
 
 
 void RightCourseScenario::start(){
-	// ƒV[ƒPƒ“ƒX‡İ’è
+	// Æ’VÂ[Æ’PÆ’â€œÆ’XÂâ€¡ÂÃâ€™Ã¨
 	Sequence* sequence;
 	Sequence* firstSequence;
 ///////////////////////////////////
-//ƒXƒ^[ƒg
+//Æ’XÆ’^Â[Æ’g
 ///////////////////////////////////
-  // K”öƒLƒƒƒŠƒuƒŒ[ƒVƒ‡ƒ“•”
+  // ÂKâ€Ã¶Æ’LÆ’Æ’Æ’Å Æ’uÆ’Å’Â[Æ’VÆ’â€¡Æ’â€œâ€¢â€
 	firstSequence = 							new Sequence(new TailCalibrationAction(),	new TailStopCondition(1000)	);
 	sequence = firstSequence->setNextSequence(	new Sequence(new SitWaitAction(97),			new CommandCondition())	);
-	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(10, 2, 0.5, new PIDControl(80, 0.5, 3000)),	new DistanceCondition(100))	);
-	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(80, 2, 0.5, new PIDControl(80, 0.5, 3000)),	new DistanceCondition(4550)));
+	// ã‚¹ã‚¿ãƒ¼ãƒˆéƒ¨
+	sequence = sequence->setNextSequence(	new Sequence(new LineTraceAction(20, 45, 0.5, new PIDControl(40, 0, 0)),	new DistanceCondition(300))		);	// ã‚¹ã‚¿ãƒ¼ãƒˆç›´å¾Œã¯ã‚†ã£ãã‚Šèµ°è¡Œ
+//	sequence = sequence->setNextSequence(	new Sequence(new LineTraceAction(80, 45, new PIDControl(80, 0, 3000)),	new EmptyCondition())		);	// ç›´ç·šçµ‚ã‚ã‚Šã¾ã§
+	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(80, 2, 0.5, new PIDControl(80, 0.5, 3000)),	new DistanceCondition(4350)));
 	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(35, 2, 0.5, new PIDControl(80, 0.5, 3000)),	new DistanceCondition(700))	);
 	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(80, 2, 0.5, new PIDControl(80, 0.5, 3000)),	new DistanceCondition(1250)));
 	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(40, 2, 0.5, new PIDControl(80, 0.5, 3000)),	new DistanceCondition(1100)));
 //////////////////////////////////////
-//ƒS[ƒ‹
+//Æ’SÂ[Æ’â€¹
 //////////////////////////////////////
 //////////////////////////////////////
-//ŠK’i
+//Å Kâ€™i
 //////////////////////////////////////
 	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(50, 2, 0.5, new PIDControl(80, 0.5, 3000)),	new DistanceCondition(720)));
 
 
 //////////////////////////////////////
-//ŠK’iI‚í‚è
+//Å Kâ€™iÂIâ€šÃ­â€šÃ¨
 //////////////////////////////////////
 ///////////////////////////////////////
-//ƒKƒŒ[ƒWƒVƒiƒŠƒI
+//Æ’KÆ’Å’Â[Æ’WÆ’VÆ’iÆ’Å Æ’I
 ///////////////////////////////////////
-	//ToDo ƒOƒŒ[ƒ‰ƒCƒ“‚ÌŒŸ’m‚·‚éˆÊ’u‚ªŒˆ‚Ü‚Á‚½‚ç”÷’²®
+	//ToDo Æ’OÆ’Å’Â[Æ’â€°Æ’CÆ’â€œâ€šÃŒÅ’Å¸â€™mâ€šÂ·â€šÃ©Ë†ÃŠâ€™uâ€šÂªÅ’Ë†â€šÃœâ€šÃâ€šÂ½â€šÃ§â€Ã·â€™Â²ÂÂ®
 	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(40, 60, 0.5, new PIDControl(80, 0.5, 3000)),	new DistanceCondition(80))	);
 	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(30, 80, 0.5, new PIDControl(80, 0.5, 3000)),	new DistanceCondition(80))	);
 	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(20, 80, 0.5, new PIDControl(80, 0.5, 3000)),	new DistanceCondition(40))	);
 	sequence = sequence->setNextSequence(		new Sequence(new TailBrakeAction(),			new TimeCondition(700))		);
 ///////////////////////////////////////
-//ƒKƒŒ[ƒWƒVƒiƒŠƒII‚í‚è
+//Æ’KÆ’Å’Â[Æ’WÆ’VÆ’iÆ’Å Æ’IÂIâ€šÃ­â€šÃ¨
 ///////////////////////////////////////
 
 

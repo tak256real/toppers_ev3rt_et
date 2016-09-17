@@ -50,8 +50,7 @@ void LeftCourseScenario::start(){
 	// スタート部
 	sequence = sequence->setNextSequence(	new Sequence(new LineTraceAction(20, 45, 0.5, new PIDControl(40, 0, 0)),	new DistanceCondition(300))		);	// スタート直後はゆっくり走行
 //	sequence = sequence->setNextSequence(	new Sequence(new LineTraceAction(80, 45, new PIDControl(80, 0, 3000)),	new EmptyCondition())		);	// 直線終わりまで
-	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(10, 2, 0.5, new PIDControl(80, 0.5, 3000)),	new DistanceCondition(100))	);
-	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(80, 2, 0.5, new PIDControl(80, 0.5, 3000)),	new DistanceCondition(2300)));
+	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(80, 2, 0.5, new PIDControl(80, 0.5, 3000)),	new DistanceCondition(2100)));
 	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(60, 2, 0.5, new PIDControl(80, 0.5, 3000)),	new DistanceCondition(720)));
 	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(80, 2, 0.5, new PIDControl(80, 0.5, 3000)),	new DistanceCondition(2850)));
 	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(70, 2, 0.5, new PIDControl(80, 0.5, 3000)),	new DistanceCondition(1500)));
