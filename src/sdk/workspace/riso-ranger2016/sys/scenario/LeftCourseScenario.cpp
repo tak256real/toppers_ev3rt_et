@@ -42,10 +42,15 @@ void LeftCourseScenario::start(){
 	Sequence* sequence;
 	Sequence* firstSequence;
 
-  // 尻尾キャリブレーション部
-	firstSequence = 							new Sequence(new TailCalibrationAction(),	new TailStopCondition(1000)		);
-	sequence = firstSequence->setNextSequence(new Sequence(new SitWaitAction(93),			new TimeCondition(4000))			);
-	sequence = sequence->setNextSequence(	new Sequence(new LineTraceAction(80, 2),	new DistanceCondition(5000))		);
+	// 尻尾キャリブレーション部
+	firstSequence = 							new Sequence(new TailCalibrationAction(),	new TailStopCondition(1000)		);						// 尻尾キャリブレーション
+	sequence = firstSequence->setNextSequence(new Sequence(new SitWaitAction(98),			new TimeCondition(4000))			);					// 座って待機
+
+	// スタート部
+	sequence = sequence->setNextSequence(	new Sequence(new LineTraceAction(20, 45, new PIDControl(40, 0, 0)),	new DistanceCondition(300))		);	// スタート直後はゆっくり走行
+//	sequence = sequence->setNextSequence(	new Sequence(new LineTraceAction(80, 45, new PIDControl(80, 0, 3000)),	new EmptyCondition())		);	// 直線終わりまで
+
+
 //	sequence = firstSequence->setNextSequence(	new Sequence(new TailBrakeAction(),			new TimeCondition(1000))		);
 //	sequence = firstSequence->setNextSequence(	new Sequence(new LineTraceAction(50, 10),	new DistanceCondition(3800))	);
 //	sequence = firstSequence->setNextSequence(		new Sequence(new LineTraceAction(100, 10),	new DistanceToObjectCondition(200))		);

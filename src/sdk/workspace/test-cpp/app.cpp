@@ -28,8 +28,7 @@
 #include "Condition.h"
 #include "TimeCondition.h"
 #include "UltrasonicControl.h"
-
-//#include "Bluetooth.h"
+#include "balancer_private.h"
 
 #define DEBUG
 
@@ -95,7 +94,7 @@ void main_task(intptr_t unused) {
 	TimeCondition::s_AbsoluteTime = 0;	// TODO Timer置き換え.
 
 	gyroSensor->reset();
-	
+
 	// シナリオ生成
 	scenario->start();
 
