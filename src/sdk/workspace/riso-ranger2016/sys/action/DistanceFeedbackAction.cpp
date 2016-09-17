@@ -35,7 +35,7 @@ void DistanceFeedbackAction::onCycle(){
 	int speed;
 
 	// 走行速度を算出
-	speed = (m_ReferenceDistance - m_StateObserver->GetRunningDistance())*0.25;
+	speed = (m_ReferenceDistance - m_StateObserver->GetRunningDistance())*0.6;
 
 	// 前進量,旋回量を設定
 	m_WheelControl->SetRefValue(speed, 0);
