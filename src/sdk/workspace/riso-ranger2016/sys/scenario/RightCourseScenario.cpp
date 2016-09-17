@@ -23,7 +23,7 @@
 #include "DistanceCondition.h"
 #include "TailStopCondition.h"
 #include "EmptyCondition.h"
-
+#include "CommandCondition.h"
 
 RightCourseScenario::RightCourseScenario(){
 
@@ -45,7 +45,7 @@ void RightCourseScenario::start(){
 ///////////////////////////////////
   // 尻尾キャリブレーション部
 	firstSequence = 							new Sequence(new TailCalibrationAction(),	new TailStopCondition(1000)	);
-	sequence = firstSequence->setNextSequence(	new Sequence(new SitWaitAction(97),			new TimeCondition(5000))	);
+	sequence = firstSequence->setNextSequence(	new Sequence(new SitWaitAction(97),			new CommandCondition())	);
 	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(10, 2,new PIDControl(80, 0.5, 3000)),	new DistanceCondition(100))	);
 	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(80, 2,new PIDControl(80, 0.5, 3000)),	new DistanceCondition(4550)));
 	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(35, 2,new PIDControl(80, 0.5, 3000)),	new DistanceCondition(700))	);
