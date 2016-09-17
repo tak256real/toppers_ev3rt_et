@@ -6,12 +6,13 @@
 ///////////////////////////////////////////////////////////
 
 #include "CollisionCondition.h"
+#include "Bluetooth.h"
 
 
 CollisionCondition::CollisionCondition(){
 	m_Velocity = 0;
 	m_VelocityPrev = 0;
-	}
+}
 
 
 
@@ -27,15 +28,10 @@ void CollisionCondition::onStart(){
 
 bool CollisionCondition::check(){
 
-	m_Velocity = m_StateObserver->getVelocity();
-	
-	m_Aacceleration = m_Velocity - m_VelocityPrev;
-	m_VelocityPrev  = m_Velocity;
-	
 	bool ret = false;
 
 	// 条件判定
-	if(m_Aacceleration < c_dif) {
+	if(m_StateObserver->getVelocity() < c_dif) {
 		ret = true;
 	}
 

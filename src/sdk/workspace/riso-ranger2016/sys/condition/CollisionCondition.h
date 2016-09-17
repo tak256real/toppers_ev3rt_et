@@ -26,8 +26,7 @@ public:
 private:
 	int m_Velocity;				// 走行速度[mm/sec]
 	int m_VelocityPrev;			// 単位時間前の走行速度[mm/sec]
-	int m_Aacceleration;		// 加速度[mm/sec^2]
-	const int c_dif = -10;		// 閾値[mm/sec]
+	const int c_dif = 80;		// 閾値[mm/sec]
 
 };
 #endif // !defined(EA_B9D80660_930A_4a06_AEF8_377875A921FD__INCLUDED_)
