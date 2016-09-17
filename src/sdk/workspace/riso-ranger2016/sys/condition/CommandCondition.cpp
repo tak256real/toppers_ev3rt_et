@@ -5,6 +5,7 @@
 //  Original author: 039389
 ///////////////////////////////////////////////////////////
 
+#include "Bluetooth.h"
 #include "CommandCondition.h"
 
 
@@ -27,5 +28,5 @@ void CommandCondition::onStart(){
 
 bool CommandCondition::check(){
 
-	return false;
+	return isStartSignal();
 }

@@ -18,6 +18,8 @@ extern void console_task(intptr_t unused);
 
 #ifdef __cplusplus
 }
+
+bool isStartSignal();
 #endif
 
 #endif /* WORKSPACE_RISO_RANGER2016_SYS_DEVICE_BLUETOOTH_H_ */
