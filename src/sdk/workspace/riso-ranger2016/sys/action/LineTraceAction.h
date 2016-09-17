@@ -15,7 +15,7 @@ class LineTraceAction : public Action
 {
 
 public:
-	LineTraceAction(int speed, int tailAngle);	// 走行速度 -100~100[%],尻尾角度 0～[deg]
+	LineTraceAction(int speed, int tailAngle, float referenceLinePosition, PIDControl* pidControl);	// 走行速度 -100~100[%],尻尾角度 0～[deg]
 	virtual ~LineTraceAction();
 
 	virtual void onStart();

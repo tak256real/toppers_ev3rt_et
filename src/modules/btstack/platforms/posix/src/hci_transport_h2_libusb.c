@@ -621,7 +621,7 @@ static int prepare_device(libusb_device_handle * aHandle){
     log_info("Switching to setting %u on interface 1..", ALT_SETTING);
     r = libusb_set_interface_alt_setting(aHandle, 1, ALT_SETTING); 
     if (r < 0) {
-        fprintf(stderr, "Error setting alternative setting %u for interface 1: %s\n", ALT_SETTING, libusb_error_name(r));
+        //fpritf(stderr, "Error setting alternative setting %u for interface 1: %s\n", ALT_SETTING, libusb_error_name(r));
         libusb_close(aHandle);
         return r;
     }

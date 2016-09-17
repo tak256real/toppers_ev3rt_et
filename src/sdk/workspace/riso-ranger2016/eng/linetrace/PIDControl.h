@@ -17,6 +17,7 @@ public:
 	PIDControl(float p, float i, float d);
 	virtual ~PIDControl();
 	int PIDCalculation(float reference, float currentVal);
+        void setPID(float p, float i, float d);
 
 private:
 	float m_preerror;

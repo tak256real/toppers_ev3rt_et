@@ -9,12 +9,13 @@
 #define EA_AF7A7D4C_EA3F_49d8_B0CD_3F5D4A6A7B1C__INCLUDED_
 
 #include "Motor.h"
+#include "PIDControl.h"
 
 class TailControl
 {
 
 public:
-	TailControl(Motor* tailMotor);
+	TailControl(Motor* tailMotor, PIDControl* pidControl);
 	virtual ~TailControl();
 
 	void init();		// エンコーダ初期化
@@ -24,6 +25,7 @@ public:
 
 private:
 	Motor* m_TailMotor;
+        PIDControl* m_PIDControl;
 	int m_RefAngle;
 
 	static const int c_EarthingThreshold = 2;	// 接地検出の閾値[deg]

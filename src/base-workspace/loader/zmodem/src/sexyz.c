@@ -148,11 +148,11 @@ static BOOL winsock_startup(void)
 	int		status;             /* Status Code */
 
     if((status = WSAStartup(MAKEWORD(1,1), &WSAData))==0) {
-		fprintf(statfp,"%s %s\n",WSAData.szDescription, WSAData.szSystemStatus);
+		//fpritf(statfp,"%s %s\n",WSAData.szDescription, WSAData.szSystemStatus);
 		return(TRUE);
 	}
 
-    fprintf(errfp,"!WinSock startup ERROR %d\n", status);
+    //fpritf(errfp,"!WinSock startup ERROR %d\n", status);
 	return(FALSE);
 }
 
@@ -179,13 +179,13 @@ static int lputs(void* unused, int level, const char* str)
 		fp=errfp;
 
 	if(!newline) {
-		fprintf(fp,"\n");
+		//fpritf(fp,"\n");
 		newline=TRUE;
 	}
 	if(level<LOG_NOTICE)
-		ret=fprintf(fp,"!%s\n",str);
+		ret=//fpritf(fp,"!%s\n",str);
 	else
-		ret=fprintf(fp,"%s\n",str);
+		ret=//fpritf(fp,"%s\n",str);
 
 #if defined(__unix__)
 	if(use_syslog) {
@@ -591,15 +591,15 @@ int send_byte(void* unused, uchar ch, unsigned timeout)
 #if !defined(RINGBUF_EVENT)
 		ResetEvent(outbuf_empty);
 #endif
-		fprintf(statfp,"FLOW");
+		//fpritf(statfp,"FLOW");
 		flows++;
 		result=WaitForEvent(outbuf_empty,timeout*1000);
-		fprintf(statfp,"\b\b\b\b    \b\b\b\b");
+		//fpritf(statfp,"\b\b\b\b    \b\b\b\b");
 		if(result!=WAIT_OBJECT_0) {
 			lprintf(LOG_WARNING
 				,"!TIMEOUT (%d) waiting for output buffer to flush (%u seconds, %u bytes)\n"
 				,result, timeout, RingBufFull(&outbuf));
-			fprintf(statfp
+			//fpritf(statfp
 				,"\n!TIMEOUT (%d) waiting for output buffer to flush (%u seconds, %u bytes)\n"
 				,result, timeout, RingBufFull(&outbuf));
 			newline=TRUE;
@@ -666,7 +666,7 @@ static void output_thread(void* arg)
     ulong		buftop=0;
 
 #if 0 /* def _DEBUG */
-	fprintf(statfp,"output thread started\n");
+	//fpritf(statfp,"output thread started\n");
 #endif
 
 	while(sock!=INVALID_SOCKET && !terminate) {
@@ -776,8 +776,8 @@ void dump_block(long block_size)
 	long l;
 
 	for(l=0;l<block_size;l++)
-		fprintf(statfp,"%02X  ",block[l]);
-	fprintf(statfp,"\n");
+		//fpritf(statfp,"%02X  ",block[l]);
+	//fpritf(statfp,"\n");
 }
 
 void xmodem_progress(void* unused, unsigned block_num, int64_t offset, int64_t fsize, time_t start)
@@ -801,7 +801,7 @@ void xmodem_progress(void* unused, unsigned block_num, int64_t offset, int64_t f
 		if(l<0) l=0;
 		if(mode&SEND) {
 			total_blocks=num_blocks(block_num,offset,fsize,xm.block_size);
-			fprintf(statfp,"\rBlock (%lu%s): %u/%"PRId64"  Byte: %"PRId64"  "
+			//fpritf(statfp,"\rBlock (%lu%s): %u/%"PRId64"  Byte: %"PRId64"  "
 				"Time: %lu:%02lu/%lu:%02lu  %u cps  %lu%% "
 				,xm.block_size%1024L ? xm.block_size: xm.block_size/1024L
 				,xm.block_size%1024L ? "" : "K"
@@ -816,7 +816,7 @@ void xmodem_progress(void* unused, unsigned block_num, int64_t offset, int64_t f
 				,fsize?(long)(((float)offset/(float)fsize)*100.0):100
 				);
 		} else if(mode&YMODEM) {
-			fprintf(statfp,"\rBlock (%lu%s): %u  Byte: %"PRId64"  "
+			//fpritf(statfp,"\rBlock (%lu%s): %u  Byte: %"PRId64"  "
 				"Time: %lu:%02lu/%lu:%02lu  %u cps  %lu%% "
 				,xm.block_size%1024L ? xm.block_size: xm.block_size/1024L
 				,xm.block_size%1024L ? "" : "K"
@@ -830,7 +830,7 @@ void xmodem_progress(void* unused, unsigned block_num, int64_t offset, int64_t f
 				,fsize?(long)(((float)offset/(float)fsize)*100.0):100
 				);
 		} else { /* XModem receive */
-			fprintf(statfp,"\rBlock (%lu%s): %u  Byte: %"PRId64"  "
+			//fpritf(statfp,"\rBlock (%lu%s): %u  Byte: %"PRId64"  "
 				"Time: %lu:%02lu  %u cps "
 				,xm.block_size%1024L ? xm.block_size: xm.block_size/1024L
 				,xm.block_size%1024L ? "" : "K"
@@ -870,7 +870,7 @@ void zmodem_progress(void* cbdata, int64_t current_pos)
 		l=(long)(zm.current_file_size/cps);	/* total transfer est time */
 		l-=t;								/* now, it's est time left */
 		if(l<0) l=0;
-		fprintf(statfp,"\rKByte: %"PRId64"/%"PRId64"  %u/CRC-%u  "
+		//fpritf(statfp,"\rKByte: %"PRId64"/%"PRId64"  %u/CRC-%u  "
 			"Time: %lu:%02lu/%lu:%02lu  %u cps  %lu%% "
 			,current_pos/1024
 			,zm.current_file_size/1024
@@ -998,7 +998,7 @@ static int send_files(char** fname, uint fnames)
 			/* DSZLOG entry */
 			if(logfp) {
 				lprintf(LOG_DEBUG,"Updating DSZLOG: %s", dszlog);
-				fprintf(logfp,"%c %7"PRId64" %5u bps %6u cps %3u errors %5u %4u "
+				//fpritf(logfp,"%c %7"PRId64" %5u bps %6u cps %3u errors %5u %4u "
 					"%s -1\n"
 					,(mode&ZMODEM && zm.file_skipped) ? 's' 
 						: success ? (mode&ZMODEM ? 'z':'S') 
@@ -1181,7 +1181,7 @@ static int receive_files(char** fname_list, int fnames)
 				}
 				if(i==fnames) { 				/* Not found in list */
 					if(fnames)
-						fprintf(statfp," - Not in receive list!");
+						//fpritf(statfp," - Not in receive list!");
 					if(!fnames || fnum>=fnames || !fname_list[fnum][0])
 						SAFECOPY(str,getfname(fname));	/* worst case */
 					else {
@@ -1190,9 +1190,9 @@ static int receive_files(char** fname_list, int fnames)
 					} 
 				} 
 			}
-			fprintf(statfp,"File size: %"PRId64" bytes\n", file_bytes);
+			//fpritf(statfp,"File size: %"PRId64" bytes\n", file_bytes);
 			if(total_files>1)
-				fprintf(statfp,"Remaining: %"PRId64" bytes in %u files\n", total_bytes, total_files);
+				//fpritf(statfp,"Remaining: %"PRId64" bytes in %u files\n", total_bytes, total_files);
 		}
 
 		lprintf(LOG_DEBUG,"Receiving: %.64s ",str);
@@ -1348,7 +1348,7 @@ static int receive_files(char** fname_list, int fnames)
 
 		if(logfp) {
 			lprintf(LOG_DEBUG,"Updating DSZLOG: %s", dszlog);
-			fprintf(logfp,"%c %6"PRId64" %5u bps %4"PRId64" cps %3u errors %5u %4u "
+			//fpritf(logfp,"%c %6"PRId64" %5u bps %4"PRId64" cps %3u errors %5u %4u "
 				"%s %ld\n"
 				,success ? (mode&ZMODEM ? 'Z' : 'R') : 'E'
 				,file_bytes
@@ -1518,7 +1518,7 @@ int main(int argc, char **argv)
 
 	sscanf("$Revision: 2.0 $", "%*s %s", revision);
 
-	fprintf(statfp,"\nSynchronet External X/Y/ZMODEM  v%s-%s"
+	//fpritf(statfp,"\nSynchronet External X/Y/ZMODEM  v%s-%s"
 		"  Copyright %s Rob Swindell\n\n"
 		,revision
 		,PLATFORM_DESC
@@ -1541,7 +1541,7 @@ int main(int argc, char **argv)
 	
 	iniFileName(ini_fname,sizeof(ini_fname),str,fname);
 	if((fp=fopen(ini_fname,"r"))!=NULL)
-		fprintf(statfp,"Reading %s\n",ini_fname);
+		//fpritf(statfp,"Reading %s\n",ini_fname);
 
 	tcp_nodelay				=iniReadBool(fp,ROOT_SECTION,"TCP_NODELAY",TRUE);
 
@@ -1608,7 +1608,7 @@ int main(int argc, char **argv)
 	else if(outbuf_size > MAX_OUTBUF_SIZE)
 		outbuf_size = MAX_OUTBUF_SIZE;
 	
-	fprintf(statfp,"Output buffer size: %lu\n", outbuf_size);
+	//fpritf(statfp,"Output buffer size: %lu\n", outbuf_size);
 	RingBufInit(&outbuf, outbuf_size);
 
 #if !defined(RINGBUF_EVENT)
@@ -1621,10 +1621,10 @@ int main(int argc, char **argv)
 
 #if 0
 	if(argc>1) {
-		fprintf(statfp,"Command line: ");
+		//fpritf(statfp,"Command line: ");
 		for(i=1;i<argc;i++)
-			fprintf(statfp,"%s ",argv[i]);
-		fprintf(statfp,"\n",statfp);
+			//fpritf(statfp,"%s ",argv[i]);
+		//fpritf(statfp,"\n",statfp);
 	}
 #endif
 
@@ -1672,8 +1672,8 @@ int main(int argc, char **argv)
 						mode|=(ZMODEM|CRC);
 						break;
 					default:
-						fprintf(statfp,"Unrecognized command '%s'\n\n",argv[i]);
-						fprintf(statfp,usage,MAX_FILE_SIZE);
+						//fpritf(statfp,"Unrecognized command '%s'\n\n",argv[i]);
+						//fpritf(statfp,usage,MAX_FILE_SIZE);
 						bail(1); 
 						return -1;
 				} 
@@ -1682,14 +1682,14 @@ int main(int argc, char **argv)
 
 			if(toupper(argv[i][0])=='V') {
 
-				fprintf(statfp,"%-8s %s\n",getfname(__FILE__)		,revision);
-				fprintf(statfp,"%-8s %s\n",getfname(xmodem_source()),xmodem_ver(str));
-				fprintf(statfp,"%-8s %s\n",getfname(zmodem_source()),zmodem_ver(str));
+				//fpritf(statfp,"%-8s %s\n",getfname(__FILE__)		,revision);
+				//fpritf(statfp,"%-8s %s\n",getfname(xmodem_source()),xmodem_ver(str));
+				//fpritf(statfp,"%-8s %s\n",getfname(zmodem_source()),zmodem_ver(str));
 #ifdef _DEBUG
-				fprintf(statfp,"Debug\n");
+				//fpritf(statfp,"Debug\n");
 #endif
-				fprintf(statfp,"Compiled %s %.5s with %s\n",__DATE__,__TIME__,compiler);
-				fprintf(statfp,"%s\n",os_version(str));
+				//fpritf(statfp,"Compiled %s %.5s with %s\n",__DATE__,__TIME__,compiler);
+				//fpritf(statfp,"%s\n",os_version(str));
 				bail(0);
 				return 0;
 			}
@@ -1763,13 +1763,13 @@ int main(int argc, char **argv)
 
 		else if((argv[i][0]=='+' || argv[i][0]=='@') && fexist(argv[i]+1)) {
 			if(mode&RECVDIR) {
-				fprintf(statfp,"!Cannot specify both directory and filename\n");
+				//fpritf(statfp,"!Cannot specify both directory and filename\n");
 				bail(1); 
 				return -1;
 			}
 			SAFEPRINTF(str,"%s",argv[i]+1);
 			if((fp=fopen(str,"r"))==NULL) {
-				fprintf(statfp,"!Error %d opening filelist: %s\n",errno,str);
+				//fpritf(statfp,"!Error %d opening filelist: %s\n",errno,str);
 				bail(1); 
 				return -1;
 			}
@@ -1785,17 +1785,17 @@ int main(int argc, char **argv)
 		else if(mode&(SEND|RECV)){
 			if(isdir(argv[i])) { /* is a directory */
 				if(mode&RECVDIR) {
-					fprintf(statfp,"!Only one directory can be specified\n");
+					//fpritf(statfp,"!Only one directory can be specified\n");
 					bail(1); 
 					return -1;
 				}
 				if(fnames) {
-					fprintf(statfp,"!Cannot specify both directory and filename\n");
+					//fpritf(statfp,"!Cannot specify both directory and filename\n");
 					bail(1); 
 					return -1;
 				}
 				if(mode&SEND) {
-					fprintf(statfp,"!Cannot send directory '%s'\n",argv[i]);
+					//fpritf(statfp,"!Cannot send directory '%s'\n",argv[i]);
 					bail(1);
 					return -1;
 				}
@@ -1806,18 +1806,18 @@ int main(int argc, char **argv)
 	}
 
 	if(max_file_size)
-		fprintf(statfp,"Maximum receive file size: %"PRIi64"\n", max_file_size);
+		//fpritf(statfp,"Maximum receive file size: %"PRIi64"\n", max_file_size);
 
 	if(!(mode&(SEND|RECV))) {
-		fprintf(statfp,"!No command specified\n\n");
-		fprintf(statfp,usage,MAX_FILE_SIZE);
+		//fpritf(statfp,"!No command specified\n\n");
+		//fpritf(statfp,usage,MAX_FILE_SIZE);
 		bail(1); 
 		return -1;
 	}
 
 	if(mode&(SEND|XMODEM) && !fnames) { /* Sending with any or recv w/Xmodem */
-		fprintf(statfp,"!Must specify filename or filelist\n\n");
-		fprintf(statfp,usage,MAX_FILE_SIZE);
+		//fpritf(statfp,"!Must specify filename or filelist\n\n");
+		//fpritf(statfp,usage,MAX_FILE_SIZE);
 		bail(1); 
 		return -1;
 	}
@@ -1830,13 +1830,13 @@ int main(int argc, char **argv)
 			sock=STDIN_FILENO;
 		stdio=TRUE;
 
-		fprintf(statfp,"No socket descriptor specified, using STDIO\n");
+		//fpritf(statfp,"No socket descriptor specified, using STDIO\n");
 		if(!telnet_requested)
 			telnet=FALSE;
 		init_stdio();
 #else
-		fprintf(statfp,"!No socket descriptor specified\n\n");
-		fprintf(errfp,usage,MAX_FILE_SIZE);
+		//fpritf(statfp,"!No socket descriptor specified\n\n");
+		//fpritf(errfp,usage,MAX_FILE_SIZE);
 		bail(1);
 		return -1;
 #endif
@@ -1933,9 +1933,9 @@ int main(int argc, char **argv)
 /*	sem_post(outbuf.sem);
 	sem_post(outbuf.highwater_sem); */
 
-	fprintf(statfp,"Exiting - Error level: %d, flows: %u, select_errors=%u"
+	//fpritf(statfp,"Exiting - Error level: %d, flows: %u, select_errors=%u"
 		,retval, flows, select_errors);
-	fprintf(statfp,"\n");
+	//fpritf(statfp,"\n");
 
 	bail(retval);
 	return retval;

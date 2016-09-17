@@ -82,20 +82,20 @@ namespace toppers
 
   void warning( const char* msg )
   {
-    if ( !error_location.empty() ) fprintf( stderr, "In function `%s`:\n", error_location.c_str() );
-    fprintf( stderr, "%s: %s: %s\n", program_name.c_str(), _( "warning" ), msg );
+    if ( !error_location.empty() ) //fpritf( stderr, "In function `%s`:\n", error_location.c_str() );
+    //fpritf( stderr, "%s: %s: %s\n", program_name.c_str(), _( "warning" ), msg );
     error_location.clear();
   }
   void warning( text_line const& line, const char* msg )
   {
-    if ( !error_location.empty() ) fprintf( stderr, "In function `%s`:\n", error_location.c_str() );
-    fprintf( stderr, "%s:%s:%ld: %s: %s\n", program_name.c_str(), line.file.c_str(), line.line, _( "warning" ), msg );
+    if ( !error_location.empty() ) //fpritf( stderr, "In function `%s`:\n", error_location.c_str() );
+    //fpritf( stderr, "%s:%s:%ld: %s: %s\n", program_name.c_str(), line.file.c_str(), line.line, _( "warning" ), msg );
     error_location.clear();
   }
   void error( const char* msg )
   {
-    if ( !error_location.empty() ) fprintf( stderr, "In function `%s`:\n", error_location.c_str() );
-    fprintf( stderr, "%s: %s: %s\n", program_name.c_str(), _( "error" ), msg );
+    if ( !error_location.empty() ) //fpritf( stderr, "In function `%s`:\n", error_location.c_str() );
+    //fpritf( stderr, "%s: %s: %s\n", program_name.c_str(), _( "error" ), msg );
     ++error_count;
     if ( error_abort_threshold <= error_count )
     {
@@ -105,8 +105,8 @@ namespace toppers
   }
   void error( text_line const& line, const char* msg )
   {
-    if ( !error_location.empty() ) fprintf( stderr, "In function `%s`:\n", error_location.c_str() );
-    fprintf( stderr, "%s:%s:%ld: %s: %s\n", program_name.c_str(), line.file.c_str(), line.line, _( "error" ), msg );
+    if ( !error_location.empty() ) //fpritf( stderr, "In function `%s`:\n", error_location.c_str() );
+    //fpritf( stderr, "%s:%s:%ld: %s: %s\n", program_name.c_str(), line.file.c_str(), line.line, _( "error" ), msg );
     ++error_count;
     if ( error_abort_threshold <= error_count )
     {
@@ -116,15 +116,15 @@ namespace toppers
   }
   void fatal( const char* msg )
   {
-    if ( !error_location.empty() ) fprintf( stderr, "In function `%s`:\n", error_location.c_str() );
-    fprintf( stderr, "%s: %s: %s\n", program_name.c_str(), _( "error" ), msg );
+    if ( !error_location.empty() ) //fpritf( stderr, "In function `%s`:\n", error_location.c_str() );
+    //fpritf( stderr, "%s: %s: %s\n", program_name.c_str(), _( "error" ), msg );
     error_location.clear();
     throw diagnostics_error( _( "fatal error" ) );
   }
   void fatal( text_line const& line, const char* msg )
   {
-    if ( !error_location.empty() ) fprintf( stderr, "In function `%s`:\n", error_location.c_str() );
-    fprintf( stderr, "%s:%s:%ld: %s: %s\n", program_name.c_str(), line.file.c_str(), line.line, _( "error" ), msg );
+    if ( !error_location.empty() ) //fpritf( stderr, "In function `%s`:\n", error_location.c_str() );
+    //fpritf( stderr, "%s:%s:%ld: %s: %s\n", program_name.c_str(), line.file.c_str(), line.line, _( "error" ), msg );
     error_location.clear();
     throw diagnostics_error( _( "fatal error" ) );
   }

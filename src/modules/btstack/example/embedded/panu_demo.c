@@ -173,7 +173,7 @@ static int tap_alloc(char *dev, bd_addr_t bd_addr)
     int fd_socket;
 
     if( (fd_dev = open(tap_dev, O_RDWR)) < 0 ) {
-        fprintf(stderr, "TAP: Error opening %s: %s\n", tap_dev, strerror(errno));
+        //fpritf(stderr, "TAP: Error opening %s: %s\n", tap_dev, strerror(errno));
         return -1;
     }
 
@@ -187,7 +187,7 @@ static int tap_alloc(char *dev, bd_addr_t bd_addr)
 
     int err;
     if( (err = ioctl(fd_dev, TUNSETIFF, (void *) &ifr)) < 0 ) {
-        fprintf(stderr, "TAP: Error setting device name: %s\n", strerror(errno));
+        //fpritf(stderr, "TAP: Error setting device name: %s\n", strerror(errno));
         close(fd_dev);
         return -1;
     }  
@@ -200,7 +200,7 @@ static int tap_alloc(char *dev, bd_addr_t bd_addr)
     fd_socket = socket(PF_INET, SOCK_DGRAM, IPPROTO_IP);
 	if (fd_socket < 0) {
         close(fd_dev);
-		fprintf(stderr, "TAP: Error opening netlink socket: %s\n", strerror(errno));
+		//fpritf(stderr, "TAP: Error opening netlink socket: %s\n", strerror(errno));
 		return -1;
 	}
 
@@ -214,7 +214,7 @@ static int tap_alloc(char *dev, bd_addr_t bd_addr)
 	if (ioctl(fd_socket, SIOCSIFHWADDR, &ifr) == -1) {
         close(fd_dev);
         close(fd_socket);
-        fprintf(stderr, "TAP: Error setting hw addr: %s\n", strerror(errno));
+        //fpritf(stderr, "TAP: Error setting hw addr: %s\n", strerror(errno));
         exit(1);
 		return -1;
 	}
@@ -226,7 +226,7 @@ static int tap_alloc(char *dev, bd_addr_t bd_addr)
     if (ioctl(fd_socket, SIOCSIFLLADDR, &ifr) == -1) {
         close(fd_dev);
         close(fd_socket);
-        fprintf(stderr, "TAP: Error setting hw addr: %s\n", strerror(errno));
+        //fpritf(stderr, "TAP: Error setting hw addr: %s\n", strerror(errno));
         exit(1);
         return -1;
 }
@@ -236,7 +236,7 @@ static int tap_alloc(char *dev, bd_addr_t bd_addr)
 	if (ioctl(fd_socket, SIOCGIFFLAGS, &ifr) == -1) {
         close(fd_dev);
         close(fd_socket);
-		fprintf(stderr, "TAP: Error reading interface flags: %s\n", strerror(errno));
+		//fpritf(stderr, "TAP: Error reading interface flags: %s\n", strerror(errno));
 		return -1;
 	}
 
@@ -246,7 +246,7 @@ static int tap_alloc(char *dev, bd_addr_t bd_addr)
 		if (ioctl(fd_socket, SIOCSIFFLAGS, &ifr) == -1) {
             close(fd_dev);
             close(fd_socket);
-            fprintf(stderr, "TAP: Error set IFF_UP: %s\n", strerror(errno));
+            //fpritf(stderr, "TAP: Error set IFF_UP: %s\n", strerror(errno));
             return -1;
 		}
 	}
@@ -274,7 +274,7 @@ static int process_tap_dev_data(struct data_source *ds)
     ssize_t len;
     len = read(ds->fd, network_buffer, sizeof(network_buffer));
     if (len <= 0){
-        fprintf(stderr, "TAP: Error while reading: %s\n", strerror(errno));
+        //fpritf(stderr, "TAP: Error while reading: %s\n", strerror(errno));
         return 0;
     }
 
@@ -408,13 +408,13 @@ static void handle_sdp_client_query_result(sdp_query_event_t *event)
                     }
                 }
             } else {
-                fprintf(stderr, "SDP attribute value buffer size exceeded: available %d, required %d\n", attribute_value_buffer_size, value_event->attribute_length);
+                //fpritf(stderr, "SDP attribute value buffer size exceeded: available %d, required %d\n", attribute_value_buffer_size, value_event->attribute_length);
             }
             break;
             
         case SDP_QUERY_COMPLETE:
             complete_event = (sdp_query_complete_event_t*) event;
-            fprintf(stderr, "General query done with status %d.\n", complete_event->status);
+            //fpritf(stderr, "General query done with status %d.\n", complete_event->status);
 
             break;
     }
@@ -551,10 +551,10 @@ static void packet_handler (void * connection, uint8_t packet_type, uint16_t cha
             if (tap_fd > 0) {
                 rc = write(tap_fd, packet, size);
                 if (rc < 0) {
-                    fprintf(stderr, "TAP: Could not write to TAP device: %s\n", strerror(errno));
+                    //fpritf(stderr, "TAP: Could not write to TAP device: %s\n", strerror(errno));
                 } else 
                 if (rc != size) {
-                    fprintf(stderr, "TAP: Package written only partially %d of %d bytes\n", rc, size);
+                    //fpritf(stderr, "TAP: Package written only partially %d of %d bytes\n", rc, size);
                 }
             }
             break;            

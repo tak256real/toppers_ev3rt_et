@@ -223,7 +223,7 @@ err_out2:
 err_out1:
     close(fd);
 err_out0:
-    fprintf(stderr, "h4_open error\n");
+    //fpritf(stderr, "h4_open error\n");
 
     return -1;
 }
