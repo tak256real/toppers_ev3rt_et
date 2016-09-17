@@ -63,13 +63,13 @@ void LeftCourseScenario::start(){
 	sequence = sequence->setNextSequence(		new Sequence(new TailRunAction(10, 0),		new DistanceCondition(270))		);
 	sequence = sequence->setNextSequence(		new Sequence(new TailBrakeAction(),			new TimeCondition(500))		);
 
-	sequence = sequence->setNextSequence(		new Sequence(new TailRunAction(0, 15),		new RotationCondition(176))	);
+	sequence = sequence->setNextSequence(		new Sequence(new TailRunAction(0, 15),		new RotationCondition(177))	);
 	sequence = sequence->setNextSequence(		new Sequence(new TailBrakeAction(),			new TimeCondition(500))		);
 	
 	sequence = sequence->setNextSequence(		new Sequence(new TailRunAction(10, 0),		new DistanceCondition(270))		);
 	sequence = sequence->setNextSequence(		new Sequence(new TailBrakeAction(),			new TimeCondition(500))		);
 	
-	sequence = sequence->setNextSequence(		new Sequence(new TailRunAction(0, 15),		new RotationCondition(176))	);
+	sequence = sequence->setNextSequence(		new Sequence(new TailRunAction(0, 15),		new RotationCondition(177))	);
 	sequence = sequence->setNextSequence(		new Sequence(new TailBrakeAction(),			new TimeCondition(500))		);
 
 	sequence = sequence->setNextSequence(		new Sequence(new TailRunAction(10, 0),		new DistanceCondition(270))		);
@@ -78,7 +78,7 @@ void LeftCourseScenario::start(){
 // 尻尾走行からの倒立走行切り替え
 	sequence = sequence->setNextSequence(		new Sequence(new TailRunAction(-10, 0),		new TimeCondition(500))		);
 	sequence = sequence->setNextSequence(		new Sequence(new RecliningAction(80),		new InclinationCondition(115))	);
-	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(30, 97),	new DistanceCondition(1000))	);
+	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(30, 97),	new DistanceCondition(300))	);
 
 
 // グレーライン検知部 トレース位置は0.15
