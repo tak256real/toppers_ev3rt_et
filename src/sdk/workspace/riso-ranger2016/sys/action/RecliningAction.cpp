@@ -30,6 +30,9 @@ void RecliningAction::onStart(){
 
 	// 倒立制御をオフ
 	m_WheelControl->SetTwoWheelMode(false);
+	
+	// 走行速度を零にする
+	m_WheelControl->SetRefValue(0, 0);
 
 }
 

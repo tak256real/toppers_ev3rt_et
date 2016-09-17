@@ -24,6 +24,7 @@
 #include "DistanceCondition.h"
 #include "TailStopCondition.h"
 #include "EmptyCondition.h"
+#include "RotationCondition.h"
 
 
 LeftCourseScenario::LeftCourseScenario(){
@@ -64,19 +65,31 @@ void LeftCourseScenario::start(){
 	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(10, 10),	new TimeCondition(3000))	);	
 	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(30, 10),	new DistanceToObjectCondition(40))		);
 	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(30, 80),	new DistanceToObjectCondition(20))		);
-	sequence = sequence->setNextSequence(		new Sequence(new TailBrakeAction(),			new TimeCondition(500))		);
+	sequence = sequence->setNextSequence(		new Sequence(new TailBrakeAction(),			new TimeCondition(300))		);
 	// !!! リクライニングの前に、尻尾の角度を80度にする !!!
-	sequence = sequence->setNextSequence(		new Sequence(new RecliningAction(-30),		new InclinationCondition(64))	);
-	sequence = sequence->setNextSequence(		new Sequence(new TailRunAction(10, 0),		new DistanceCondition(250))		);
-	sequence = sequence->setNextSequence(		new Sequence(new TailBrakeAction(),			new TimeCondition(1000))		);
-	sequence = sequence->setNextSequence(		new Sequence(new TailRunAction(-5, 0),		new DistanceCondition(-270))	);
-	sequence = sequence->setNextSequence(		new Sequence(new TailRunAction(10, 0),		new DistanceCondition(250))		);
+	sequence = sequence->setNextSequence(		new Sequence(new RecliningAction(-20),		new InclinationCondition(65))	);
+	sequence = sequence->setNextSequence(		new Sequence(new TailRunAction(10, 0),		new DistanceCondition(270))		);
+	sequence = sequence->setNextSequence(		new Sequence(new TailBrakeAction(),			new TimeCondition(500))		);
+
+	sequence = sequence->setNextSequence(		new Sequence(new TailRunAction(0, 15),		new RotationCondition(177))	);
+	sequence = sequence->setNextSequence(		new Sequence(new TailBrakeAction(),			new TimeCondition(500))		);
+	
+	sequence = sequence->setNextSequence(		new Sequence(new TailRunAction(10, 0),		new DistanceCondition(270))		);
+	sequence = sequence->setNextSequence(		new Sequence(new TailBrakeAction(),			new TimeCondition(500))		);
+	
+	sequence = sequence->setNextSequence(		new Sequence(new TailRunAction(0, 15),		new RotationCondition(177))	);
+	sequence = sequence->setNextSequence(		new Sequence(new TailBrakeAction(),			new TimeCondition(500))		);
+
+	sequence = sequence->setNextSequence(		new Sequence(new TailRunAction(10, 0),		new DistanceCondition(270))		);
+	sequence = sequence->setNextSequence(		new Sequence(new TailBrakeAction(),			new TimeCondition(500))		);
 
 // 尻尾走行からの倒立走行切り替え
-	sequence = sequence->setNextSequence(		new Sequence(new RecliningAction(4),		new InclinationCondition(85))	);
-	sequence = sequence->setNextSequence(		new Sequence(new TailBrakeAction(),			new TimeCondition(1000))		);
-	sequence = sequence->setNextSequence(		new Sequence(new RecliningAction(1),		new InclinationCondition(95))	);
-	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(10, 10),	new DistanceCondition(100))	);
+	sequence = sequence->setNextSequence(		new Sequence(new TailRunAction(-10, 0),		new TimeCondition(500))		);
+//	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(80, 10),	new TimeCondition(500))	);	
+	sequence = sequence->setNextSequence(		new Sequence(new RecliningAction(80),		new InclinationCondition(115))	);
+//	sequence = sequence->setNextSequence(		new Sequence(new TailBrakeAction(),			new TimeCondition(1000))		);
+//	sequence = sequence->setNextSequence(		new Sequence(new RecliningAction(20),		new InclinationCondition(95))	);
+	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(30, 97),	new DistanceCondition(1000))	);
 	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(80, 10),	new CollisionCondition())		);
 
 
