@@ -48,10 +48,11 @@ void RightCourseScenario::start(){
 //	sequence = sequence->setNextSequence(	new Sequence(new LineTraceAction(80, 45, new PIDControl(80, 0, 3000)),	new EmptyCondition())		);	// 直線終わりまで
 
 	// 階段
-	sequence = sequence->setNextSequence(	new Sequence(new LineTraceAction(10, 80, new PIDControl(40, 0, 0), 0.5),	new CollisionCondition())		);	// スタート直後はゆっくり走行
-	sequence = sequence->setNextSequence(	new Sequence(new SitWaitAction(75),									new TimeCondition(4000))		);	// 座って待機
-	sequence = sequence->setNextSequence(	new Sequence(new TailRunAction(-20, 0),								new DistanceCondition(-200))		);	// 一定距離バック
-	sequence = sequence->setNextSequence(	new Sequence(new TailRunAction(100, 0),								new DistanceCondition(350))		);	// 勢いをつけて登る
+	sequence = sequence->setNextSequence(	new Sequence(new LineTraceAction(20, 80, new PIDControl(40, 0, 0), 0.5),	new DistanceCondition(300))		);	// スタート直後はゆっくり走行
+	sequence = sequence->setNextSequence(	new Sequence(new TailBrakeAction(),											new TimeCondition(4000))		);	// 座って待機
+	sequence = sequence->setNextSequence(	new Sequence(new SitWaitAction(85),											new CollisionCondition())		);	// 座って待機
+	sequence = sequence->setNextSequence(	new Sequence(new TailRunAction(-20, 0),										new DistanceCondition(-200))		);	// 一定距離バック
+	sequence = sequence->setNextSequence(	new Sequence(new TailRunAction(50, 0),										new DistanceCondition(350))		);	// 勢いをつけて登る
 
 	// シーケンス開始
 	m_Sequencer->startSequence(firstSequence);
