@@ -13,6 +13,7 @@
 #include "RecliningAction.h"
 #include "TailRunAction.h"
 #include "TailCalibrationAction.h"
+#include "DirectionRunAction.h"
 
 #include "TimeCondition.h"
 #include "CollisionCondition.h"

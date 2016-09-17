@@ -20,6 +20,7 @@ APPL_COBJS +=
 
 APPL_CXXOBJS += \
 ../workspace/riso-ranger2016/sys/action/Action.o \
+../workspace/riso-ranger2016/sys/action/DirectionRunAction.o \
 ../workspace/riso-ranger2016/sys/action/EmergencyStopAction.o \
 ../workspace/riso-ranger2016/sys/action/LineTraceAction.o \
 ../workspace/riso-ranger2016/sys/action/RecliningAction.o \
