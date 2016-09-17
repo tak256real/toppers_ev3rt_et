@@ -49,9 +49,11 @@ void RightCourseScenario::start(){
 
 	// 階段
 	sequence = sequence->setNextSequence(	new Sequence(new LineTraceAction(20, 80, new PIDControl(40, 0, 0), 0.5),	new DistanceCondition(300))		);	// スタート直後はゆっくり走行
-	sequence = sequence->setNextSequence(	new Sequence(new TailBrakeAction(),											new TimeCondition(4000))		);	// 座って待機
-	sequence = sequence->setNextSequence(	new Sequence(new SitWaitAction(85),											new CollisionCondition())		);	// 座って待機
-	sequence = sequence->setNextSequence(	new Sequence(new TailRunAction(-20, 0),										new DistanceCondition(-200))		);	// 一定距離バック
+	sequence = sequence->setNextSequence(	new Sequence(new TailBrakeAction(),											new TimeCondition(1000))		);	// 座って待機
+	sequence = sequence->setNextSequence(	new Sequence(new TailRunAction(20, 0),										new CollisionCondition())		);	// 座って待機
+	sequence = sequence->setNextSequence(	new Sequence(new SitWaitAction(75),											new CollisionCondition())		);	// 座って待機
+	sequence = sequence->setNextSequence(	new Sequence(new TailRunAction(-20, 0),										new DistanceCondition(-200))	);	// 一定距離バック
+	sequence = sequence->setNextSequence(	new Sequence(new SitWaitAction(75),											new TimeCondition(2000))		);	// 座って待機
 	sequence = sequence->setNextSequence(	new Sequence(new TailRunAction(50, 0),										new DistanceCondition(350))		);	// 勢いをつけて登る
 
 	// シーケンス開始
