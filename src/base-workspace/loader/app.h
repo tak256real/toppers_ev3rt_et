@@ -84,7 +84,7 @@ typedef struct {
 extern void show_cli_menu(const CliMenu *cm);
 extern const CliMenuEntry* select_menu_entry(const CliMenu *cm);
 
-#define fio_clear_screen() {} //syslog(LOG_NOTICE, "\033[2J\033[;H") //fprintf(fio, "\033[2J\033[;H") // Clear Screen
+#define fio_clear_screen() {} //syslog(LOG_NOTICE, "\033[2J\033[;H") ////fpritf(fio, "\033[2J\033[;H") // Clear Screen
 
 extern const CliMenu climenu_main;
 
@@ -115,5 +115,5 @@ void ldr_data_abort_handler(void *p_excinf);
 #if 0 // Legacy code
 //#include <stdio.h>
 //extern FILE *fio;
-#define fio_clear_line() {} //syslog(LOG_NOTICE, "\033[2K\033[255D") //fprintf(fio, "\033[2K\033[255D") // Clear Screen
+#define fio_clear_line() {} //syslog(LOG_NOTICE, "\033[2K\033[255D") ////fpritf(fio, "\033[2K\033[255D") // Clear Screen
 #endif

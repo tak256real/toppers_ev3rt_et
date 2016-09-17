@@ -15,7 +15,7 @@
 #include "TailRunAction.h"
 #include "TailRunAction.h"
 #include "TailCalibrationAction.h"
-
+#include "CommandCondition.h"
 #include "TimeCondition.h"
 #include "CollisionCondition.h"
 #include "DistanceToObjectCondition.h"
@@ -23,7 +23,6 @@
 #include "DistanceCondition.h"
 #include "TailStopCondition.h"
 #include "EmptyCondition.h"
-#include "CommandCondition.h"
 
 
 LeftCourseScenario::LeftCourseScenario(){

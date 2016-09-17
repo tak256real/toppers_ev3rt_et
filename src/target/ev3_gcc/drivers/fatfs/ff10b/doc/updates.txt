@@ -86,7 +86,7 @@ R0.07, Apr 01, 2009
 
 R0.06, Apr 01, 2008
   Added f_forward. (Tiny-FatFs)
-  Added string functions: fgets, fputc, fputs and fprintf.
+  Added string functions: fgets, fputc, fputs and //fpritf.
   Improved performance of f_lseek on moving to the same or following cluster.
 
 R0.05a, Feb 03, 2008
