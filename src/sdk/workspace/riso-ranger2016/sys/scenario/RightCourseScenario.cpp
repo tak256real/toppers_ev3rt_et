@@ -69,10 +69,7 @@ void RightCourseScenario::start(){
 ///////////////////////////////////////
 //グレーライン検知
 //////////////////////////////////////
-	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(10, 10, 0.5, new PIDControl(80, 0.5, 3000)),	new TimeCondition(3000))	);
 	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(30, 10, 0.15, new PIDControl(80, 0.5, 3000)),	new GlayLineCondition())	);
-	sequence = sequence->setNextSequence(		new Sequence(new TailBrakeAction(),			new TimeCondition(1000))		);
-	sequence = sequence->setNextSequence(		new Sequence(new RecliningAction(-4),		new InclinationCondition(68))	);
 ///////////////////////////////////////
 ///////////////////////////////////////
 //ガレージ

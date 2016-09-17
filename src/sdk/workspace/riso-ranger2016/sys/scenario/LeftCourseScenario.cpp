@@ -48,7 +48,8 @@ void LeftCourseScenario::start(){
 ///////////////////////////////////
   // 尻尾キャリブレーション部
 	firstSequence = 							new Sequence(new TailCalibrationAction(),	new TailStopCondition(1000)	);
-	sequence = firstSequence->setNextSequence(	new Sequence(new SitWaitAction(97),			new CommandCondition())	);
+//	sequence = firstSequence->setNextSequence(	new Sequence(new SitWaitAction(97),			new CommandCondition())	);
+	sequence = firstSequence->setNextSequence(	new Sequence(new SitWaitAction(98),			new TimeCondition(4000))	);
 	// スタート部
 	sequence = sequence->setNextSequence(	new Sequence(new LineTraceAction(20, 45, 0.5, new PIDControl(40, 0, 0)),	new DistanceCondition(300))		);	// スタート直後はゆっくり走行
 //	sequence = sequence->setNextSequence(	new Sequence(new LineTraceAction(80, 45, new PIDControl(80, 0, 3000)),	new EmptyCondition())		);	// 直線終わりまで
@@ -64,23 +65,24 @@ void LeftCourseScenario::start(){
 //////////////////////////////////////
 //	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(10, 10, 0.5, new PIDControl(80, 0.5, 3000)),	new TimeCondition(3000))	);	
 	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(30, 10, 0.5, new PIDControl(80, 0.5, 3000)),	new DistanceToObjectCondition(40))		);
-	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(30, 80, 0.5, new PIDControl(80, 0.5, 3000)),	new DistanceToObjectCondition(20))		);
+	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(20, 80, 0.5, new PIDControl(80, 0.5, 3000)),	new DistanceToObjectCondition(20))		);
 	sequence = sequence->setNextSequence(		new Sequence(new TailBrakeAction(),			new TimeCondition(300))		);
 	// !!! リクライニングの前に、尻尾の角度を80度にする !!!
-	sequence = sequence->setNextSequence(		new Sequence(new RecliningAction(-20),		new InclinationCondition(65))	);
-	sequence = sequence->setNextSequence(		new Sequence(new TailRunAction(10, 0),		new DistanceCondition(270))		);
+	sequence = sequence->setNextSequence(		new Sequence(new TailBrakeAction(),			new TimeCondition(500))		);	
+	sequence = sequence->setNextSequence(		new Sequence(new RecliningAction(-10),		new InclinationCondition(64))	);
+	sequence = sequence->setNextSequence(		new Sequence(new TailRunAction(10, 0),		new DistanceCondition(300))		);
 	sequence = sequence->setNextSequence(		new Sequence(new TailBrakeAction(),			new TimeCondition(500))		);
 
 	sequence = sequence->setNextSequence(		new Sequence(new TailRunAction(0, 15),		new RotationCondition(177))	);
 	sequence = sequence->setNextSequence(		new Sequence(new TailBrakeAction(),			new TimeCondition(500))		);
 	
-	sequence = sequence->setNextSequence(		new Sequence(new TailRunAction(10, 0),		new DistanceCondition(270))		);
+	sequence = sequence->setNextSequence(		new Sequence(new TailRunAction(10, 0),		new DistanceCondition(340))		);
 	sequence = sequence->setNextSequence(		new Sequence(new TailBrakeAction(),			new TimeCondition(500))		);
 	
 	sequence = sequence->setNextSequence(		new Sequence(new TailRunAction(0, 15),		new RotationCondition(177))	);
 	sequence = sequence->setNextSequence(		new Sequence(new TailBrakeAction(),			new TimeCondition(500))		);
 
-	sequence = sequence->setNextSequence(		new Sequence(new TailRunAction(10, 0),		new DistanceCondition(270))		);
+	sequence = sequence->setNextSequence(		new Sequence(new TailRunAction(10, 0),		new DistanceCondition(360))		);
 	sequence = sequence->setNextSequence(		new Sequence(new TailBrakeAction(),			new TimeCondition(500))		);
 
 // 尻尾走行からの倒立走行切り替え
@@ -93,10 +95,7 @@ void LeftCourseScenario::start(){
 ///////////////////////////////////////
 //グレーライン検知
 //////////////////////////////////////
-//	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(10, 10, 0.5, new PIDControl(80, 0.5, 3000)),	new TimeCondition(3000))	);
 	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(30, 10, 0.15, new PIDControl(80, 0.5, 3000)),	new GlayLineCondition())	);
-	sequence = sequence->setNextSequence(		new Sequence(new TailBrakeAction(),			new TimeCondition(1000))		);
-	sequence = sequence->setNextSequence(		new Sequence(new RecliningAction(-4),		new InclinationCondition(68))	);
 ///////////////////////////////////////
 //ガレージシナリオ
 ///////////////////////////////////////
