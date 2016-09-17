@@ -96,3 +96,9 @@ void Motor::SetPWMValue(int PWMValue){
 	ev3_motor_set_power(m_Port, (int)PWMValue);
 
 }
+
+void Motor::setAngle(int referenceAngle){
+
+	ev3_motor_rotate(m_Port, referenceAngle, 50, 0);
+
+}

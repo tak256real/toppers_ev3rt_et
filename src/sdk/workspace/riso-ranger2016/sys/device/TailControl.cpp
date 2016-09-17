@@ -30,13 +30,16 @@ void TailControl::init() {
 
 void TailControl::Control(){
 
-	int pwm;
+	//int pwm;
 
 	// Duty比算出
-	pwm = m_RefAngle - m_TailMotor->GetEnc(); // 比例制御
+	//pwm = m_RefAngle - m_TailMotor->GetEnc(); // 比例制御
 
 	// Duty比設定
-	m_TailMotor->SetPWMValue(pwm);
+	//m_TailMotor->SetPWMValue(pwm);
+
+	// 角度指定
+	m_TailMotor->setAngle(m_RefAngle);
 
 }
 
