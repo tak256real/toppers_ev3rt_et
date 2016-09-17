@@ -62,29 +62,9 @@ void LeftCourseScenario::start(){
 //////////////////////////////////////
 //ルックアップ
 //////////////////////////////////////
-//	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(50, 2),	new DistanceCondition(720)));
-//////////////////////////////////////
-//ルックアップ終わり
-//////////////////////////////////////
-///////////////////////////////////////
-//ガレージシナリオ
-///////////////////////////////////////
-	//ToDo グレーラインの検知する位置が決まったら微調整
-	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(40, 60, 0.5, new PIDControl(80, 0.5, 3000)),	new DistanceCondition(80))	);
-	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(30, 80, 0.5, new PIDControl(80, 0.5, 3000)),	new DistanceCondition(80))	);
-	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(20, 80, 0.5, new PIDControl(80, 0.5, 3000)),	new DistanceCondition(40))	);
-	sequence = sequence->setNextSequence(		new Sequence(new TailBrakeAction(),			new TimeCondition(700))		);
-///////////////////////////////////////
-//ガレージシナリオ終わり
-/////////////////////////////////////////	sequence = firstSequence->setNextSequence(	new Sequence(new TailBrakeAction(),			new TimeCondition(1000))		);
-//	sequence = firstSequence->setNextSequence(	new Sequence(new LineTraceAction(50, 10),	new DistanceCondition(3800))	);
-
-	
-	
-// ルックアップゲート部
-	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(10, 10),	new TimeCondition(3000))	);	
-	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(30, 10),	new DistanceToObjectCondition(40))		);
-	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(30, 80),	new DistanceToObjectCondition(20))		);
+//	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(10, 10, 0.5, new PIDControl(80, 0.5, 3000)),	new TimeCondition(3000))	);	
+	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(30, 10, 0.5, new PIDControl(80, 0.5, 3000)),	new DistanceToObjectCondition(40))		);
+	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(30, 80, 0.5, new PIDControl(80, 0.5, 3000)),	new DistanceToObjectCondition(20))		);
 	sequence = sequence->setNextSequence(		new Sequence(new TailBrakeAction(),			new TimeCondition(300))		);
 	// !!! リクライニングの前に、尻尾の角度を80度にする !!!
 	sequence = sequence->setNextSequence(		new Sequence(new RecliningAction(-20),		new InclinationCondition(65))	);
@@ -106,15 +86,28 @@ void LeftCourseScenario::start(){
 // 尻尾走行からの倒立走行切り替え
 	sequence = sequence->setNextSequence(		new Sequence(new TailRunAction(-10, 0),		new TimeCondition(500))		);
 	sequence = sequence->setNextSequence(		new Sequence(new RecliningAction(80),		new InclinationCondition(115))	);
-	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(30, 97),	new DistanceCondition(300))	);
-
-
-// グレーライン検知部 トレース位置は0.15
-	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(10, 10),	new TimeCondition(3000))	);
-	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(30, 10),	new GlayLineCondition())	);
+	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(30, 97, 0.5, new PIDControl(80, 0.5, 3000)),	new DistanceCondition(300))	);
+//////////////////////////////////////
+//ルックアップ終わり
+//////////////////////////////////////
+///////////////////////////////////////
+//グレーライン検知
+//////////////////////////////////////
+//	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(10, 10, 0.5, new PIDControl(80, 0.5, 3000)),	new TimeCondition(3000))	);
+	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(30, 10, 0.15, new PIDControl(80, 0.5, 3000)),	new GlayLineCondition())	);
 	sequence = sequence->setNextSequence(		new Sequence(new TailBrakeAction(),			new TimeCondition(1000))		);
 	sequence = sequence->setNextSequence(		new Sequence(new RecliningAction(-4),		new InclinationCondition(68))	);
-
+///////////////////////////////////////
+//ガレージシナリオ
+///////////////////////////////////////
+	//ToDo グレーラインの検知する位置が決まったら微調整
+	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(40, 60, 0.5, new PIDControl(80, 0.5, 3000)),	new DistanceCondition(80))	);
+	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(30, 80, 0.5, new PIDControl(80, 0.5, 3000)),	new DistanceCondition(80))	);
+	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(20, 80, 0.5, new PIDControl(80, 0.5, 3000)),	new DistanceCondition(40))	);
+	sequence = sequence->setNextSequence(		new Sequence(new TailBrakeAction(),			new TimeCondition(700))		);
+///////////////////////////////////////
+//ガレージシナリオ終わり
+/////////////////////////////////////////
 	
 	// シーケンス開始
 	m_Sequencer->startSequence(firstSequence);
