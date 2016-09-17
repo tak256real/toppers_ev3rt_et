@@ -52,8 +52,8 @@ void LeftCourseScenario::start(){
 
 	
 // グレーライン検知部
-	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(20, 10),	new TimeCondition(3000))	);
-	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(20, 10),	new GlayLineCondition())	);
+	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(10, 10),	new TimeCondition(3000))	);
+	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(30, 10),	new GlayLineCondition())	);
 //	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(0, 80),	new TimeCondition(1000))		);
 	sequence = sequence->setNextSequence(		new Sequence(new TailBrakeAction(),			new TimeCondition(1000))		);
 	sequence = sequence->setNextSequence(		new Sequence(new RecliningAction(-4),		new InclinationCondition(68))	);

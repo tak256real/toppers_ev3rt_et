@@ -48,15 +48,9 @@ bool GlayLineCondition::check(){
 	
 	ColorValueArray[m_Count] = m_ColorValue;
 
-/*
-	if(0.4 <=ColorValueArray[m_Count] && ColorValueArray[m_Count] <= 0.6){
-		bool_Array[m_Count] = 1;
-	}else{
-		bool_Array[m_Count] = 0;
-	}
-*/	
-	m_ColorValueDif  = m_ColorValue - m_ColorValuePrev;
-	m_ColorValuePrev = m_ColorValue;
+	
+	//m_ColorValueDif  = m_ColorValue - m_ColorValuePrev;
+	//m_ColorValuePrev = m_ColorValue;
 	
 	m_Count++;
 	
@@ -69,9 +63,9 @@ bool GlayLineCondition::check(){
 	
 	m_ColorValueDif  = m_ColorValue - m_ColorValuePrev;
 
-//	fprintf(btlog, "ColorValue = %f \n\r", m_ColorValue);
-	fprintf(btlog, "Direction = %f \n\r", m_StateObserver->GetDirection());
-//	fprintf(btlog,"m_ColorValueDif = %f\r\n", m_ColorValueDif);
+	fprintf(btlog,"ColorValue = %f \n\r", m_ColorValue);
+//	fprintf(btlog, "Direction = %f \n\r", m_StateObserver->GetDirection());
+//	fprintf(btlog,"ColorValueDif = %f\r\n", m_ColorValueDif);
 //	fprintf(btlog,"m_ColorValue = %f b_Array[%d] = %d \r\n", ColorValueArray[m_Count], m_Count, bool_Array[m_Count]);
 //	fprintf(btlog,"ColorValue = %f\r\n,ColorValueDif = %f\r\n", ColorValueArray[m_Count],m_ColorValueDif);
 //	fprintf(btlog,"b_Array[%d] = %d", m_Count, b_Array[m_Count]);
