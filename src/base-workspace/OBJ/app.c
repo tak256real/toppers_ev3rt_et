@@ -240,7 +240,7 @@ void main_task(intptr_t unused) {
 //    			motor_control_drive = 0;
 //    		else
 //    			motor_control_drive += 10;
-//    		fprintf(bt, "motor_control_drive: %d\n", motor_control_drive);
+//    		//fpritf(bt, "motor_control_drive: %d\n", motor_control_drive);
 //    		break;
 //
 //    	case 's':
@@ -248,7 +248,7 @@ void main_task(intptr_t unused) {
 //    			motor_control_drive = 0;
 //    		else
 //    			motor_control_drive -= 10;
-//    		fprintf(bt, "motor_control_drive: %d\n", motor_control_drive);
+//    		//fpritf(bt, "motor_control_drive: %d\n", motor_control_drive);
 //    		break;
 //
 //    	case 'a':
@@ -256,7 +256,7 @@ void main_task(intptr_t unused) {
 //    			motor_control_steer = 0;
 //    		else
 //    			motor_control_steer += 10;
-//    		fprintf(bt, "motor_control_steer: %d\n", motor_control_steer);
+//    		//fpritf(bt, "motor_control_steer: %d\n", motor_control_steer);
 //    		break;
 //
 //    	case 'd':
@@ -264,28 +264,28 @@ void main_task(intptr_t unused) {
 //    			motor_control_steer = 0;
 //    		else
 //    			motor_control_steer -= 10;
-//    		fprintf(bt, "motor_control_steer: %d\n", motor_control_steer);
+//    		//fpritf(bt, "motor_control_steer: %d\n", motor_control_steer);
 //    		break;
 //
 //    	case 'h':
-//    		fprintf(bt, "==========================\n");
-//    		fprintf(bt, "Usage:\n");
-//    		fprintf(bt, "Press 'w' to speed up\n");
-//    		fprintf(bt, "Press 's' to speed down\n");
-//    		fprintf(bt, "Press 'a' to turn left\n");
-//    		fprintf(bt, "Press 'd' to turn right\n");
-//    		fprintf(bt, "Press 'i' for idle task\n");
-//    		fprintf(bt, "Press 'h' for this message\n");
-//    		fprintf(bt, "==========================\n");
+//    		//fpritf(bt, "==========================\n");
+//    		//fpritf(bt, "Usage:\n");
+//    		//fpritf(bt, "Press 'w' to speed up\n");
+//    		//fpritf(bt, "Press 's' to speed down\n");
+//    		//fpritf(bt, "Press 'a' to turn left\n");
+//    		//fpritf(bt, "Press 'd' to turn right\n");
+//    		//fpritf(bt, "Press 'i' for idle task\n");
+//    		//fpritf(bt, "Press 'h' for this message\n");
+//    		//fpritf(bt, "==========================\n");
 //    		break;
 //
 //    	case 'i':
-//    		fprintf(bt, "Idle task started.\n");
+//    		//fpritf(bt, "Idle task started.\n");
 //    		rsm_tsk(IDLE_TASK);
 //    		break;
 //
 //    	default:
-//    		fprintf(bt, "Unknown key '%c' pressed.\n", c);
+//    		//fpritf(bt, "Unknown key '%c' pressed.\n", c);
 //    	}
 //    }
 }

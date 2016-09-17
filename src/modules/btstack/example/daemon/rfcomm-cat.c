@@ -123,7 +123,7 @@ void packet_handler(uint8_t packet_type, uint16_t channel, uint8_t *packet, uint
 }
 
 void usage(const char *name){
-	fprintf(stderr, "Usage : %s [-a|--address aa:bb:cc:dd:ee:ff] [-c|--channel n] [-p|--pin nnnn]\n", name);
+	//fpritf(stderr, "Usage : %s [-a|--address aa:bb:cc:dd:ee:ff] [-c|--channel n] [-p|--pin nnnn]\n", name);
 }
 
 int main (int argc, const char * argv[]){
@@ -165,7 +165,7 @@ int main (int argc, const char * argv[]){
 	run_loop_init(RUN_LOOP_POSIX);
 	int err = bt_open();
 	if (err) {
-		fprintf(stderr,"Failed to open connection to BTdaemon, err %d\n",err);
+		//fpritf(stderr,"Failed to open connection to BTdaemon, err %d\n",err);
 		return 1;
 	}
 	bt_register_packet_handler(packet_handler);

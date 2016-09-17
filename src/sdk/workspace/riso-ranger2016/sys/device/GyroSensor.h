@@ -20,7 +20,7 @@ public:
 
 private:
 	sensor_port_t m_Port;			// 設定ポート
-	const int c_GyroOffset = 0;		// ジャイロオフセット(センサ固有の計測値ずれ量 倒立制御に必要) TODO 実測して設定
+	const int c_GyroOffset = 4;		// ジャイロオフセット(センサ固有の計測値ずれ量 倒立制御に必要) TODO 実測して設定
 };
 
 #endif /* WORKSPACE_RISO_RANGER2016_SYS_DEVICE_GYROSENSOR_H_ */

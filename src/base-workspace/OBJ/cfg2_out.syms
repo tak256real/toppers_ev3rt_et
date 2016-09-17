@@ -2129,7 +2129,7 @@ c0099bfc R strnlen
 c0099c64 R strrchr
 c0099cb8 R _strtol_r
 c0099e88 R strtol
-c0099eb0 R _svfprintf_r
+c0099eb0 R _sv//fpritf_r
 c009bdc0 R __ssvfscanf_r
 c009d380 R _vsnprintf_r
 c009d404 R vsnprintf

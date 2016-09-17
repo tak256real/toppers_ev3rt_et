@@ -42,6 +42,7 @@ void WheelControl::Control(){
 
 	signed char pwm_L;
 	signed char pwm_R;
+	//fprintf(btlog,"GyroSensorValue = %10f \r\n",(float)m_GyroSensor->getSensorValue());
 
 	if(m_TwoWheelMode == true) {	// 倒立走行
 		// Duty比算出
@@ -55,7 +56,7 @@ void WheelControl::Control(){
 			(float)m_Battery->getValue(),
 			&pwm_L,
 			&pwm_R);
-
+		//	fprintf(btlog,"GyroSensorValue = %10f \r\n",(float)m_GyroSensor->getSensorValue());
 	}
 	else {							// 尻尾走行
 
