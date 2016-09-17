@@ -30,9 +30,8 @@
 #include "TimeCondition.h"
 #include "UltrasonicControl.h"
 #include "balancer_private.h"
-
 #include "Bluetooth.h"
-
+#include "PIDControl.h"
 #define DEBUG
 
 #ifdef DEBUG
@@ -72,8 +71,9 @@ static int heartBeatCount = 0;
 
 // インスタンス生成、関連構築、初期化
 static Sequencer* sequencer = new Sequencer(new Sequence(new SitWaitAction(90), new EmptyCondition()));
-//static Scenario* scenario = new LeftCourseScenario();
-static Scenario* scenario = new RightCourseScenario();
+
+static Scenario* scenario = new LeftCourseScenario();
+//static Scenario* scenario = new RightCourseScenario();
 
 static Motor* leftMotor = new Motor(EV3_PORT_C);
 static Motor* rightMotor = new Motor(EV3_PORT_B);
@@ -86,11 +86,10 @@ static UltrasonicControl* ultrasonicControl = new UltrasonicControl(EV3_PORT_2);
 
 static StateObserver* stateObserver = new StateObserver(leftMotor, rightMotor, tailMotor, colorSensor);
 static WheelControl* wheelControl = new WheelControl(leftMotor, rightMotor, battery, gyroSensor);
-static TailControl* tailControl = new TailControl(tailMotor);
 
+static PIDControl* pidControl = new PIDControl(1, 0, 0);
+static TailControl* tailControl = new TailControl(tailMotor, pidControl);
 void main_task(intptr_t unused) {
-
-    btlog = ev3_serial_open_file(EV3_SERIAL_BT);
 
 	scenario->init(sequencer);
 	Action::init(stateObserver, tailControl, wheelControl);
@@ -99,16 +98,18 @@ void main_task(intptr_t unused) {
 	wheelControl->Init();
 	TimeCondition::s_AbsoluteTime = 0;	// TODO Timer置き換え.
 
-	gyroSensor->reset();
-
 	// シナリオ生成
 	scenario->start();
 
 	// 4ms周期タスク起動
 
+    act_tsk(CONSOLE_TASK);
+
 	ev3_sta_cyc(ID_EV3CYC_4MS);
 
-	while(1) {
+    while(1) {
+        tslp_tsk(100);
+/*
 		while (!ev3_bluetooth_is_connected()) tslp_tsk(100);
 		char c = fgetc(btlog);
 		switch(c) {
@@ -123,8 +124,7 @@ void main_task(intptr_t unused) {
 		case 'w':
 			K_F[1] += 0.1;
 			fprintf(btlog, "K_F[1]=%f\r\n", K_F[1]);
-			break;
-		case 's':
+			break;		case 's':
 			K_F[1] -= 0.1;
 			fprintf(btlog, "K_F[1]=%f\r\n", K_F[1]);
 			break;
@@ -171,10 +171,10 @@ void main_task(intptr_t unused) {
 		default:
 			fprintf(btlog, "Unknown key '%c' pressed.\r\n", c);
 		}
-	}
+*/
+    }
 
 }
-
 void Cyc4msecInterval(intptr_t unused) {
 
 	leftMotor->UpdateAngularVelocity();		// 中

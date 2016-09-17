@@ -9,7 +9,7 @@
 #include "Bluetooth.h"
 
 
-LineTraceAction::LineTraceAction(int speed, int tailAngle, PIDControl* pidControl, float referenceLinePosition){
+LineTraceAction::LineTraceAction(int speed, int tailAngle, float referenceLinePosition, PIDControl* pidControl){
 
 	// メンバ初期化
 	m_Speed = speed;									// 走行速度設定

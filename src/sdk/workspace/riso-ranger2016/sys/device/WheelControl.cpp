@@ -55,7 +55,6 @@ void WheelControl::Control(){
 			(float)m_Battery->getValue(),
 			&pwm_L,
 			&pwm_R);
-
 	}
 	else {							// 尻尾走行
 

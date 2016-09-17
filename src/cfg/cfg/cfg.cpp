@@ -385,7 +385,7 @@ int main( int arg, char* argv[] )
     status = cfg_main( arg, argv );
     if ( status != EXIT_SUCCESS && toppers::get_error_count() == 0 )
     {
-      std::fprintf( stderr, "cfg: %s\n", _( "unknown error" ) );
+      std:://fpritf( stderr, "cfg: %s\n", _( "unknown error" ) );
     }
     if ( toppers::get_error_count() > 0 )
     {
@@ -398,12 +398,12 @@ int main( int arg, char* argv[] )
   }
   catch ( std::exception& e )
   {
-    std::fprintf( stderr, "cfg: %s\n", e.what() );
+    std:://fpritf( stderr, "cfg: %s\n", e.what() );
     status = EXIT_FAILURE;
   }
   catch ( ... )
   {
-    std::fprintf( stderr, "cfg: %s\n", _( "internal error" ) );
+    std:://fpritf( stderr, "cfg: %s\n", _( "internal error" ) );
     status = EXIT_FAILURE;
   }
   return status;

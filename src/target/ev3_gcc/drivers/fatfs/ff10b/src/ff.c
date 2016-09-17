@@ -48,7 +48,7 @@
 /                   Fixed btr in f_read() can be mistruncated.
 /                   Fixed cached sector is not flushed when create and close without write.
 /
-/ Apr 01,'08 R0.06  Added fputc(), fputs(), fprintf() and fgets().
+/ Apr 01,'08 R0.06  Added fputc(), fputs(), //fpritf() and fgets().
 /                   Improved performance of f_lseek() on moving to the same or following cluster.
 /
 / Apr 01,'09 R0.07  Merged Tiny-FatFs as a configuration option. (_FS_TINY)

@@ -8,9 +8,10 @@
 #include "TailControl.h"
 
 
-TailControl::TailControl(Motor* tailMotor){
+TailControl::TailControl(Motor* tailMotor, PIDControl* pidControl){
 
 	m_TailMotor = tailMotor;
+        m_PIDControl = pidControl;
 	m_RefAngle = 0;
 
 }
@@ -34,7 +35,6 @@ void TailControl::Control(){
 
 	// Duty比算出
 	pwm = (m_RefAngle - m_TailMotor->GetEnc())*1.5; // 比例制御
-
 	// Duty比設定
 	m_TailMotor->SetPWMValue(pwm);
 

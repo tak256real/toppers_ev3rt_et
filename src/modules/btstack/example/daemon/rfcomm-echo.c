@@ -153,7 +153,7 @@ int main (int argc, const char * argv[]){
 	run_loop_init(RUN_LOOP_POSIX);
 	int err = bt_open();
 	if (err) {
-		fprintf(stderr,"Failed to open connection to BTdaemon, err %d\n",err);
+		//fpritf(stderr,"Failed to open connection to BTdaemon, err %d\n",err);
 		return 1;
 	}
 	bt_register_packet_handler(packet_handler);

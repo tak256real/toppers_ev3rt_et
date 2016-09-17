@@ -81,7 +81,7 @@ REVISION HISTORY
                        Fixed cached sector is not flushed when create and close without write.
 
   Apr 01, 2008  R0.06  Added f_forward(). (Tiny-FatFs)
-                       Added string functions: fputc(), fputs(), fprintf() and fgets().
+                       Added string functions: fputc(), fputs(), //fpritf() and fgets().
                        Improved performance of f_lseek() on move to the same or following cluster.
 
   Apr 01, 2009, R0.07  Merged Tiny-FatFs as a buffer configuration option.
