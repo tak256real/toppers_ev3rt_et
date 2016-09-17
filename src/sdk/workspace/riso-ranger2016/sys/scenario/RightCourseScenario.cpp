@@ -52,7 +52,7 @@ void RightCourseScenario::start(){
 	sequence = sequence->setNextSequence(	new Sequence(new LineTraceAction(50, 45, new PIDControl(80, 0, 3000), 0.5),	new DistanceCondition(200))		);	// スタート直後はゆっくり走行
 	sequence = sequence->setNextSequence(	new Sequence(new DirectionRunAction(80, 80, 0),								new CollisionCondition())		);	// スタート直後はゆっくり走行
 	sequence = sequence->setNextSequence(	new Sequence(new DirectionRunAction(80, 80, 0),								new DistanceCondition(150))		);	// スタート直後はゆっくり走行
-	sequence = sequence->setNextSequence(	new Sequence(new DirectionRunAction(0, 80, 0),								new EmptyCondition())		);	// スタート直後はゆっくり走行
+	sequence = sequence->setNextSequence(	new Sequence(new TailBrakeAction(),											new EmptyCondition())		);	// スタート直後はゆっくり走行
 
 	sequence = sequence->setNextSequence(	new Sequence(new TailBrakeAction(),											new TimeCondition(10000))		);	// 座って待機
 	sequence = sequence->setNextSequence(	new Sequence(new TailRunAction(20, 0),										new CollisionCondition())		);	// 座って待機
