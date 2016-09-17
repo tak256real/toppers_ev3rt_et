@@ -18,8 +18,6 @@ void console_task(intptr_t unused) {
 
     btlog = ev3_serial_open_file(EV3_SERIAL_BT);
 
-
-
     while(1) {
         // 接続検知.
         while (!ev3_bluetooth_is_connected()) tslp_tsk(100);
@@ -27,7 +25,7 @@ void console_task(intptr_t unused) {
         char c = fgetc(btlog);
 
         switch(c) {
-            case 'S':
+            case '!':
                 if(!s_is_start) {
                     fprintf(btlog, "Start signal reception\r\n");
                     s_is_start = true;
