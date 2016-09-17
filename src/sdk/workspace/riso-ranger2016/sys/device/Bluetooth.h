@@ -8,6 +8,9 @@
 #ifndef WORKSPACE_RISO_RANGER2016_SYS_DEVICE_BLUETOOTH_H_
 #define WORKSPACE_RISO_RANGER2016_SYS_DEVICE_BLUETOOTH_H_
 #include <stdio.h>
+#include "std.h"
+
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -15,11 +18,10 @@ extern "C" {
 extern FILE *btlog;
 
 extern void console_task(intptr_t unused);
-
 #ifdef __cplusplus
 }
-
-bool isStartSignal();
 #endif
+bool isStartSignal();
+
 
 #endif /* WORKSPACE_RISO_RANGER2016_SYS_DEVICE_BLUETOOTH_H_ */
