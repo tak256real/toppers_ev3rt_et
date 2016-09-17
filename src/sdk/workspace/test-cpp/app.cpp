@@ -100,7 +100,10 @@ void main_task(intptr_t unused) {
 
 	// 4ms周期タスク起動
 
+    act_tsk(CONSOLE_TASK);
+
 	ev3_sta_cyc(ID_EV3CYC_4MS);
+
 
     while(1) {
         tslp_tsk(100);
