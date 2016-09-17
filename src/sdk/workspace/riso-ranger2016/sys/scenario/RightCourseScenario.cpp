@@ -51,8 +51,11 @@ void RightCourseScenario::start(){
 	// 階段
 	sequence = sequence->setNextSequence(	new Sequence(new LineTraceAction(50, 45, new PIDControl(80, 0, 3000), 0.5),	new DistanceCondition(200))		);	// スタート直後はゆっくり走行
 	sequence = sequence->setNextSequence(	new Sequence(new DirectionRunAction(80, 80, 0),								new CollisionCondition())		);	// スタート直後はゆっくり走行
-	sequence = sequence->setNextSequence(	new Sequence(new DirectionRunAction(80, 80, 0),								new DistanceCondition(30))		);	// スタート直後はゆっくり走行
-	sequence = sequence->setNextSequence(	new Sequence(new DirectionRunAction(0, 80, 0),								new EmptyCondition())		);	// スタート直後はゆっくり走行
+	sequence = sequence->setNextSequence(	new Sequence(new DirectionRunAction(80, 80, 0),								new DistanceCondition(30))		);	// 方位固定で階段突入
+	sequence = sequence->setNextSequence(	new Sequence(new DistanceFeedbackAction(120),								new TimeCondition(10000))		);	// 真ん中に移動
+	sequence = sequence->setNextSequence(	new Sequence(new RotateAction(30),											new RotationCondition(360))		);	// １段目回転
+
+	sequence = sequence->setNextSequence(	new Sequence(new DirectionRunAction(0, 80, 0),								new EmptyCondition())		);		// 停止
 
 //	sequence = sequence->setNextSequence(	new Sequence(new TailBrakeAction(),											new TimeCondition(1000))		);	// スタート直後はゆっくり走行
 
