@@ -13,7 +13,7 @@ DistanceFeedbackAction::DistanceFeedbackAction(int referenceDistance){
 
 	// メンバ初期化
 	m_ReferenceDistance = referenceDistance;
-	m_PIDContol = new PIDControl(0.6, 0, 10);
+	m_PIDContol = new PIDControl(0.4, 0, 0);
 }
 
 
