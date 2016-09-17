@@ -46,18 +46,18 @@ void RightCourseScenario::start(){
   // 尻尾キャリブレーション部
 	firstSequence = 							new Sequence(new TailCalibrationAction(),	new TailStopCondition(1000)	);
 	sequence = firstSequence->setNextSequence(	new Sequence(new SitWaitAction(97),			new CommandCondition())	);
-	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(10, 2,new PIDControl(80, 0.5, 3000)),	new DistanceCondition(100))	);
-	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(80, 2,new PIDControl(80, 0.5, 3000)),	new DistanceCondition(4550)));
-	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(35, 2,new PIDControl(80, 0.5, 3000)),	new DistanceCondition(700))	);
-	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(80, 2,new PIDControl(80, 0.5, 3000)),	new DistanceCondition(1250)));
-	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(40, 2,new PIDControl(80, 0.5, 3000)),	new DistanceCondition(1100)));
+	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(10, 2, 0.5, new PIDControl(80, 0.5, 3000)),	new DistanceCondition(100))	);
+	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(80, 2, 0.5, new PIDControl(80, 0.5, 3000)),	new DistanceCondition(4550)));
+	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(35, 2, 0.5, new PIDControl(80, 0.5, 3000)),	new DistanceCondition(700))	);
+	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(80, 2, 0.5, new PIDControl(80, 0.5, 3000)),	new DistanceCondition(1250)));
+	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(40, 2, 0.5, new PIDControl(80, 0.5, 3000)),	new DistanceCondition(1100)));
 //////////////////////////////////////
 //ゴール
 //////////////////////////////////////
 //////////////////////////////////////
 //階段
 //////////////////////////////////////
-	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(50, 2, new PIDControl(80, 0.5, 3000)),	new DistanceCondition(720)));
+	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(50, 2, 0.5, new PIDControl(80, 0.5, 3000)),	new DistanceCondition(720)));
 
 
 //////////////////////////////////////
@@ -67,9 +67,9 @@ void RightCourseScenario::start(){
 //ガレージシナリオ
 ///////////////////////////////////////
 	//ToDo グレーラインの検知する位置が決まったら微調整
-	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(40, 60, new PIDControl(80, 0.5, 3000)),	new DistanceCondition(80))	);
-	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(30, 80, new PIDControl(80, 0.5, 3000)),	new DistanceCondition(80))	);
-	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(20, 80, new PIDControl(80, 0.5, 3000)),	new DistanceCondition(40))	);
+	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(40, 60, 0.5, new PIDControl(80, 0.5, 3000)),	new DistanceCondition(80))	);
+	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(30, 80, 0.5, new PIDControl(80, 0.5, 3000)),	new DistanceCondition(80))	);
+	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(20, 80, 0.5, new PIDControl(80, 0.5, 3000)),	new DistanceCondition(40))	);
 	sequence = sequence->setNextSequence(		new Sequence(new TailBrakeAction(),			new TimeCondition(700))		);
 ///////////////////////////////////////
 //ガレージシナリオ終わり
