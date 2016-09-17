@@ -32,6 +32,7 @@ void LineTraceAction::onStart(){
 
 	// 倒立モードに切り替え
 	m_WheelControl->SetTwoWheelMode(true);
+	fprintf(btlog, "linetraceaction\r\n", );
 
 }
 

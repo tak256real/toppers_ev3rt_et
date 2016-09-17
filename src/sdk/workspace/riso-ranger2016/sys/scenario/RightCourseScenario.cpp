@@ -54,9 +54,9 @@ void RightCourseScenario::start(){
 	sequence = sequence->setNextSequence(	new Sequence(new LineTraceAction(20, 45, 0.5, new PIDControl(40, 0, 0)),	new DistanceCondition(300))		);	// スタート直後はゆっくり走行
 //	sequence = sequence->setNextSequence(	new Sequence(new LineTraceAction(80, 45, new PIDControl(80, 0, 3000)),	new EmptyCondition())		);	// 直線終わりまで
 	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(80, 2, 0.5, new PIDControl(80, 0.5, 3000)),	new DistanceCondition(4350)));
-	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(35, 2, 0.5, new PIDControl(80, 0.5, 3000)),	new DistanceCondition(700))	);
+	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(35, 30, 0.5, new PIDControl(80, 0.5, 3000)),	new DistanceCondition(700))	);
 	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(80, 2, 0.5, new PIDControl(80, 0.5, 3000)),	new DistanceCondition(1250)));
-	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(40, 2, 0.5, new PIDControl(80, 0.5, 3000)),	new DistanceCondition(1100)));
+	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(40, 30, 0.5, new PIDControl(80, 0.5, 3000)),	new DistanceCondition(1500)));
 //////////////////////////////////////
 //ゴール
 //////////////////////////////////////
