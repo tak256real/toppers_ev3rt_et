@@ -9,7 +9,7 @@
 #define WORKSPACE_RISO_RANGER2016_SYS_DEVICE_BLUETOOTH_H_
 #include <stdio.h>
 #include "std.h"
-
+#include "ev3api.h"
 
 #ifdef __cplusplus
 extern "C" {
