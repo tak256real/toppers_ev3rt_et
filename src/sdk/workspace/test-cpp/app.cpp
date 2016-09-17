@@ -29,7 +29,7 @@
 #include "TimeCondition.h"
 #include "UltrasonicControl.h"
 
-#include "Bluetooth.h"
+//#include "Bluetooth.h"
 
 #define DEBUG
 
@@ -67,7 +67,6 @@ void idle_task(intptr_t unused) {
 
 // グローバル変数宣言
 static int heartBeatCount = 0;
-static bool is_start_signal = false;
 
 // インスタンス生成、関連構築、初期化
 static Sequencer* sequencer = new Sequencer(new Sequence(new SitWaitAction(90), new EmptyCondition()));
@@ -88,8 +87,6 @@ static TailControl* tailControl = new TailControl(tailMotor);
 
 void main_task(intptr_t unused) {
 
-    btlog = ev3_serial_open_file(EV3_SERIAL_BT);
-
 	scenario->init(sequencer);
 	Action::init(stateObserver, tailControl, wheelControl);
 	Condition::init(stateObserver, ultrasonicControl);
@@ -106,21 +103,6 @@ void main_task(intptr_t unused) {
 
 	ev3_sta_cyc(ID_EV3CYC_4MS);
 
-	while(1) {
-		while (!ev3_bluetooth_is_connected()) tslp_tsk(100);
-		char c = fgetc(btlog);
-		switch(c) {
-            case 's':
-                fprintf(btlog, "Bluetooth Start");
-                is_start_signal = true;
-            break;
-            case 'w':
-                fprintf(btlog, "hello world\r\n");
-                break;
-            default:
-                fprintf(btlog, "Unknown key '%c' pressed.\r\n", c);
-		}
-	}
 }
 
 void Cyc4msecInterval(intptr_t unused) {
@@ -145,8 +127,4 @@ void Cyc4msecInterval(intptr_t unused) {
 
 	TimeCondition::s_AbsoluteTime+=4;	// TODO Timer置き換え
 
-}
-
-bool IsStartSignal(){
-    return is_start_signal;
 }

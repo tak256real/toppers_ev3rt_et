@@ -14,6 +14,8 @@ extern "C" {
 
 extern FILE *btlog;
 
+extern void console_task(intptr_t unused);
+
 #ifdef __cplusplus
 }
 #endif
