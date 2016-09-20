@@ -108,9 +108,9 @@ void WheelControl::SetTwoWheelMode(bool onoff){
 
 	if(m_TwoWheelMode == false && onoff == true) {
 	    // 倒立振子制御初期化
-	//	m_GyroSensor->reset();
-	    //m_WheelMotorL->ResetEnc();  //TODO 不要の可能性がある 倒立移行時に失敗するならここを実行
-		//m_WheelMotorR->ResetEnc();
+		m_GyroSensor->reset();
+	    m_WheelMotorL->ResetEnc();  //TODO 不要の可能性がある 倒立移行時に失敗するならここを実行
+		m_WheelMotorR->ResetEnc();
 		balance_init();
 	}
 

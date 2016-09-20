@@ -50,14 +50,16 @@ void RightCourseScenario::start(){
 ///////////////////////////////////
   // 尻尾キャリブレーション部
 	firstSequence = 							new Sequence(new TailCalibrationAction(),	new TailStopCondition(1000)	);
-	sequence = firstSequence->setNextSequence(	new Sequence(new SitWaitAction(97),			new CommandCondition())	);
+	sequence = firstSequence->setNextSequence(	new Sequence(new SitWaitAction(98),			new CommandCondition())	);
 	// スタート部
 	sequence = sequence->setNextSequence(	new Sequence(new LineTraceAction(20, 45, 0.5, new PIDControl(40, 0, 0)),	new DistanceCondition(300))		);	// スタート直後はゆっくり走行
 //	sequence = sequence->setNextSequence(	new Sequence(new LineTraceAction(80, 45, new PIDControl(80, 0, 3000)),	new EmptyCondition())		);	// 直線終わりまで
-	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(80, 2, 0.5, new PIDControl(80, 0.5, 3000)),	new DistanceCondition(4350)));
-	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(35, 2, 0.5, new PIDControl(80, 0.5, 3000)),	new DistanceCondition(700))	);
-	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(80, 2, 0.5, new PIDControl(80, 0.5, 3000)),	new DistanceCondition(1250)));
-	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(40, 2, 0.5, new PIDControl(80, 0.5, 3000)),	new DistanceCondition(1100)));
+	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(80, 20, 0.5, new PIDControl(80, 0.5, 3000)),	new DistanceCondition(2100)));
+	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(70, 2, 0.5, new PIDControl(70, 0.5, 3000)),	new DistanceCondition(2250)));
+	
+	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(30, 20, 0.5, new PIDControl(80, 0.5, 3000)),	new DistanceCondition(1000))	);
+	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(70, 2, 0.5, new PIDControl(80, 0.5, 3000)),	new DistanceCondition(900)));
+	sequence = sequence->setNextSequence(		new Sequence(new LineTraceAction(40, 20, 0.5, new PIDControl(80, 0.5, 3000)),	new DistanceCondition(1300)));
 //////////////////////////////////////
 //ゴール
 //////////////////////////////////////
